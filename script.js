@@ -124,7 +124,7 @@
      ============================================================= */
   var estForm = document.getElementById("estimateForm");
   var estOnce = document.getElementById("estOnce");
-  var estMonthly = document.getElementById("estMonthly");
+  var estMonthlyVal = document.getElementById("estMonthlyVal");
   var estimateCta = document.getElementById("estimateCta");
 
   var BASE = {
@@ -168,11 +168,10 @@
   function renderEstimate() {
     var e = computeEstimate();
     if (!e) return;
+    // textContent only — no innerHTML anywhere, so there is no HTML-injection
+    // sink even though these values are author-controlled numbers.
     if (estOnce) estOnce.textContent = money(e.onceLow) + " – " + money(e.onceHigh);
-    if (estMonthly) {
-      estMonthly.innerHTML = money(e.moLow) + " – " + money(e.moHigh) +
-        '<span class="estimate__permo">/mo</span>';
-    }
+    if (estMonthlyVal) estMonthlyVal.textContent = money(e.moLow) + " – " + money(e.moHigh);
   }
 
   if (estForm) {
@@ -234,13 +233,6 @@
     return v;
   }
 
-  // Escape anything we echo back into the DOM (defense in depth).
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
-  }
-
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   function setError(name, message) {
@@ -249,7 +241,8 @@
     var wrap = field.closest(".field");
     var errEl = form.querySelector('[data-error-for="' + name + '"]');
     if (wrap) wrap.classList.toggle("is-invalid", !!message);
-    if (errEl) errEl.textContent = message ? escapeHtml(message) : "";
+    // textContent is inherently XSS-safe; messages are static strings.
+    if (errEl) errEl.textContent = message || "";
     if (field) field.setAttribute("aria-invalid", message ? "true" : "false");
   }
 

@@ -109,6 +109,33 @@ sync if you change prices.
 
 ---
 
+## Security
+
+This is a static front end with no backend and no secrets, so the attack
+surface is small — and it's hardened further:
+
+- **No dangerous sinks** — all DOM writes use `textContent`; there is no
+  `innerHTML`, `eval`, `document.write`, or inline event handler in the code.
+- **Form hardening** — client-side validation, trimmed + length-capped inputs,
+  a honeypot field, and a submit throttle. Treat these as spam-reduction, not a
+  security boundary: real validation/spam-filtering happens at your form
+  provider (Formspree/Netlify), which should never trust client input.
+- **No secrets in the front end** — form providers use a public endpoint ID,
+  not an API key. Never paste a private key into these files.
+- **Security headers** ship in `_headers` (Netlify) and `vercel.json` (Vercel):
+  a Content-Security-Policy, `X-Frame-Options: DENY` (anti-clickjacking),
+  `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`,
+  and HSTS. These apply on deploy; they don't affect opening files locally.
+  - The CSP allows only same-origin code plus Google Fonts and your Formspree
+    endpoint. **If you switch form providers, update `connect-src` and
+    `form-action`** in both files. If you self-host fonts, you can drop the
+    `fonts.googleapis.com` / `fonts.gstatic.com` allowances.
+- **Third parties** — the only external requests are Google Fonts. Want zero
+  third-party calls (e.g. for privacy/GDPR)? Download the Space Grotesk woff2,
+  host it locally, and remove the `fonts.*` lines from the CSP.
+- When you add real social links, include `rel="noopener noreferrer"` on any
+  `target="_blank"` link (none exist yet).
+
 ## Accessibility & performance notes
 - Semantic HTML5, proper heading order, visible focus states, `alt`/`aria` labels.
 - Color contrast meets WCAG AA (≥ 4.5:1 for text).
