@@ -86,6 +86,16 @@ sync if you change prices.
 `[CLIENT NAME / BUSINESS]`, `[CASE STUDY: Green Ladder]`, `[LOGO]`,
 `[STYLIST NAME]`. Search the project for `[` to find them all.
 
+**Demo photos** use topical stock placeholders from
+[LoremFlickr](https://loremflickr.com) (free, no API key) so the demos look
+real out of the box — e.g. `https://loremflickr.com/600/450/roofing?lock=11`.
+They load in the visitor's browser; each photo sits over a themed gradient, so
+if one is slow or unavailable the page still looks intentional. To use your own
+(or hand-picked [Unsplash](https://unsplash.com) / [Pexels](https://pexels.com))
+photos, just replace the `src` URL on each `<img>` in the demo files — or drop
+files into an `assets/` folder and point the `src` there. If you switch to a
+different image host, add it to `img-src` in `_headers` / `vercel.json`.
+
 ---
 
 ## 3. Deploy free

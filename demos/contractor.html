@@ -66,6 +66,18 @@
     .hero__stars{margin-top:26px;color:var(--amber);font-size:1.1rem;letter-spacing:2px}
     .hero__stars b{color:var(--paper);font-family:var(--body);font-size:.92rem;letter-spacing:0;margin-left:8px;font-weight:600}
 
+    /* photos — topical stock placeholders (swap the src for real photos).
+       Each sits over a themed background, so a slow/failed image still looks OK. */
+    .hero{isolation:isolate}
+    .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,22,27,.72),rgba(17,22,27,.90))}
+    .gallery__grid{display:grid;gap:14px;grid-template-columns:1fr;margin-top:36px}
+    .ph{position:relative;overflow:hidden;border-radius:8px;background:linear-gradient(135deg,#1a222b,#2c3845)}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+    .ph:hover img{transform:scale(1.04)}
+    .gallery .ph{aspect-ratio:4/3;border:1px solid var(--line)}
+    .gallery__cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;font-family:var(--disp);text-transform:uppercase;letter-spacing:.04em;font-size:.82rem;color:#fff;background:linear-gradient(0deg,rgba(10,13,17,.85),transparent)}
+
     /* trust strip */
     .trust{background:var(--amber);color:#16202b}
     .trust__in{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:26px 0;text-align:center}
@@ -120,6 +132,7 @@
       .svc{grid-template-columns:repeat(3,1fr)}
       .why__grid{grid-template-columns:1fr 1fr}
       .reviews{grid-template-columns:repeat(3,1fr)}
+      .gallery__grid{grid-template-columns:repeat(3,1fr)}
       .quote__form .row{grid-template-columns:1fr 1fr}
       .quote__grid{grid-template-columns:1fr 1fr}
       .foot{grid-template-columns:2fr 1fr 1fr}
@@ -163,6 +176,7 @@
 
   <main id="top">
     <section class="hero">
+      <img class="hero__bg" src="https://loremflickr.com/1280/720/roof?lock=8" alt="" decoding="async" />
       <div class="wrap">
         <span class="hero__tag">★ Licensed &amp; Insured · Milwaukee, WI</span>
         <h1>Built tough.<br />Done <span>right.</span></h1>
@@ -191,6 +205,16 @@
         <div class="svc__card"><h3>Roofing</h3><p>Tear-offs, repairs and full replacements built to outlast Wisconsin winters. Storm-damage and insurance work welcome.</p></div>
         <div class="svc__card"><h3>Remodels</h3><p>Kitchens, baths and basements. We handle demo to finish — one crew, one timeline, no runaround.</p></div>
         <div class="svc__card"><h3>Decks &amp; Concrete</h3><p>Decks, patios, driveways and flatwork poured to last. Solid prep, clean lines, honest pricing.</p></div>
+      </div>
+    </section>
+
+    <section id="work" class="wrap gallery">
+      <p class="ey">Recent work</p>
+      <h2 class="h2">See the craftsmanship.</h2>
+      <div class="gallery__grid">
+        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/roofing?lock=11" alt="A recently completed roof replacement" /><figcaption class="gallery__cap">Roof replacement · Wauwatosa</figcaption></figure>
+        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/renovation?lock=12" alt="A finished kitchen remodel" /><figcaption class="gallery__cap">Kitchen remodel · Bay View</figcaption></figure>
+        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/concrete?lock=13" alt="A newly poured concrete driveway" /><figcaption class="gallery__cap">Concrete driveway · West Allis</figcaption></figure>
       </div>
     </section>
 
@@ -264,6 +288,10 @@
     b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
     m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
     document.getElementById('yr').textContent=new Date().getFullYear();
+    // if a stock placeholder fails to load, hide it so the themed background shows
+    Array.prototype.forEach.call(document.querySelectorAll('img.hero__bg, .ph img'),function(img){
+      img.addEventListener('error',function(){img.style.display='none';});
+    });
     // demo form (no backend — friendly message)
     var f=document.getElementById('quoteForm'),out=document.getElementById('qmsgOut');
     f.addEventListener('submit',function(e){

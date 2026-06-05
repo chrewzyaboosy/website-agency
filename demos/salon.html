@@ -67,6 +67,14 @@
     .hero__art::before{content:"";position:absolute;left:50%;top:14%;transform:translateX(-50%);width:46%;aspect-ratio:1;border-radius:50%;background:rgba(251,250,250,.5)}
     .hero__art span{position:absolute;left:0;right:0;bottom:26px;text-align:center;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;color:#fff}
 
+    /* photos — topical stock placeholders (swap the src for real photos).
+       Each sits over a soft gradient, so a slow/failed image still looks OK. */
+    .hero__art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+    .hero__art::before{content:none}
+    .hero__art span{z-index:2;text-shadow:0 2px 8px rgba(0,0,0,.45)}
+    .stylist__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .stylist__photo::after{content:none}
+
     section{padding:clamp(50px,8vw,92px) 0}
     .ey{letter-spacing:.2em;text-transform:uppercase;color:var(--rose-dk);font-size:.78rem;margin-bottom:14px}
     .h2{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:300}
@@ -161,7 +169,7 @@
             <a class="btn btn--out" href="#services">View services</a>
           </div>
         </div>
-        <div class="hero__art" aria-hidden="true"><span>Halo Studio</span></div>
+        <div class="hero__art"><img src="https://loremflickr.com/720/900/haircut?lock=8" alt="Inside Halo Studio" decoding="async" /><span>Halo Studio</span></div>
       </div>
     </section>
 
@@ -183,9 +191,9 @@
         <p class="ey">The team</p>
         <h2 class="h2">Stylists who <b>actually listen.</b></h2>
         <div class="team__grid">
-          <div class="stylist"><div class="stylist__photo" aria-hidden="true"></div><h3>[STYLIST NAME]</h3><p>Color specialist · 8 yrs</p></div>
-          <div class="stylist"><div class="stylist__photo" aria-hidden="true"></div><h3>[STYLIST NAME]</h3><p>Cuts &amp; texture · 6 yrs</p></div>
-          <div class="stylist"><div class="stylist__photo" aria-hidden="true"></div><h3>[STYLIST NAME]</h3><p>Balayage &amp; styling · 10 yrs</p></div>
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/hairstyle?lock=11" alt="" /></div><h3>[STYLIST NAME]</h3><p>Color specialist · 8 yrs</p></div>
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/haircut?lock=14" alt="" /></div><h3>[STYLIST NAME]</h3><p>Cuts &amp; texture · 6 yrs</p></div>
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/hairdresser?lock=12" alt="" /></div><h3>[STYLIST NAME]</h3><p>Balayage &amp; styling · 10 yrs</p></div>
         </div>
       </div>
     </section>
@@ -232,6 +240,10 @@
     b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
     m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
     document.getElementById('yr').textContent=new Date().getFullYear();
+    // if a stock placeholder fails to load, hide it so the themed background shows
+    Array.prototype.forEach.call(document.querySelectorAll('.hero__art img, .stylist__photo img'),function(img){
+      img.addEventListener('error',function(){img.style.display='none';});
+    });
     var f=document.getElementById('bookForm'),out=document.getElementById('bookMsg');
     f.addEventListener('submit',function(e){
       e.preventDefault();

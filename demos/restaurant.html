@@ -70,6 +70,16 @@
     .hero__plate::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff7ea,#f3dcb6 60%,#e7c690);box-shadow:inset 0 0 40px rgba(140,80,20,.25)}
     .hero__plate span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--disp);font-style:italic;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);z-index:2}
 
+    /* photos — topical stock placeholders (swap the src for real photos).
+       Each sits over a warm gradient, so a slow/failed image still looks OK. */
+    .hero__plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+    .hero__plate::after{content:none}
+    .ph{position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(135deg,var(--cream-2),#e7c690)}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+    .ph:hover img{transform:scale(1.05)}
+    .foodshots{display:grid;gap:14px;grid-template-columns:1fr;margin-top:30px}
+    .foodshots .ph{aspect-ratio:4/3;box-shadow:0 16px 36px -26px rgba(42,32,26,.5)}
+
     section{padding:clamp(48px,8vw,90px) 0}
     .ey{font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--terra-dk);font-size:.82rem;margin-bottom:12px}
     .h2{font-size:clamp(1.9rem,5vw,3rem)}
@@ -118,6 +128,7 @@
     @media(min-width:760px){
       .hero__in{grid-template-columns:1.05fr .95fr}
       .menu__grid{grid-template-columns:1fr 1fr}
+      .foodshots{grid-template-columns:repeat(3,1fr)}
       .visit__grid{grid-template-columns:1fr 1fr}
       .res__form .row{grid-template-columns:repeat(4,1fr)}
       .foot{grid-template-columns:2fr 1fr 1fr}
@@ -168,7 +179,7 @@
             <a class="btn btn--out" href="#menu">See the menu</a>
           </div>
         </div>
-        <div class="hero__plate" aria-hidden="true"><span>Today's wood-fired special</span></div>
+        <div class="hero__plate"><img src="https://loremflickr.com/640/640/food?lock=8" alt="A wood-fired seasonal dish" decoding="async" /><span>Today's wood-fired special</span></div>
       </div>
     </section>
 
@@ -192,6 +203,11 @@
             <div class="dish"><div><div class="dish__name">Harvest Grain Bowl</div><div class="dish__desc">Roasted squash, farro, kale, maple-tahini.</div></div><div class="dish__price">$15</div></div>
             <div class="dish"><div><div class="dish__name">Ember Burger</div><div class="dish__desc">Grass-fed beef, smoked onion, house sauce, fries.</div></div><div class="dish__price">$18</div></div>
           </div>
+        </div>
+        <div class="foodshots">
+          <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/pancakes?lock=11" alt="A stack of maple oat pancakes" /></figure>
+          <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/pizza?lock=12" alt="A wood-fired margherita pizza" /></figure>
+          <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/coffee?lock=13" alt="Coffee with fresh-baked pastries" /></figure>
         </div>
       </div>
     </section>
@@ -260,6 +276,10 @@
     b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
     m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
     document.getElementById('yr').textContent=new Date().getFullYear();
+    // if a stock placeholder fails to load, hide it so the themed background shows
+    Array.prototype.forEach.call(document.querySelectorAll('.hero__plate img, .ph img'),function(img){
+      img.addEventListener('error',function(){img.style.display='none';});
+    });
     var f=document.getElementById('resForm'),out=document.getElementById('resMsg');
     f.addEventListener('submit',function(e){
       e.preventDefault();
