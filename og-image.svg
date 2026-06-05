@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Rivet — websites and AI automation for Milwaukee small businesses">
+  <rect width="1200" height="630" fill="#171311"/>
+  <!-- motif line + dots -->
+  <path d="M80 540 C 360 480, 380 300, 620 280 S 980 180, 1120 90"
+        fill="none" stroke="#f7f4ef" stroke-opacity="0.18" stroke-width="3" stroke-dasharray="8 14"/>
+  <circle cx="620" cy="280" r="10" fill="#f0673c"/>
+  <circle cx="1120" cy="90" r="14" fill="#f0673c"/>
+
+  <!-- wordmark -->
+  <g transform="translate(80 96)">
+    <circle cx="14" cy="20" r="14" fill="#cc3d18"/>
+    <text x="40" y="33" font-family="'Space Grotesk', Arial, sans-serif" font-size="42" font-weight="700" fill="#f7f4ef">Rivet</text>
+  </g>
+
+  <!-- headline -->
+  <text x="80" y="300" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#f7f4ef" letter-spacing="-2">Websites &amp; AI automation</text>
+  <text x="80" y="392" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#f7f4ef" letter-spacing="-2">for <tspan fill="#f0673c">local business.</tspan></text>
+
+  <!-- subhead -->
+  <text x="82" y="470" font-family="'Space Grotesk', Arial, sans-serif" font-size="32" fill="#b7ad9f">More calls, less busywork. Milwaukee, WI · Live within a week.</text>
+</svg>

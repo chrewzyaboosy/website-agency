@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maple &amp; Ember — Wood-Fired Kitchen &amp; Café, Milwaukee</title>
+  <meta name="description" content="Maple &amp; Ember — a warm wood-fired kitchen and café in Milwaukee. Seasonal plates, fresh-baked mornings, and a table waiting for you." />
+  <meta name="robots" content="noindex" /><!-- demo page -->
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Nunito+Sans:wght@400;600;700&display=swap" />
+  <style>
+    /* ===== MAPLE & EMBER — warm restaurant demo =====
+       Palette: cream, terracotta, forest, charcoal. Serif display. */
+    :root{
+      --cream:#fdf6ec; --cream-2:#f6ead8; --ink:#2a201a;
+      --terra:#b5471f; --terra-dk:#8f3414; --forest:#2f5d3a; --gold:#caa24a;
+      --muted:#6f6258; --line:#e7d6bf;
+      --disp:'Fraunces',Georgia,'Times New Roman',serif; --body:'Nunito Sans',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:110px}
+    body{margin:0;font-family:var(--body);background:var(--cream);color:var(--ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img,svg{max-width:100%;display:block}
+    a{color:var(--terra-dk)}
+    h1,h2,h3{font-family:var(--disp);font-weight:600;line-height:1.08;margin:0;letter-spacing:-.01em}
+    p{margin:0}
+    :focus-visible{outline:3px solid var(--terra);outline-offset:3px}
+    .wrap{width:100%;max-width:1100px;margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--body);font-weight:700;font-size:1rem;padding:13px 26px;border-radius:999px;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .15s ease,background .15s ease,color .15s ease}
+    .btn--terra{background:var(--terra);color:var(--cream)}
+    .btn--terra:hover{background:var(--terra-dk);transform:translateY(-2px)}
+    .btn--forest{background:var(--forest);color:var(--cream)}
+    .btn--forest:hover{transform:translateY(-2px);background:#264c2f}
+    .btn--out{border-color:var(--ink);color:var(--ink)}
+    .btn--out:hover{background:var(--ink);color:var(--cream)}
+
+    .demo-bar{background:var(--ink);color:var(--cream);font-size:.86rem;text-align:center;padding:9px 16px}
+    .demo-bar a{color:var(--gold);font-weight:700;text-decoration:none}
+    .demo-bar a:hover{text-decoration:underline}
+
+    .nav{position:sticky;top:0;z-index:50;background:rgba(253,246,236,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav__in{display:flex;align-items:center;gap:18px;min-height:70px}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-family:var(--disp);font-weight:600;font-size:1.5rem}
+    .logo__mark{width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--gold),var(--terra));flex:none}
+    .nav__links{display:none;gap:4px;margin-left:auto}
+    .nav__links a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.96rem;padding:8px 12px;border-radius:8px}
+    .nav__links a:hover{color:var(--terra-dk)}
+    .nav__cta{margin-left:auto;display:none}
+    .burger{margin-left:auto;width:46px;height:46px;border:1px solid var(--line);background:#fff;border-radius:10px;display:inline-flex;flex-direction:column;justify-content:center;gap:5px;padding:11px;cursor:pointer}
+    .burger span{height:2px;background:var(--ink);border-radius:2px}
+    .m-menu{display:none;border-top:1px solid var(--line);background:var(--cream);padding:10px clamp(18px,5vw,40px) 20px}
+    .m-menu.open{display:block}
+    .m-menu a{display:block;color:var(--ink);text-decoration:none;font-weight:600;padding:13px 4px;border-bottom:1px solid var(--line);font-size:1.05rem}
+
+    .hero{position:relative;overflow:hidden;background:
+      radial-gradient(120% 90% at 80% -10%,rgba(202,162,74,.35),transparent 55%),
+      radial-gradient(90% 80% at -10% 110%,rgba(47,93,58,.18),transparent 50%),
+      var(--cream-2)}
+    .hero__in{display:grid;gap:30px;padding:clamp(48px,9vw,96px) 0;align-items:center}
+    .hero__tag{display:inline-block;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-dk);font-size:.82rem;margin-bottom:16px}
+    .hero h1{font-size:clamp(2.6rem,8vw,5.2rem)}
+    .hero h1 em{font-style:italic;color:var(--terra)}
+    .hero p{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.28rem);max-width:46ch;margin:18px 0 28px}
+    .hero__cta{display:flex;flex-wrap:wrap;gap:14px}
+    .hero__plate{aspect-ratio:1;border-radius:24px;background:
+      conic-gradient(from 200deg,#e7b75a,#d2731f,#b5471f,#2f5d3a,#e7b75a);
+      box-shadow:0 30px 60px -24px rgba(42,32,26,.5);position:relative;overflow:hidden}
+    .hero__plate::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff7ea,#f3dcb6 60%,#e7c690);box-shadow:inset 0 0 40px rgba(140,80,20,.25)}
+    .hero__plate span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--disp);font-style:italic;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);z-index:2}
+
+    section{padding:clamp(48px,8vw,90px) 0}
+    .ey{font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--terra-dk);font-size:.82rem;margin-bottom:12px}
+    .h2{font-size:clamp(1.9rem,5vw,3rem)}
+    .lede{color:var(--muted);max-width:54ch;margin-top:14px}
+
+    /* menu */
+    .menu{background:var(--cream-2)}
+    .menu__grid{display:grid;gap:32px;grid-template-columns:1fr;margin-top:38px}
+    .menu__col h3{font-size:1.5rem;color:var(--forest);margin-bottom:6px}
+    .menu__col .sub{color:var(--muted);font-size:.9rem;margin-bottom:18px}
+    .dish{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+    .dish__name{font-weight:700}
+    .dish__desc{color:var(--muted);font-size:.9rem;margin-top:2px;max-width:38ch}
+    .dish__price{font-family:var(--disp);font-weight:600;color:var(--terra);white-space:nowrap}
+
+    /* hours + visit */
+    .visit__grid{display:grid;gap:24px;grid-template-columns:1fr;margin-top:36px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 16px 36px -26px rgba(42,32,26,.5)}
+    .card h3{font-size:1.4rem;margin-bottom:14px}
+    .hours{display:grid;gap:8px}
+    .hours div{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:7px}
+    .hours .d{font-weight:700}
+    .hours .t{color:var(--muted)}
+    .visit__addr{color:var(--muted);margin-bottom:6px}
+
+    /* reservation */
+    .res{background:var(--forest);color:var(--cream)}
+    .res .ey{color:var(--gold)}
+    .res .h2{color:var(--cream)}
+    .res .lede{color:#d6e2d4}
+    .res__form{background:rgba(253,246,236,.06);border:1px solid rgba(253,246,236,.22);border-radius:18px;padding:24px;margin-top:30px}
+    .res__form .row{display:grid;gap:14px;grid-template-columns:1fr}
+    .res__form label{display:block;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;color:#d6e2d4}
+    .res__form input,.res__form select{width:100%;font:inherit;background:rgba(253,246,236,.95);border:1.5px solid transparent;border-radius:10px;padding:12px 13px;color:var(--ink)}
+    .res__form input:focus,.res__form select:focus{outline:none;border-color:var(--gold)}
+    .res__msg{margin-top:14px;padding:13px;border-radius:10px;background:rgba(202,162,74,.2);border:1px solid var(--gold);display:none}
+    .res__msg.show{display:block}
+
+    footer{background:var(--ink);color:#cdbdaf;padding:46px 0 28px}
+    .foot{display:grid;gap:22px;grid-template-columns:1fr}
+    .foot a{color:#cdbdaf;text-decoration:none;display:block;margin:6px 0}
+    .foot a:hover{color:var(--gold)}
+    .foot h4{font-family:var(--disp);font-size:1.05rem;margin:0 0 10px;color:var(--cream)}
+    .foot__legal{color:#a99a8c;font-size:.84rem;margin-top:28px;border-top:1px solid rgba(253,246,236,.12);padding-top:18px}
+
+    @media(min-width:760px){
+      .hero__in{grid-template-columns:1.05fr .95fr}
+      .menu__grid{grid-template-columns:1fr 1fr}
+      .visit__grid{grid-template-columns:1fr 1fr}
+      .res__form .row{grid-template-columns:repeat(4,1fr)}
+      .foot{grid-template-columns:2fr 1fr 1fr}
+    }
+    @media(min-width:880px){
+      .nav__links{display:flex}
+      .nav__cta{display:inline-flex;margin-left:8px}
+      .burger{display:none}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="demo-bar">
+    Demo by <strong>Rivet</strong> — want one like this for your restaurant?
+    <a href="../index.html#contact">Get a free quote →</a>
+  </div>
+
+  <header class="nav">
+    <div class="wrap nav__in">
+      <a class="logo" href="#top"><span class="logo__mark" aria-hidden="true"></span>Maple &amp; Ember</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#menu">Menu</a>
+        <a href="#visit">Hours &amp; Visit</a>
+        <a href="#reserve">Reserve</a>
+      </nav>
+      <a class="btn btn--terra nav__cta" href="#reserve">Reserve a table</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mmenu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="m-menu" id="mmenu" aria-label="Mobile">
+      <a href="#menu">Menu</a>
+      <a href="#visit">Hours &amp; Visit</a>
+      <a href="#reserve">Reserve a table</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero__in">
+        <div>
+          <span class="hero__tag">Wood-fired kitchen &amp; café · Milwaukee</span>
+          <h1>Slow food,<br /><em>warm</em> mornings.</h1>
+          <p>Seasonal plates from the wood fire, fresh-baked pastries at sunrise, and a table that always feels like it was saved just for you.</p>
+          <div class="hero__cta">
+            <a class="btn btn--terra" href="#reserve">Reserve a table</a>
+            <a class="btn btn--out" href="#menu">See the menu</a>
+          </div>
+        </div>
+        <div class="hero__plate" aria-hidden="true"><span>Today's wood-fired special</span></div>
+      </div>
+    </section>
+
+    <section id="menu" class="menu">
+      <div class="wrap">
+        <p class="ey">On the menu</p>
+        <h2 class="h2">Made fresh, served generous.</h2>
+        <p class="lede">A rotating, seasonal menu — here's a taste of what's on right now.</p>
+        <div class="menu__grid">
+          <div class="menu__col">
+            <h3>Mornings</h3>
+            <p class="sub">Served 7–11am</p>
+            <div class="dish"><div><div class="dish__name">Maple Oat Pancakes</div><div class="dish__desc">Brown-butter, real Wisconsin maple, whipped cream.</div></div><div class="dish__price">$12</div></div>
+            <div class="dish"><div><div class="dish__name">Ember Breakfast Sandwich</div><div class="dish__desc">Wood-fired egg, aged cheddar, smoked tomato jam.</div></div><div class="dish__price">$11</div></div>
+            <div class="dish"><div><div class="dish__name">Bakery Basket</div><div class="dish__desc">Three fresh-baked pastries, baker's choice.</div></div><div class="dish__price">$9</div></div>
+          </div>
+          <div class="menu__col">
+            <h3>Kitchen</h3>
+            <p class="sub">Served 11am–9pm</p>
+            <div class="dish"><div><div class="dish__name">Wood-Fired Margherita</div><div class="dish__desc">San Marzano, fresh mozzarella, basil, charred crust.</div></div><div class="dish__price">$16</div></div>
+            <div class="dish"><div><div class="dish__name">Harvest Grain Bowl</div><div class="dish__desc">Roasted squash, farro, kale, maple-tahini.</div></div><div class="dish__price">$15</div></div>
+            <div class="dish"><div><div class="dish__name">Ember Burger</div><div class="dish__desc">Grass-fed beef, smoked onion, house sauce, fries.</div></div><div class="dish__price">$18</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="visit" class="wrap">
+      <p class="ey">Hours &amp; visit</p>
+      <h2 class="h2">Come on in.</h2>
+      <div class="visit__grid">
+        <div class="card">
+          <h3>Hours</h3>
+          <div class="hours">
+            <div><span class="d">Mon – Thu</span><span class="t">7am – 9pm</span></div>
+            <div><span class="d">Fri</span><span class="t">7am – 10pm</span></div>
+            <div><span class="d">Sat</span><span class="t">8am – 10pm</span></div>
+            <div><span class="d">Sun</span><span class="t">8am – 3pm (brunch)</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Find us</h3>
+          <p class="visit__addr">1208 N Maple Street<br />Milwaukee, WI 53202</p>
+          <p style="color:var(--muted);margin-bottom:16px">Street parking &amp; a lot out back. Patio open in season.</p>
+          <a class="btn btn--forest" href="tel:+14146878929">Call 414-687-8929</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserve" class="res">
+      <div class="wrap">
+        <p class="ey">Reservations</p>
+        <h2 class="h2">Save your table.</h2>
+        <p class="lede">Book in a few taps — we'll confirm by text. Walk-ins always welcome, too.</p>
+        <form class="res__form" id="resForm" novalidate>
+          <div class="row">
+            <div><label for="rname">Name</label><input id="rname" name="name" maxlength="80" required /></div>
+            <div><label for="rdate">Date</label><input id="rdate" name="date" type="date" required /></div>
+            <div><label for="rtime">Time</label>
+              <select id="rtime" name="time"><option>6:00 pm</option><option>6:30 pm</option><option>7:00 pm</option><option>7:30 pm</option><option>8:00 pm</option></select>
+            </div>
+            <div><label for="rparty">Party</label>
+              <select id="rparty" name="party"><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
+            </div>
+          </div>
+          <button class="btn btn--terra" type="submit" style="width:100%;justify-content:center;margin-top:16px">Request reservation</button>
+          <p class="res__msg" id="resMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <a class="logo" href="#top" style="margin-bottom:10px;color:var(--cream)"><span class="logo__mark" aria-hidden="true"></span>Maple &amp; Ember</a>
+        <p style="color:#a99a8c;max-width:34ch">A warm little wood-fired kitchen &amp; café in the heart of Milwaukee.</p>
+      </div>
+      <div><h4>Visit</h4><a href="#visit">Hours</a><a href="#visit">Directions</a><a href="#reserve">Reserve</a></div>
+      <div><h4>Contact</h4><a href="tel:+14146878929">414-687-8929</a><a href="mailto:hello@clearroutecarrier.com">hello@clearroutecarrier.com</a></div>
+    </div>
+    <div class="wrap foot__legal">
+      <p>&copy; <span id="yr"></span> Maple &amp; Ember (demo). · A demo by <a href="../index.html#contact" style="color:var(--gold)">Rivet</a>.</p>
+    </div>
+  </footer>
+
+  <script>
+    var b=document.getElementById('burger'),m=document.getElementById('mmenu');
+    b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+    m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
+    document.getElementById('yr').textContent=new Date().getFullYear();
+    var f=document.getElementById('resForm'),out=document.getElementById('resMsg');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var name=(f.elements['name'].value||'').trim();
+      if(!name){out.textContent='Please add a name for the reservation.';out.classList.add('show');return;}
+      out.textContent='Thanks '+name.replace(/[<>]/g,'')+'! This is a demo, so no table was actually booked — but on a real site we’d text you a confirmation. Want one? Visit Rivet.';
+      out.classList.add('show');
+    });
+  </script>
+</body>
+</html>
