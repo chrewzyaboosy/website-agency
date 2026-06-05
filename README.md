@@ -1,4 +1,4 @@
-# Rivet — agency marketing site
+# Main Street Web — agency marketing site
 
 A fast, single-page marketing website for a web + AI-automation studio, plus
 three polished demo sites. No framework, no build step — just open
@@ -62,7 +62,7 @@ friendly "this is a demo" message on submit.
 
 **Business name, contact info, copy** — all live as plain text in `index.html`.
 Search for these to swap quickly:
-- `Rivet` — the business name / wordmark
+- `Main Street Web` — the business name / wordmark
 - `hello@clearroutecarrier.com` — contact email (also in `tel:` links)
 - `414-687-8929` — phone number (appears in `tel:+14146878929` links too)
 - `Milwaukee` — service area
@@ -71,7 +71,7 @@ Search for these to swap quickly:
 ```css
 --ink:    #171311;  /* near-black text/dark sections */
 --paper:  #f7f4ef;  /* warm off-white background     */
---accent: #d8451f;  /* ember — buttons, dots, links  */
+--accent: #cc3d18;  /* ember — buttons, dots, links  */
 ```
 Change `--accent` to re-skin the whole site in one edit. (If you pick a *lighter*
 accent, also bump `--accent-ink` darker so text links keep a 4.5:1 contrast ratio.)

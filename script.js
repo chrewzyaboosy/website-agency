@@ -1,5 +1,5 @@
 /* =================================================================
-   RIVET — site behavior
+   MAIN STREET WEB — site behavior
    -----------------------------------------------------------------
    Everything here is progressive enhancement: with JS disabled the
    page still reads, the form still posts, and the FAQ still opens.
@@ -333,7 +333,7 @@
       business: clean(el("business").value, 100),
       need: el("need").value,
       message: clean(el("message").value, 1200),
-      _subject: "New quote request from the Rivet site"
+      _subject: "New quote request from the Main Street Web site"
     };
 
     // If the endpoint hasn't been configured yet, fail gracefully

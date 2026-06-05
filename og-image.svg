@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Rivet — websites and AI automation for Milwaukee small businesses">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Main Street Web — websites and AI automation for Milwaukee small businesses">
   <rect width="1200" height="630" fill="#171311"/>
   <!-- motif line + dots -->
   <path d="M80 540 C 360 480, 380 300, 620 280 S 980 180, 1120 90"
@@ -9,7 +9,7 @@
   <!-- wordmark -->
   <g transform="translate(80 96)">
     <circle cx="14" cy="20" r="14" fill="#cc3d18"/>
-    <text x="40" y="33" font-family="'Space Grotesk', Arial, sans-serif" font-size="42" font-weight="700" fill="#f7f4ef">Rivet</text>
+    <text x="40" y="33" font-family="'Space Grotesk', Arial, sans-serif" font-size="42" font-weight="700" fill="#f7f4ef">Main Street Web</text>
   </g>
 
   <!-- headline -->

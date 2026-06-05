@@ -1,8 +1,8 @@
 /* =================================================================
-   RIVET — main stylesheet
+   MAIN STREET WEB — main stylesheet
    -----------------------------------------------------------------
    Identity:  warm near-black ink  +  warm paper  +  ember-orange accent
-   Motif:     a "rivet" dot + thin connecting lines
+   Motif:     an accent dot + thin connecting lines
    Approach:  mobile-first, system-font fallback, no framework.
    Edit tip:  almost everything is driven by the variables below.
    ================================================================= */
@@ -136,7 +136,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   box-shadow: 0 0 0 4px rgba(216,69,31,.18);
   flex: none;
 }
-.brand__name { line-height: 1; }
+.brand__name { line-height: 1; white-space: nowrap; }
 
 /* ---------- Buttons ---------- */
 .btn {
