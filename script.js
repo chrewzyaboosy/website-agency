@@ -708,3 +708,22 @@
     handleUser(v);
   });
 })();
+
+/* =================================================================
+   BACK-TO-TOP BUTTON (created on every page that loads this script)
+   ================================================================= */
+(function () {
+  "use strict";
+  if (!document.body) return;
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "to-top";
+  btn.setAttribute("aria-label", "Back to top");
+  btn.textContent = "↑";
+  document.body.appendChild(btn);
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  btn.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }); });
+  function onScroll() { btn.classList.toggle("is-visible", (window.scrollY || window.pageYOffset || 0) > 600); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();

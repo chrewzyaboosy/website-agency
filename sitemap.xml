@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Update the domain to your real one, then resubmit in Google Search Console. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mainstreetweb.example/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://mainstreetweb.example/blog/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mainstreetweb.example/blog/small-business-website-cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mainstreetweb.example/blog/how-to-rank-on-google-maps.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://mainstreetweb.example/blog/7-signs-your-website-is-losing-customers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mainstreetweb.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://mainstreetweb.com/blog/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mainstreetweb.com/blog/small-business-website-cost.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mainstreetweb.com/blog/how-to-rank-on-google-maps.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://mainstreetweb.com/blog/7-signs-your-website-is-losing-customers.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>

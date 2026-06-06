@@ -8,21 +8,33 @@ behind tasteful skeleton-shimmer placeholders.
 
 ```
 website-agency/
-├── index.html          ← the marketing page
+├── index.html          ← the marketing page (mockup generator, grader, chat, etc.)
+├── 404.html            ← branded not-found page
 ├── styles.css          ← all styles
-├── script.js           ← nav, scroll reveal, estimate widget, form, image loaders
+├── script.js           ← nav, reveal, estimate, form, chat assistant, image loaders
 ├── favicon.svg         ← brand favicon
-├── og-image.svg        ← social-share image
+├── og-image.svg        ← social-share image (export a PNG for best previews)
 ├── _headers            ← security headers for Netlify
 ├── vercel.json         ← security headers for Vercel
-├── robots.txt          ← crawl rules (update the domain)
-├── sitemap.xml         ← sitemap (update the domain)
+├── robots.txt          ← crawl rules
+├── sitemap.xml         ← sitemap
 ├── assets/             ← put your founder.jpg (and any real photos) here
-└── demos/
-    ├── contractor.html ← "Ironclad Builders" (self-contained)
-    ├── restaurant.html ← "Maple & Ember" (self-contained)
-    └── salon.html      ← "Halo Studio" (self-contained)
+├── blog/               ← SEO blog: index + 3 articles (BlogPosting schema)
+├── legal/              ← privacy.html · terms.html · accessibility.html
+└── demos/              ← contractor.html · restaurant.html · salon.html
 ```
+
+> **Domain:** the site uses `mainstreetweb.com` in canonical/OG/JSON-LD/sitemap.
+> Several similarly-named agencies exist (mainstreetweb.co, etc.) — confirm the
+> domain is yours before launch.
+>
+> **Legal pages** are professional templates, not legal advice — have a lawyer
+> review `legal/terms.html` and `legal/privacy.html` before you rely on them.
+>
+> **AI assistant:** the chat widget's knowledge base is the `KB` array in
+> `script.js`. It answers from your info and routes to a quote/call — no API key.
+> To make it a live generative LLM, point `respond()` at your own serverless
+> endpoint that holds the API key (never put keys in the front end).
 
 ## 1. Connect the lead form (required to receive messages)
 
