@@ -27,6 +27,7 @@
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
   <link rel="preload" href="fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
@@ -42,10 +43,33 @@
       { "@type": "ProfessionalService", "@id": "https://mainstreetweb.com/#business",
         "name": "Main Street Web",
         "description": "Fast, modern websites and AI automation for local businesses in the Greater Milwaukee area. Logo, business email and Google setup included.",
-        "url": "https://mainstreetweb.com/", "image": "https://mainstreetweb.com/og-image.svg",
+        "url": "https://mainstreetweb.com/",
+        "image": "https://mainstreetweb.com/og-image.png",
+        "logo": "https://mainstreetweb.com/apple-touch-icon.png",
+        "slogan": "Less busywork. More booked work.",
         "telephone": "+1-414-687-8929", "email": "hello@mainstreetweb.com", "priceRange": "$$",
-        "areaServed": "Greater Milwaukee, WI", "founder": { "@type": "Person", "name": "Abbas" },
-        "address": { "@type": "PostalAddress", "addressLocality": "Milwaukee", "addressRegion": "WI", "addressCountry": "US" } },
+        "founder": { "@type": "Person", "name": "Abbas" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Milwaukee", "addressRegion": "WI", "addressCountry": "US" },
+        "geo": { "@type": "GeoCoordinates", "latitude": 43.0389, "longitude": -87.9065 },
+        "areaServed": [
+          { "@type": "City", "name": "Milwaukee" },
+          { "@type": "City", "name": "Wauwatosa" },
+          { "@type": "City", "name": "West Allis" },
+          { "@type": "City", "name": "Brookfield" },
+          { "@type": "City", "name": "Waukesha" },
+          { "@type": "City", "name": "Mequon" }
+        ],
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" }
+        ],
+        "knowsAbout": ["Web design","Website development","AI automation","Local SEO","Google Business Profile","Branding"],
+        "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Services", "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website design & development" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website + AI automation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI automation & lead follow-up" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Logo & branding" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO & Google Business setup" } }
+        ] } },
       { "@type": "FAQPage", "mainEntity": [
         { "@type": "Question", "name": "How much does a website cost?", "acceptedAnswer": { "@type": "Answer", "text": "Sites start at $149 one-time plus $99/mo for the care plan, and most projects land between the Starter and Growth tiers. A logo, business email and Google setup are included. You'll get a clear, fixed price before any work starts." } },
         { "@type": "Question", "name": "How long until it's live?", "acceptedAnswer": { "@type": "Answer", "text": "Most single-page sites go live within a week, often in just a few days once we have your details." } },
