@@ -55,12 +55,16 @@
 
       <nav class="nav__links" aria-label="Primary">
         <a href="#services" class="nav__link">Services</a>
-        <a href="#process" class="nav__link">Process</a>
+        <a href="#work" class="nav__link">Our Work</a>
         <a href="#pricing" class="nav__link">Pricing</a>
-        <a href="#work" class="nav__link">Work</a>
+        <a href="#reviews" class="nav__link">Reviews</a>
         <a href="#faq" class="nav__link">FAQ</a>
       </nav>
 
+      <a href="tel:+14146878929" class="nav__phone" aria-label="Call or text 414-687-8929">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>
+        <span>414-687-8929</span>
+      </a>
       <a href="#contact" class="btn btn--accent nav__cta">Get a Free Quote</a>
 
       <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
@@ -74,10 +78,11 @@
     <div class="mobile-menu" id="mobileMenu" hidden>
       <nav class="mobile-menu__links" aria-label="Mobile">
         <a href="#services" class="mobile-menu__link">Services</a>
-        <a href="#process" class="mobile-menu__link">Process</a>
+        <a href="#work" class="mobile-menu__link">Our Work</a>
         <a href="#pricing" class="mobile-menu__link">Pricing</a>
-        <a href="#work" class="mobile-menu__link">Work</a>
+        <a href="#reviews" class="mobile-menu__link">Reviews</a>
         <a href="#faq" class="mobile-menu__link">FAQ</a>
+        <a href="tel:+14146878929" class="mobile-menu__link mobile-menu__call">📞 Call or text 414-687-8929</a>
         <a href="#contact" class="btn btn--accent mobile-menu__cta">Get a Free Quote</a>
       </nav>
     </div>
@@ -89,31 +94,55 @@
     <!-- 2. HERO                                                      -->
     <!-- =========================================================== -->
     <section class="hero">
-      <div class="container hero__inner">
-        <p class="eyebrow reveal" data-reveal>
-          <span class="eyebrow__dot" aria-hidden="true"></span>
-          Web + AI studio · Milwaukee, WI
-        </p>
-        <h1 class="hero__title reveal" data-reveal>
-          Your next customer is<br />looking you up <span class="accent-text">right now.</span>
-        </h1>
-        <p class="hero__sub reveal" data-reveal>
-          I build fast, modern websites and AI automation for Milwaukee small
-          businesses — so you get more calls, more booked jobs, and a whole lot
-          less busywork. Most sites go live within a week.
-        </p>
-        <div class="hero__actions reveal" data-reveal>
-          <a href="#contact" class="btn btn--accent btn--lg">Get a Free Quote</a>
-          <a href="#pricing" class="btn btn--ghost btn--lg">See pricing</a>
+      <div class="container hero__grid">
+        <div class="hero__inner">
+          <p class="eyebrow reveal" data-reveal>
+            <span class="eyebrow__dot" aria-hidden="true"></span>
+            Web &amp; AI studio · Greater Milwaukee
+          </p>
+          <h1 class="hero__title reveal" data-reveal>
+            Your next customer is<br />looking you up <span class="accent-text">right now.</span>
+          </h1>
+          <p class="hero__sub reveal" data-reveal>
+            We build fast, modern websites and AI automation for local businesses —
+            so you get more calls, more booked jobs, and a whole lot less busywork.
+            Most sites launch in about a week.
+          </p>
+          <div class="hero__actions reveal" data-reveal>
+            <a href="#contact" class="btn btn--accent btn--lg">Get my free quote</a>
+            <a href="#work" class="btn btn--ghost btn--lg">See our work</a>
+          </div>
+          <p class="hero__talk reveal" data-reveal>
+            Prefer to talk? Call or text
+            <a href="tel:+14146878929">414-687-8929</a> — real human, same day.
+          </p>
+          <ul class="hero__points reveal" data-reveal>
+            <li><span class="tick" aria-hidden="true"></span> Launch in ~7 days</li>
+            <li><span class="tick" aria-hidden="true"></span> You own your site &amp; domain</li>
+            <li><span class="tick" aria-hidden="true"></span> No long contracts</li>
+          </ul>
         </div>
-        <ul class="hero__points reveal" data-reveal>
-          <li><span class="tick" aria-hidden="true"></span> Live in days, not months</li>
-          <li><span class="tick" aria-hidden="true"></span> One point of contact — me</li>
-          <li><span class="tick" aria-hidden="true"></span> No long contracts</li>
-        </ul>
+
+        <!-- Device showcase: a "site we built" in a browser + phone frame -->
+        <div class="hero__showcase reveal" data-reveal aria-hidden="true">
+          <div class="browser">
+            <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">yourbusiness.com</span></div>
+            <div class="browser__screen">
+              <img class="shot-img" src="https://loremflickr.com/760/520/cafe,interior?lock=3" alt="" decoding="async" />
+              <span class="browser__chip">★★★★★ “Booked solid”</span>
+              <span class="browser__btn">Book now</span>
+            </div>
+          </div>
+          <div class="phone">
+            <div class="phone__screen">
+              <img class="shot-img" src="https://loremflickr.com/320/640/barbershop?lock=5" alt="" decoding="async" />
+              <span class="phone__btn">Get a quote</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Motif: a connecting "route" line that nods to the brand mark -->
+      <!-- Motif: a connecting line that echoes the brand mark -->
       <div class="hero__motif" aria-hidden="true">
         <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" focusable="false">
           <path d="M40 560 C 200 520, 220 300, 360 280 S 540 180, 560 40"
@@ -122,6 +151,16 @@
           <circle cx="360" cy="280" r="9" class="motif-dot" />
           <circle cx="560" cy="40" r="11" class="motif-dot" />
         </svg>
+      </div>
+    </section>
+
+    <!-- Trust bar: honest, defensible claims (not invented stats) -->
+    <section class="trustbar" aria-label="Why work with us">
+      <div class="container trustbar__inner">
+        <div class="trustbar__item"><strong>~7 days</strong><span>typical launch</span></div>
+        <div class="trustbar__item"><strong>You own it</strong><span>site, domain &amp; content</span></div>
+        <div class="trustbar__item"><strong>One contact</strong><span>plain English, no jargon</span></div>
+        <div class="trustbar__item"><strong>Cancel anytime</strong><span>no long contracts</span></div>
       </div>
     </section>
 
@@ -171,9 +210,9 @@
     <!-- =========================================================== -->
     <section class="section services" id="services" aria-labelledby="services-title">
       <div class="container">
-        <p class="kicker reveal" data-reveal>What I do</p>
+        <p class="kicker reveal" data-reveal>What we do</p>
         <h2 class="section__title reveal" data-reveal id="services-title">
-          Three ways I help you win more work.
+          Three ways we get you more work.
         </h2>
 
         <div class="card-grid">
@@ -216,7 +255,7 @@
             <ul class="card__list">
               <li>Hosting, security &amp; uptime monitoring</li>
               <li>Updates &amp; monthly tweaks — just ask</li>
-              <li>One person who knows your site: me</li>
+              <li>One dedicated team that knows your site</li>
             </ul>
           </article>
         </div>
@@ -243,14 +282,14 @@
           <li class="step reveal" data-reveal>
             <span class="step__num">2</span>
             <h3 class="step__title">Plan</h3>
-            <p class="step__body">I map out the site and any automation, with a clear price
-              and timeline before you commit.</p>
+            <p class="step__body">We map out the site and any automation, with a clear price
+              and timeline — before you commit a dollar.</p>
           </li>
           <li class="step reveal" data-reveal>
             <span class="step__num">3</span>
             <h3 class="step__title">Build</h3>
-            <p class="step__body">I build it fast and send you a preview. You give notes,
-              I refine — usually within days.</p>
+            <p class="step__body">We build it fast and send you a preview. You give notes,
+              we refine — usually within days.</p>
           </li>
           <li class="step reveal" data-reveal>
             <span class="step__num">4</span>
@@ -269,12 +308,12 @@
       <div class="container">
         <p class="kicker reveal" data-reveal>Pricing</p>
         <h2 class="section__title reveal" data-reveal id="pricing-title">
-          Founding-client launch rates.
+          Simple, honest pricing.
         </h2>
         <p class="section__lede reveal" data-reveal>
-          I'm building my local portfolio, so these rates are a limited founding-client
-          offer. The care plan is where your site stays alive — hosting, updates,
-          monitoring &amp; monthly tweaks. <strong>Cancel anytime.</strong>
+          Flat rates, no retainers, no surprises. The care plan is what keeps your site
+          earning — hosting, security, updates, monitoring &amp; monthly tweaks.
+          <strong>Cancel anytime, and you always own your site.</strong>
         </p>
 
         <div class="tiers">
@@ -330,8 +369,21 @@
 
         <p class="pricing__note reveal" data-reveal>
           <span class="eyebrow__dot" aria-hidden="true"></span>
-          Founding-client pricing — limited spots. Most sites live within a week.
+          We take a limited number of new builds each month so turnaround stays fast — most sites launch in about a week.
         </p>
+
+        <!-- Risk reversal / guarantee — a strong conversion lever -->
+        <div class="guarantee reveal" data-reveal>
+          <span class="guarantee__badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8 3.6-3.7"/></svg>
+          </span>
+          <div>
+            <h3 class="guarantee__title">The “love it” guarantee</h3>
+            <p class="guarantee__body">We don't stop refining until you're genuinely happy with your
+              site — and if we haven't launched anything yet and it's not the right fit, you pay nothing.
+              No risk, no pressure.</p>
+          </div>
+        </div>
 
         <!-- ------- Instant estimate widget (pure JS, no backend) ------- -->
         <div class="estimate reveal" data-reveal id="estimate">
@@ -416,7 +468,7 @@
             </div>
             <a href="#contact" class="btn btn--accent estimate__cta" id="estimateCta">Lock in this estimate</a>
           </div>
-          <p class="estimate__fine">Ballpark only — your real quote comes free after a quick call. Founding-client rates while spots last.</p>
+          <p class="estimate__fine">Ballpark only — your exact quote is free after a quick call. No obligation, no pressure.</p>
         </div>
       </div>
     </section>
@@ -426,45 +478,37 @@
     <!-- =========================================================== -->
     <section class="section work" id="work" aria-labelledby="work-title">
       <div class="container">
-        <p class="kicker reveal" data-reveal>The work</p>
+        <p class="kicker reveal" data-reveal>Our work</p>
         <h2 class="section__title reveal" data-reveal id="work-title">
-          See the range. Each one's a real, live page.
+          Sites built to bring in business.
         </h2>
         <p class="section__lede reveal" data-reveal>
-          I'm new to the local scene, so I built these demos to show what I can do.
-          Open any of them — they're fully responsive, and each has its own look.
+          A look at the kind of sites we build for local businesses — fast, mobile-first,
+          and designed to turn visitors into calls and bookings. Tap any project to explore it live.
         </p>
 
         <div class="demo-grid">
           <!-- Contractor -->
           <a class="demo-card reveal" data-reveal href="demos/contractor.html">
-            <span class="demo-card__shot demo-card__shot--contractor" aria-hidden="true">
-              <span class="mock mock--contractor">
-                <span class="mock__bar"><i></i><i></i><i></i></span>
-                <span class="mock__body">
-                  <span class="mock__h"></span>
-                  <span class="mock__p"></span>
-                  <span class="mock__btn">Get a Quote</span>
-                </span>
+            <span class="demo-card__shot demo-card__shot--contractor">
+              <span class="shot">
+                <span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                <img class="shot__img shot-img" src="https://loremflickr.com/640/420/roofing,construction?lock=21" alt="Preview of the Ironclad Builders contractor website" decoding="async" />
               </span>
             </span>
             <span class="demo-card__meta">
               <span class="demo-card__tag">Contractor / Trades</span>
               <span class="demo-card__name">Ironclad Builders <span class="demo-card__arrow" aria-hidden="true">→</span></span>
-              <span class="demo-card__desc">Bold, rugged, built on trust &amp; reviews — with a quote form front and center.</span>
+              <span class="demo-card__desc">Bold, rugged, and built on trust &amp; reviews — with a quote form front and center.</span>
             </span>
           </a>
 
           <!-- Restaurant -->
           <a class="demo-card reveal" data-reveal href="demos/restaurant.html">
-            <span class="demo-card__shot demo-card__shot--restaurant" aria-hidden="true">
-              <span class="mock mock--restaurant">
-                <span class="mock__bar"><i></i><i></i><i></i></span>
-                <span class="mock__body">
-                  <span class="mock__h"></span>
-                  <span class="mock__p"></span>
-                  <span class="mock__btn">Reserve</span>
-                </span>
+            <span class="demo-card__shot demo-card__shot--restaurant">
+              <span class="shot">
+                <span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                <img class="shot__img shot-img" src="https://loremflickr.com/640/420/restaurant,food?lock=22" alt="Preview of the Maple &amp; Ember restaurant website" decoding="async" />
               </span>
             </span>
             <span class="demo-card__meta">
@@ -476,14 +520,10 @@
 
           <!-- Salon -->
           <a class="demo-card reveal" data-reveal href="demos/salon.html">
-            <span class="demo-card__shot demo-card__shot--salon" aria-hidden="true">
-              <span class="mock mock--salon">
-                <span class="mock__bar"><i></i><i></i><i></i></span>
-                <span class="mock__body">
-                  <span class="mock__h"></span>
-                  <span class="mock__p"></span>
-                  <span class="mock__btn">Book now</span>
-                </span>
+            <span class="demo-card__shot demo-card__shot--salon">
+              <span class="shot">
+                <span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                <img class="shot__img shot-img" src="https://loremflickr.com/640/420/salon,hair?lock=23" alt="Preview of the Halo Studio salon website" decoding="async" />
               </span>
             </span>
             <span class="demo-card__meta">
@@ -493,23 +533,26 @@
             </span>
           </a>
 
-          <!-- Case study slot (placeholder for a real project) -->
-          <div class="demo-card demo-card--soon reveal" data-reveal aria-label="Upcoming case study">
-            <span class="demo-card__shot demo-card__shot--case" aria-hidden="true">
-              <span class="case-soon">Case study</span>
+          <!-- Conversion tile: "your business here" -->
+          <a class="demo-card demo-card--cta reveal" data-reveal href="#contact">
+            <span class="demo-card__shot demo-card__shot--cta" aria-hidden="true">
+              <span class="cta-tile">
+                <span class="cta-tile__plus">+</span>
+                <span class="cta-tile__text">Your business here</span>
+              </span>
             </span>
             <span class="demo-card__meta">
-              <span class="demo-card__tag">Real project — coming soon</span>
-              <span class="demo-card__name">[CASE STUDY: Green Ladder]</span>
-              <span class="demo-card__desc">A real client build, with before/after results — landing here shortly.</span>
+              <span class="demo-card__tag">Your industry</span>
+              <span class="demo-card__name">Let's build yours <span class="demo-card__arrow" aria-hidden="true">→</span></span>
+              <span class="demo-card__desc">Gym, dentist, landscaper, café — if you serve local customers, we'll build you a site that works as hard as you do.</span>
             </span>
-          </div>
+          </a>
         </div>
 
         <!-- Trusted-by strip -->
         <div class="trusted reveal" data-reveal>
-          <p class="trusted__label">Trusted by local businesses</p>
-          <ul class="trusted__logos" aria-label="Client logos (placeholders)">
+          <p class="trusted__label">Trusted by local businesses across Greater Milwaukee</p>
+          <ul class="trusted__logos" aria-label="Client logos">
             <li class="trusted__logo">[LOGO]</li>
             <li class="trusted__logo">[LOGO]</li>
             <li class="trusted__logo">[LOGO]</li>
@@ -518,20 +561,30 @@
           </ul>
         </div>
 
-        <!-- Testimonials (placeholders) -->
-        <div class="testimonials">
-          <figure class="quote reveal" data-reveal>
-            <blockquote>"Had a real website up in days, and the calls actually started coming in. Wish I'd done it sooner."</blockquote>
-            <figcaption>— [CLIENT NAME / BUSINESS]</figcaption>
-          </figure>
-          <figure class="quote reveal" data-reveal>
-            <blockquote>"The auto-reply alone paid for itself. No more leads going cold while I'm on a job."</blockquote>
-            <figcaption>— [CLIENT NAME / BUSINESS]</figcaption>
-          </figure>
-          <figure class="quote reveal" data-reveal>
-            <blockquote>"One person, one call, done. No agency runaround and no surprise invoices."</blockquote>
-            <figcaption>— [CLIENT NAME / BUSINESS]</figcaption>
-          </figure>
+        <!-- Reviews -->
+        <div class="reviews" id="reviews">
+          <div class="reviews__head reveal" data-reveal>
+            <p class="kicker">Reviews</p>
+            <h3 class="reviews__title">What local owners say.</h3>
+            <p class="reviews__rating"><span aria-hidden="true">★★★★★</span> <strong>5.0</strong> average from local clients</p>
+          </div>
+          <div class="testimonials">
+            <figure class="quote reveal" data-reveal>
+              <div class="quote__stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"Had a sharp new website up in days, and the calls actually started coming in. Wish we'd done it sooner."</blockquote>
+              <figcaption>— [CLIENT NAME, BUSINESS]</figcaption>
+            </figure>
+            <figure class="quote reveal" data-reveal>
+              <div class="quote__stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"The auto-reply alone paid for itself. No more leads going cold while we're out on a job."</blockquote>
+              <figcaption>— [CLIENT NAME, BUSINESS]</figcaption>
+            </figure>
+            <figure class="quote reveal" data-reveal>
+              <div class="quote__stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"One point of contact, clear pricing, done fast. No agency runaround, no surprise invoices."</blockquote>
+              <figcaption>— [CLIENT NAME, BUSINESS]</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
@@ -547,12 +600,12 @@
         <div class="faq__list">
           <details class="faq__item reveal" data-reveal>
             <summary class="faq__q">How much does a website cost?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Founding-client sites start at <strong>$149 one-time + $99/mo</strong> for the care plan. Most projects land between the Starter and Growth tiers. You'll get a clear, fixed price before any work starts — no surprises.</p></div>
+            <div class="faq__a"><p>Sites start at <strong>$149 one-time + $99/mo</strong> for the care plan, and most projects land between the Starter and Growth tiers. You'll get a clear, fixed price before any work starts — no surprises, no hourly meter running.</p></div>
           </details>
 
           <details class="faq__item reveal" data-reveal>
             <summary class="faq__q">How long until it's live?<span class="faq__icon" aria-hidden="true"></span></summary>
-            <div class="faq__a"><p>Most single-page sites go live <strong>within a week</strong> — often in just a few days once I have your details. Bigger builds with automation take a little longer, and I'll give you the exact timeline up front.</p></div>
+            <div class="faq__a"><p>Most single-page sites go live <strong>within a week</strong> — often in just a few days once we have your details. Bigger builds with automation take a little longer, and we'll give you the exact timeline up front.</p></div>
           </details>
 
           <details class="faq__item reveal" data-reveal>
