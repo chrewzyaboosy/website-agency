@@ -14,12 +14,16 @@
   <meta property="og:title" content="Main Street Web — Websites &amp; AI Automation for Local Business" />
   <meta property="og:description" content="Fast, modern websites + AI automation for local businesses. Logo, email &amp; Google setup included. Most sites launch in about a week." />
   <meta property="og:url" content="https://mainstreetweb.com/" />
-  <meta property="og:image" content="og-image.svg" />
+  <meta property="og:image" content="https://mainstreetweb.com/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Main Street Web — websites and AI automation for local business." />
   <meta property="og:site_name" content="Main Street Web" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Main Street Web — Websites &amp; AI Automation for Local Business" />
   <meta name="twitter:description" content="Fast, modern websites + AI automation for local businesses. Logo, email &amp; Google setup included." />
-  <meta name="twitter:image" content="og-image.svg" />
+  <meta name="twitter:image" content="https://mainstreetweb.com/og-image.png" />
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="favicon.svg" />
@@ -39,7 +43,7 @@
         "name": "Main Street Web",
         "description": "Fast, modern websites and AI automation for local businesses in the Greater Milwaukee area. Logo, business email and Google setup included.",
         "url": "https://mainstreetweb.com/", "image": "https://mainstreetweb.com/og-image.svg",
-        "telephone": "+1-414-687-8929", "email": "hello@clearroutecarrier.com", "priceRange": "$$",
+        "telephone": "+1-414-687-8929", "email": "hello@mainstreetweb.com", "priceRange": "$$",
         "areaServed": "Greater Milwaukee, WI", "founder": { "@type": "Person", "name": "Abbas" },
         "address": { "@type": "PostalAddress", "addressLocality": "Milwaukee", "addressRegion": "WI", "addressCountry": "US" } },
       { "@type": "FAQPage", "mainEntity": [
@@ -591,7 +595,9 @@
             <h2 class="founder__title" id="founder-title">Talk to the person who'll build it.</h2>
             <p class="founder__text">Hi — I'm Abbas. I run Main Street Web here in Milwaukee, and I'm your single point of contact from first call to launch and beyond. No account managers, no runaround, no jargon — just clear advice and a website that brings you work.</p>
             <div class="founder__actions">
-              <a href="https://calendly.com/your-link" class="btn btn--accent">Book a free 15-min call</a>
+              <!-- REPLACE href with your Calendly/Cal.com URL when scheduling is set up.
+                   Until then this scrolls to the quote form so the button never 404s. -->
+              <a href="#contact" class="btn btn--accent">Book a free 15-min call</a>
               <a href="tel:+14146878929" class="btn btn--outline-light">Call 414-687-8929</a>
             </div>
             <p class="founder__text founder__text--sm">Prefer texting? <a href="sms:+14146878929">Text us →</a></p>
@@ -655,8 +661,13 @@
         <h2 class="section__title reveal" data-reveal id="contact-title">Get a free quote.</h2>
         <p class="section__lede reveal" data-reveal>Tell us a little about your business. We'll reply within one business day with honest advice and a fixed price — no pressure, no jargon.</p>
 
-        <!-- REPLACE: your form endpoint (Formspree id or Netlify). No secrets here. -->
-        <form class="lead-form reveal" data-reveal id="leadForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <!-- FORM DELIVERY — works on Netlify out of the box (data-netlify="true").
+             Prefer Formspree? Just set action="https://formspree.io/f/YOUR_ID"
+             (see README). Either way, if delivery ever fails the visitor gets a
+             one-tap, pre-filled email so a lead is never silently lost.
+             No secrets live in the front end. -->
+        <form class="lead-form reveal" data-reveal id="leadForm" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="company_url" novalidate>
+          <input type="hidden" name="form-name" value="contact" />
           <div class="hp" aria-hidden="true">
             <label for="company_url">Leave this field empty</label>
             <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off" />
@@ -687,7 +698,8 @@
             <span class="lead-form__spinner" aria-hidden="true"></span>
           </button>
           <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
-          <p class="lead-form__fine">Prefer to talk? Call or text <a href="tel:+14146878929">414-687-8929</a>. No spam, ever.</p>
+          <p class="lead-form__fallback" id="formFallback" hidden><a class="lead-form__fallback-link" id="formFallbackLink" href="mailto:hello@mainstreetweb.com">Email my request instead →</a></p>
+          <p class="lead-form__fine">Prefer to talk? Call or text <a href="tel:+14146878929">414-687-8929</a>, or email <a href="mailto:hello@mainstreetweb.com">hello@mainstreetweb.com</a>. No spam, ever.</p>
         </form>
       </div>
     </section>
@@ -707,7 +719,7 @@
       </nav>
       <div class="footer__col">
         <h2 class="footer__head">Contact</h2>
-        <a href="mailto:hello@clearroutecarrier.com">hello@clearroutecarrier.com</a><a href="tel:+14146878929">414-687-8929</a><a href="#contact">Get a free quote</a>
+        <a href="mailto:hello@mainstreetweb.com">hello@mainstreetweb.com</a><a href="tel:+14146878929">414-687-8929</a><a href="#contact">Get a free quote</a>
       </div>
       <div class="footer__col">
         <h2 class="footer__head">Follow</h2>

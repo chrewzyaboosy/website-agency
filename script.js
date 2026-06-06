@@ -322,9 +322,6 @@
 
     lastSubmitAt = now;
 
-    var endpoint = form.getAttribute("action") || "";
-    var usingPlaceholder = /YOUR_FORM_ID/.test(endpoint);
-
     // Build a sanitized payload (we never lose the user's typed data).
     var payload = {
       name: clean(el("name").value, 80),
@@ -336,38 +333,87 @@
       _subject: "New quote request from the Main Street Web site"
     };
 
-    // If the endpoint hasn't been configured yet, fail gracefully
-    // instead of POSTing to a dead URL — and keep the user's data.
-    if (usingPlaceholder) {
+    // --- Pre-filled email fallback: a lead is NEVER silently lost. ---
+    var FALLBACK_EMAIL = "hello@mainstreetweb.com";
+    var fallbackWrap = document.getElementById("formFallback");
+    var fallbackLink = document.getElementById("formFallbackLink");
+    function buildMailto() {
+      var body = [
+        "Name: " + payload.name,
+        "Email: " + payload.email,
+        "Phone: " + (payload.phone || "—"),
+        "Business: " + (payload.business || "—"),
+        "Looking for: " + payload.need,
+        "",
+        payload.message || "(no extra details)"
+      ].join("\n");
+      return "mailto:" + FALLBACK_EMAIL +
+        "?subject=" + encodeURIComponent(payload._subject) +
+        "&body=" + encodeURIComponent(body);
+    }
+    function showFallback() {
+      if (fallbackLink) fallbackLink.setAttribute("href", buildMailto());
+      if (fallbackWrap) fallbackWrap.hidden = false;
+    }
+    function hideFallback() { if (fallbackWrap) fallbackWrap.hidden = true; }
+    hideFallback();
+
+    // --- Choose a delivery method from the form's own attributes. ---
+    // Netlify Forms works zero-config (data-netlify="true"); to use Formspree
+    // instead, set the form's action to your Formspree URL.
+    var action = form.getAttribute("action") || "";
+    var toFormspree = action.indexOf("formspree.io") !== -1 && !/YOUR_FORM_ID|YOUR_ID/.test(action);
+    var toNetlify = form.getAttribute("data-netlify") === "true";
+
+    // No backend wired up at all → go straight to the email fallback.
+    if (!toFormspree && !toNetlify) {
       setSending(false);
-      showStatus("error",
-        "Form isn't connected yet. Add your Formspree/Netlify endpoint (see README), or email hello@clearroutecarrier.com.");
+      showStatus("error", "Email is the fastest way to reach us right now — tap below and your details are already filled in.");
+      showFallback();
       return;
     }
 
     setSending(true);
     showStatus("success", "Sending…");
 
-    fetch(endpoint, {
-      method: "POST",
-      headers: { "Accept": "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    })
+    var request;
+    if (toFormspree) {
+      request = fetch(action, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      // Netlify Forms: url-encoded POST to the current path, including form-name.
+      var fields = {
+        "form-name": "contact",
+        name: payload.name, email: payload.email, phone: payload.phone,
+        business: payload.business, need: payload.need, message: payload.message
+      };
+      var encoded = Object.keys(fields).map(function (k) {
+        return encodeURIComponent(k) + "=" + encodeURIComponent(fields[k]);
+      }).join("&");
+      request = fetch(action || "/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encoded
+      });
+    }
+
+    request
       .then(function (res) {
-        if (res.ok) return res.json().catch(function () { return {}; });
-        throw new Error("Bad response " + res.status);
-      })
-      .then(function () {
+        if (!res.ok) throw new Error("Bad response " + res.status);
         setSending(false);
         form.reset();
-        renderEstimate();
-        showStatus("success", "Thanks — got it! I'll reply within one business day.");
+        if (typeof renderEstimate === "function") renderEstimate();
+        showStatus("success", "Thanks — got it! We'll reply within one business day.");
       })
       .catch(function () {
         setSending(false);
-        // Data is preserved (we never reset on failure).
-        showStatus("error",
-          "Something went wrong sending that. Please try again, or email hello@clearroutecarrier.com directly.");
+        // Data is preserved (we never reset on failure) and we surface a
+        // one-tap, pre-filled email so the lead is never lost.
+        showStatus("error", "Couldn't send that automatically. Tap below to email it instead — your details are already filled in.");
+        showFallback();
       });
   });
 })();
@@ -567,7 +613,11 @@
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var TEL = "tel:+14146878929";
-  var CAL = "https://calendly.com/your-link"; /* REPLACE: your booking link */
+  /* REPLACE CAL with your Calendly/Cal.com URL to enable real scheduling. Until
+     it's a valid https URL, the "Book a free call" action scrolls to the quote
+     form instead of opening a broken page. */
+  var CAL = "";
+  var BOOK = /^https?:\/\//.test(CAL) ? { href: CAL } : { nav: "#contact" };
   var greeted = false;
 
   // ----- Knowledge base (your "fed" info). Edit freely. -----
@@ -598,9 +648,9 @@
       c: [["See our work", {nav: "#work"}], ["Try the live preview", {nav: "#try"}]] },
     { k: ["book","schedule","appointment","meeting","consult","calendar","call back","15 min"],
       a: "Happy to. Book a free 15-minute call and we'll talk through exactly what you need — no pressure.",
-      c: [["Book a free call", {href: CAL}], ["Call/text us", {href: TEL}], ["Get a free quote", {nav: "#contact"}]] },
+      c: [["Book a free call", BOOK], ["Call/text us", {href: TEL}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["call","phone","number","text","reach","contact you"],
-      a: "Call or text us at 414-687-8929 — a real human, usually same day. Prefer email? hello@clearroutecarrier.com.",
+      a: "Call or text us at 414-687-8929 — a real human, usually same day. Prefer email? hello@mainstreetweb.com.",
       c: [["Call 414-687-8929", {href: TEL}], ["Book a 15-min call", {href: CAL}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["service","services","do you","offer","build","make me","help me","website","site"],
       a: "We do three things for local businesses: build fast, modern websites; set up AI automation so you never miss a lead; and keep it all running with a care plan (hosting, updates, monitoring).",
@@ -609,7 +659,7 @@
       a: "Love it. The fastest way is a free quote — tell us a bit about your business and we'll reply within one business day with honest advice and a fixed price.",
       c: [["Open the quote form", {nav: "#contact"}], ["Try the live preview", {nav: "#try"}], ["Call/text us", {href: TEL}]] },
     { k: ["human","person","real","agent","someone","talk to","manager","owner"],
-      a: "Of course — you'll always deal with a real person here. Call or text 414-687-8929, email hello@clearroutecarrier.com, or drop your details in the quote form and we'll reach out fast.",
+      a: "Of course — you'll always deal with a real person here. Call or text 414-687-8929, email hello@mainstreetweb.com, or drop your details in the quote form and we'll reach out fast.",
       c: [["Get a free quote", {nav: "#contact"}], ["Call/text", {href: TEL}]] },
     { k: ["thank","thanks","appreciate","cheers","awesome","perfect","great","cool"],
       a: "Anytime! When you're ready, a free quote is just a tap away — or call/text 414-687-8929.",

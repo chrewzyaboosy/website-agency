@@ -14,7 +14,8 @@ website-agency/
 ├── script.js           ← nav, reveal, estimate, form, chat, dark-mode, image loaders
 ├── theme.js            ← sets light/dark before first paint (loaded in <head>)
 ├── favicon.svg         ← brand favicon
-├── og-image.svg        ← social-share image (export a PNG for best previews)
+├── og-image.png        ← social-share image (1200×630 PNG, used by OG/Twitter)
+├── og-image.svg        ← vector source for the share image (edit, then re-export)
 ├── _headers            ← security headers for Netlify
 ├── vercel.json         ← security headers for Vercel
 ├── robots.txt          ← crawl rules
@@ -48,19 +49,23 @@ website-agency/
 > To make it a live generative LLM, point `respond()` at your own serverless
 > endpoint that holds the API key (never put keys in the front end).
 
-## 1. Connect the lead form (required to receive messages)
+## 1. Lead form — already works on Netlify, never loses a lead
 
-The form posts to a placeholder endpoint. Until you set a real one, submitting
-shows a friendly "not connected yet" message and keeps the user's typed data.
+The form is wired for **Netlify Forms out of the box** (`data-netlify="true"` +
+a hidden `form-name`). If you deploy to Netlify (drag-and-drop or Git import),
+submissions show up under **Site → Forms** with **zero configuration**.
 
-In `index.html`, find `REPLACE: your form endpoint` and set the form `action`:
+- **Prefer Formspree?** Create a free form at <https://formspree.io> and set the
+  form `action` (search `FORM DELIVERY` in `index.html`) to
+  `https://formspree.io/f/YOUR_ID`. The JS auto-detects Formspree and switches.
+- **Any other host (Vercel, GitHub Pages, etc.)?** Netlify Forms won't capture
+  there, so wire Formspree as above — or rely on the built-in fallback below.
 
-```html
-<form ... action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-```
-
-- **Formspree:** create a free form at <https://formspree.io>, paste your id.
-- **Netlify Forms:** add `data-netlify="true"` + a hidden `form-name`, deploy on Netlify.
+> **No lead is ever silently lost.** If the form can't deliver automatically
+> (unconfigured host, or a network error), the visitor is shown a one-tap
+> **"Email my request instead"** button with every field pre-filled into a
+> `mailto:` to `hello@mainstreetweb.com`. Set up that inbox (or change the
+> address in `index.html` + `script.js`) so those emails reach you.
 
 > No API keys belong in the front end — providers use a public endpoint id, not a
 > secret. The form already has validation, length caps, a honeypot and a throttle.
@@ -68,9 +73,12 @@ In `index.html`, find `REPLACE: your form endpoint` and set the form `action`:
 ## 2. Make it yours
 
 - **Copy** is plain text in `index.html` — search and edit.
-- **Business details:** search for `414-687-8929`, `hello@clearroutecarrier.com`,
-  `Milwaukee`, and `Abbas` (founder section). The booking button links to
-  `https://calendly.com/your-link` — set it to your Calendly/Cal.com URL.
+- **Business details:** search for `414-687-8929`, `hello@mainstreetweb.com`,
+  `Milwaukee`, and `Abbas` (founder section).
+- **Booking link:** the founder section's "Book a free 15-min call" button
+  currently points to `#contact` (the quote form) so it never 404s. When your
+  scheduler is live, search `REPLACE href with your Calendly` in `index.html`
+  and swap in your Calendly/Cal.com URL.
 - **Founder photo:** installed as **`assets/founder.webp`** (a studio headshot),
   center-cropped to a square via CSS `object-fit: cover`. To replace it, drop in
   a new `assets/founder.webp` and the founder section updates automatically.
