@@ -31,10 +31,10 @@ website-agency/
 > in `styles.css`; a `:root[data-theme="dark"]` block remaps them.
 >
 > **Self-hosted font:** the agency pages load Space Grotesk locally (no Google
-> Fonts call). **Add the 4 `.woff2` files** to `/fonts` (see `fonts/fonts.css`
-> for the exact names + a free download link). Until then it falls back to a
-> clean system-font stack. (The demo pages still use Google Fonts for their own
-> typefaces.)
+> Fonts call) — the 4 `.woff2` weights (400/500/600/700) are installed in
+> `/fonts` and the two most-used weights are preloaded for a fast first paint.
+> To swap a weight, overwrite the matching file. (The demo pages still use
+> Google Fonts for their own typefaces.)
 
 > **Domain:** the site uses `mainstreetweb.com` in canonical/OG/JSON-LD/sitemap.
 > Several similarly-named agencies exist (mainstreetweb.co, etc.) — confirm the
