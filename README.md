@@ -1,117 +1,91 @@
 # Main Street Web — agency marketing site
 
-A fast marketing site for a web + AI-automation studio, built with
-**React + Tailwind CSS** and **no build step** (React + [htm] + the Tailwind
-Play CDN), plus three polished standalone demo sites. Open `index.html` in a
-browser, or deploy the folder to Netlify/Vercel as static files.
+A fast, framework-free marketing site for a web + AI-automation studio, plus
+three polished demo sites. **No build step, no dependencies** — open
+`index.html` in a browser, or deploy the folder to Netlify/Vercel/GitHub Pages
+as static files. It loads instantly (there's no app to boot), and images fade in
+behind tasteful skeleton-shimmer placeholders.
 
 ```
 website-agency/
-├── index.html          ← app shell: meta, fonts, Tailwind config, mounts React
-├── app.js              ← the whole React app (components, estimate, lead form)
+├── index.html          ← the marketing page
+├── styles.css          ← all styles
+├── script.js           ← nav, scroll reveal, estimate widget, form, image loaders
 ├── favicon.svg         ← brand favicon
 ├── og-image.svg        ← social-share image
 ├── _headers            ← security headers for Netlify
 ├── vercel.json         ← security headers for Vercel
 ├── robots.txt          ← crawl rules (update the domain)
 ├── sitemap.xml         ← sitemap (update the domain)
+├── assets/             ← put your founder.jpg (and any real photos) here
 └── demos/
-    ├── contractor.html ← "Ironclad Builders" demo (self-contained)
-    ├── restaurant.html ← "Maple & Ember" demo (self-contained)
-    └── salon.html      ← "Halo Studio" demo (self-contained)
+    ├── contractor.html ← "Ironclad Builders" (self-contained)
+    ├── restaurant.html ← "Maple & Ember" (self-contained)
+    └── salon.html      ← "Halo Studio" (self-contained)
 ```
-
-[htm]: https://github.com/developit/htm
-
-## Tech &amp; how to run
-
-- **React 18 + Tailwind, no bundler.** `index.html` loads React, ReactDOM and
-  htm from unpkg, and Tailwind from `cdn.tailwindcss.com`. `app.js` renders the
-  whole site. There is **nothing to install and nothing to build** — just open
-  or deploy the files.
-- **Animations** are tasteful and reduced-motion-aware: fade/rise on scroll
-  (IntersectionObserver), hover lifts, a sticky-nav transition, an animated
-  mobile menu, an accordion FAQ, and a gently floating hero device mockup.
-- **Going to production later?** The Play CDN is great for this stage but isn't
-  optimised for production (it compiles Tailwind in the browser). When you're
-  ready, paste these components into a **Vite + React + Tailwind** project — the
-  markup is 1:1 with JSX — and you'll get a tiny, pre-built bundle and can drop
-  the CDN/`unsafe-inline` allowances from the CSP.
 
 ## 1. Connect the lead form (required to receive messages)
 
 The form posts to a placeholder endpoint. Until you set a real one, submitting
 shows a friendly "not connected yet" message and keeps the user's typed data.
 
-In **`app.js`**, change the `FORM_ENDPOINT` constant near the top:
+In `index.html`, find `REPLACE: your form endpoint` and set the form `action`:
 
-```js
-var FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID"; // ← your Formspree id
+```html
+<form ... action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
 ```
 
 - **Formspree:** create a free form at <https://formspree.io>, paste your id.
-- **Netlify Forms:** point `FORM_ENDPOINT` at your handler, or wire a native
-  Netlify form. (For a static React app, Formspree is the simplest path.)
+- **Netlify Forms:** add `data-netlify="true"` + a hidden `form-name`, deploy on Netlify.
 
-> No API keys belong in the front end — form providers use a public endpoint id,
-> not a secret. The form already includes validation, trimmed + length-capped
-> inputs, a honeypot field, and a submit throttle to cut spam.
+> No API keys belong in the front end — providers use a public endpoint id, not a
+> secret. The form already has validation, length caps, a honeypot and a throttle.
 
-The demo pages' forms are intentionally **not** wired to a backend.
+## 2. Make it yours
 
-## 2. Make it yours (copy, colours, contact)
-
-- **Copy** lives in `app.js` as plain text inside each component — search for the
-  text you want to change.
-- **Business details:** the `PHONE`, `TEL`, `EMAIL` and `CAL` (booking link)
-  constants at the top of `app.js` (also update `Milwaukee` mentions, the
-  founder name in the "Talk to the person" section, and the footer).
-- **Booking link:** set `CAL` to your Calendly/Cal.com URL so "Book a free
-  15-min call" works. The founder photo is a stock placeholder — swap its URL
-  for a real headshot.
-- **SEO:** update the domain in `robots.txt`, `sitemap.xml`, the JSON-LD block
-  and the `og:url`/`canonical` tags in `index.html` once you have a real domain.
-- **Colours** live in the Tailwind config in `index.html` (`tailwind.config`):
-  ```js
-  ink: '#171311', paper: '#f7f4ef', accent: '#cc3d18', /* … */
-  ```
-  Change `accent` to re-skin buttons, dots and links across the whole site.
-- **Pricing / estimate:** the `TIERS`, `BASE` and `ADDONS` arrays in `app.js`.
-- **Placeholders to fill in** are marked with square brackets — `[CLIENT NAME,
-  BUSINESS]`, `[LOGO]`, `[STYLIST NAME]`. Search the project for `[`.
-- **Demo photos** use topical stock placeholders from
-  [LoremFlickr](https://loremflickr.com) (free, no key); each sits over a themed
-  gradient and hides on error. Swap the image URLs in `app.js` / the demo files
-  for your own (or hand-picked Unsplash/Pexels) shots, and add any new image host
-  to `img-src` in `_headers` / `vercel.json`.
+- **Copy** is plain text in `index.html` — search and edit.
+- **Business details:** search for `414-687-8929`, `hello@clearroutecarrier.com`,
+  `Milwaukee`, and `Abbas` (founder section). The booking button links to
+  `https://calendly.com/your-link` — set it to your Calendly/Cal.com URL.
+- **Founder photo:** save your headshot as **`assets/founder.jpg`** (square crop,
+  ~600×600). Until it's there, a branded placeholder shows.
+- **Colours** are CSS variables at the top of `styles.css` (`:root`): change
+  `--accent` (`#cc3d18`) to re-skin buttons, dots and links in one edit.
+- **Pricing / estimate:** tier prices are in the Pricing section of `index.html`;
+  the estimate widget reads its base prices from the `BASE` object in `script.js`
+  and each add-on from `data-once`/`data-mo` on its checkbox.
+- **Placeholders to fill in:** `[CLIENT NAME, BUSINESS]`, `[LOGO]`,
+  `[STYLIST NAME]` — search the project for `[`.
+- **Demo / hero photos** use topical stock placeholders from
+  [LoremFlickr](https://loremflickr.com) (free, no key) and fade in behind a
+  skeleton shimmer. Swap the image URLs for your own (or hand-picked
+  Unsplash/Pexels) shots; if you change the host, update `img-src` in `_headers`
+  / `vercel.json`.
+- **SEO:** update the domain in `robots.txt`, `sitemap.xml`, the JSON-LD block,
+  and `og:url`/`canonical` in `index.html` once you have a real domain.
 
 ## 3. Deploy free
 
 - **Netlify:** drag the folder onto <https://app.netlify.com/drop>, or import the
   repo (no build command, publish directory = repo root). `_headers` applies.
-- **Vercel:** import the repo, framework preset **Other**, no build command.
-  `vercel.json` applies.
+- **Vercel:** import the repo, framework preset **Other**, no build. `vercel.json` applies.
 - **GitHub Pages:** Settings → Pages → Deploy from a branch → `/ (root)`.
-
-> Update the `og:url` / `canonical` URLs in `index.html` to your real domain.
 
 ## Security
 
-- **No `eval`** anywhere — htm renders without Babel, so the CSP needs no
-  `unsafe-eval`. `unsafe-inline` is required only for the Tailwind runtime/config.
-- **Headers** (`_headers` for Netlify, `vercel.json` for Vercel): a
-  Content-Security-Policy scoped per path, `X-Frame-Options: DENY`,
-  `X-Content-Type-Options: nosniff`, `Referrer-Policy`, `Permissions-Policy`,
-  HSTS and COOP. The CSP whitelists only React/Tailwind CDNs, Google Fonts, the
-  LoremFlickr image host and your Formspree endpoint.
-- **Form** is hardened (validation, length caps, honeypot, throttle); real spam
-  filtering happens at your form provider, which should never trust client input.
+- No `eval`, no `innerHTML`, no inline event handlers, no third-party trackers.
+- Strict, per-path **CSP** plus `X-Frame-Options: DENY`, `nosniff`,
+  `Referrer-Policy`, `Permissions-Policy`, HSTS and COOP (in `_headers` /
+  `vercel.json`). The main page CSP allows only same-origin code, Google Fonts,
+  the placeholder image host, and your Formspree endpoint.
+- Form hardened (validation, length caps, honeypot, throttle); real spam
+  filtering happens at your form provider.
 
-## Accessibility &amp; performance notes
+## Accessibility & performance
 
-- Semantic landmarks, labelled controls, visible focus states, AA colour
-  contrast, and `prefers-reduced-motion` honoured (animations disable cleanly).
-- One web font (Space Grotesk) with a system fallback; topical images lazy-load.
-- Because the UI renders with React, **JavaScript is required** — a `<noscript>`
-  block shows your name, phone and email so no-JS visitors can still reach you.
-  (A production Vite build can pre-render/SSG for no-JS + faster first paint.)
+- Loads instantly — static HTML/CSS/JS, no framework or build, total page weight
+  well under 500&nbsp;KB. Images are lazy-loaded with skeleton placeholders.
+- Semantic landmarks, labelled controls, visible focus states, AA contrast, and
+  `prefers-reduced-motion` honoured (animations and shimmer disable cleanly).
+- Works with JavaScript disabled: the page reads fine, the FAQ opens (native
+  `<details>`), and the form still posts to your endpoint.
