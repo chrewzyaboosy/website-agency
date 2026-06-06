@@ -20,7 +20,7 @@ website-agency/
 ├── robots.txt          ← crawl rules
 ├── sitemap.xml         ← sitemap
 ├── fonts/              ← self-hosted font: fonts.css + your 4 .woff2 files
-├── assets/             ← put your founder.jpg (and any real photos) here
+├── assets/             ← founder.webp (installed) + any other real photos
 ├── blog/               ← SEO blog: index + 3 articles (BlogPosting schema)
 ├── legal/              ← privacy.html · terms.html · accessibility.html
 └── demos/              ← contractor.html · restaurant.html · salon.html
@@ -71,8 +71,9 @@ In `index.html`, find `REPLACE: your form endpoint` and set the form `action`:
 - **Business details:** search for `414-687-8929`, `hello@clearroutecarrier.com`,
   `Milwaukee`, and `Abbas` (founder section). The booking button links to
   `https://calendly.com/your-link` — set it to your Calendly/Cal.com URL.
-- **Founder photo:** save your headshot as **`assets/founder.jpg`** (square crop,
-  ~600×600). Until it's there, a branded placeholder shows.
+- **Founder photo:** installed as **`assets/founder.webp`** (a studio headshot),
+  center-cropped to a square via CSS `object-fit: cover`. To replace it, drop in
+  a new `assets/founder.webp` and the founder section updates automatically.
 - **Colours** are CSS variables at the top of `styles.css` (`:root`): change
   `--accent` (`#cc3d18`) to re-skin buttons, dots and links in one edit.
 - **Interactive widgets:** the **live mockup generator** (`#try`) reads its
