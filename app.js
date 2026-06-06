@@ -817,6 +817,67 @@
     </section>`;
   }
 
+  /* ---------- Top utility bar ---------- */
+  function TopBar() {
+    return html`<div className="hidden sm:block bg-ink text-mutedDk text-[0.8rem]">
+      <div className="mx-auto w-full max-w-[1120px] px-5 sm:px-8 flex items-center justify-between h-9">
+        <span>Websites &amp; AI automation · Serving Greater Milwaukee</span>
+        <span className="flex items-center gap-4">
+          <span className="hidden md:inline">Mon–Fri, 8a–6p</span>
+          <a href=${TEL} className="text-accentBright font-semibold hover:underline">${PHONE}</a>
+        </span>
+      </div>
+    </div>`;
+  }
+
+  /* ---------- Comparison ---------- */
+  function Compare() {
+    var rows = [
+      ["What it costs", "Cheap — but your time isn't", "$$$$ plus monthly retainers", "From $149 + $99/mo, flat"],
+      ["Time to launch", "Many late nights", "Weeks to months", "About a week"],
+      ["How it looks", "Template-y", "Polished", "Custom, modern, yours"],
+      ["Getting leads", "You chase every one", "Maybe — usually extra", "Built to convert + automation"],
+      ["Who you talk to", "You and a help doc", "Account managers & tickets", "One person, plain English"],
+      ["Ongoing care", "You're on your own", "Pricey change orders", "Hosting, updates & tweaks included"]
+    ];
+    var cols = [
+      { title: "Doing it yourself", sub: "DIY site builder", best: false },
+      { title: "A big agency", sub: "Traditional shop", best: false },
+      { title: "Main Street Web", sub: "You're here", best: true }
+    ];
+    return html`<section className="py-16 md:py-24 bg-paper2">
+      <div className="mx-auto w-full max-w-[1120px] px-5 sm:px-8">
+        <${Heading} kicker="Why us" title="The smarter middle ground."
+          lede="Cheaper than a big agency, far better than wrestling a DIY builder at midnight — without the retainers or the runaround." />
+        <div className="mt-11 grid md:grid-cols-3 gap-5 items-start">
+          ${cols.map(function (c, ci) {
+            return html`<${Reveal} key=${ci} delay=${ci * 90}
+              className=${cx("rounded-2xl p-6 border", c.best ? "bg-ink text-paper border-accent shadow-[0_24px_50px_-24px_rgba(204,61,24,0.5)] md:-translate-y-2" : "bg-white border-line")}>
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <h3 className="text-[1.25rem] font-bold">${c.title}</h3>
+                  <p className=${cx("text-[0.85rem]", c.best ? "text-accentBright" : "text-muted")}>${c.sub}</p>
+                </div>
+                ${c.best ? html`<span className="shrink-0 text-[0.68rem] font-bold uppercase tracking-wider bg-accent text-white px-2.5 py-1 rounded-full">Best value</span>` : null}
+              </div>
+              <ul className="mt-5 grid gap-3.5">
+                ${rows.map(function (r, ri) {
+                  return html`<li key=${ri} className="flex gap-2.5 text-[0.95rem]">
+                    <span className=${cx("mt-0.5 shrink-0 font-bold", c.best ? "text-accentBright" : "text-line")}>${c.best ? "✓" : "•"}</span>
+                    <span>
+                      <span className=${cx("block text-[0.7rem] uppercase tracking-wide", c.best ? "text-mutedDk" : "text-muted")}>${r[0]}</span>
+                      <span className=${c.best ? "text-paper" : "text-ink"}>${r[ci + 1]}</span>
+                    </span>
+                  </li>`;
+                })}
+              </ul>
+            <//>`;
+          })}
+        </div>
+      </div>
+    </section>`;
+  }
+
   function App() {
     var pf = useState(null), prefill = pf[0], setPrefill = pf[1];
     function choose(data) {
@@ -825,6 +886,7 @@
       if (el) el.scrollIntoView({ behavior: REDUCED ? "auto" : "smooth" });
     }
     return html`<${Fragment}>
+      <${TopBar} />
       <${Nav} />
       <main id="main">
         <${Hero} />
@@ -833,6 +895,7 @@
         <${Services} />
         <${Process} />
         <${Pricing} onChoose=${choose} />
+        <${Compare} />
         <${Work} />
         <${Reviews} />
         <${FAQ} />
