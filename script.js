@@ -399,3 +399,149 @@
     img.addEventListener("error", function () { markFailed(img); });
   });
 })();
+
+/* =================================================================
+   SCROLL PROGRESS BAR
+   ================================================================= */
+(function () {
+  "use strict";
+  var bar = document.getElementById("scrollProgress");
+  if (!bar) return;
+  function update() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var top = h.scrollTop || window.pageYOffset || 0;
+    bar.style.width = (max > 0 ? (top / max) * 100 : 0) + "%";
+  }
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+})();
+
+/* =================================================================
+   LIVE MOCKUP GENERATOR — type a name + pick a trade, see a preview
+   ================================================================= */
+(function () {
+  "use strict";
+  var TYPES = {
+    contractor: { tag: "Licensed & insured · Milwaukee", btn: "Get a free quote", img: "roofing,construction" },
+    restaurant: { tag: "Fresh · Local favorite", btn: "Reserve a table", img: "cafe,interior" },
+    salon:      { tag: "Book your chair in seconds", btn: "Book now", img: "hairsalon,interior" },
+    gym:        { tag: "Train with the best in town", btn: "Start free trial", img: "gym,fitness" },
+    dentist:    { tag: "Gentle, modern dental care", btn: "Book a visit", img: "dental,office" },
+    cafe:       { tag: "Coffee, done right", btn: "See the menu", img: "coffeeshop,latte" }
+  };
+  var nameEl = document.getElementById("bizName");
+  if (!nameEl) return;
+  var urlEl = document.getElementById("bzUrl");
+  var imgEl = document.getElementById("bzImg");
+  var tagEl = document.getElementById("bzTag");
+  var titleEl = document.getElementById("bzTitle");
+  var btnEl = document.getElementById("bzBtn");
+  var ctaEl = document.getElementById("builderCta");
+  var chips = document.querySelectorAll(".builder__chips .chip");
+  var current = "contractor";
+
+  function slug(s) {
+    s = (s || "").trim().toLowerCase().replace(/[^a-z0-9]+/g, "").slice(0, 24);
+    return (s || "yourbusiness") + ".com";
+  }
+  function updateText() {
+    var name = (nameEl.value || "").trim();
+    if (titleEl) titleEl.textContent = name || "Your Business";
+    if (urlEl) urlEl.textContent = slug(name);
+  }
+  function updateType(t) {
+    current = t;
+    var d = TYPES[t] || TYPES.contractor;
+    if (tagEl) tagEl.textContent = d.tag;
+    if (btnEl) btnEl.textContent = d.btn;
+    if (imgEl) {
+      var media = imgEl.closest(".media");
+      imgEl.classList.remove("is-loaded", "is-failed");
+      if (media) media.classList.remove("is-loaded", "is-failed");
+      imgEl.src = "https://loremflickr.com/800/520/" + d.img + "?lock=3" + Math.floor(Math.random() * 9);
+    }
+  }
+  nameEl.addEventListener("input", updateText);
+  Array.prototype.forEach.call(chips, function (chip) {
+    chip.addEventListener("click", function () {
+      Array.prototype.forEach.call(chips, function (c) { c.classList.remove("is-active"); });
+      chip.classList.add("is-active");
+      updateType(chip.getAttribute("data-type"));
+    });
+  });
+  if (ctaEl) {
+    ctaEl.addEventListener("click", function () {
+      var name = (nameEl.value || "").trim();
+      var need = document.getElementById("need");
+      var msg = document.getElementById("message");
+      var biz = document.getElementById("business");
+      if (biz && name && !biz.value) biz.value = name;
+      if (need && !need.value) need.value = "New website";
+      if (msg && !msg.value.trim()) {
+        msg.value = "I tried the live preview" + (name ? " for " + name : "") + " (" + current + ") and I'd like one built.";
+      }
+    });
+  }
+  updateText();
+})();
+
+/* =================================================================
+   WEBSITE GRADER — 5 quick questions -> score + tailored CTA
+   ================================================================= */
+(function () {
+  "use strict";
+  var form = document.getElementById("graderForm");
+  if (!form) return;
+  var go = document.getElementById("graderGo");
+  var result = document.getElementById("graderResult");
+  var scoreEl = document.getElementById("graderScore");
+  var verdictEl = document.getElementById("graderVerdict");
+  var ctaEl = document.getElementById("graderCta");
+  var opts = form.querySelectorAll(".grader__opt");
+  var answers = {};
+
+  function total() { var r = 0; for (var k in answers) r += answers[k]; return r * 20; }
+
+  Array.prototype.forEach.call(opts, function (opt) {
+    opt.addEventListener("click", function () {
+      var q = opt.getAttribute("data-q");
+      Array.prototype.forEach.call(form.querySelectorAll('.grader__opt[data-q="' + q + '"]'), function (o) {
+        o.classList.remove("is-sel"); o.setAttribute("aria-pressed", "false");
+      });
+      opt.classList.add("is-sel"); opt.setAttribute("aria-pressed", "true");
+      answers[q] = parseInt(opt.getAttribute("data-val"), 10) || 0;
+      if (go && Object.keys(answers).length >= 5) go.disabled = false;
+    });
+  });
+
+  function verdict(score) {
+    if (score >= 80) return "Strong foundation — but there's still room to turn more visitors into calls. A few tweaks could tip it.";
+    if (score >= 50) return "Leaky. You're likely losing inquiries every week to slow load times, missing calls-to-action, or no follow-up. Very fixable.";
+    return "Your website is quietly costing you customers. The good news: this is exactly what we fix — usually within a week.";
+  }
+
+  if (go) go.addEventListener("click", function () {
+    if (Object.keys(answers).length < 5) return;
+    var score = total();
+    result.hidden = false;
+    verdictEl.textContent = verdict(score);
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) { scoreEl.textContent = score; }
+    else {
+      var n = 0, step = Math.max(1, Math.round(score / 30));
+      var id = setInterval(function () {
+        n += step; if (n >= score) { n = score; clearInterval(id); } scoreEl.textContent = n;
+      }, 28);
+    }
+    result.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "nearest" });
+  });
+
+  if (ctaEl) ctaEl.addEventListener("click", function () {
+    var need = document.getElementById("need");
+    var msg = document.getElementById("message");
+    if (need && !need.value) need.value = "Free website audit";
+    if (msg && !msg.value.trim()) msg.value = "I scored " + total() + "/100 on the website grader — please send my free fix plan.";
+  });
+})();

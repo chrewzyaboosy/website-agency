@@ -143,6 +143,14 @@
       .burger{display:none}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+    /* sticky mobile CTA */
+    .m-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(10,13,17,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
+    .m-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;padding:12px;border-radius:6px;text-decoration:none;font-family:var(--disp);text-transform:uppercase;letter-spacing:.03em;font-weight:600;font-size:.95rem}
+    .m-cta__call{background:transparent;color:var(--paper);border:1.5px solid var(--line)}
+    .m-cta__main{background:var(--amber);color:#16202b;flex:1.4}
+    @media(max-width:879px){body{padding-bottom:74px}}
+    @media(min-width:880px){.m-cta{display:none}}
   </style>
 </head>
 <body>
@@ -277,6 +285,11 @@
       <p>&copy; <span id="yr"></span> Ironclad Builders · Licensed &amp; insured, Milwaukee WI · Site by <a href="../index.html#contact" style="color:var(--amber)">Main Street Web</a></p>
     </div>
   </footer>
+
+  <div class="m-cta" aria-label="Quick actions">
+    <a class="m-cta__call" href="tel:+14146878929">Call</a>
+    <a class="m-cta__main" href="#quote">Free quote</a>
+  </div>
 
   <script>
     // mobile menu

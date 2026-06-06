@@ -54,6 +54,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- Top utility bar -->
   <div class="topbar">
@@ -181,6 +182,50 @@
       </div>
     </section>
 
+    <!-- ===================== LIVE MOCKUP GENERATOR (signature feature) ===================== -->
+    <section class="section builder" id="try" aria-labelledby="builder-title">
+      <div class="container">
+        <p class="kicker kicker--light reveal" data-reveal>See it before you buy</p>
+        <h2 class="section__title reveal" data-reveal id="builder-title">Watch your website appear in seconds.</h2>
+        <p class="section__lede builder__lede reveal" data-reveal>Type your business name, pick what you do, and we'll build a live preview right here — no email, no waiting. Nobody else lets you do this.</p>
+
+        <div class="builder__grid reveal" data-reveal>
+          <div class="builder__controls">
+            <label class="builder__label" for="bizName">Your business name</label>
+            <input class="builder__input" id="bizName" type="text" maxlength="32" placeholder="e.g. Lakeside Plumbing" autocomplete="off" />
+
+            <span class="builder__label" id="bizTypeLabel">What do you do?</span>
+            <div class="builder__chips" role="group" aria-labelledby="bizTypeLabel">
+              <button type="button" class="chip is-active" data-type="contractor">Contractor</button>
+              <button type="button" class="chip" data-type="restaurant">Restaurant</button>
+              <button type="button" class="chip" data-type="salon">Salon</button>
+              <button type="button" class="chip" data-type="gym">Gym</button>
+              <button type="button" class="chip" data-type="dentist">Dentist</button>
+              <button type="button" class="chip" data-type="cafe">Café</button>
+            </div>
+
+            <a href="#contact" class="btn btn--accent builder__cta" id="builderCta">Build me this site →</a>
+            <p class="builder__hint">This is just a taste — your real site is fully custom, with your photos and brand.</p>
+          </div>
+
+          <div class="builder__preview">
+            <div class="browser browser--lg" aria-label="Live website preview" role="img">
+              <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url" id="bzUrl">yourbusiness.com</span></div>
+              <div class="browser__screen browser__screen--lg">
+                <span class="media media--fill"><img class="ph-img" id="bzImg" src="https://loremflickr.com/800/520/roofing,construction?lock=31" alt="" decoding="async" /></span>
+                <span class="bz-overlay">
+                  <span class="bz-eyebrow" id="bzTag">Licensed &amp; insured · Milwaukee</span>
+                  <span class="bz-title" id="bzTitle">Your Business</span>
+                  <span class="bz-row"><span class="bz-cta" id="bzBtn">Get a free quote</span><span class="bz-call">Call now</span></span>
+                </span>
+              </div>
+            </div>
+            <span class="builder__tagpill" aria-hidden="true">✨ Live preview</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== PROBLEM -> OUTCOME ===================== -->
     <section class="section problems" aria-labelledby="problems-title">
       <div class="container">
@@ -257,14 +302,14 @@
         <h2 class="section__title reveal" data-reveal id="included-title">Everything you need to look legit online — included.</h2>
         <p class="section__lede reveal" data-reveal>Most agencies nickel-and-dime you for these as “add-ons.” With us, they come standard with your build.</p>
         <div class="incl-grid">
-          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true">✦</span><div><h3>Custom logo &amp; brand kit</h3><p>A clean logo plus your colors &amp; fonts, ready everywhere.</p></div></div>
-          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true">✉</span><div><h3>Professional email</h3><p>you@yourbusiness.com — set up and ready to send.</p></div></div>
-          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true">⌖</span><div><h3>Google Business + Maps</h3><p>Set up so locals actually find you on Google.</p></div></div>
-          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true">✎</span><div><h3>Copywriting that sells</h3><p>We write the words — clear, benefit-led, no fluff.</p></div></div>
-          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true">⚿</span><div><h3>Domain + secure hosting</h3><p>Your domain, SSL, and fast hosting handled for you.</p></div></div>
-          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true">☎</span><div><h3>Click-to-call &amp; smart forms</h3><p>Make it one tap to call, text, or message you.</p></div></div>
-          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true">✺</span><div><h3>Photos sourced &amp; edited</h3><p>We find and polish images so your site looks the part.</p></div></div>
-          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true">↻</span><div><h3>Ongoing edits</h3><p>Change hours, add a service, swap a photo — just ask.</p></div></div>
+          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 5.4L20 9l-4 3.8.9 5.7L12 16l-4.9 2.5.9-5.7L4 9l5.6-.6z"/></svg></span><div><h3>Custom logo &amp; brand kit</h3><p>A clean logo plus your colors &amp; fonts, ready everywhere.</p></div></div>
+          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><h3>Professional email</h3><p>you@yourbusiness.com — set up and ready to send.</p></div></div>
+          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><h3>Google Business + Maps</h3><p>Set up so locals actually find you on Google.</p></div></div>
+          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L18.5 9.5a2.1 2.1 0 0 0-3-3L5 17z"/><path d="M13.5 7.5l3 3"/></svg></span><div><h3>Copywriting that sells</h3><p>We write the words — clear, benefit-led, no fluff.</p></div></div>
+          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><div><h3>Domain + secure hosting</h3><p>Your domain, SSL, and fast hosting handled for you.</p></div></div>
+          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><div><h3>Click-to-call &amp; smart forms</h3><p>Make it one tap to call, text, or message you.</p></div></div>
+          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.8"/><path d="M21 16l-5-5-8 7"/></svg></span><div><h3>Photos sourced &amp; edited</h3><p>We find and polish images so your site looks the part.</p></div></div>
+          <div class="incl reveal" data-reveal><span class="incl__ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 6.1"/><path d="M20 5v6h-6"/></svg></span><div><h3>Ongoing edits</h3><p>Change hours, add a service, swap a photo — just ask.</p></div></div>
         </div>
         <p class="incl__note reveal" data-reveal><span class="eyebrow__dot" aria-hidden="true"></span> Logo, business email &amp; Google setup come <strong>free with every build</strong>.</p>
       </div>
@@ -529,6 +574,49 @@
             <span class="media media--square">
               <img class="ph-img" src="assets/founder.jpg" alt="Abbas, founder of Main Street Web" loading="lazy" decoding="async" />
             </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WEBSITE GRADER (lead magnet) ===================== -->
+    <section class="section grader" id="grader" aria-labelledby="grader-title">
+      <div class="container container--narrow">
+        <p class="kicker reveal" data-reveal>Free 60-second check</p>
+        <h2 class="section__title reveal" data-reveal id="grader-title">Is your website costing you customers?</h2>
+        <p class="section__lede reveal" data-reveal>Answer five quick questions and get an instant score — plus exactly what to fix first. No email required.</p>
+
+        <div class="grader__card reveal" data-reveal>
+          <div class="grader__qs" id="graderForm">
+            <div class="grader__q">
+              <span class="grader__qtext">1. Does your site load in under 3 seconds on a phone?</span>
+              <span class="grader__opts" role="group" aria-label="Question 1"><button type="button" class="grader__opt" data-q="1" data-val="1">Yes</button><button type="button" class="grader__opt" data-q="1" data-val="0">No / not sure</button></span>
+            </div>
+            <div class="grader__q">
+              <span class="grader__qtext">2. Can customers tap to call or message you from any page?</span>
+              <span class="grader__opts" role="group" aria-label="Question 2"><button type="button" class="grader__opt" data-q="2" data-val="1">Yes</button><button type="button" class="grader__opt" data-q="2" data-val="0">No / not sure</button></span>
+            </div>
+            <div class="grader__q">
+              <span class="grader__qtext">3. Do you show up on Google Maps for your service + city?</span>
+              <span class="grader__opts" role="group" aria-label="Question 3"><button type="button" class="grader__opt" data-q="3" data-val="1">Yes</button><button type="button" class="grader__opt" data-q="3" data-val="0">No / not sure</button></span>
+            </div>
+            <div class="grader__q">
+              <span class="grader__qtext">4. Are there recent reviews and real photos on your site?</span>
+              <span class="grader__opts" role="group" aria-label="Question 4"><button type="button" class="grader__opt" data-q="4" data-val="1">Yes</button><button type="button" class="grader__opt" data-q="4" data-val="0">No / not sure</button></span>
+            </div>
+            <div class="grader__q">
+              <span class="grader__qtext">5. Do new inquiries get a reply within minutes — even after hours?</span>
+              <span class="grader__opts" role="group" aria-label="Question 5"><button type="button" class="grader__opt" data-q="5" data-val="1">Yes</button><button type="button" class="grader__opt" data-q="5" data-val="0">No / not sure</button></span>
+            </div>
+          </div>
+          <button type="button" class="btn btn--accent btn--lg grader__go" id="graderGo" disabled>See my score</button>
+
+          <div class="grader__result" id="graderResult" hidden aria-live="polite">
+            <div class="grader__scorewrap">
+              <span class="grader__score" id="graderScore">0</span><span class="grader__scoremax">/ 100</span>
+            </div>
+            <p class="grader__verdict" id="graderVerdict"></p>
+            <a href="#contact" class="btn btn--accent grader__cta" id="graderCta">Get my free fix plan →</a>
           </div>
         </div>
       </div>

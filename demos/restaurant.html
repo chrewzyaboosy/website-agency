@@ -32,7 +32,7 @@
     .btn--terra{background:var(--terra);color:var(--cream)}
     .btn--terra:hover{background:var(--terra-dk);transform:translateY(-2px)}
     .btn--forest{background:var(--forest);color:var(--cream)}
-    .btn--forest:hover{transform:translateY(-2px);background:#264c2f}
+    .btn--forest:hover{transform:translateY(-2px);background:#37704a;box-shadow:0 10px 22px -10px rgba(0,0,0,.45)}
     .btn--out{border-color:var(--ink);color:var(--ink)}
     .btn--out:hover{background:var(--ink);color:var(--cream)}
 
@@ -139,6 +139,22 @@
       .burger{display:none}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+    /* reviews */
+    .revs{display:grid;gap:16px;grid-template-columns:1fr;margin-top:36px}
+    .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 16px 36px -26px rgba(42,32,26,.5)}
+    .rev .st{color:var(--gold);letter-spacing:2px;margin-bottom:8px}
+    .rev p{font-size:1.02rem}
+    .rev .by{color:var(--muted);font-weight:700;font-size:.88rem;margin-top:12px}
+    @media(min-width:760px){.revs{grid-template-columns:repeat(3,1fr)}}
+
+    /* sticky mobile CTA */
+    .m-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(42,32,26,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(253,246,236,.16)}
+    .m-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;padding:12px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.95rem}
+    .m-cta__call{background:transparent;color:var(--cream);border:1.5px solid rgba(253,246,236,.4)}
+    .m-cta__main{background:var(--terra);color:var(--cream);flex:1.4}
+    @media(max-width:879px){body{padding-bottom:74px}}
+    @media(min-width:880px){.m-cta{display:none}}
   </style>
 </head>
 <body>
@@ -231,6 +247,16 @@
       </div>
     </section>
 
+    <section class="wrap" aria-label="Reviews">
+      <p class="ey">Guests love us</p>
+      <h2 class="h2">Five stars, table after table.</h2>
+      <div class="revs">
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Best brunch in the neighborhood — and they remembered our names the second time."</p><figcaption class="by">— Jenna M.</figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"The wood-fired pizza is unreal. We're here every Friday now."</p><figcaption class="by">— Devon R.</figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Cozy, warm, and the coffee is the best on this side of town."</p><figcaption class="by">— Aisha K.</figcaption></figure>
+      </div>
+    </section>
+
     <section id="reserve" class="res">
       <div class="wrap">
         <p class="ey">Reservations</p>
@@ -267,6 +293,11 @@
       <p>&copy; <span id="yr"></span> Maple &amp; Ember · Wood-fired kitchen &amp; café, Milwaukee WI · Site by <a href="../index.html#contact" style="color:var(--gold)">Main Street Web</a></p>
     </div>
   </footer>
+
+  <div class="m-cta" aria-label="Quick actions">
+    <a class="m-cta__call" href="tel:+14146878929">Call</a>
+    <a class="m-cta__main" href="#reserve">Reserve</a>
+  </div>
 
   <script>
     var b=document.getElementById('burger'),m=document.getElementById('mmenu');

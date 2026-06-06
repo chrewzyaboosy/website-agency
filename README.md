@@ -51,6 +51,9 @@ In `index.html`, find `REPLACE: your form endpoint` and set the form `action`:
   ~600×600). Until it's there, a branded placeholder shows.
 - **Colours** are CSS variables at the top of `styles.css` (`:root`): change
   `--accent` (`#cc3d18`) to re-skin buttons, dots and links in one edit.
+- **Interactive widgets:** the **live mockup generator** (`#try`) reads its
+  industry list from the `TYPES` object in `script.js`; the **website grader**
+  (`#grader`) has its questions in `index.html` and verdict text in `script.js`.
 - **Pricing / estimate:** tier prices are in the Pricing section of `index.html`;
   the estimate widget reads its base prices from the `BASE` object in `script.js`
   and each add-on from `data-once`/`data-mo` on its checkbox.

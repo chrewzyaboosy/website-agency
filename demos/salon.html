@@ -129,6 +129,22 @@
       .burger{display:none}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+    /* reviews */
+    .revs{display:grid;gap:16px;grid-template-columns:1fr;margin-top:40px}
+    .rev{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 16px 36px -28px rgba(38,36,42,.4)}
+    .rev .st{color:var(--rose-dk);letter-spacing:2px;margin-bottom:8px}
+    .rev p{font-size:1.02rem;font-weight:300}
+    .rev .by{color:var(--muted);font-weight:600;font-size:.88rem;margin-top:12px}
+    @media(min-width:760px){.revs{grid-template-columns:repeat(3,1fr)}}
+
+    /* sticky mobile CTA */
+    .m-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(38,36,42,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12)}
+    .m-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;padding:12px;border-radius:999px;text-decoration:none;font-weight:500;letter-spacing:.02em;font-size:.95rem}
+    .m-cta__call{background:transparent;color:var(--bg);border:1.5px solid rgba(255,255,255,.3)}
+    .m-cta__main{background:var(--rose);color:var(--char);flex:1.4}
+    @media(max-width:879px){body{padding-bottom:74px}}
+    @media(min-width:880px){.m-cta{display:none}}
   </style>
 </head>
 <body>
@@ -188,10 +204,20 @@
         <p class="ey">The team</p>
         <h2 class="h2">Stylists who <b>actually listen.</b></h2>
         <div class="team__grid">
-          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/hairstyle?lock=11" alt="" /></div><h3>[STYLIST NAME]</h3><p>Color specialist · 8 yrs</p></div>
-          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/haircut?lock=14" alt="" /></div><h3>[STYLIST NAME]</h3><p>Cuts &amp; texture · 6 yrs</p></div>
-          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/hairdresser?lock=12" alt="" /></div><h3>[STYLIST NAME]</h3><p>Balayage &amp; styling · 10 yrs</p></div>
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/hairstyle?lock=11" alt="" /></div><h3>Sofia Reyes</h3><p>Color specialist · 8 yrs</p></div>
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/haircut?lock=14" alt="" /></div><h3>Marcus Lee</h3><p>Cuts &amp; texture · 6 yrs</p></div>
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/hairdresser?lock=12" alt="" /></div><h3>Priya Anand</h3><p>Balayage &amp; styling · 10 yrs</p></div>
         </div>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Reviews">
+      <p class="ey">Loved by clients</p>
+      <h2 class="h2">Booked, beautiful, <b>and back again.</b></h2>
+      <div class="revs">
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Best balayage I've ever had — and booking online took ten seconds."</p><figcaption class="by">— Hannah T.</figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"They actually listened to what I wanted. I won't go anywhere else now."</p><figcaption class="by">— Mia C.</figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Calm, modern, and my color has never lasted this long."</p><figcaption class="by">— Olivia P.</figcaption></figure>
       </div>
     </section>
 
@@ -231,6 +257,11 @@
       <p>&copy; <span id="yr"></span> Halo Studio · Hair &amp; beauty studio, Milwaukee WI · Site by <a href="../index.html#contact" style="color:var(--rose-dk)">Main Street Web</a></p>
     </div>
   </footer>
+
+  <div class="m-cta" aria-label="Quick actions">
+    <a class="m-cta__call" href="tel:+14146878929">Call</a>
+    <a class="m-cta__main" href="#book">Book now</a>
+  </div>
 
   <script>
     var b=document.getElementById('burger'),m=document.getElementById('mmenu');
