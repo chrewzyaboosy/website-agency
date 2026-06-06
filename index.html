@@ -69,6 +69,45 @@
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
     }
   </style>
+
+  <!-- Structured data: helps Google show your business + FAQ rich results.
+       Update the URL/phone/email to your real details. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://mainstreetweb.example/#business",
+        "name": "Main Street Web",
+        "description": "Fast, modern websites and AI automation for local businesses in the Greater Milwaukee area.",
+        "url": "https://mainstreetweb.example/",
+        "image": "https://mainstreetweb.example/og-image.svg",
+        "telephone": "+1-414-687-8929",
+        "email": "hello@clearroutecarrier.com",
+        "priceRange": "$$",
+        "areaServed": "Greater Milwaukee, WI",
+        "founder": { "@type": "Person", "name": "Abbas" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Milwaukee", "addressRegion": "WI", "addressCountry": "US" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "How much does a website cost?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Sites start at $149 one-time plus $99/mo for the care plan, and most projects land between the Starter and Growth tiers. You'll get a clear, fixed price before any work starts." } },
+          { "@type": "Question", "name": "How long until it's live?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Most single-page sites go live within a week, often in just a few days once we have your details. Bigger builds with automation take a little longer, and we'll give you the exact timeline up front." } },
+          { "@type": "Question", "name": "Do I own my website?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. The site is yours. Your domain stays in your name, and if you ever leave the care plan, you keep your site files." } },
+          { "@type": "Question", "name": "What does ongoing support cover?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The monthly care plan covers hosting, security, uptime monitoring, updates, and monthly tweaks. You get one dedicated team that knows your site and replies in plain English. Cancel anytime." } },
+          { "@type": "Question", "name": "Do you work with my type of business?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Very likely yes. We focus on local service businesses such as contractors, trades, restaurants, gyms, salons and dentists. If you serve customers in the Milwaukee area, let's talk." } }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body class="bg-paper text-ink font-sans">
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[200] focus:top-3 focus:left-3 focus:bg-ink focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>

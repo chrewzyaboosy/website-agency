@@ -18,6 +18,8 @@
   var PHONE = "414-687-8929";
   var TEL = "tel:+14146878929";
   var EMAIL = "hello@clearroutecarrier.com";
+  var CAL = "https://calendly.com/your-link"; /* REPLACE: your scheduling link (Calendly/Cal.com) */
+  var SMS = "sms:+14146878929";
   /* REPLACE: your form endpoint (Formspree id or Netlify). No secrets here. */
   var FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
 
@@ -790,6 +792,31 @@
     </div>`;
   }
 
+  /* ---------- Founder + Book-a-call ---------- */
+  function FounderCTA() {
+    return html`<section className="py-16 md:py-24">
+      <div className="mx-auto w-full max-w-[1120px] px-5 sm:px-8">
+        <${Reveal} className="grid lg:grid-cols-2 gap-10 items-center rounded-3xl bg-ink text-paper p-8 sm:p-12 overflow-hidden">
+          <div>
+            <${Kicker} light=${true}>A real person, not a call center<//>
+            <h2 className="mt-3.5 text-[1.7rem] sm:text-4xl font-bold tracking-tight">Talk to the person who'll build it.</h2>
+            <p className="mt-4 text-mutedDk max-w-[52ch]">Hi — I'm Abbas. I run Main Street Web here in Milwaukee, and I'm your single point of contact from first call to launch and beyond. No account managers, no runaround, no jargon — just clear advice and a website that brings you work.</p>
+            <div className="mt-7 flex flex-wrap gap-3.5">
+              <${Btn} href=${CAL} variant="accent">Book a free 15-min call<//>
+              <${Btn} href=${TEL} variant="outlineLight">Call ${PHONE}<//>
+            </div>
+            <p className="mt-4 text-mutedDk text-[0.9rem]">Prefer texting? <a href=${SMS} className="text-accentBright font-semibold hover:underline">Text us →</a></p>
+          </div>
+          <div className="relative hidden lg:block">
+            <div className="aspect-square max-w-[320px] ml-auto rounded-2xl overflow-hidden ring-1 ring-white/10 animate-floatySlow bg-inkSoft">
+              <${Img} src="https://loremflickr.com/480/480/portrait,professional?lock=7" alt="Abbas, founder of Main Street Web" className="w-full h-full object-cover" />
+            </div>
+          </div>
+        <//>
+      </div>
+    </section>`;
+  }
+
   function App() {
     var pf = useState(null), prefill = pf[0], setPrefill = pf[1];
     function choose(data) {
@@ -809,6 +836,7 @@
         <${Work} />
         <${Reviews} />
         <${FAQ} />
+        <${FounderCTA} />
         <${Contact} prefill=${prefill} />
       </main>
       <${Footer} />

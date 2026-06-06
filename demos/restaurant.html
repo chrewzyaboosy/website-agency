@@ -142,10 +142,7 @@
   </style>
 </head>
 <body>
-  <div class="demo-bar">
-    Demo by <strong>Main Street Web</strong> — want one like this for your restaurant?
-    <a href="../index.html#contact">Get a free quote →</a>
-  </div>
+  <!-- (credit is a subtle line in the footer, like a real client site) -->
 
   <header class="nav">
     <div class="wrap nav__in">
@@ -267,7 +264,7 @@
       <div><h4>Contact</h4><a href="tel:+14146878929">414-687-8929</a><a href="mailto:hello@clearroutecarrier.com">hello@clearroutecarrier.com</a></div>
     </div>
     <div class="wrap foot__legal">
-      <p>&copy; <span id="yr"></span> Maple &amp; Ember (demo). · A demo by <a href="../index.html#contact" style="color:var(--gold)">Main Street Web</a>.</p>
+      <p>&copy; <span id="yr"></span> Maple &amp; Ember · Wood-fired kitchen &amp; café, Milwaukee WI · Site by <a href="../index.html#contact" style="color:var(--gold)">Main Street Web</a></p>
     </div>
   </footer>
 
@@ -285,7 +282,7 @@
       e.preventDefault();
       var name=(f.elements['name'].value||'').trim();
       if(!name){out.textContent='Please add a name for the reservation.';out.classList.add('show');return;}
-      out.textContent='Thanks '+name.replace(/[<>]/g,'')+'! This is a demo, so no table was actually booked — but on a real site we’d text you a confirmation. Want one? Visit Main Street Web.';
+      out.textContent='Thanks '+name.replace(/[<>]/g,'')+'! Your table request is in — we’ll text you a confirmation shortly. (Portfolio demo by Main Street Web.)';
       out.classList.add('show');
     });
   </script>

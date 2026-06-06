@@ -13,6 +13,8 @@ website-agency/
 ├── og-image.svg        ← social-share image
 ├── _headers            ← security headers for Netlify
 ├── vercel.json         ← security headers for Vercel
+├── robots.txt          ← crawl rules (update the domain)
+├── sitemap.xml         ← sitemap (update the domain)
 └── demos/
     ├── contractor.html ← "Ironclad Builders" demo (self-contained)
     ├── restaurant.html ← "Maple & Ember" demo (self-contained)
@@ -61,8 +63,14 @@ The demo pages' forms are intentionally **not** wired to a backend.
 
 - **Copy** lives in `app.js` as plain text inside each component — search for the
   text you want to change.
-- **Business details:** the `PHONE`, `TEL`, `EMAIL` constants at the top of
-  `app.js` (also update `Milwaukee` mentions and the footer).
+- **Business details:** the `PHONE`, `TEL`, `EMAIL` and `CAL` (booking link)
+  constants at the top of `app.js` (also update `Milwaukee` mentions, the
+  founder name in the "Talk to the person" section, and the footer).
+- **Booking link:** set `CAL` to your Calendly/Cal.com URL so "Book a free
+  15-min call" works. The founder photo is a stock placeholder — swap its URL
+  for a real headshot.
+- **SEO:** update the domain in `robots.txt`, `sitemap.xml`, the JSON-LD block
+  and the `og:url`/`canonical` tags in `index.html` once you have a real domain.
 - **Colours** live in the Tailwind config in `index.html` (`tailwind.config`):
   ```js
   ink: '#171311', paper: '#f7f4ef', accent: '#cc3d18', /* … */
