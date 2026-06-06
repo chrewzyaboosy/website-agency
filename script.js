@@ -111,7 +111,7 @@
   var mobileCta = document.querySelector(".mobile-cta");
   if (mobileCta) {
     function onScrollCta() {
-      var show = window.scrollY > window.innerHeight * 0.7;
+      var show = window.scrollY > window.innerHeight * 0.35;
       mobileCta.classList.toggle("is-visible", show);
     }
     window.addEventListener("scroll", onScrollCta, { passive: true });
@@ -543,5 +543,168 @@
     var msg = document.getElementById("message");
     if (need && !need.value) need.value = "Free website audit";
     if (msg && !msg.value.trim()) msg.value = "I scored " + total() + "/100 on the website grader — please send my free fix plan.";
+  });
+})();
+
+/* =================================================================
+   AI ASSISTANT — a self-contained knowledge assistant (no backend,
+   no API key). Answers from a curated knowledge base built from the
+   site's real info, and routes people to a quote/call. Easy to
+   upgrade to a live LLM later (swap respond() for a fetch to your
+   serverless endpoint).
+   ================================================================= */
+(function () {
+  "use strict";
+  var root = document.getElementById("chat");
+  if (!root) return;
+  var launch = document.getElementById("chatLaunch");
+  var panel = document.getElementById("chatPanel");
+  var closeBtn = document.getElementById("chatClose");
+  var log = document.getElementById("chatLog");
+  var quick = document.getElementById("chatQuick");
+  var form = document.getElementById("chatForm");
+  var input = document.getElementById("chatInput");
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var TEL = "tel:+14146878929";
+  var CAL = "https://calendly.com/your-link"; /* REPLACE: your booking link */
+  var greeted = false;
+
+  // ----- Knowledge base (your "fed" info). Edit freely. -----
+  var KB = [
+    { k: ["price","cost","much","pricing","expensive","cheap","afford","rate","fee","budget","$"],
+      a: "Our pricing is simple and flat: Starter is $149 one-time + $99/mo, Growth is $349 + $149/mo, and Pro is $699 + $249/mo. Every build includes a free logo, business email and Google setup — and you always own your site and can cancel anytime.",
+      c: [["See full pricing", {nav: "#pricing"}], ["Build an estimate", {nav: "#estimate"}], ["Get a free quote", {nav: "#contact"}]] },
+    { k: ["time","long","fast","week","quick","turnaround","launch","when","soon","days","timeline"],
+      a: "Most single-page sites go live within about a week — often just a few days once we have your details. Bigger builds with automation take a little longer, and we give you an exact timeline up front.",
+      c: [["Get a free quote", {nav: "#contact"}], ["See our work", {nav: "#work"}]] },
+    { k: ["include","included","logo","email","google","hosting","domain","ssl","seo","copywriting","photos","what do i get","whats included"],
+      a: "Every build includes a custom logo & brand kit, a professional email (you@yourbusiness.com), Google Business + Maps setup, copywriting, domain + secure hosting, photos, click-to-call & smart forms, and ongoing edits. Most agencies charge extra for all of that.",
+      c: [["What's included", {nav: "#included"}], ["Pricing", {q: "pricing"}], ["Get a free quote", {nav: "#contact"}]] },
+    { k: ["automation","automate","ai","auto-reply","autoreply","bot","booking","follow up","followup","lead","missed call","reply"],
+      a: "Our AI automation replies to new inquiries in seconds, captures the lead, books appointments and follows up automatically — even after hours. It's the difference between catching a customer and losing them to whoever answered first.",
+      c: [["Get a free quote", {nav: "#contact"}], ["What's included?", {q: "included"}]] },
+    { k: ["own","ownership","keep","mine","cancel","contract","locked","leave"],
+      a: "You own everything — your site, domain and content. No long contracts; cancel the care plan anytime and keep your files. No hostage situations.",
+      c: [["Pricing", {q: "pricing"}], ["Get a free quote", {nav: "#contact"}]] },
+    { k: ["where","area","location","milwaukee","located","serve","local","near","wisconsin"],
+      a: "We're based in Milwaukee and serve the Greater Milwaukee area and surrounding towns. If you serve local customers, we can help.",
+      c: [["Get a free quote", {nav: "#contact"}], ["Call or text", {href: TEL}]] },
+    { k: ["audit","grade","score","check my","review my","analyze","current site","existing site"],
+      a: "Want to know how your current site stacks up? Take our free 60-second grader — five quick questions and you get a score plus what to fix first.",
+      c: [["Grade my website", {nav: "#grader"}], ["Get a free quote", {nav: "#contact"}]] },
+    { k: ["example","examples","demo","demos","portfolio","sample","previous","see your work","past work"],
+      a: "Sure — take a look at sites we've built for a contractor, a restaurant and a salon. You can also build a live preview of your own in seconds.",
+      c: [["See our work", {nav: "#work"}], ["Try the live preview", {nav: "#try"}]] },
+    { k: ["book","schedule","appointment","meeting","consult","calendar","call back","15 min"],
+      a: "Happy to. Book a free 15-minute call and we'll talk through exactly what you need — no pressure.",
+      c: [["Book a free call", {href: CAL}], ["Call/text us", {href: TEL}], ["Get a free quote", {nav: "#contact"}]] },
+    { k: ["call","phone","number","text","reach","contact you"],
+      a: "Call or text us at 414-687-8929 — a real human, usually same day. Prefer email? hello@clearroutecarrier.com.",
+      c: [["Call 414-687-8929", {href: TEL}], ["Book a 15-min call", {href: CAL}], ["Get a free quote", {nav: "#contact"}]] },
+    { k: ["service","services","do you","offer","build","make me","help me","website","site"],
+      a: "We do three things for local businesses: build fast, modern websites; set up AI automation so you never miss a lead; and keep it all running with a care plan (hosting, updates, monitoring).",
+      c: [["AI automation", {q: "automation"}], ["Pricing", {q: "pricing"}], ["Get a free quote", {nav: "#contact"}]] },
+    { k: ["quote","start","started","hire","sign up","ready","work with","buy","purchase","get one","sign me"],
+      a: "Love it. The fastest way is a free quote — tell us a bit about your business and we'll reply within one business day with honest advice and a fixed price.",
+      c: [["Open the quote form", {nav: "#contact"}], ["Try the live preview", {nav: "#try"}], ["Call/text us", {href: TEL}]] },
+    { k: ["human","person","real","agent","someone","talk to","manager","owner"],
+      a: "Of course — you'll always deal with a real person here. Call or text 414-687-8929, email hello@clearroutecarrier.com, or drop your details in the quote form and we'll reach out fast.",
+      c: [["Get a free quote", {nav: "#contact"}], ["Call/text", {href: TEL}]] },
+    { k: ["thank","thanks","appreciate","cheers","awesome","perfect","great","cool"],
+      a: "Anytime! When you're ready, a free quote is just a tap away — or call/text 414-687-8929.",
+      c: [["Get a free quote", {nav: "#contact"}]] }
+  ];
+  var FALLBACK = {
+    a: "Good question — I want to get you the right answer. The quickest way is to ask a real person: call or text 414-687-8929, or grab a free quote and we'll reply within a business day.",
+    c: [["Get a free quote", {nav: "#contact"}], ["Call/text us", {href: TEL}], ["See pricing", {nav: "#pricing"}]]
+  };
+  var GREETING = {
+    a: "Hi! 👋 I'm the Main Street Web assistant. Ask me about pricing, timelines or what's included — or I can get you a free quote. What can I help with?",
+    c: [["Pricing", {q: "pricing"}], ["How fast?", {q: "timeline"}], ["What's included?", {q: "included"}], ["Get a free quote", {nav: "#contact"}]]
+  };
+
+  function match(text) {
+    var t = " " + text.toLowerCase() + " ";
+    var best = null, bestScore = 0;
+    KB.forEach(function (item) {
+      var score = 0;
+      item.k.forEach(function (kw) { if (t.indexOf(kw) !== -1) score += kw.length > 4 ? 2 : 1; });
+      if (score > bestScore) { bestScore = score; best = item; }
+    });
+    return bestScore > 0 ? best : FALLBACK;
+  }
+
+  function scrollLog() { log.scrollTop = log.scrollHeight; }
+  function clearEl(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+
+  function addMsg(role, text) {
+    var el = document.createElement("div");
+    el.className = "chat__msg chat__msg--" + role;
+    el.textContent = text;
+    log.appendChild(el);
+    scrollLog();
+  }
+
+  function renderChips(chips) {
+    clearEl(quick);
+    (chips || []).forEach(function (c) {
+      var label = c[0], action = c[1];
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chat__chip";
+      b.textContent = label;
+      b.addEventListener("click", function () {
+        if (action.q) { handleUser(label, action.q); }
+        else if (action.nav) { closeChat(); var el = document.querySelector(action.nav); if (el) el.scrollIntoView({ behavior: reduced ? "auto" : "smooth" }); }
+        else if (action.href) { window.location.href = action.href; }
+      });
+      quick.appendChild(b);
+    });
+  }
+
+  function botReply(item) {
+    var typing = document.createElement("div");
+    typing.className = "chat__typing";
+    typing.appendChild(document.createElement("i"));
+    typing.appendChild(document.createElement("i"));
+    typing.appendChild(document.createElement("i"));
+    log.appendChild(typing); scrollLog();
+    clearEl(quick);
+    var delay = reduced ? 0 : 480;
+    setTimeout(function () {
+      if (typing.parentNode) typing.parentNode.removeChild(typing);
+      addMsg("bot", item.a);
+      renderChips(item.c);
+    }, delay);
+  }
+
+  function handleUser(displayText, queryText) {
+    addMsg("user", displayText);
+    botReply(match(queryText || displayText));
+  }
+
+  function openChat() {
+    panel.hidden = false;
+    root.classList.add("is-open");
+    launch.setAttribute("aria-expanded", "true");
+    if (!greeted) { greeted = true; addMsg("bot", GREETING.a); renderChips(GREETING.c); }
+    setTimeout(function () { input.focus(); }, 50);
+  }
+  function closeChat() {
+    panel.hidden = true;
+    root.classList.remove("is-open");
+    launch.setAttribute("aria-expanded", "false");
+  }
+
+  launch.addEventListener("click", openChat);
+  if (closeBtn) closeBtn.addEventListener("click", function () { closeChat(); launch.focus(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !panel.hidden) { closeChat(); launch.focus(); } });
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var v = (input.value || "").trim();
+    if (!v) return;
+    input.value = "";
+    handleUser(v);
   });
 })();
