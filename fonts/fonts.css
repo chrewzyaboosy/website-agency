@@ -1,0 +1,29 @@
+/* =================================================================
+   Self-hosted Space Grotesk — no third-party request.
+   -----------------------------------------------------------------
+   Drop these four .woff2 files in this /fonts folder:
+     space-grotesk-400.woff2   (Regular)
+     space-grotesk-500.woff2   (Medium)
+     space-grotesk-600.woff2   (SemiBold)
+     space-grotesk-700.woff2   (Bold)
+   Easiest way to get them (free): https://gwfh.mranftl.com/fonts/space-grotesk
+   -> pick weights 400/500/600/700, "Best support" (woff2), download, and
+   rename the files to the names above. Until the files are present, the site
+   gracefully falls back to a clean system-font stack.
+   ================================================================= */
+@font-face {
+  font-family: "Space Grotesk"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("space-grotesk-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("space-grotesk-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("space-grotesk-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("space-grotesk-700.woff2") format("woff2");
+}

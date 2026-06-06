@@ -727,3 +727,38 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 })();
+
+/* =================================================================
+   DARK MODE TOGGLE  (theme.js already set the initial theme in <head>)
+   ================================================================= */
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var navInner = document.querySelector(".nav__inner");
+  if (!navInner) return;
+
+  function isDark() { return root.getAttribute("data-theme") === "dark"; }
+
+  var btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "theme-toggle";
+
+  function sync() {
+    var d = isDark();
+    btn.textContent = d ? "☀" : "☾";        /* ☀ / ☾ */
+    btn.setAttribute("aria-label", d ? "Switch to light mode" : "Switch to dark mode");
+    btn.setAttribute("aria-pressed", d ? "true" : "false");
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", d ? "#14110d" : "#171311");
+  }
+  sync();
+
+  btn.addEventListener("click", function () {
+    var next = isDark() ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("msw-theme", next); } catch (e) { /* ignore */ }
+    sync();
+  });
+
+  navInner.appendChild(btn);  /* rightmost item; hamburger's auto-margin pushes the group right */
+})();

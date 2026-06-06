@@ -11,18 +11,30 @@ website-agency/
 ├── index.html          ← the marketing page (mockup generator, grader, chat, etc.)
 ├── 404.html            ← branded not-found page
 ├── styles.css          ← all styles
-├── script.js           ← nav, reveal, estimate, form, chat assistant, image loaders
+├── script.js           ← nav, reveal, estimate, form, chat, dark-mode, image loaders
+├── theme.js            ← sets light/dark before first paint (loaded in <head>)
 ├── favicon.svg         ← brand favicon
 ├── og-image.svg        ← social-share image (export a PNG for best previews)
 ├── _headers            ← security headers for Netlify
 ├── vercel.json         ← security headers for Vercel
 ├── robots.txt          ← crawl rules
 ├── sitemap.xml         ← sitemap
+├── fonts/              ← self-hosted font: fonts.css + your 4 .woff2 files
 ├── assets/             ← put your founder.jpg (and any real photos) here
 ├── blog/               ← SEO blog: index + 3 articles (BlogPosting schema)
 ├── legal/              ← privacy.html · terms.html · accessibility.html
 └── demos/              ← contractor.html · restaurant.html · salon.html
 ```
+
+> **Dark mode** is built in (toggle in the nav, ☾/☀). It remembers the choice
+> and respects the OS setting. Colours are driven by `--bg`/`--surface`/`--text`
+> in `styles.css`; a `:root[data-theme="dark"]` block remaps them.
+>
+> **Self-hosted font:** the agency pages load Space Grotesk locally (no Google
+> Fonts call). **Add the 4 `.woff2` files** to `/fonts` (see `fonts/fonts.css`
+> for the exact names + a free download link). Until then it falls back to a
+> clean system-font stack. (The demo pages still use Google Fonts for their own
+> typefaces.)
 
 > **Domain:** the site uses `mainstreetweb.com` in canonical/OG/JSON-LD/sitemap.
 > Several similarly-named agencies exist (mainstreetweb.co, etc.) — confirm the
