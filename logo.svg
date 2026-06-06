@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 100" role="img" aria-label="Main Street Web">
+  <defs>
+    <linearGradient id="msw-badge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e24a1f"/>
+      <stop offset="1" stop-color="#bf3712"/>
+    </linearGradient>
+  </defs>
+  <!-- mark: rounded ember badge + cream M (M coords already on the 72-grid) -->
+  <g transform="translate(8 14)">
+    <rect width="72" height="72" rx="18" fill="url(#msw-badge)"/>
+    <path d="M18 50.6 V21.4 L36 39.4 L54 21.4 V50.6"
+          fill="none" stroke="#f7f4ef" stroke-width="7.9"
+          stroke-linejoin="round" stroke-linecap="round" />
+  </g>
+  <!-- wordmark (Space Grotesk if available, else a clean sans fallback) -->
+  <text x="100" y="63" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif"
+        font-size="42" font-weight="700" letter-spacing="-1.2" fill="#171311">Main Street Web</text>
+</svg>

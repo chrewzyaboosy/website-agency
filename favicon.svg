@@ -1,6 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Main Street Web">
-  <rect width="64" height="64" rx="15" fill="#171311"/>
-  <!-- the accent dot — the brand motif -->
-  <circle cx="32" cy="32" r="11" fill="#cc3d18"/>
-  <circle cx="32" cy="32" r="17" fill="none" stroke="#cc3d18" stroke-opacity="0.4" stroke-width="2.5"/>
+  <defs>
+    <linearGradient id="msw-badge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e24a1f"/>
+      <stop offset="1" stop-color="#bf3712"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#msw-badge)"/>
+  <path d="M16 45 V19 L32 35 L48 19 V45"
+        fill="none" stroke="#f7f4ef" stroke-width="7"
+        stroke-linejoin="round" stroke-linecap="round"/>
 </svg>

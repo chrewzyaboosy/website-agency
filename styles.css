@@ -136,9 +136,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   font-weight: 700; font-size: 1.28rem; letter-spacing: -0.02em;
 }
 .brand__mark {
-  width: 14px; height: 14px; border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 0 4px rgba(216,69,31,.18);
+  width: 26px; height: 26px;
+  background: url("favicon.svg") center / contain no-repeat;
   flex: none;
 }
 .brand__name { line-height: 1; white-space: nowrap; }
