@@ -1,0 +1,7 @@
+# Main Street Web — robots
+User-agent: *
+Allow: /
+Disallow: /demos/
+
+# Update to your real domain:
+Sitemap: https://mainstreetweb.com/sitemap.xml

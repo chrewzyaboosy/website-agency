@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Halo Studio — Hair &amp; Beauty Studio, Milwaukee</title>
+  <meta name="description" content="Halo Studio — a sleek, modern hair &amp; beauty studio in Milwaukee. Book online in seconds for cut, color, and care." />
+  <meta name="robots" content="noindex" /><!-- demo page -->
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" />
+  <style>
+    /* ===== HALO STUDIO — sleek salon demo =====
+       Palette: soft neutrals, charcoal, dusty-rose accent. Light geometric sans. */
+    :root{
+      --bg:#fbfafa; --bg-2:#f1edea; --char:#26242a; --char-2:#3a373f;
+      --rose:#c98b80; --rose-dk:#a86a60; --sand:#e9e1da;
+      --muted:#696370; --line:#e7e1dd;
+      --font:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:104px}
+    body{margin:0;font-family:var(--font);background:var(--bg);color:var(--char);line-height:1.65;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img,svg{max-width:100%;display:block}
+    a{color:var(--rose-dk)}
+    h1,h2,h3{margin:0;font-weight:500;line-height:1.1;letter-spacing:-.01em}
+    p{margin:0}
+    :focus-visible{outline:2.5px solid var(--rose-dk);outline-offset:3px}
+    .wrap{width:100%;max-width:1080px;margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-weight:500;font-size:1rem;letter-spacing:.02em;padding:13px 28px;border-radius:999px;text-decoration:none;cursor:pointer;border:1.5px solid transparent;transition:transform .15s ease,background .15s ease,color .15s ease}
+    .btn--char{background:var(--char);color:var(--bg)}
+    .btn--char:hover{background:#000;transform:translateY(-2px)}
+    .btn--rose{background:var(--rose);color:var(--char)}/* dark text on blush: ~5.5:1 */
+    .btn--rose:hover{filter:brightness(.95);transform:translateY(-2px)}
+    .btn--out{border-color:var(--char);color:var(--char)}
+    .btn--out:hover{background:var(--char);color:var(--bg)}
+
+    .demo-bar{background:var(--char);color:var(--bg);font-size:.86rem;text-align:center;padding:9px 16px;letter-spacing:.01em}
+    .demo-bar a{color:#e9b9b1;font-weight:600;text-decoration:none}
+    .demo-bar a:hover{text-decoration:underline}
+
+    .nav{position:sticky;top:0;z-index:50;background:rgba(251,250,250,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav__in{display:flex;align-items:center;gap:18px;min-height:68px}
+    .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--char);font-weight:500;font-size:1.3rem;letter-spacing:.16em;text-transform:uppercase}
+    .logo__mark{width:22px;height:22px;border-radius:50%;border:2px solid var(--rose);position:relative;flex:none}
+    .logo__mark::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--rose)}
+    .nav__links{display:none;gap:4px;margin-left:auto}
+    .nav__links a{color:var(--char);text-decoration:none;font-size:.95rem;letter-spacing:.03em;padding:8px 12px;border-radius:8px}
+    .nav__links a:hover{color:var(--rose-dk)}
+    .nav__cta{margin-left:auto;display:none}
+    .burger{margin-left:auto;width:46px;height:46px;border:1px solid var(--line);background:#fff;border-radius:12px;display:inline-flex;flex-direction:column;justify-content:center;gap:5px;padding:12px;cursor:pointer}
+    .burger span{height:1.5px;background:var(--char);border-radius:2px}
+    .m-menu{display:none;border-top:1px solid var(--line);background:var(--bg);padding:10px clamp(18px,5vw,40px) 20px}
+    .m-menu.open{display:block}
+    .m-menu a{display:block;color:var(--char);text-decoration:none;padding:13px 4px;border-bottom:1px solid var(--line);font-size:1.05rem;letter-spacing:.02em}
+
+    .hero{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
+    .hero__in{display:grid;gap:34px;padding:clamp(50px,9vw,104px) 0;align-items:center}
+    .hero__tag{display:inline-block;letter-spacing:.22em;text-transform:uppercase;color:var(--rose-dk);font-size:.78rem;margin-bottom:18px}
+    .hero h1{font-size:clamp(2.7rem,8.5vw,5.4rem);font-weight:300}
+    .hero h1 b{font-weight:600}
+    .hero p{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.25rem);max-width:42ch;margin:20px 0 30px;font-weight:300}
+    .hero__cta{display:flex;flex-wrap:wrap;gap:14px}
+    .hero__art{aspect-ratio:4/5;border-radius:200px 200px 24px 24px;background:
+      linear-gradient(160deg,var(--sand),#d9c7c0 60%,var(--rose));position:relative;overflow:hidden;box-shadow:0 30px 60px -28px rgba(38,36,42,.4)}
+    .hero__art::before{content:"";position:absolute;left:50%;top:14%;transform:translateX(-50%);width:46%;aspect-ratio:1;border-radius:50%;background:rgba(251,250,250,.5)}
+    .hero__art span{position:absolute;left:0;right:0;bottom:26px;text-align:center;letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;color:#fff}
+
+    /* photos — topical stock placeholders (swap the src for real photos).
+       Each sits over a soft gradient, so a slow/failed image still looks OK. */
+    .hero__art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+    .hero__art::before{content:none}
+    .hero__art span{z-index:2;text-shadow:0 2px 8px rgba(0,0,0,.45)}
+    .stylist__photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .stylist__photo::after{content:none}
+
+    section{padding:clamp(50px,8vw,92px) 0}
+    .ey{letter-spacing:.2em;text-transform:uppercase;color:var(--rose-dk);font-size:.78rem;margin-bottom:14px}
+    .h2{font-size:clamp(1.9rem,5vw,3.1rem);font-weight:300}
+    .h2 b{font-weight:600}
+    .lede{color:var(--muted);max-width:52ch;margin-top:14px;font-weight:300}
+
+    /* services list */
+    .svc{margin-top:42px;display:grid;gap:0;border-top:1px solid var(--line)}
+    .svc__row{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding:20px 4px;border-bottom:1px solid var(--line)}
+    .svc__name{font-size:1.2rem;font-weight:500}
+    .svc__name small{display:block;color:var(--muted);font-size:.9rem;font-weight:300;margin-top:2px}
+    .svc__price{font-size:1.15rem;color:var(--rose-dk);white-space:nowrap}
+
+    /* stylists */
+    .team{background:var(--bg-2)}
+    .team__grid{display:grid;gap:22px;grid-template-columns:1fr;margin-top:40px}
+    .stylist{text-align:center}
+    .stylist__photo{aspect-ratio:1;border-radius:50%;margin:0 auto 16px;max-width:170px;background:linear-gradient(150deg,var(--sand),var(--rose));position:relative;overflow:hidden}
+    .stylist__photo::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:55%;height:55%;border-radius:50% 50% 0 0;background:rgba(251,250,250,.45)}
+    .stylist h3{font-size:1.2rem;font-weight:500}
+    .stylist p{color:var(--muted);font-size:.92rem;font-weight:300}
+
+    /* booking */
+    .book{background:var(--char);color:var(--bg)}
+    .book .ey{color:#e9b9b1}
+    .book .h2,.book .lede{color:var(--bg)}
+    .book .lede{color:#c9c4cd}
+    .book__form{background:rgba(251,250,250,.05);border:1px solid rgba(251,250,250,.16);border-radius:18px;padding:26px;margin-top:32px}
+    .book__form .row{display:grid;gap:14px;grid-template-columns:1fr}
+    .book__form label{display:block;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;color:#c9c4cd}
+    .book__form input,.book__form select{width:100%;font:inherit;background:rgba(251,250,250,.95);color:var(--char);border:1.5px solid transparent;border-radius:12px;padding:12px 13px}
+    .book__form input:focus,.book__form select:focus{outline:none;border-color:var(--rose)}
+    .book__msg{margin-top:14px;padding:13px;border-radius:12px;background:rgba(201,139,128,.22);border:1px solid var(--rose);display:none}
+    .book__msg.show{display:block}
+
+    footer{background:var(--bg-2);padding:46px 0 28px;border-top:1px solid var(--line)}
+    .foot{display:grid;gap:22px;grid-template-columns:1fr}
+    .foot a{color:var(--muted);text-decoration:none;display:block;margin:6px 0}
+    .foot a:hover{color:var(--rose-dk)}
+    .foot h4{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px;color:var(--char)}
+    .foot__legal{color:var(--muted);font-size:.84rem;margin-top:28px;border-top:1px solid var(--line);padding-top:18px}
+
+    @media(min-width:760px){
+      .hero__in{grid-template-columns:1.1fr .9fr}
+      .team__grid{grid-template-columns:repeat(3,1fr)}
+      .book__form .row{grid-template-columns:repeat(4,1fr)}
+      .foot{grid-template-columns:2fr 1fr 1fr}
+    }
+    @media(min-width:880px){
+      .nav__links{display:flex}
+      .nav__cta{display:inline-flex;margin-left:8px}
+      .burger{display:none}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+    /* reviews */
+    .revs{display:grid;gap:16px;grid-template-columns:1fr;margin-top:40px}
+    .rev{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 16px 36px -28px rgba(38,36,42,.4)}
+    .rev .st{color:var(--rose-dk);letter-spacing:2px;margin-bottom:8px}
+    .rev p{font-size:1.02rem;font-weight:300}
+    .rev .by{color:var(--muted);font-weight:600;font-size:.88rem;margin-top:12px}
+    @media(min-width:760px){.revs{grid-template-columns:repeat(3,1fr)}}
+
+    /* sticky mobile CTA */
+    .m-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(38,36,42,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.12)}
+    .m-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;padding:12px;border-radius:999px;text-decoration:none;font-weight:500;letter-spacing:.02em;font-size:.95rem}
+    .m-cta__call{background:transparent;color:var(--bg);border:1.5px solid rgba(255,255,255,.3)}
+    .m-cta__main{background:var(--rose);color:var(--char);flex:1.4}
+    @media(max-width:879px){body{padding-bottom:74px}}
+    @media(min-width:880px){.m-cta{display:none}}
+  </style>
+</head>
+<body>
+  <!-- (credit is a subtle line in the footer, like a real client site) -->
+
+  <header class="nav">
+    <div class="wrap nav__in">
+      <a class="logo" href="#top"><span class="logo__mark" aria-hidden="true"></span>Halo</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#team">Stylists</a>
+        <a href="#book">Book</a>
+      </nav>
+      <a class="btn btn--rose nav__cta" href="#book">Book now</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mmenu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="m-menu" id="mmenu" aria-label="Mobile">
+      <a href="#services">Services</a>
+      <a href="#team">Stylists</a>
+      <a href="#book">Book now</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero__in">
+        <div>
+          <span class="hero__tag">Hair &amp; beauty studio · Milwaukee</span>
+          <h1>Look like<br /><b>your best self.</b></h1>
+          <p>A calm, modern studio for cut, color, and care — with online booking that takes about ten seconds.</p>
+          <div class="hero__cta">
+            <a class="btn btn--rose" href="#book">Book your appointment</a>
+            <a class="btn btn--out" href="#services">View services</a>
+          </div>
+        </div>
+        <div class="hero__art"><img src="https://loremflickr.com/720/900/haircut?lock=8" alt="Inside Halo Studio" decoding="async" /><span>Halo Studio</span></div>
+      </div>
+    </section>
+
+    <section id="services" class="wrap">
+      <p class="ey">Services</p>
+      <h2 class="h2">Simple menu, <b>honest prices.</b></h2>
+      <p class="lede">Every service includes a consultation. First time in? We'll find the right look together.</p>
+      <div class="svc">
+        <div class="svc__row"><div class="svc__name">Cut &amp; Style<small>Wash, cut, and finish</small></div><div class="svc__price">from $55</div></div>
+        <div class="svc__row"><div class="svc__name">Full Color<small>Single-process, gloss included</small></div><div class="svc__price">from $95</div></div>
+        <div class="svc__row"><div class="svc__name">Balayage &amp; Highlights<small>Hand-painted, lived-in dimension</small></div><div class="svc__price">from $160</div></div>
+        <div class="svc__row"><div class="svc__name">Blowout &amp; Event<small>Special-occasion styling</small></div><div class="svc__price">from $50</div></div>
+        <div class="svc__row"><div class="svc__name">Treatment &amp; Care<small>Deep-condition &amp; bond repair</small></div><div class="svc__price">from $35</div></div>
+      </div>
+    </section>
+
+    <section id="team" class="team">
+      <div class="wrap">
+        <p class="ey">The team</p>
+        <h2 class="h2">Stylists who <b>actually listen.</b></h2>
+        <div class="team__grid">
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/hairstyle?lock=11" alt="" /></div><h3>Sofia Reyes</h3><p>Color specialist · 8 yrs</p></div>
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/haircut?lock=14" alt="" /></div><h3>Marcus Lee</h3><p>Cuts &amp; texture · 6 yrs</p></div>
+          <div class="stylist"><div class="stylist__photo" aria-hidden="true"><img loading="lazy" decoding="async" src="https://loremflickr.com/400/400/hairdresser?lock=12" alt="" /></div><h3>Priya Anand</h3><p>Balayage &amp; styling · 10 yrs</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" aria-label="Reviews">
+      <p class="ey">Loved by clients</p>
+      <h2 class="h2">Booked, beautiful, <b>and back again.</b></h2>
+      <div class="revs">
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Best balayage I've ever had — and booking online took ten seconds."</p><figcaption class="by">— Hannah T.</figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"They actually listened to what I wanted. I won't go anywhere else now."</p><figcaption class="by">— Mia C.</figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Calm, modern, and my color has never lasted this long."</p><figcaption class="by">— Olivia P.</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="book" class="book">
+      <div class="wrap">
+        <p class="ey">Book online</p>
+        <h2 class="h2">Reserve your <b>chair.</b></h2>
+        <p class="lede">Pick a service and a time — we'll confirm by text. Cancel or reschedule free up to 24 hours ahead.</p>
+        <form class="book__form" id="bookForm" novalidate>
+          <div class="row">
+            <div><label for="bservice">Service</label>
+              <select id="bservice" name="service"><option>Cut &amp; Style</option><option>Full Color</option><option>Balayage</option><option>Blowout</option><option>Treatment</option></select>
+            </div>
+            <div><label for="bdate">Date</label><input id="bdate" name="date" type="date" required /></div>
+            <div><label for="btime">Time</label>
+              <select id="btime" name="time"><option>10:00 am</option><option>11:30 am</option><option>1:00 pm</option><option>2:30 pm</option><option>4:00 pm</option></select>
+            </div>
+            <div><label for="bname">Your name</label><input id="bname" name="name" maxlength="80" required /></div>
+          </div>
+          <button class="btn btn--rose" type="submit" style="width:100%;justify-content:center;margin-top:16px">Request appointment</button>
+          <p class="book__msg" id="bookMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <a class="logo" href="#top" style="margin-bottom:12px"><span class="logo__mark" aria-hidden="true"></span>Halo</a>
+        <p style="color:var(--muted);max-width:32ch;font-weight:300">A calm, modern hair &amp; beauty studio in Milwaukee.</p>
+      </div>
+      <div><h4>Studio</h4><a href="#services">Services</a><a href="#team">Stylists</a><a href="#book">Book</a></div>
+      <div><h4>Visit</h4><a href="tel:+14146878929">414-687-8929</a><a href="mailto:hello@mainstreetweb.com">hello@mainstreetweb.com</a><span style="color:var(--muted)">Milwaukee, WI</span></div>
+    </div>
+    <div class="wrap foot__legal">
+      <p>&copy; <span id="yr"></span> Halo Studio · Hair &amp; beauty studio, Milwaukee WI · Site by <a href="../index.html#contact" style="color:var(--rose-dk)">Main Street Web</a></p>
+    </div>
+  </footer>
+
+  <div class="m-cta" aria-label="Quick actions">
+    <a class="m-cta__call" href="tel:+14146878929">Call</a>
+    <a class="m-cta__main" href="#book">Book now</a>
+  </div>
+
+  <script>
+    var b=document.getElementById('burger'),m=document.getElementById('mmenu');
+    b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+    m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
+    document.getElementById('yr').textContent=new Date().getFullYear();
+    // if a stock placeholder fails to load, hide it so the themed background shows
+    Array.prototype.forEach.call(document.querySelectorAll('.hero__art img, .stylist__photo img'),function(img){
+      img.addEventListener('error',function(){img.style.display='none';});
+    });
+    var f=document.getElementById('bookForm'),out=document.getElementById('bookMsg');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var name=(f.elements['name'].value||'').trim();
+      if(!name){out.textContent='Please add your name to book.';out.classList.add('show');return;}
+      out.textContent='Thanks '+name.replace(/[<>]/g,'')+'! Your appointment request is in — we’ll text you a confirmation shortly. (Portfolio demo by Main Street Web.)';
+      out.classList.add('show');
+    });
+  </script>
+</body>
+</html>

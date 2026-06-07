@@ -1,0 +1,14 @@
+{
+  "name": "Main Street Web",
+  "short_name": "Main Street Web",
+  "description": "Fast, modern websites and AI automation for local business.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#171311",
+  "theme_color": "#171311",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180", "purpose": "any maskable" }
+  ]
+}

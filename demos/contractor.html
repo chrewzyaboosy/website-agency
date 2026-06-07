@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ironclad Builders — Milwaukee Roofing, Remodels &amp; Concrete</title>
+  <meta name="description" content="Ironclad Builders — licensed, insured Milwaukee contractor. Roofing, remodels, decks &amp; concrete done right the first time. Free quotes." />
+  <meta name="robots" content="noindex" /><!-- demo page -->
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" />
+  <style>
+    /* ===== IRONCLAD BUILDERS — rugged contractor demo =====
+       Palette: steel charcoal + safety amber. Condensed display type. */
+    :root{
+      --steel:#11161b; --steel-2:#1a222b; --steel-3:#232e39;
+      --amber:#f4b13d; --amber-dk:#c98a16;
+      --paper:#eef1f4; --muted:#9fb0c0; --line:#2c3845;
+      --disp:'Oswald',Arial Narrow,sans-serif; --body:'Inter',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:120px}
+    body{margin:0;font-family:var(--body);background:var(--steel);color:var(--paper);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img,svg{max-width:100%;display:block}
+    a{color:var(--amber)}
+    h1,h2,h3{font-family:var(--disp);text-transform:uppercase;letter-spacing:.01em;line-height:1.05;margin:0;font-weight:700}
+    p{margin:0}
+    :focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+    .wrap{width:100%;max-width:1140px;margin-inline:auto;padding-inline:clamp(18px,5vw,40px)}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);text-transform:uppercase;letter-spacing:.04em;font-weight:600;font-size:1rem;padding:14px 26px;border-radius:4px;text-decoration:none;cursor:pointer;border:2px solid transparent;transition:transform .15s ease,background .15s ease,color .15s ease}
+    .btn--amber{background:var(--amber);color:#16202b}
+    .btn--amber:hover{background:#ffc352;transform:translateY(-2px)}
+    .btn--ghost{border-color:var(--line);color:var(--paper)}
+    .btn--ghost:hover{border-color:var(--amber);color:var(--amber)}
+
+    /* demo banner */
+    .demo-bar{background:#0a0d11;color:var(--paper);font-size:.86rem;text-align:center;padding:9px 16px}
+    .demo-bar a{color:var(--amber);font-weight:600;text-decoration:none}
+    .demo-bar a:hover{text-decoration:underline}
+
+    /* nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(17,22,27,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+    .nav__in{display:flex;align-items:center;gap:18px;min-height:72px}
+    .logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--paper);font-family:var(--disp);font-weight:700;font-size:1.35rem;text-transform:uppercase;letter-spacing:.02em}
+    .logo__mark{width:30px;height:30px;background:var(--amber);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);flex:none}
+    .nav__links{display:none;gap:6px;margin-left:auto}
+    .nav__links a{color:var(--paper);text-decoration:none;font-family:var(--disp);text-transform:uppercase;font-size:.95rem;letter-spacing:.03em;padding:8px 12px;border-radius:4px}
+    .nav__links a:hover{color:var(--amber)}
+    .nav__cta{margin-left:auto;display:none}
+    .burger{margin-left:auto;width:46px;height:46px;border:1px solid var(--line);background:transparent;border-radius:6px;display:inline-flex;flex-direction:column;justify-content:center;gap:5px;padding:11px;cursor:pointer}
+    .burger span{height:2px;background:var(--paper);border-radius:2px}
+    .m-menu{display:none;border-top:1px solid var(--line);background:var(--steel-2);padding:10px clamp(18px,5vw,40px) 20px}
+    .m-menu.open{display:block}
+    .m-menu a{display:block;color:var(--paper);text-decoration:none;font-family:var(--disp);text-transform:uppercase;padding:13px 4px;border-bottom:1px solid var(--line);font-size:1.05rem}
+
+    /* hero */
+    .hero{position:relative;padding:clamp(56px,10vw,120px) 0;background:
+      linear-gradient(180deg,rgba(17,22,27,.78),rgba(17,22,27,.92)),
+      repeating-linear-gradient(135deg,#1a222b 0 22px,#171f27 22px 44px)}
+    .hero__tag{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);text-transform:uppercase;letter-spacing:.12em;color:var(--amber);font-size:.85rem;border:1px solid var(--line);padding:7px 14px;border-radius:3px;margin-bottom:22px}
+    .hero h1{font-size:clamp(2.6rem,8vw,5rem)}
+    .hero h1 span{color:var(--amber)}
+    .hero p{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.3rem);max-width:48ch;margin:20px 0 30px}
+    .hero__cta{display:flex;flex-wrap:wrap;gap:14px}
+    .hero__stars{margin-top:26px;color:var(--amber);font-size:1.1rem;letter-spacing:2px}
+    .hero__stars b{color:var(--paper);font-family:var(--body);font-size:.92rem;letter-spacing:0;margin-left:8px;font-weight:600}
+
+    /* photos — topical stock placeholders (swap the src for real photos).
+       Each sits over a themed background, so a slow/failed image still looks OK. */
+    .hero{isolation:isolate}
+    .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,22,27,.72),rgba(17,22,27,.90))}
+    .gallery__grid{display:grid;gap:14px;grid-template-columns:1fr;margin-top:36px}
+    .ph{position:relative;overflow:hidden;border-radius:8px;background:linear-gradient(135deg,#1a222b,#2c3845)}
+    .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+    .ph:hover img{transform:scale(1.04)}
+    .gallery .ph{aspect-ratio:4/3;border:1px solid var(--line)}
+    .gallery__cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;font-family:var(--disp);text-transform:uppercase;letter-spacing:.04em;font-size:.82rem;color:#fff;background:linear-gradient(0deg,rgba(10,13,17,.85),transparent)}
+
+    /* trust strip */
+    .trust{background:var(--amber);color:#16202b}
+    .trust__in{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:26px 0;text-align:center}
+    .trust .n{font-family:var(--disp);font-size:2.1rem;line-height:1;font-weight:700}
+    .trust .l{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+
+    section{padding:clamp(50px,8vw,92px) 0}
+    .ey{font-family:var(--disp);text-transform:uppercase;letter-spacing:.14em;color:var(--amber);font-size:.85rem;margin-bottom:12px}
+    .h2{font-size:clamp(1.9rem,5vw,3rem)}
+    .lede{color:var(--muted);max-width:54ch;margin-top:14px}
+
+    .svc{display:grid;gap:18px;grid-template-columns:1fr;margin-top:40px}
+    .svc__card{background:var(--steel-2);border:1px solid var(--line);border-radius:8px;padding:28px 24px;border-top:4px solid var(--amber)}
+    .svc__card h3{font-size:1.4rem;margin-bottom:10px}
+    .svc__card p{color:var(--muted);font-size:.97rem}
+
+    .why{background:var(--steel-2)}
+    .why__grid{display:grid;gap:18px;grid-template-columns:1fr;margin-top:36px}
+    .why__item{display:flex;gap:14px;align-items:flex-start}
+    .why__check{flex:none;width:30px;height:30px;border-radius:50%;background:var(--amber);color:#16202b;display:grid;place-items:center;font-weight:700;font-family:var(--disp)}
+    .why__item h3{font-size:1.15rem;margin-bottom:4px;text-transform:none;font-family:var(--body);font-weight:600}
+    .why__item p{color:var(--muted);font-size:.94rem}
+
+    .reviews{display:grid;gap:18px;grid-template-columns:1fr;margin-top:38px}
+    .review{background:var(--steel-2);border:1px solid var(--line);border-radius:8px;padding:24px}
+    .review .stars{color:var(--amber);letter-spacing:2px;margin-bottom:10px}
+    .review p{font-size:1.02rem}
+    .review .by{color:var(--muted);margin-top:12px;font-weight:600;font-size:.9rem}
+
+    /* quote form */
+    .quote{background:linear-gradient(160deg,var(--steel-3),var(--steel-2))}
+    .quote__grid{display:grid;gap:34px;grid-template-columns:1fr;align-items:start}
+    .quote__form{background:var(--steel);border:1px solid var(--line);border-radius:10px;padding:26px}
+    .quote__form .row{display:grid;gap:14px;grid-template-columns:1fr}
+    .quote__form label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+    .quote__form input,.quote__form select,.quote__form textarea{width:100%;font:inherit;background:var(--steel-2);border:1.5px solid var(--line);color:var(--paper);border-radius:6px;padding:12px 13px}
+    .quote__form input:focus,.quote__form select:focus,.quote__form textarea:focus{outline:none;border-color:var(--amber)}
+    .quote__form .full{margin-top:14px}
+    .quote__note{color:var(--muted);font-size:.85rem;margin-top:12px}
+    .quote__msg{margin-top:14px;padding:13px;border-radius:6px;background:rgba(244,177,61,.12);border:1px solid var(--amber-dk);color:var(--paper);display:none}
+    .quote__msg.show{display:block}
+
+    footer{background:#0a0d11;padding:46px 0 30px;border-top:1px solid var(--line)}
+    .foot{display:grid;gap:24px;grid-template-columns:1fr}
+    .foot a{color:var(--muted);text-decoration:none;display:block;margin:6px 0}
+    .foot a:hover{color:var(--amber)}
+    .foot h4{font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em;font-size:.85rem;margin:0 0 10px;color:var(--paper)}
+    .foot__legal{color:var(--muted);font-size:.84rem;margin-top:30px;border-top:1px solid var(--line);padding-top:20px}
+
+    @media(min-width:680px){
+      .trust__in{grid-template-columns:repeat(4,1fr)}
+      .svc{grid-template-columns:repeat(3,1fr)}
+      .why__grid{grid-template-columns:1fr 1fr}
+      .reviews{grid-template-columns:repeat(3,1fr)}
+      .gallery__grid{grid-template-columns:repeat(3,1fr)}
+      .quote__form .row{grid-template-columns:1fr 1fr}
+      .quote__grid{grid-template-columns:1fr 1fr}
+      .foot{grid-template-columns:2fr 1fr 1fr}
+    }
+    @media(min-width:880px){
+      .nav__links{display:flex}
+      .nav__cta{display:inline-flex;margin-left:8px}
+      .burger{display:none}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+    /* sticky mobile CTA */
+    .m-cta{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(10,13,17,.95);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
+    .m-cta a{flex:1;display:inline-flex;align-items:center;justify-content:center;padding:12px;border-radius:6px;text-decoration:none;font-family:var(--disp);text-transform:uppercase;letter-spacing:.03em;font-weight:600;font-size:.95rem}
+    .m-cta__call{background:transparent;color:var(--paper);border:1.5px solid var(--line)}
+    .m-cta__main{background:var(--amber);color:#16202b;flex:1.4}
+    @media(max-width:879px){body{padding-bottom:74px}}
+    @media(min-width:880px){.m-cta{display:none}}
+  </style>
+</head>
+<body>
+  <!-- (credit is a subtle line in the footer, like a real client site) -->
+
+  <header class="nav">
+    <div class="wrap nav__in">
+      <a class="logo" href="#top"><span class="logo__mark" aria-hidden="true"></span>Ironclad Builders</a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#why">Why us</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#quote">Quote</a>
+      </nav>
+      <a class="btn btn--amber nav__cta" href="#quote">Free Quote</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mmenu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="m-menu" id="mmenu" aria-label="Mobile">
+      <a href="#services">Services</a>
+      <a href="#why">Why us</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#quote">Free Quote</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="hero__bg" src="https://loremflickr.com/1280/720/roof?lock=8" alt="" decoding="async" />
+      <div class="wrap">
+        <span class="hero__tag">★ Licensed &amp; Insured · Milwaukee, WI</span>
+        <h1>Built tough.<br />Done <span>right.</span></h1>
+        <p>Roofing, remodels, decks and concrete from a crew that shows up on time, cleans up after, and stands behind every job.</p>
+        <div class="hero__cta">
+          <a class="btn btn--amber" href="#quote">Get my free quote</a>
+          <a class="btn btn--ghost" href="tel:+14146878929">Call 414-687-8929</a>
+        </div>
+        <p class="hero__stars">★★★★★ <b>4.9 from 180+ local reviews</b></p>
+      </div>
+    </section>
+
+    <div class="trust">
+      <div class="wrap trust__in">
+        <div><div class="n">18+</div><div class="l">Years building</div></div>
+        <div><div class="n">2,400+</div><div class="l">Jobs done</div></div>
+        <div><div class="n">4.9★</div><div class="l">Avg rating</div></div>
+        <div><div class="n">100%</div><div class="l">Licensed &amp; insured</div></div>
+      </div>
+    </div>
+
+    <section id="services" class="wrap">
+      <p class="ey">What we do</p>
+      <h2 class="h2">Big jobs, small jobs, done right.</h2>
+      <div class="svc">
+        <div class="svc__card"><h3>Roofing</h3><p>Tear-offs, repairs and full replacements built to outlast Wisconsin winters. Storm-damage and insurance work welcome.</p></div>
+        <div class="svc__card"><h3>Remodels</h3><p>Kitchens, baths and basements. We handle demo to finish — one crew, one timeline, no runaround.</p></div>
+        <div class="svc__card"><h3>Decks &amp; Concrete</h3><p>Decks, patios, driveways and flatwork poured to last. Solid prep, clean lines, honest pricing.</p></div>
+      </div>
+    </section>
+
+    <section id="work" class="wrap gallery">
+      <p class="ey">Recent work</p>
+      <h2 class="h2">See the craftsmanship.</h2>
+      <div class="gallery__grid">
+        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/roofing?lock=11" alt="A recently completed roof replacement" /><figcaption class="gallery__cap">Roof replacement · Wauwatosa</figcaption></figure>
+        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/renovation?lock=12" alt="A finished kitchen remodel" /><figcaption class="gallery__cap">Kitchen remodel · Bay View</figcaption></figure>
+        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/concrete?lock=13" alt="A newly poured concrete driveway" /><figcaption class="gallery__cap">Concrete driveway · West Allis</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="why" class="why">
+      <div class="wrap">
+        <p class="ey">Why Ironclad</p>
+        <h2 class="h2">No surprises. No excuses.</h2>
+        <div class="why__grid">
+          <div class="why__item"><span class="why__check" aria-hidden="true">✓</span><div><h3>Upfront, written pricing</h3><p>You get a clear quote before we lift a hammer — no creeping change orders.</p></div></div>
+          <div class="why__item"><span class="why__check" aria-hidden="true">✓</span><div><h3>On time, every time</h3><p>We show up when we say we will and keep your job site clean.</p></div></div>
+          <div class="why__item"><span class="why__check" aria-hidden="true">✓</span><div><h3>Workmanship warranty</h3><p>Every job is backed in writing. If it's not right, we make it right.</p></div></div>
+          <div class="why__item"><span class="why__check" aria-hidden="true">✓</span><div><h3>Licensed &amp; insured</h3><p>Fully covered, so you're protected from the first day to the last nail.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="wrap">
+      <p class="ey">Reviews</p>
+      <h2 class="h2">Neighbors who'd hire us again.</h2>
+      <div class="reviews">
+        <figure class="review"><div class="stars" aria-hidden="true">★★★★★</div><p>"New roof in two days, spotless cleanup. The quote was the price — exactly what I paid."</p><figcaption class="by">— [CLIENT NAME], Wauwatosa</figcaption></figure>
+        <figure class="review"><div class="stars" aria-hidden="true">★★★★★</div><p>"They redid our kitchen and basement. Honest, tidy, and they actually answered the phone."</p><figcaption class="by">— [CLIENT NAME], Bay View</figcaption></figure>
+        <figure class="review"><div class="stars" aria-hidden="true">★★★★★</div><p>"Poured a new driveway that looks better than the neighbors'. Will call them for the deck next."</p><figcaption class="by">— [CLIENT NAME], West Allis</figcaption></figure>
+      </div>
+    </section>
+
+    <section id="quote" class="quote">
+      <div class="wrap quote__grid">
+        <div>
+          <p class="ey">Free estimate</p>
+          <h2 class="h2">Tell us about your project.</h2>
+          <p class="lede">Send the details and we'll get back within one business day with a free, no-obligation quote. Prefer to talk? Call <a href="tel:+14146878929">414-687-8929</a>.</p>
+        </div>
+        <form class="quote__form" id="quoteForm" novalidate>
+          <div class="row">
+            <div><label for="qname">Name</label><input id="qname" name="name" maxlength="80" required /></div>
+            <div><label for="qphone">Phone</label><input id="qphone" name="phone" maxlength="25" inputmode="tel" /></div>
+          </div>
+          <div class="full"><label for="qemail">Email</label><input id="qemail" name="email" type="email" maxlength="120" required /></div>
+          <div class="full"><label for="qtype">Project type</label>
+            <select id="qtype" name="type">
+              <option>Roofing</option><option>Remodel</option><option>Deck</option><option>Concrete</option><option>Other</option>
+            </select>
+          </div>
+          <div class="full"><label for="qmsg">Project details</label><textarea id="qmsg" name="message" rows="3" maxlength="800"></textarea></div>
+          <button class="btn btn--amber full" type="submit" style="width:100%;justify-content:center;margin-top:16px">Request my free quote</button>
+          <p class="quote__note">No spam. We only use your info to send your quote.</p>
+          <p class="quote__msg" id="qmsgOut" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <div>
+        <a class="logo" href="#top" style="margin-bottom:10px"><span class="logo__mark" aria-hidden="true"></span>Ironclad Builders</a>
+        <p style="color:var(--muted);max-width:34ch">Milwaukee's straight-shooting contractor. Licensed, insured, and built on referrals.</p>
+      </div>
+      <div><h4>Contact</h4><a href="tel:+14146878929">414-687-8929</a><a href="mailto:hello@mainstreetweb.com">hello@mainstreetweb.com</a><span style="color:var(--muted)">Milwaukee, WI</span></div>
+      <div><h4>Services</h4><a href="#services">Roofing</a><a href="#services">Remodels</a><a href="#services">Concrete</a></div>
+    </div>
+    <div class="wrap foot__legal">
+      <p>&copy; <span id="yr"></span> Ironclad Builders · Licensed &amp; insured, Milwaukee WI · Site by <a href="../index.html#contact" style="color:var(--amber)">Main Street Web</a></p>
+    </div>
+  </footer>
+
+  <div class="m-cta" aria-label="Quick actions">
+    <a class="m-cta__call" href="tel:+14146878929">Call</a>
+    <a class="m-cta__main" href="#quote">Free quote</a>
+  </div>
+
+  <script>
+    // mobile menu
+    var b=document.getElementById('burger'),m=document.getElementById('mmenu');
+    b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+    m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
+    document.getElementById('yr').textContent=new Date().getFullYear();
+    // if a stock placeholder fails to load, hide it so the themed background shows
+    Array.prototype.forEach.call(document.querySelectorAll('img.hero__bg, .ph img'),function(img){
+      img.addEventListener('error',function(){img.style.display='none';});
+    });
+    // demo form (no backend — friendly message)
+    var f=document.getElementById('quoteForm'),out=document.getElementById('qmsgOut');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var name=(f.elements['name'].value||'').trim(),email=(f.elements['email'].value||'').trim();
+      if(!name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){out.textContent='Please add your name and a valid email.';out.classList.add('show');return;}
+      out.textContent='Thanks '+name.replace(/[<>]/g,'')+'! We’ll review your project and get back within one business day. (Portfolio demo by Main Street Web.)';
+      out.classList.add('show');f.reset();
+    });
+  </script>
+</body>
+</html>

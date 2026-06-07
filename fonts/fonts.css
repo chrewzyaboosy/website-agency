@@ -1,0 +1,27 @@
+/* =================================================================
+   Self-hosted Space Grotesk — no third-party request.
+   -----------------------------------------------------------------
+   Installed (.woff2, loaded same-origin, font-display: swap):
+     space-grotesk-400.woff2   (Regular)
+     space-grotesk-500.woff2   (Medium)
+     space-grotesk-600.woff2   (SemiBold)
+     space-grotesk-700.woff2   (Bold)
+   To replace a weight, just overwrite the matching file. If a weight ever
+   goes missing, the site gracefully falls back to a clean system-font stack.
+   ================================================================= */
+@font-face {
+  font-family: "Space Grotesk"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url("space-grotesk-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url("space-grotesk-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk"; font-style: normal; font-weight: 600; font-display: swap;
+  src: url("space-grotesk-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk"; font-style: normal; font-weight: 700; font-display: swap;
+  src: url("space-grotesk-700.woff2") format("woff2");
+}
