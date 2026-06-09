@@ -2,7 +2,7 @@
    Loaded synchronously in <head>. The toggle button is added by script.js. */
 (function () {
   try {
-    var t = localStorage.getItem("msw-theme");
+    var t = localStorage.getItem("mortar-theme");
     if (t !== "dark" && t !== "light") {
       t = (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) ? "dark" : "light";
     }

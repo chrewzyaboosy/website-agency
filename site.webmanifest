@@ -1,6 +1,6 @@
 {
-  "name": "Main Street Web",
-  "short_name": "Main Street Web",
+  "name": "MortarWeb",
+  "short_name": "MortarWeb",
   "description": "Fast, modern websites and AI automation for local business.",
   "start_url": "/",
   "scope": "/",

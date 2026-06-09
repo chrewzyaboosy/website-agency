@@ -1,4 +1,4 @@
-# Main Street Web — agency marketing site
+# MortarWeb — agency marketing site
 
 A fast, framework-free marketing site for a web + AI-automation studio, plus
 three polished demo sites. **No build step, no dependencies** — open
@@ -37,8 +37,8 @@ website-agency/
 > To swap a weight, overwrite the matching file. (The demo pages still use
 > Google Fonts for their own typefaces.)
 
-> **Domain:** the site uses `mainstreetweb.com` in canonical/OG/JSON-LD/sitemap.
-> Several similarly-named agencies exist (mainstreetweb.co, etc.) — confirm the
+> **Domain:** the site uses `mortarweb.com` in canonical/OG/JSON-LD/sitemap.
+> Several similarly-named agencies exist (mortarweb.co, etc.) — confirm the
 > domain is yours before launch.
 >
 > **Legal pages** are professional templates, not legal advice — have a lawyer
@@ -64,7 +64,7 @@ submissions show up under **Site → Forms** with **zero configuration**.
 > **No lead is ever silently lost.** If the form can't deliver automatically
 > (unconfigured host, or a network error), the visitor is shown a one-tap
 > **"Email my request instead"** button with every field pre-filled into a
-> `mailto:` to `hello@mainstreetweb.com`. Set up that inbox (or change the
+> `mailto:` to `hello@mortarweb.com`. Set up that inbox (or change the
 > address in `index.html` + `script.js`) so those emails reach you.
 
 > No API keys belong in the front end — providers use a public endpoint id, not a
@@ -73,7 +73,7 @@ submissions show up under **Site → Forms** with **zero configuration**.
 ## 2. Make it yours
 
 - **Copy** is plain text in `index.html` — search and edit.
-- **Business details:** search for `414-687-8929`, `hello@mainstreetweb.com`,
+- **Business details:** search for `414-687-8929`, `hello@mortarweb.com`,
   `Milwaukee`, and `Abbas` (founder section).
 - **Booking link:** the founder section's "Book a free 15-min call" button
   currently points to `#contact` (the quote form) so it never 404s. When your

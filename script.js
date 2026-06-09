@@ -1,5 +1,5 @@
 /* =================================================================
-   MAIN STREET WEB — site behavior
+   MORTARWEB — site behavior
    -----------------------------------------------------------------
    Everything here is progressive enhancement: with JS disabled the
    page still reads, the form still posts, and the FAQ still opens.
@@ -330,11 +330,11 @@
       business: clean(el("business").value, 100),
       need: el("need").value,
       message: clean(el("message").value, 1200),
-      _subject: "New quote request from the Main Street Web site"
+      _subject: "New quote request from the MortarWeb site"
     };
 
     // --- Pre-filled email fallback: a lead is NEVER silently lost. ---
-    var FALLBACK_EMAIL = "hello@mainstreetweb.com";
+    var FALLBACK_EMAIL = "hello@mortarweb.com";
     var fallbackWrap = document.getElementById("formFallback");
     var fallbackLink = document.getElementById("formFallbackLink");
     function buildMailto() {
@@ -650,7 +650,7 @@
       a: "Happy to. Book a free 15-minute call and we'll talk through exactly what you need — no pressure.",
       c: [["Book a free call", BOOK], ["Call/text us", {href: TEL}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["call","phone","number","text","reach","contact you"],
-      a: "Call or text us at 414-687-8929 — a real human, usually same day. Prefer email? hello@mainstreetweb.com.",
+      a: "Call or text us at 414-687-8929 — a real human, usually same day. Prefer email? hello@mortarweb.com.",
       c: [["Call 414-687-8929", {href: TEL}], ["Book a 15-min call", {href: CAL}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["service","services","do you","offer","build","make me","help me","website","site"],
       a: "We do three things for local businesses: build fast, modern websites; set up AI automation so you never miss a lead; and keep it all running with a care plan (hosting, updates, monitoring).",
@@ -659,7 +659,7 @@
       a: "Love it. The fastest way is a free quote — tell us a bit about your business and we'll reply within one business day with honest advice and a fixed price.",
       c: [["Open the quote form", {nav: "#contact"}], ["Try the live preview", {nav: "#try"}], ["Call/text us", {href: TEL}]] },
     { k: ["human","person","real","agent","someone","talk to","manager","owner"],
-      a: "Of course — you'll always deal with a real person here. Call or text 414-687-8929, email hello@mainstreetweb.com, or drop your details in the quote form and we'll reach out fast.",
+      a: "Of course — you'll always deal with a real person here. Call or text 414-687-8929, email hello@mortarweb.com, or drop your details in the quote form and we'll reach out fast.",
       c: [["Get a free quote", {nav: "#contact"}], ["Call/text", {href: TEL}]] },
     { k: ["thank","thanks","appreciate","cheers","awesome","perfect","great","cool"],
       a: "Anytime! When you're ready, a free quote is just a tap away — or call/text 414-687-8929.",
@@ -670,7 +670,7 @@
     c: [["Get a free quote", {nav: "#contact"}], ["Call/text us", {href: TEL}], ["See pricing", {nav: "#pricing"}]]
   };
   var GREETING = {
-    a: "Hi! 👋 I'm the Main Street Web assistant. Ask me about pricing, timelines or what's included — or I can get you a free quote. What can I help with?",
+    a: "Hi! 👋 I'm the MortarWeb assistant. Ask me about pricing, timelines or what's included — or I can get you a free quote. What can I help with?",
     c: [["Pricing", {q: "pricing"}], ["How fast?", {q: "timeline"}], ["What's included?", {q: "included"}], ["Get a free quote", {nav: "#contact"}]]
   };
 
@@ -806,7 +806,7 @@
   btn.addEventListener("click", function () {
     var next = isDark() ? "light" : "dark";
     root.setAttribute("data-theme", next);
-    try { localStorage.setItem("msw-theme", next); } catch (e) { /* ignore */ }
+    try { localStorage.setItem("mortar-theme", next); } catch (e) { /* ignore */ }
     sync();
   });
 
