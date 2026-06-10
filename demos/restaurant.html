@@ -58,17 +58,17 @@
       radial-gradient(120% 90% at 80% -10%,rgba(202,162,74,.35),transparent 55%),
       radial-gradient(90% 80% at -10% 110%,rgba(47,93,58,.18),transparent 50%),
       var(--cream-2)}
-    .hero__in{display:grid;gap:30px;padding:clamp(48px,9vw,96px) 0;align-items:center}
+    .hero__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;padding:clamp(48px,9vw,96px) 0}
     .hero__tag{display:inline-block;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-dk);font-size:.82rem;margin-bottom:16px}
     .hero h1{font-size:clamp(2.6rem,8vw,5.2rem)}
     .hero h1 em{font-style:italic;color:var(--terra)}
-    .hero p{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.28rem);max-width:46ch;margin:18px 0 28px}
-    .hero__cta{display:flex;flex-wrap:wrap;gap:14px}
-    .hero__plate{aspect-ratio:1;border-radius:24px;background:
+    .hero p{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.28rem);max-width:46ch;margin:18px auto 28px}
+    .hero__cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+    .hero__plate{width:clamp(150px,24vw,210px);aspect-ratio:1;margin-bottom:26px;border-radius:50%;background:
       conic-gradient(from 200deg,#e7b75a,#d2731f,#b5471f,#2f5d3a,#e7b75a);
       box-shadow:0 30px 60px -24px rgba(42,32,26,.5);position:relative;overflow:hidden}
     .hero__plate::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff7ea,#f3dcb6 60%,#e7c690);box-shadow:inset 0 0 40px rgba(140,80,20,.25)}
-    .hero__plate span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--disp);font-style:italic;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);z-index:2}
+    .hero__plate span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--disp);font-style:italic;font-size:.72rem;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);z-index:2}
 
     /* artwork — the designed plate + hand-drawn dish illustrations.
        No external images, so nothing can load slow or look off-brand. */
@@ -86,7 +86,9 @@
 
     /* menu */
     .menu{background:var(--cream-2)}
-    .menu__grid{display:grid;gap:32px;grid-template-columns:1fr;margin-top:38px}
+    .menu-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(22px,4.5vw,44px);box-shadow:0 16px 36px -26px rgba(42,32,26,.5);position:relative;margin-top:38px}
+    .menu-card::before{content:"";position:absolute;inset:10px;border:1px dashed var(--line);border-radius:12px;pointer-events:none}
+    .menu__grid{display:grid;gap:32px;grid-template-columns:1fr}
     .menu__col h3{font-size:1.5rem;color:var(--forest);margin-bottom:6px}
     .menu__col .sub{color:var(--muted);font-size:.9rem;margin-bottom:18px}
     .dish{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
@@ -117,29 +119,39 @@
     .res__msg{margin-top:14px;padding:13px;border-radius:10px;background:rgba(202,162,74,.2);border:1px solid var(--gold);display:none}
     .res__msg.show{display:block}
 
-    footer{background:var(--ink);color:#cdbdaf;padding:46px 0 28px}
-    .foot{display:grid;gap:22px;grid-template-columns:1fr}
+    footer{background:var(--ink);color:#cdbdaf;padding:46px 0 28px;text-align:center}
+    .foot{display:grid;gap:20px;grid-template-columns:1fr;justify-items:center}
+    .foot .logo{justify-content:center}
     .foot a{color:#cdbdaf;text-decoration:none;display:block;margin:6px 0}
     .foot a:hover{color:var(--gold)}
     .foot h4{font-family:var(--disp);font-size:1.05rem;margin:0 0 10px;color:var(--cream)}
     .foot__legal{color:#a99a8c;font-size:.84rem;margin-top:28px;border-top:1px solid rgba(253,246,236,.12);padding-top:18px}
 
     @media(min-width:760px){
-      .hero__in{grid-template-columns:1.05fr .95fr}
       .menu__grid{grid-template-columns:1fr 1fr}
       .foodshots{grid-template-columns:repeat(3,1fr)}
       .visit__grid{grid-template-columns:1fr 1fr}
       .res__form .row{grid-template-columns:repeat(4,1fr)}
-      .foot{grid-template-columns:2fr 1fr 1fr}
     }
     @media(min-width:880px){
-      .nav__links{display:flex}
-      .nav__cta{display:inline-flex;margin-left:8px}
+      /* classic restaurant nav: links left, wordmark centered, CTA right */
+      .nav__in{display:grid;grid-template-columns:1fr auto 1fr;gap:18px}
+      .nav__links{display:flex;grid-column:1;grid-row:1;justify-self:start;margin-left:0}
+      .logo{grid-column:2;grid-row:1;justify-self:center}
+      .nav__cta{display:inline-flex;grid-column:3;grid-row:1;justify-self:end;margin-left:0}
       .burger{display:none}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
-    /* reviews */
+    /* press-style pull quotes */
+    .press{text-align:center}
+    .press .ey,.press .h2{text-align:center}
+    .press .h2{margin-inline:auto}
+    .press__main{margin:30px auto 0;max-width:30ch}
+    .press__stars{color:var(--gold);letter-spacing:4px;margin-bottom:14px}
+    .press__main blockquote{margin:0;font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(1.5rem,3.8vw,2.5rem);line-height:1.25;color:var(--ink)}
+    .press__main figcaption{margin-top:16px;color:var(--muted);font-weight:700;font-size:.92rem}
+    .press__row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 40px;margin-top:30px;color:var(--muted);font-size:.96rem}
     .revs{display:grid;gap:16px;grid-template-columns:1fr;margin-top:36px}
     .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 16px 36px -26px rgba(42,32,26,.5)}
     .rev .st{color:var(--gold);letter-spacing:2px;margin-bottom:8px}
@@ -198,22 +210,20 @@
   <main id="top">
     <section class="hero">
       <div class="wrap hero__in">
-        <div>
-          <span class="hero__tag">Wood-fired kitchen &amp; café · Milwaukee</span>
-          <h1>Slow food,<br /><em>warm</em> mornings.</h1>
-          <p>Seasonal plates from the wood fire, fresh-baked pastries at sunrise, and a table that always feels like it was saved just for you.</p>
-          <div class="hero__cta">
-            <a class="btn btn--terra" href="#reserve">Reserve a table</a>
-            <a class="btn btn--out" href="#menu">See the menu</a>
-          </div>
-        </div>
         <div class="hero__plate" role="img" aria-label="A wood-fired seasonal plate">
           <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M50 78V40"/>
             <path d="M50 58c-16 2-24-8-26-22 14-2 24 6 26 22z"/>
             <path d="M50 48c14 2 22-6 24-19-12-2-22 5-24 19z"/>
           </svg>
-          <span>Today's wood-fired special</span>
+          <span>Daily special</span>
+        </div>
+        <span class="hero__tag">Wood-fired kitchen &amp; café · Milwaukee</span>
+        <h1>Slow food,<br /><em>warm</em> mornings.</h1>
+        <p>Seasonal plates from the wood fire, fresh-baked pastries at sunrise, and a table that always feels like it was saved just for you.</p>
+        <div class="hero__cta">
+          <a class="btn btn--terra" href="#reserve">Reserve a table</a>
+          <a class="btn btn--out" href="#menu">See the menu</a>
         </div>
       </div>
     </section>
@@ -223,6 +233,7 @@
         <p class="ey">On the menu</p>
         <h2 class="h2">Made fresh, served generous.</h2>
         <p class="lede">A rotating, seasonal menu — here's a taste of what's on right now.</p>
+        <div class="menu-card">
         <div class="menu__grid">
           <div class="menu__col">
             <h3>Mornings</h3>
@@ -238,6 +249,7 @@
             <div class="dish"><div><div class="dish__name">Harvest Grain Bowl</div><div class="dish__desc">Roasted squash, farro, kale, maple-tahini.</div></div><div class="dish__price">$15</div></div>
             <div class="dish"><div><div class="dish__name">Ember Burger</div><div class="dish__desc">Grass-fed beef, smoked onion, house sauce, fries.</div></div><div class="dish__price">$18</div></div>
           </div>
+        </div>
         </div>
         <div class="foodshots">
           <figure class="ph">
@@ -312,14 +324,15 @@
       </div>
     </section>
 
-    <section class="wrap" aria-label="Reviews">
+    <section class="wrap press" aria-label="Reviews">
       <p class="ey">Guests love us</p>
       <h2 class="h2">Five stars, table after table.</h2>
-      <div class="revs">
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Best brunch in the neighborhood — and they remembered our names the second time."</p><figcaption class="by"><span class="av" aria-hidden="true">JM</span><span>Jenna M. · Regular since 2024</span></figcaption></figure>
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"The wood-fired pizza is unreal. We're here every Friday now."</p><figcaption class="by"><span class="av" aria-hidden="true">DR</span><span>Devon R. · Friday regular</span></figcaption></figure>
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Cozy, warm, and the coffee is the best on this side of town."</p><figcaption class="by"><span class="av" aria-hidden="true">AK</span><span>Aisha K. · Brunch devotee</span></figcaption></figure>
-      </div>
+      <figure class="press__main">
+        <div class="press__stars" aria-hidden="true">★★★★★</div>
+        <blockquote>“Best brunch in the neighborhood — and they remembered our names the second time.”</blockquote>
+        <figcaption>Jenna M. · regular since 2024</figcaption>
+      </figure>
+      <p class="press__row"><span>“The wood-fired pizza is unreal.” — Devon R.</span><span>“The best coffee on this side of town.” — Aisha K.</span></p>
     </section>
 
     <section id="reserve" class="res">
@@ -374,7 +387,7 @@
     if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){
       document.documentElement.classList.add('js-rv');
       var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px'});
-      Array.prototype.forEach.call(document.querySelectorAll('.dish,.rev,.card,.ph,.ey,.h2,.lede'),function(el){el.classList.add('rv');io.observe(el)});
+      Array.prototype.forEach.call(document.querySelectorAll('.dish,.press__main,.press__row,.card,.ph,.ey,.h2,.lede'),function(el){el.classList.add('rv');io.observe(el)});
     }
     var f=document.getElementById('resForm'),out=document.getElementById('resMsg');
     f.addEventListener('submit',function(e){
