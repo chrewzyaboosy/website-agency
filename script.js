@@ -145,9 +145,9 @@
   var estimateCta = document.getElementById("estimateCta");
 
   var BASE = {
-    starter: { once: 149, mo: 99,  label: "Single-page" },
-    growth:  { once: 349, mo: 149, label: "Multi-section" },
-    pro:     { once: 699, mo: 249, label: "Full site" }
+    launch: { once: 490,  mo: 99,  label: "Single-page" },
+    growth: { once: 1190, mo: 199, label: "Multi-section" },
+    engine: { once: 2490, mo: 299, label: "Full site" }
   };
 
   function money(n) { return "$" + n.toLocaleString("en-US"); }
@@ -155,8 +155,8 @@
   function computeEstimate() {
     if (!estForm) return null;
     var typeInput = estForm.querySelector('input[name="siteType"]:checked');
-    var type = typeInput ? typeInput.value : "starter";
-    var base = BASE[type] || BASE.starter;
+    var type = typeInput ? typeInput.value : "launch";
+    var base = BASE[type] || BASE.launch;
 
     var once = base.once;
     var mo = base.mo;
@@ -380,10 +380,11 @@
     // instead, set the form's action to your Formspree URL.
     var action = form.getAttribute("action") || "";
     var toFormspree = action.indexOf("formspree.io") !== -1 && !/YOUR_FORM_ID|YOUR_ID/.test(action);
+    var toFormSubmit = action.indexOf("formsubmit.co") !== -1;
     var toNetlify = form.getAttribute("data-netlify") === "true";
 
     // No backend wired up at all → go straight to the email fallback.
-    if (!toFormspree && !toNetlify) {
+    if (!toFormspree && !toFormSubmit && !toNetlify) {
       setSending(false);
       showStatus("error", "Email is the fastest way to reach us right now — tap below and your details are already filled in.");
       showFallback();
@@ -394,8 +395,15 @@
     showStatus("success", "Sending…");
 
     var request;
-    if (toFormspree) {
-      request = fetch(action, {
+    if (toFormspree || toFormSubmit) {
+      var url = action;
+      if (toFormSubmit && action.indexOf("/ajax/") === -1) {
+        // FormSubmit's JSON endpoint lives under /ajax/<email>
+        url = action.replace("formsubmit.co/", "formsubmit.co/ajax/");
+        payload._template = "table";
+        payload._captcha = "false";
+      }
+      request = fetch(url, {
         method: "POST",
         headers: { "Accept": "application/json", "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -419,7 +427,16 @@
 
     request
       .then(function (res) {
-        if (!res.ok) throw new Error("Bad response " + res.status);
+        // FormSubmit can answer 200 with success:"false" (e.g. before the
+        // one-time activation click) — treat that as a failure too.
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          if (!res.ok || (toFormSubmit && data && String(data.success) === "false")) {
+            throw new Error("Bad response " + res.status);
+          }
+          return data;
+        });
+      })
+      .then(function () {
         setSending(false);
         form.reset();
         if (typeof renderEstimate === "function") renderEstimate();
@@ -637,7 +654,7 @@
   // ----- Knowledge base (your "fed" info). Edit freely. -----
   var KB = [
     { k: ["price","cost","much","pricing","expensive","cheap","afford","rate","fee","budget","$"],
-      a: "Our pricing is simple and flat: Starter is $149 one-time + $99/mo, Growth is $349 + $149/mo, and Pro is $699 + $249/mo. Every build includes a free logo, business email and Google setup — and you always own your site and can cancel anytime.",
+      a: "Our pricing is flat and published: Launch is $490 one-time + $99/mo care, Growth is $1,190 + $199/mo with smart lead automation included, and Engine is $2,490 + $299/mo with the full automation suite. Every build includes a free logo, business email and Google setup — and you always own your site and can cancel anytime.",
       c: [["See full pricing", {nav: "#pricing"}], ["Build an estimate", {nav: "#estimate"}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["time","long","fast","week","quick","turnaround","launch","when","soon","days","timeline"],
       a: "Most single-page sites go live within about a week — often just a few days once we have your details. Bigger builds with automation take a little longer, and we give you an exact timeline up front.",

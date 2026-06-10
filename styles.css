@@ -504,6 +504,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   border: solid var(--accent); border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
+.card__more {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 16px; font-weight: 600; font-size: .92rem;
+  color: var(--accent-ink); text-decoration: none;
+}
+.card__more span { transition: transform .2s var(--ease-spring); }
+.card__more:hover span { transform: translateX(4px); }
+.card--feature .card__more { color: var(--accent-bri); }
 
 /* =================================================================
    5. EVERYTHING INCLUDED
@@ -619,9 +627,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .tier .btn--outline:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 
 .pricing__note {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 10px;
   margin-top: 30px; color: var(--muted-dk); font-size: .95rem;
 }
+.pricing__note + .pricing__note { margin-top: 10px; }
+.pricing__note a, .pricing__note strong { color: var(--paper); }
 
 /* ---- Guarantee ---- */
 .guarantee {
@@ -1354,6 +1364,13 @@ a.demo-card:hover .demo-card__arrow { transform: translateX(5px); }
 /* =================================================================
    RESPONSIVE
    ================================================================= */
+/* On phones, keep a slim version of the visual proof: just the browser mock */
+@media (max-width: 599px) {
+  .hero__showcase { display: block; margin-top: 8px; }
+  .hero__showcase .phone, .hero__showcase .lead-toast { display: none; }
+  .hero__showcase .browser { max-width: 430px; margin-inline: auto; animation: none; }
+}
+
 @media (min-width: 600px) {
   .topbar { display: block; }
   .hero__showcase { display: block; }
