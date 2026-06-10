@@ -1,22 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Main Street Web — websites and AI automation for Milwaukee small businesses">
-  <rect width="1200" height="630" fill="#171311"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Mortar Web — websites and AI automation for Milwaukee small businesses">
+  <defs>
+    <radialGradient id="og-glow" cx="0.88" cy="0.05" r="0.9">
+      <stop offset="0" stop-color="#e0511f" stop-opacity="0.32"/>
+      <stop offset="0.55" stop-color="#e0511f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#16120f"/>
+  <rect width="1200" height="630" fill="url(#og-glow)"/>
   <!-- motif line + dots -->
   <path d="M80 540 C 360 480, 380 300, 620 280 S 980 180, 1120 90"
-        fill="none" stroke="#f7f4ef" stroke-opacity="0.18" stroke-width="3" stroke-dasharray="8 14"/>
+        fill="none" stroke="#faf7f1" stroke-opacity="0.16" stroke-width="3" stroke-dasharray="8 14"/>
   <circle cx="620" cy="280" r="10" fill="#f0673c"/>
   <circle cx="1120" cy="90" r="14" fill="#f0673c"/>
 
   <!-- wordmark -->
   <g transform="translate(80 92)">
     <rect x="0" y="2" width="36" height="36" rx="9" fill="#cc3d18"/>
-    <path d="M9 27.3 V12.7 L18 21.7 L27 12.7 V27.3" fill="none" stroke="#f7f4ef" stroke-width="3.95" stroke-linejoin="round" stroke-linecap="round"/>
-    <text x="46" y="33" font-family="'Space Grotesk', Arial, sans-serif" font-size="42" font-weight="700" fill="#f7f4ef">Main Street Web</text>
+    <path d="M9 27.3 V12.7 L18 21.7 L27 12.7 V27.3" fill="none" stroke="#faf7f1" stroke-width="3.95" stroke-linejoin="round" stroke-linecap="round"/>
+    <text x="46" y="33" font-family="'Space Grotesk', Arial, sans-serif" font-size="42" font-weight="700" fill="#faf7f1">Mortar Web</text>
   </g>
 
   <!-- headline -->
-  <text x="80" y="300" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#f7f4ef" letter-spacing="-2">Websites &amp; AI automation</text>
-  <text x="80" y="392" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#f7f4ef" letter-spacing="-2">for <tspan fill="#f0673c">local business.</tspan></text>
+  <text x="80" y="300" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#faf7f1" letter-spacing="-2">Websites &amp; AI automation</text>
+  <text x="80" y="392" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#faf7f1" letter-spacing="-2">for <tspan fill="#f0673c">local business.</tspan></text>
 
   <!-- subhead -->
-  <text x="82" y="470" font-family="'Space Grotesk', Arial, sans-serif" font-size="32" fill="#b7ad9f">More calls, less busywork. Milwaukee, WI · Live within a week.</text>
+  <text x="82" y="470" font-family="'Space Grotesk', Arial, sans-serif" font-size="32" fill="#b9af9f">More calls, less busywork. Milwaukee, WI · Live within a week.</text>
 </svg>

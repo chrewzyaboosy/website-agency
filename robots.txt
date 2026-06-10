@@ -1,8 +1,26 @@
-# Mortar Web — robots
+# Mortar Web — robots.txt
+# Everything is crawlable except the portfolio demo pages (noindex anyway).
+
 User-agent: *
 Allow: /
 Disallow: /demos/
 
+# AI assistants & answer engines are explicitly welcome — local customers
+# increasingly ask AI "who builds websites in Milwaukee", and we want to be
+# the cited answer. Demos stay off-limits for everyone.
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: CCBot
+Allow: /
+Disallow: /demos/
 
-# Update to your real domain:
 Sitemap: https://mortarweb.com/sitemap.xml

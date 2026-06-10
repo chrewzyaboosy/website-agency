@@ -1,5 +1,5 @@
 /* =================================================================
-   MAIN STREET WEB — site behavior
+   MORTAR WEB — site behavior
    -----------------------------------------------------------------
    Everything here is progressive enhancement: with JS disabled the
    page still reads, the form still posts, and the FAQ still opens.
@@ -93,11 +93,28 @@
   var revealEls = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
   if (!prefersReduced && "IntersectionObserver" in window && revealEls.length) {
     document.documentElement.classList.add("js-anim");
+
+    // Small stagger between siblings that reveal together (capped at 6 steps).
+    var staggerParents = [], staggerCounts = [];
+    revealEls.forEach(function (el) {
+      var p = el.parentElement || document.body;
+      var i = staggerParents.indexOf(p);
+      if (i === -1) { staggerParents.push(p); staggerCounts.push(0); i = staggerParents.length - 1; }
+      el.style.setProperty("--rd", Math.min(staggerCounts[i]++, 5) * 70 + "ms");
+    });
+
     var revealObs = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          obs.unobserve(entry.target);
+          var el = entry.target;
+          el.classList.add("is-in");
+          obs.unobserve(el);
+          // Once the entrance finishes, drop the reveal styling so each
+          // component's own hover transitions take over cleanly.
+          setTimeout(function () {
+            el.classList.remove("reveal", "is-in");
+            el.style.removeProperty("--rd");
+          }, 1100);
         }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
@@ -330,7 +347,7 @@
       business: clean(el("business").value, 100),
       need: el("need").value,
       message: clean(el("message").value, 1200),
-      _subject: "New quote request from the Main Street Web site"
+      _subject: "New quote request from the Mortar Web site"
     };
 
     // --- Pre-filled email fallback: a lead is NEVER silently lost. ---
@@ -470,17 +487,17 @@
 (function () {
   "use strict";
   var TYPES = {
-    contractor: { tag: "Licensed & insured · Milwaukee", btn: "Get a free quote", img: "roofing,construction" },
-    restaurant: { tag: "Fresh · Local favorite", btn: "Reserve a table", img: "cafe,interior" },
-    salon:      { tag: "Book your chair in seconds", btn: "Book now", img: "hairsalon,interior" },
-    gym:        { tag: "Train with the best in town", btn: "Start free trial", img: "gym,fitness" },
-    dentist:    { tag: "Gentle, modern dental care", btn: "Book a visit", img: "dental,office" },
-    cafe:       { tag: "Coffee, done right", btn: "See the menu", img: "coffeeshop,latte" }
+    contractor: { tag: "Licensed & insured · Milwaukee", btn: "Get a free quote" },
+    restaurant: { tag: "Wood-fired · Local favorite", btn: "Reserve a table" },
+    salon:      { tag: "Book your chair in seconds", btn: "Book now" },
+    gym:        { tag: "Train with the best in town", btn: "Start free trial" },
+    dentist:    { tag: "Gentle, modern dental care", btn: "Book a visit" },
+    cafe:       { tag: "Coffee, done right", btn: "See the menu" }
   };
   var nameEl = document.getElementById("bizName");
   if (!nameEl) return;
   var urlEl = document.getElementById("bzUrl");
-  var imgEl = document.getElementById("bzImg");
+  var screenEl = document.getElementById("bzScreen");
   var tagEl = document.getElementById("bzTag");
   var titleEl = document.getElementById("bzTitle");
   var btnEl = document.getElementById("bzBtn");
@@ -498,16 +515,13 @@
     if (urlEl) urlEl.textContent = slug(name);
   }
   function updateType(t) {
-    current = t;
-    var d = TYPES[t] || TYPES.contractor;
+    current = TYPES[t] ? t : "contractor";
+    var d = TYPES[current];
     if (tagEl) tagEl.textContent = d.tag;
     if (btnEl) btnEl.textContent = d.btn;
-    if (imgEl) {
-      var media = imgEl.closest(".media");
-      imgEl.classList.remove("is-loaded", "is-failed");
-      if (media) media.classList.remove("is-loaded", "is-failed");
-      imgEl.src = "https://loremflickr.com/800/520/" + d.img + "?lock=3" + Math.floor(Math.random() * 9);
-    }
+    // Re-theme the vector preview (palette + industry icon via CSS) —
+    // instant, on-brand, and no image request at all.
+    if (screenEl) screenEl.setAttribute("data-industry", current);
   }
   nameEl.addEventListener("input", updateText);
   Array.prototype.forEach.call(chips, function (chip) {
@@ -670,7 +684,7 @@
     c: [["Get a free quote", {nav: "#contact"}], ["Call/text us", {href: TEL}], ["See pricing", {nav: "#pricing"}]]
   };
   var GREETING = {
-    a: "Hi! 👋 I'm the Main Street Web assistant. Ask me about pricing, timelines or what's included — or I can get you a free quote. What can I help with?",
+    a: "Hi! 👋 I'm the Mortar Web assistant. Ask me about pricing, timelines or what's included — or I can get you a free quote. What can I help with?",
     c: [["Pricing", {q: "pricing"}], ["How fast?", {q: "timeline"}], ["What's included?", {q: "included"}], ["Get a free quote", {nav: "#contact"}]]
   };
 

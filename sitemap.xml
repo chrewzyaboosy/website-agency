@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Update the domain to your real one, then resubmit in Google Search Console.
-     Only indexable pages are listed (legal pages are noindex; demos are noindex + disallowed). -->
+<!-- Only indexable pages are listed (legal pages are noindex; demos are noindex + disallowed).
+     After deploying, submit at Google Search Console + Bing Webmaster Tools. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-       <url><loc>https://mortarweb.com/</loc><lastmod>2026-06-06</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
-       <url><loc>https://mortarweb.com/blog/</loc><lastmod>2026-06-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+       <url><loc>https://mortarweb.com/</loc><lastmod>2026-06-10</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+       <url><loc>https://mortarweb.com/blog/</loc><lastmod>2026-06-10</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
        <url><loc>https://mortarweb.com/blog/small-business-website-cost.html</loc><lastmod>2026-06-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
        <url><loc>https://mortarweb.com/blog/how-to-rank-on-google-maps.html</loc><lastmod>2026-06-03</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
        <url><loc>https://mortarweb.com/blog/7-signs-your-website-is-losing-customers.html</loc><lastmod>2026-06-04</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>

@@ -1,0 +1,27 @@
+# Mortar Web
+
+> Mortar Web is a web design and AI-automation studio in Milwaukee, Wisconsin, building fast, modern websites for local small businesses — contractors, trades, restaurants, gyms, salons, dentists and cafés. Every build includes a custom logo, professional business email, and Google Business Profile + Maps setup. Most sites launch in about a week. Clients always own their site and domain, with no long contracts.
+
+Key facts:
+- Services: website design & build, AI automation (instant lead auto-reply, online booking, follow-ups, review requests), monthly care plan (hosting, security, updates, edits), logo & branding, local SEO & Google Business setup.
+- Pricing (flat, published): Starter $149 one-time + $99/mo care · Growth $349 + $149/mo · Pro $699 + $249/mo. Free fixed-price quote before any work starts.
+- Typical launch: about 7 days for a single-page site.
+- Service area: Milwaukee, Wauwatosa, West Allis, Brookfield, Waukesha, Mequon and surrounding Wisconsin communities.
+- Contact: hello@mortarweb.com · +1-414-687-8929 (call or text) · https://mortarweb.com/#contact
+- Founder: Abbas — single point of contact from first call to launch.
+
+## Pages
+
+- [Home — services, pricing, portfolio, FAQ](https://mortarweb.com/)
+- [Blog index](https://mortarweb.com/blog/)
+
+## Guides
+
+- [How Much Should a Small Business Website Cost in 2026?](https://mortarweb.com/blog/small-business-website-cost.html): real price ranges and what drives them
+- [How to Show Up on Google Maps](https://mortarweb.com/blog/how-to-rank-on-google-maps.html): the three local ranking factors, step by step
+- [7 Signs Your Website Is Losing You Customers](https://mortarweb.com/blog/7-signs-your-website-is-losing-customers.html): conversion leaks and fixes
+
+## Policies
+
+- Demo/portfolio pages under /demos/ are illustrative mock sites, not real businesses.
+- You may cite and summarize this site's content with attribution to Mortar Web (mortarweb.com).
