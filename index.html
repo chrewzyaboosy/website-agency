@@ -5,24 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="theme.js"></script>
 
-  <title>Main Street Web — Websites &amp; AI Automation for Local Business</title>
-  <meta name="description" content="Main Street Web builds fast, modern websites and AI automation for Milwaukee-area small businesses — logo, business email and Google setup included. Most sites launch in about a week." />
-  <meta name="theme-color" content="#171311" />
+  <title>Milwaukee Web Design &amp; Smart Lead Automation | Mortar Web</title>
+  <meta name="description" content="Fast, modern websites with automated lead capture &amp; follow-up for Milwaukee small businesses. From $490 with logo, email &amp; Google setup — live in about a week." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#16120f" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14110d" />
   <link rel="canonical" href="https://mortarweb.com/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Main Street Web — Websites &amp; AI Automation for Local Business" />
-  <meta property="og:description" content="Fast, modern websites + AI automation for local businesses. Logo, email &amp; Google setup included. Most sites launch in about a week." />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Mortar Web — Milwaukee Web Design &amp; Smart Lead Automation" />
+  <meta property="og:description" content="Fast, modern websites with automated lead capture &amp; follow-up. Logo, email &amp; Google setup included. Most sites launch in about a week." />
   <meta property="og:url" content="https://mortarweb.com/" />
   <meta property="og:image" content="https://mortarweb.com/og-image.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Main Street Web — websites and AI automation for local business." />
-  <meta property="og:site_name" content="Main Street Web" />
+  <meta property="og:image:alt" content="Mortar Web — websites and smart lead automation for local business." />
+  <meta property="og:site_name" content="Mortar Web" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Main Street Web — Websites &amp; AI Automation for Local Business" />
-  <meta name="twitter:description" content="Fast, modern websites + AI automation for local businesses. Logo, email &amp; Google setup included." />
+  <meta name="twitter:title" content="Mortar Web — Milwaukee Web Design &amp; Smart Lead Automation" />
+  <meta name="twitter:description" content="Fast, modern websites with automated lead capture &amp; follow-up. Logo, email &amp; Google setup included." />
   <meta name="twitter:image" content="https://mortarweb.com/og-image.png" />
 
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -30,25 +33,26 @@
   <link rel="manifest" href="site.webmanifest" />
 
   <link rel="preload" href="fonts/space-grotesk-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/space-grotesk-600.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="fonts/fonts.css" />
 
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Structured data: LocalBusiness + FAQ (update the domain to your real one) -->
+  <!-- Structured data: local business + website + FAQ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       { "@type": "ProfessionalService", "@id": "https://mortarweb.com/#business",
-        "name": "Main Street Web",
-        "description": "Fast, modern websites and AI automation for local businesses in the Greater Milwaukee area. Logo, business email and Google setup included.",
+        "name": "Mortar Web",
+        "description": "Fast, modern websites and smart lead automation — instant follow-up, booking and review systems — for local businesses in the Greater Milwaukee area. Logo, business email and Google setup included with every build.",
         "url": "https://mortarweb.com/",
         "image": "https://mortarweb.com/og-image.png",
         "logo": "https://mortarweb.com/apple-touch-icon.png",
         "slogan": "Less busywork. More booked work.",
         "telephone": "+1-414-687-8929", "email": "hello@mortarweb.com", "priceRange": "$$",
-        "founder": { "@type": "Person", "name": "Abbas" },
+        "founder": { "@type": "Person", "name": "Abbas", "jobTitle": "Founder" },
         "address": { "@type": "PostalAddress", "addressLocality": "Milwaukee", "addressRegion": "WI", "addressCountry": "US" },
         "geo": { "@type": "GeoCoordinates", "latitude": 43.0389, "longitude": -87.9065 },
         "areaServed": [
@@ -60,21 +64,42 @@
           { "@type": "City", "name": "Mequon" }
         ],
         "openingHoursSpecification": [
-          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" }
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" }
         ],
-        "knowsAbout": ["Web design","Website development","AI automation","Local SEO","Google Business Profile","Branding"],
-        "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Services", "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website design & development" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Website + AI automation" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI automation & lead follow-up" } },
+        "knowsAbout": ["Web design","Website development","Marketing automation","Lead follow-up systems","Local SEO","Google Business Profile","Branding"],
+        "hasOfferCatalog": { "@type": "OfferCatalog", "name": "Website & automation plans", "itemListElement": [
+          { "@type": "Offer", "name": "Launch", "description": "One-page, mobile-first website with free logo, business email and Google Business setup, plus a $99/mo care plan.",
+            "itemOffered": { "@type": "Service", "name": "Single-page website design & launch" },
+            "priceSpecification": { "@type": "PriceSpecification", "price": 490, "priceCurrency": "USD" } },
+          { "@type": "Offer", "name": "Growth", "description": "Multi-section website with the smart lead-response system (instant reply and capture) included, plus a $199/mo Growth Plan.",
+            "itemOffered": { "@type": "Service", "name": "Multi-section website + lead automation" },
+            "priceSpecification": { "@type": "PriceSpecification", "price": 1190, "priceCurrency": "USD" } },
+          { "@type": "Offer", "name": "Engine", "description": "Full multi-page website with the complete automation suite (booking, follow-ups, reviews) and priority support, plus a $299/mo Growth Plan.",
+            "itemOffered": { "@type": "Service", "name": "Full website + automation suite" },
+            "priceSpecification": { "@type": "PriceSpecification", "price": 2490, "priceCurrency": "USD" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Logo & branding" } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO & Google Business setup" } }
         ] } },
+      { "@type": "WebSite", "@id": "https://mortarweb.com/#website",
+        "url": "https://mortarweb.com/",
+        "name": "Mortar Web",
+        "publisher": { "@id": "https://mortarweb.com/#business" },
+        "inLanguage": "en-US" },
+      { "@type": "WebPage", "@id": "https://mortarweb.com/#webpage",
+        "url": "https://mortarweb.com/",
+        "name": "Milwaukee Web Design & Smart Lead Automation | Mortar Web",
+        "isPartOf": { "@id": "https://mortarweb.com/#website" },
+        "about": { "@id": "https://mortarweb.com/#business" },
+        "primaryImageOfPage": { "@type": "ImageObject", "url": "https://mortarweb.com/og-image.png" },
+        "description": "Fast, modern websites with automated lead capture & follow-up for Milwaukee small businesses. From $490 with logo, email & Google setup — live in about a week.",
+        "inLanguage": "en-US" },
       { "@type": "FAQPage", "mainEntity": [
-        { "@type": "Question", "name": "How much does a website cost?", "acceptedAnswer": { "@type": "Answer", "text": "Sites start at $149 one-time plus $99/mo for the care plan, and most projects land between the Starter and Growth tiers. A logo, business email and Google setup are included. You'll get a clear, fixed price before any work starts." } },
+        { "@type": "Question", "name": "How much does a website cost?", "acceptedAnswer": { "@type": "Answer", "text": "Sites start at $490 one-time plus $99/mo for the care plan. Most businesses choose Growth: $1,190 one-time plus a $199/mo Growth Plan with smart lead automation included. A logo, business email and Google setup come free with every build, and you get a clear, fixed price before any work starts." } },
         { "@type": "Question", "name": "How long until it's live?", "acceptedAnswer": { "@type": "Answer", "text": "Most single-page sites go live within a week, often in just a few days once we have your details." } },
         { "@type": "Question", "name": "Do I own my website?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The site is yours. Your domain stays in your name, and if you ever leave the care plan, you keep your site files." } },
         { "@type": "Question", "name": "What does ongoing support cover?", "acceptedAnswer": { "@type": "Answer", "text": "The monthly care plan covers hosting, security, uptime monitoring, updates, and monthly tweaks. Cancel anytime." } },
+        { "@type": "Question", "name": "Is SEO included?", "acceptedAnswer": { "@type": "Answer", "text": "Every build ships with the local-SEO foundations: fast load times, mobile-first design, on-page basics, structured data, and Google Business Profile + Maps setup. The extra pages & SEO add-on covers going after more search terms." } },
+        { "@type": "Question", "name": "What do the automation systems actually do?", "acceptedAnswer": { "@type": "Answer", "text": "It answers new inquiries in seconds — even after hours — captures the lead's details, books appointments, sends reminders, and requests reviews after the job. You stop losing customers to whoever replies first." } },
         { "@type": "Question", "name": "Do you work with my type of business?", "acceptedAnswer": { "@type": "Answer", "text": "Very likely yes. We focus on local service businesses such as contractors, trades, restaurants, gyms, salons and dentists in the Milwaukee area." } }
       ] }
     ]
@@ -88,7 +113,7 @@
   <!-- Top utility bar -->
   <div class="topbar">
     <div class="container topbar__inner">
-      <span class="topbar__left">Websites &amp; AI automation · Serving Greater Milwaukee</span>
+      <span class="topbar__left">Websites &amp; smart lead automation · Serving Greater Milwaukee</span>
       <span class="topbar__right">
         <span class="topbar__hours">Mon–Fri, 8a–6p</span>
         <a href="tel:+14146878929">414-687-8929</a>
@@ -99,16 +124,17 @@
   <!-- ============================ NAV ============================ -->
   <header class="nav" id="top">
     <div class="container nav__inner">
-      <a class="brand" href="#top" aria-label="Main Street Web — home">
+      <a class="brand" href="#top" aria-label="Mortar Web — home">
         <span class="brand__mark" aria-hidden="true"></span>
-        <span class="brand__name">Main Street Web</span>
+        <span class="brand__name">Mortar Web</span>
       </a>
 
       <nav class="nav__links" aria-label="Primary">
         <a href="#services" class="nav__link">Services</a>
         <a href="#work" class="nav__link">Our Work</a>
-        <a href="#pricing" class="nav__link">Pricing</a>
         <a href="#reviews" class="nav__link">Reviews</a>
+        <a href="#pricing" class="nav__link">Pricing</a>
+        <a href="blog/index.html" class="nav__link">Blog</a>
         <a href="#faq" class="nav__link">FAQ</a>
       </nav>
 
@@ -129,10 +155,10 @@
       <nav class="mobile-menu__links" aria-label="Mobile">
         <a href="#services" class="mobile-menu__link">Services</a>
         <a href="#work" class="mobile-menu__link">Our Work</a>
-        <a href="#pricing" class="mobile-menu__link">Pricing</a>
         <a href="#reviews" class="mobile-menu__link">Reviews</a>
-        <a href="#faq" class="mobile-menu__link">FAQ</a>
+        <a href="#pricing" class="mobile-menu__link">Pricing</a>
         <a href="blog/index.html" class="mobile-menu__link">Blog</a>
+        <a href="#faq" class="mobile-menu__link">FAQ</a>
         <a href="tel:+14146878929" class="mobile-menu__link mobile-menu__call">📞 Call or text 414-687-8929</a>
         <a href="#contact" class="btn btn--accent mobile-menu__cta">Get a Free Quote</a>
       </nav>
@@ -147,17 +173,17 @@
         <div class="hero__inner">
           <p class="eyebrow reveal" data-reveal>
             <span class="eyebrow__dot" aria-hidden="true"></span>
-            Web &amp; AI studio · Greater Milwaukee
+            Web design &amp; automation studio · Greater Milwaukee
           </p>
           <h1 class="hero__title reveal" data-reveal>
             Your next customer is<br />looking you up <span class="accent-text">right now.</span>
           </h1>
           <p class="hero__sub reveal" data-reveal>
-            We build fast, modern websites and AI automation for local businesses — so you get
+            We build fast, modern websites with automated lead capture and follow-up — so you get
             more calls, more booked jobs, and a whole lot less busywork. Most sites launch in about a week.
           </p>
           <div class="hero__actions reveal" data-reveal>
-            <a href="#contact" class="btn btn--accent btn--lg">Get my free quote</a>
+            <a href="#contact" class="btn btn--accent btn--lg btn--arrow">Get my free quote</a>
             <a href="#work" class="btn btn--ghost btn--lg">See our work</a>
           </div>
           <p class="hero__talk reveal" data-reveal>
@@ -170,35 +196,91 @@
           </ul>
         </div>
 
+        <!-- Crafted vector mock-ups — no stock photos, nothing to download -->
         <div class="hero__showcase reveal" data-reveal aria-hidden="true">
           <div class="browser">
-            <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">yourbusiness.com</span></div>
+            <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">ironcladbuilders.com</span></div>
             <div class="browser__screen">
-              <span class="media media--fill">
-                <img class="ph-img" src="https://loremflickr.com/760/520/coffeeshop,interior?lock=3" alt="" decoding="async" />
-              </span>
-              <span class="browser__chip">★★★★★ “Booked solid”</span>
-              <span class="browser__btn">Book now</span>
+              <svg class="scene" viewBox="0 0 760 520" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <defs>
+                  <linearGradient id="hsA" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#1c2733"/><stop offset="1" stop-color="#34485d"/>
+                  </linearGradient>
+                  <linearGradient id="hsB" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#415870"/><stop offset="1" stop-color="#243240"/>
+                  </linearGradient>
+                </defs>
+                <rect width="760" height="520" fill="url(#hsA)"/>
+                <circle cx="46" cy="42" r="9" fill="#e8a33d"/>
+                <text x="64" y="48" font-size="17" font-weight="700" fill="#f4f7fa">Ironclad Builders</text>
+                <g fill="#9fb0c2" font-size="13" font-weight="500">
+                  <text x="464" y="47">Services</text><text x="537" y="47">Projects</text><text x="610" y="47">Reviews</text>
+                </g>
+                <rect x="668" y="26" width="64" height="32" rx="16" fill="#e8a33d"/>
+                <text x="700" y="47" font-size="13" font-weight="700" fill="#1c2733" text-anchor="middle">Call</text>
+                <text x="46" y="150" font-size="42" font-weight="700" fill="#ffffff" letter-spacing="-1">Roofing done right,</text>
+                <text x="46" y="198" font-size="42" font-weight="700" fill="#ffffff" letter-spacing="-1">on time, <tspan fill="#e8a33d">every time.</tspan></text>
+                <text x="46" y="236" font-size="15.5" fill="#b9c6d4">Licensed &amp; insured · Serving Greater Milwaukee</text>
+                <rect x="46" y="266" width="152" height="44" rx="22" fill="#e8a33d"/>
+                <text x="122" y="293" font-size="15" font-weight="700" fill="#1c2733" text-anchor="middle">Get a free quote</text>
+                <rect x="210" y="266" width="116" height="44" rx="22" fill="none" stroke="#8aa0b5" stroke-width="1.5"/>
+                <text x="268" y="293" font-size="15" font-weight="600" fill="#dfe7ee" text-anchor="middle">Our work</text>
+                <rect x="46" y="338" width="216" height="36" rx="18" fill="#ffffff14"/>
+                <text x="64" y="361" font-size="13.5" fill="#ffd479" letter-spacing="1">★★★★★</text>
+                <text x="148" y="361" font-size="12.5" fill="#cfdae4">212 local reviews</text>
+                <rect x="424" y="112" width="290" height="282" rx="18" fill="url(#hsB)"/>
+                <g stroke="#e9eef4" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+                  <path d="M478 296 L569 216 L660 296"/>
+                  <path d="M498 282 V352 H640 V282"/>
+                  <path d="M552 352 v-36 h34 v36"/>
+                </g>
+                <g font-size="13" fill="#b9c6d4">
+                  <circle cx="52" cy="448" r="4" fill="#e8a33d"/><text x="64" y="453">Free estimates</text>
+                  <circle cx="196" cy="448" r="4" fill="#e8a33d"/><text x="208" y="453">15+ years in the trades</text>
+                  <circle cx="392" cy="448" r="4" fill="#e8a33d"/><text x="404" y="453">5-year workmanship warranty</text>
+                </g>
+              </svg>
             </div>
           </div>
           <div class="phone">
             <div class="phone__screen">
-              <span class="media media--fill">
-                <img class="ph-img" src="https://loremflickr.com/320/640/barbershop?lock=5" alt="" decoding="async" />
-              </span>
-              <span class="phone__btn">Get a quote</span>
+              <svg class="scene" viewBox="0 0 300 620" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <defs>
+                  <linearGradient id="phA" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#2e1b27"/><stop offset="1" stop-color="#7c4a5d"/>
+                  </linearGradient>
+                  <linearGradient id="phB" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#8e5468"/><stop offset="1" stop-color="#46283a"/>
+                  </linearGradient>
+                </defs>
+                <rect width="300" height="620" fill="url(#phA)"/>
+                <circle cx="34" cy="44" r="7" fill="#f2aebc"/>
+                <text x="50" y="50" font-size="17" font-weight="700" fill="#fff">Halo Studio</text>
+                <text x="26" y="128" font-size="33" font-weight="700" fill="#fff" letter-spacing="-0.5">Look sharp.</text>
+                <text x="26" y="166" font-size="33" font-weight="700" fill="#f2aebc" letter-spacing="-0.5">Book in 30s.</text>
+                <rect x="26" y="200" width="248" height="240" rx="16" fill="url(#phB)"/>
+                <g stroke="#f7ecef" stroke-width="5" fill="none" stroke-linecap="round" opacity=".85">
+                  <circle cx="118" cy="282" r="13"/>
+                  <circle cx="118" cy="350" r="13"/>
+                  <path d="M129 290 L196 344"/>
+                  <path d="M129 342 L196 288"/>
+                </g>
+                <rect x="26" y="472" width="248" height="48" rx="24" fill="#f2aebc"/>
+                <text x="150" y="502" font-size="16" font-weight="700" fill="#2e1b27" text-anchor="middle">Book my chair</text>
+                <rect x="110" y="596" width="80" height="5" rx="2.5" fill="#ffffff66"/>
+              </svg>
             </div>
           </div>
+          <div class="lead-toast" aria-hidden="true">
+            <span class="lead-toast__ic">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M13 2 4.5 14H11l-1 8 8.5-12H12z"/></svg>
+            </span>
+            <span class="lead-toast__txt">
+              <strong>New lead captured</strong>
+              <em>Auto-reply sent in 9 seconds</em>
+            </span>
+          </div>
         </div>
-      </div>
-
-      <div class="hero__motif" aria-hidden="true">
-        <svg viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <path d="M40 560 C 200 520, 220 300, 360 280 S 540 180, 560 40" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="6 10" opacity="0.5" />
-          <circle cx="40" cy="560" r="7" />
-          <circle cx="360" cy="280" r="9" class="motif-dot" />
-          <circle cx="560" cy="40" r="11" class="motif-dot" />
-        </svg>
       </div>
     </section>
 
@@ -217,7 +299,7 @@
       <div class="container">
         <p class="kicker kicker--light reveal" data-reveal>See it before you buy</p>
         <h2 class="section__title reveal" data-reveal id="builder-title">Watch your website appear in seconds.</h2>
-        <p class="section__lede builder__lede reveal" data-reveal>Type your business name, pick what you do, and we'll build a live preview right here — no email, no waiting. Nobody else lets you do this.</p>
+        <p class="section__lede builder__lede reveal" data-reveal>Type your business name, pick what you do, and watch a live preview build itself right here — no email, no waiting.</p>
 
         <div class="builder__grid reveal" data-reveal>
           <div class="builder__controls">
@@ -234,15 +316,22 @@
               <button type="button" class="chip" data-type="cafe">Café</button>
             </div>
 
-            <a href="#contact" class="btn btn--accent builder__cta" id="builderCta">Build me this site →</a>
+            <a href="#contact" class="btn btn--accent builder__cta btn--arrow" id="builderCta">Build me this site</a>
             <p class="builder__hint">This is just a taste — your real site is fully custom, with your photos and brand.</p>
           </div>
 
           <div class="builder__preview">
             <div class="browser browser--lg" aria-label="Live website preview" role="img">
               <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url" id="bzUrl">yourbusiness.com</span></div>
-              <div class="browser__screen browser__screen--lg">
-                <span class="media media--fill"><img class="ph-img" id="bzImg" src="https://loremflickr.com/800/520/roofing,construction?lock=31" alt="" decoding="async" /></span>
+              <div class="browser__screen browser__screen--lg" id="bzScreen" data-industry="contractor">
+                <span class="bz-scene" aria-hidden="true">
+                  <svg class="bz-ico bz-ico--contractor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10.5V20h13v-9.5"/><path d="M10 20v-5h4v5"/></svg>
+                  <svg class="bz-ico bz-ico--restaurant" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16"/><path d="M5 17a7 7 0 0 1 14 0"/><path d="M12 10V8.6"/><circle cx="12" cy="7.6" r="1"/></svg>
+                  <svg class="bz-ico bz-ico--salon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.2"/><circle cx="6" cy="17" r="2.2"/><path d="M8 8.4 19 18"/><path d="M8 15.6 19 6"/></svg>
+                  <svg class="bz-ico bz-ico--gym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12h2M19.5 12h2"/><rect x="4.5" y="8.5" width="3" height="7" rx="1"/><rect x="16.5" y="8.5" width="3" height="7" rx="1"/><path d="M7.5 12h9"/></svg>
+                  <svg class="bz-ico bz-ico--dentist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5C10.8 4.5 9.4 4 8 4 5.2 4 3.5 6.2 3.5 9c0 4.5 2 5.5 2.3 8.6.2 1.6 2.6 1.7 3-.1.4-2 1.4-3.5 3.2-3.5s2.8 1.5 3.2 3.5c.4 1.8 2.8 1.7 3 .1.3-3.1 2.3-4.1 2.3-8.6 0-2.8-1.7-5-4.5-5-1.4 0-2.8.5-4 1.5z"/></svg>
+                  <svg class="bz-ico bz-ico--cafe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h11v6a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8.5 6V4.5M12 6V4"/></svg>
+                </span>
                 <span class="bz-overlay">
                   <span class="bz-eyebrow" id="bzTag">Licensed &amp; insured · Milwaukee</span>
                   <span class="bz-title" id="bzTitle">Your Business</span>
@@ -299,16 +388,18 @@
               <li>Clear calls-to-action that drive calls &amp; forms</li>
               <li>Logo, copywriting &amp; Google setup included</li>
             </ul>
+            <a class="card__more" href="services/milwaukee-web-design.html">About our web design <span aria-hidden="true">→</span></a>
           </article>
           <article class="card reveal" data-reveal>
             <span class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.4"/></svg></span>
-            <h3 class="card__title">AI Automation</h3>
-            <p class="card__body">Stop losing customers to slow replies. Automation handles the first response, so you never miss a lead again.</p>
+            <h3 class="card__title">Smart Lead Automation</h3>
+            <p class="card__body">Stop losing customers to slow replies. Your website answers, books, and follows up on its own — so no inquiry ever goes cold.</p>
             <ul class="card__list">
               <li>Instant auto-reply to new inquiries</li>
               <li>Lead capture, booking &amp; reminders</li>
               <li>Automatic follow-ups &amp; review requests</li>
             </ul>
+            <a class="card__more" href="services/website-care-plan.html">How the automation works <span aria-hidden="true">→</span></a>
           </article>
           <article class="card card--feature reveal" data-reveal>
             <span class="card__flag">The real value</span>
@@ -320,6 +411,7 @@
               <li>Updates &amp; monthly tweaks — just ask</li>
               <li>One dedicated team that knows your site</li>
             </ul>
+            <a class="card__more" href="services/website-care-plan.html">What the plans cover <span aria-hidden="true">→</span></a>
           </article>
         </div>
       </div>
@@ -345,6 +437,154 @@
       </div>
     </section>
 
+    <!-- ============================ WORK ============================ -->
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <p class="kicker reveal" data-reveal>Our work</p>
+        <h2 class="section__title reveal" data-reveal id="work-title">Sites built to bring in business.</h2>
+        <p class="section__lede reveal" data-reveal>Concept builds you can explore live — fast, mobile-first, and designed to turn visitors into calls and bookings. Your site gets this same treatment, built around your business.</p>
+
+        <div class="demo-grid">
+          <a class="demo-card reveal" data-reveal href="demos/contractor.html">
+            <span class="demo-card__shot">
+              <span class="shot"><span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                <svg class="scene" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Preview of the Ironclad Builders contractor website" focusable="false">
+                  <defs><linearGradient id="dcA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c2733"/><stop offset="1" stop-color="#34485d"/></linearGradient></defs>
+                  <rect width="640" height="400" fill="url(#dcA)"/>
+                  <circle cx="38" cy="36" r="8" fill="#e8a33d"/>
+                  <text x="54" y="42" font-size="15" font-weight="700" fill="#f4f7fa">Ironclad Builders</text>
+                  <rect x="552" y="22" width="58" height="28" rx="14" fill="#e8a33d"/>
+                  <text x="581" y="40" font-size="12" font-weight="700" fill="#1c2733" text-anchor="middle">Call</text>
+                  <text x="38" y="130" font-size="34" font-weight="700" fill="#fff" letter-spacing="-0.8">Built to last.</text>
+                  <text x="38" y="170" font-size="34" font-weight="700" fill="#e8a33d" letter-spacing="-0.8">Priced fair.</text>
+                  <rect x="38" y="200" width="136" height="40" rx="20" fill="#e8a33d"/>
+                  <text x="106" y="225" font-size="13.5" font-weight="700" fill="#1c2733" text-anchor="middle">Get a free quote</text>
+                  <rect x="38" y="262" width="190" height="32" rx="16" fill="#ffffff14"/>
+                  <text x="54" y="283" font-size="12" fill="#ffd479" letter-spacing="1">★★★★★</text>
+                  <text x="128" y="283" font-size="11.5" fill="#cfdae4">212 reviews</text>
+                  <rect x="380" y="92" width="222" height="240" rx="14" fill="#415870"/>
+                  <g stroke="#e9eef4" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+                    <path d="M420 250 L491 188 L562 250"/>
+                    <path d="M436 238 V292 H546 V238"/>
+                  </g>
+                </svg>
+              </span>
+            </span>
+            <span class="demo-card__meta">
+              <span class="demo-card__tag">Contractor / Trades</span>
+              <span class="demo-card__name">Ironclad Builders <span class="demo-card__arrow" aria-hidden="true">→</span></span>
+              <span class="demo-card__desc">Bold, rugged, and built on trust &amp; reviews — with a quote form front and center.</span>
+            </span>
+          </a>
+          <a class="demo-card reveal" data-reveal href="demos/restaurant.html">
+            <span class="demo-card__shot">
+              <span class="shot"><span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                <svg class="scene" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Preview of the Maple and Ember restaurant website" focusable="false">
+                  <defs><linearGradient id="drA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b1208"/><stop offset="1" stop-color="#8a4520"/></linearGradient></defs>
+                  <rect width="640" height="400" fill="url(#drA)"/>
+                  <circle cx="38" cy="36" r="8" fill="#ffb15e"/>
+                  <text x="54" y="42" font-size="15" font-weight="700" fill="#fff7ef">Maple &amp; Ember</text>
+                  <rect x="536" y="22" width="74" height="28" rx="14" fill="#ffb15e"/>
+                  <text x="573" y="40" font-size="12" font-weight="700" fill="#2b1208" text-anchor="middle">Reserve</text>
+                  <text x="38" y="130" font-size="34" font-weight="700" fill="#fff7ef" letter-spacing="-0.8">Wood-fired,</text>
+                  <text x="38" y="170" font-size="34" font-weight="700" fill="#ffb15e" letter-spacing="-0.8">neighborhood-loved.</text>
+                  <rect x="38" y="200" width="140" height="40" rx="20" fill="#ffb15e"/>
+                  <text x="108" y="225" font-size="13.5" font-weight="700" fill="#2b1208" text-anchor="middle">Book a table</text>
+                  <rect x="38" y="262" width="170" height="32" rx="16" fill="#ffffff17"/>
+                  <text x="54" y="283" font-size="12" fill="#ffd479" letter-spacing="1">★★★★★</text>
+                  <text x="128" y="283" font-size="11.5" fill="#f3ddc9">4.9 on Google</text>
+                  <rect x="380" y="92" width="222" height="240" rx="14" fill="#a85a2b"/>
+                  <g stroke="#ffe9d2" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9">
+                    <circle cx="491" cy="212" r="52"/>
+                    <circle cx="491" cy="212" r="30"/>
+                  </g>
+                </svg>
+              </span>
+            </span>
+            <span class="demo-card__meta">
+              <span class="demo-card__tag">Restaurant / Café</span>
+              <span class="demo-card__name">Maple &amp; Ember <span class="demo-card__arrow" aria-hidden="true">→</span></span>
+              <span class="demo-card__desc">Warm and appetizing — menu, hours, and reservations that make people hungry.</span>
+            </span>
+          </a>
+          <a class="demo-card reveal" data-reveal href="demos/salon.html">
+            <span class="demo-card__shot">
+              <span class="shot"><span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span>
+                <svg class="scene" viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Preview of the Halo Studio salon website" focusable="false">
+                  <defs><linearGradient id="dsA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2e1b27"/><stop offset="1" stop-color="#7c4a5d"/></linearGradient></defs>
+                  <rect width="640" height="400" fill="url(#dsA)"/>
+                  <circle cx="38" cy="36" r="8" fill="#f2aebc"/>
+                  <text x="54" y="42" font-size="15" font-weight="700" fill="#fdf3f5">Halo Studio</text>
+                  <rect x="546" y="22" width="64" height="28" rx="14" fill="#f2aebc"/>
+                  <text x="578" y="40" font-size="12" font-weight="700" fill="#2e1b27" text-anchor="middle">Book</text>
+                  <text x="38" y="130" font-size="34" font-weight="700" fill="#fdf3f5" letter-spacing="-0.8">Hair that</text>
+                  <text x="38" y="170" font-size="34" font-weight="700" fill="#f2aebc" letter-spacing="-0.8">turns heads.</text>
+                  <rect x="38" y="200" width="142" height="40" rx="20" fill="#f2aebc"/>
+                  <text x="109" y="225" font-size="13.5" font-weight="700" fill="#2e1b27" text-anchor="middle">Book my chair</text>
+                  <rect x="38" y="262" width="186" height="32" rx="16" fill="#ffffff17"/>
+                  <text x="54" y="283" font-size="12" fill="#ffd479" letter-spacing="1">★★★★★</text>
+                  <text x="128" y="283" font-size="11.5" fill="#f4dee4">Booked solid</text>
+                  <rect x="380" y="92" width="222" height="240" rx="14" fill="#8e5468"/>
+                  <g stroke="#f7ecef" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9">
+                    <circle cx="462" cy="184" r="11"/>
+                    <circle cx="462" cy="240" r="11"/>
+                    <path d="M471 191 L528 238"/>
+                    <path d="M471 233 L528 186"/>
+                  </g>
+                </svg>
+              </span>
+            </span>
+            <span class="demo-card__meta">
+              <span class="demo-card__tag">Salon / Studio</span>
+              <span class="demo-card__name">Halo Studio <span class="demo-card__arrow" aria-hidden="true">→</span></span>
+              <span class="demo-card__desc">Sleek and modern, built around one thing: getting clients booked.</span>
+            </span>
+          </a>
+          <a class="demo-card demo-card--cta reveal" data-reveal href="#contact">
+            <span class="demo-card__shot demo-card__shot--cta" aria-hidden="true"><span class="cta-tile"><span class="cta-tile__plus">+</span><span class="cta-tile__text">Your business here</span></span></span>
+            <span class="demo-card__meta">
+              <span class="demo-card__tag">Your industry</span>
+              <span class="demo-card__name">Let's build yours <span class="demo-card__arrow" aria-hidden="true">→</span></span>
+              <span class="demo-card__desc">Gym, dentist, landscaper, café — if you serve local customers, we'll build you a site that works as hard as you do.</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="trusted reveal" data-reveal>
+          <p class="trusted__label">Built for local service businesses</p>
+          <ul class="trusted__logos" aria-label="Industries we serve">
+            <li class="trusted__logo">Contractors</li><li class="trusted__logo">Restaurants</li><li class="trusted__logo">Salons</li><li class="trusted__logo">Gyms</li><li class="trusted__logo">Dentists</li><li class="trusted__logo">Cafés</li><li class="trusted__logo">Landscapers</li><li class="trusted__logo">Auto shops</li>
+          </ul>
+        </div>
+
+        <div class="reviews" id="reviews">
+          <div class="reviews__head reveal" data-reveal>
+            <p class="kicker">Reviews</p>
+            <h3 class="reviews__title">What local owners say.</h3>
+            <p class="reviews__rating"><span aria-hidden="true">★★★★★</span> Five-star feedback from the owners we build for</p>
+          </div>
+          <!-- Swap these in for your real client reviews (names + businesses) as they come in. -->
+          <div class="testimonials">
+            <figure class="quote reveal" data-reveal>
+              <div class="quote__stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"Had a sharp new website up in days, and the calls actually started coming in. Wish we'd done it sooner."</blockquote>
+              <figcaption class="quote__who"><span class="quote__av" aria-hidden="true">C</span><span class="quote__id"><strong>Contracting company</strong><span>Wauwatosa, WI</span></span></figcaption>
+            </figure>
+            <figure class="quote reveal" data-reveal>
+              <div class="quote__stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"The auto-reply alone paid for itself. No more leads going cold while we're out on a job."</blockquote>
+              <figcaption class="quote__who"><span class="quote__av" aria-hidden="true">H</span><span class="quote__id"><strong>Home services owner</strong><span>Milwaukee, WI</span></span></figcaption>
+            </figure>
+            <figure class="quote reveal" data-reveal>
+              <div class="quote__stars" aria-hidden="true">★★★★★</div>
+              <blockquote>"One point of contact, clear pricing, done fast. No agency runaround, no surprise invoices."</blockquote>
+              <figcaption class="quote__who"><span class="quote__av" aria-hidden="true">S</span><span class="quote__id"><strong>Studio owner</strong><span>Brookfield, WI</span></span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================ PROCESS ============================ -->
     <section class="section process" id="process" aria-labelledby="process-title">
       <div class="container">
@@ -362,15 +602,14 @@
     <!-- ============================ PRICING ============================ -->
     <section class="section pricing" id="pricing" aria-labelledby="pricing-title">
       <div class="container">
-        <p class="kicker reveal" data-reveal>Pricing</p>
+        <p class="kicker kicker--light reveal" data-reveal>Pricing</p>
         <h2 class="section__title reveal" data-reveal id="pricing-title">Simple, honest pricing.</h2>
-        <p class="section__lede reveal" data-reveal>Flat rates, no retainers, no surprises — and a free logo, business email &amp; Google setup with every build. The care plan keeps your site earning. <strong>Cancel anytime, and you always own your site.</strong></p>
+        <p class="section__lede reveal" data-reveal>Flat rates, no retainers, no surprises. Every build includes a custom logo ($400 value), business email setup ($150) and Google Business + Maps setup ($300) — free. <strong>Cancel anytime, and you always own your site.</strong></p>
 
         <div class="tiers">
-          <article class="tier tier--popular reveal" data-reveal>
-            <span class="tier__badge">Most Popular</span>
-            <h3 class="tier__name">Starter</h3>
-            <p class="tier__price"><span class="tier__amount">$149</span> <span class="tier__unit">one-time</span></p>
+          <article class="tier reveal" data-reveal>
+            <h3 class="tier__name">Launch</h3>
+            <p class="tier__price"><span class="tier__amount">$490</span> <span class="tier__unit">one-time</span></p>
             <p class="tier__care"><span class="tier__plus">+</span> $99<span class="tier__unit">/mo care</span></p>
             <p class="tier__desc">A single-page site that turns lookups into leads. Perfect for getting found and getting calls.</p>
             <ul class="tier__list">
@@ -379,43 +618,46 @@
               <li>Google Business &amp; Maps setup</li>
               <li>Care plan: hosting, updates, monitoring</li>
             </ul>
-            <a href="#contact" class="btn btn--accent tier__cta" data-plan="Starter">Start with Starter</a>
+            <a href="#contact" class="btn btn--outline tier__cta" data-plan="Launch">Start with Launch</a>
           </article>
-          <article class="tier reveal" data-reveal>
+          <article class="tier tier--popular reveal" data-reveal>
+            <span class="tier__badge">Most Popular</span>
             <h3 class="tier__name">Growth</h3>
-            <p class="tier__price"><span class="tier__amount">$349</span> <span class="tier__unit">one-time</span></p>
-            <p class="tier__care"><span class="tier__plus">+</span> $149<span class="tier__unit">/mo care</span></p>
-            <p class="tier__desc">A multi-section site plus one AI automation to catch and reply to leads automatically.</p>
+            <p class="tier__price"><span class="tier__amount">$1,190</span> <span class="tier__unit">one-time</span></p>
+            <p class="tier__care"><span class="tier__plus">+</span> $199<span class="tier__unit">/mo growth plan</span></p>
+            <p class="tier__desc">A multi-section site plus a smart lead-response system that catches and replies to every inquiry automatically.</p>
             <ul class="tier__list">
-              <li>Everything in Starter</li>
+              <li>Everything in Launch</li>
               <li>Multi-section site (services, about, gallery)</li>
-              <li>1 AI automation (lead capture or auto-reply)</li>
-              <li>Priority monthly tweaks</li>
+              <li>Smart lead-response system (capture &amp; instant reply)</li>
+              <li>Priority edits + monthly report</li>
             </ul>
-            <a href="#contact" class="btn btn--outline tier__cta" data-plan="Growth">Choose Growth</a>
+            <a href="#contact" class="btn btn--accent tier__cta" data-plan="Growth">Choose Growth</a>
           </article>
           <article class="tier reveal" data-reveal>
-            <h3 class="tier__name">Pro</h3>
-            <p class="tier__price"><span class="tier__amount">$699</span> <span class="tier__unit">one-time</span></p>
-            <p class="tier__care"><span class="tier__plus">+</span> $249<span class="tier__unit">/mo care</span></p>
+            <h3 class="tier__name">Engine</h3>
+            <p class="tier__price"><span class="tier__amount">$2,490</span> <span class="tier__unit">one-time</span></p>
+            <p class="tier__care"><span class="tier__plus">+</span> $299<span class="tier__unit">/mo growth plan</span></p>
             <p class="tier__desc">A full site with the works — the complete automation suite and priority support for busy operators.</p>
             <ul class="tier__list">
               <li>Everything in Growth</li>
               <li>Full multi-page website</li>
               <li>Automation suite (booking, follow-ups, reviews)</li>
               <li>Priority support — front of the line</li>
+              <li>Quarterly strategy call</li>
             </ul>
-            <a href="#contact" class="btn btn--outline tier__cta" data-plan="Pro">Go Pro</a>
+            <a href="#contact" class="btn btn--outline tier__cta" data-plan="Engine">Scale with Engine</a>
           </article>
         </div>
 
         <p class="pricing__note reveal" data-reveal><span class="eyebrow__dot" aria-hidden="true"></span> We take a limited number of new builds each month so turnaround stays fast — most sites launch in about a week.</p>
+        <p class="pricing__note reveal" data-reveal><span class="eyebrow__dot" aria-hidden="true"></span> Split-pay on Growth &amp; Engine (50% to start, 50% at launch) · prepay a year of any plan and get two months free · custom builds from $5,000.</p>
 
         <div class="guarantee reveal" data-reveal>
           <span class="guarantee__badge" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.3 12l1.8 1.8 3.6-3.7"/></svg></span>
           <div>
             <h3 class="guarantee__title">The “love it” guarantee</h3>
-            <p class="guarantee__body">We don't stop refining until you're genuinely happy with your site — and if we haven't launched yet and it's not the right fit, you pay nothing. No risk, no pressure.</p>
+            <p class="guarantee__body">Unlimited revisions until you sign off — and if you walk away before launch, you owe $0. The risk is ours, not yours.</p>
           </div>
         </div>
 
@@ -429,25 +671,25 @@
             <fieldset class="estimate__group">
               <legend class="estimate__legend">1 · Choose your site</legend>
               <div class="estimate__options" role="radiogroup" aria-label="Site type">
-                <label class="opt"><input type="radio" name="siteType" value="starter" checked /><span class="opt__box"><span class="opt__name">Single-page</span><span class="opt__meta">from $149 + $99/mo</span></span></label>
-                <label class="opt"><input type="radio" name="siteType" value="growth" /><span class="opt__box"><span class="opt__name">Multi-section</span><span class="opt__meta">from $349 + $149/mo</span></span></label>
-                <label class="opt"><input type="radio" name="siteType" value="pro" /><span class="opt__box"><span class="opt__name">Full site</span><span class="opt__meta">from $699 + $249/mo</span></span></label>
+                <label class="opt"><input type="radio" name="siteType" value="launch" checked /><span class="opt__box"><span class="opt__name">Single-page</span><span class="opt__meta">from $490 + $99/mo</span></span></label>
+                <label class="opt"><input type="radio" name="siteType" value="growth" /><span class="opt__box"><span class="opt__name">Multi-section</span><span class="opt__meta">from $1,190 + $199/mo</span></span></label>
+                <label class="opt"><input type="radio" name="siteType" value="engine" /><span class="opt__box"><span class="opt__name">Full site</span><span class="opt__meta">from $2,490 + $299/mo</span></span></label>
               </div>
             </fieldset>
             <fieldset class="estimate__group">
-              <legend class="estimate__legend">2 · Add automation (optional)</legend>
+              <legend class="estimate__legend">2 · Add smart automation (optional)</legend>
               <div class="estimate__options estimate__options--checks">
-                <label class="opt opt--check"><input type="checkbox" name="addon" value="autoreply" data-once="150" data-mo="30" /><span class="opt__box"><span class="opt__name">Lead capture &amp; auto-reply</span><span class="opt__meta">+$150 &amp; $30/mo</span></span></label>
-                <label class="opt opt--check"><input type="checkbox" name="addon" value="booking" data-once="200" data-mo="40" /><span class="opt__box"><span class="opt__name">Online booking</span><span class="opt__meta">+$200 &amp; $40/mo</span></span></label>
-                <label class="opt opt--check"><input type="checkbox" name="addon" value="followups" data-once="250" data-mo="50" /><span class="opt__box"><span class="opt__name">Follow-ups &amp; reviews</span><span class="opt__meta">+$250 &amp; $50/mo</span></span></label>
-                <label class="opt opt--check"><input type="checkbox" name="addon" value="copy" data-once="200" data-mo="0" /><span class="opt__box"><span class="opt__name">Extra pages &amp; SEO</span><span class="opt__meta">+$200 one-time</span></span></label>
+                <label class="opt opt--check"><input type="checkbox" name="addon" value="autoreply" data-once="350" data-mo="49" /><span class="opt__box"><span class="opt__name">Lead capture &amp; instant reply</span><span class="opt__meta">+$350 &amp; $49/mo</span></span></label>
+                <label class="opt opt--check"><input type="checkbox" name="addon" value="booking" data-once="300" data-mo="49" /><span class="opt__box"><span class="opt__name">Online booking</span><span class="opt__meta">+$300 &amp; $49/mo</span></span></label>
+                <label class="opt opt--check"><input type="checkbox" name="addon" value="followups" data-once="350" data-mo="59" /><span class="opt__box"><span class="opt__name">Follow-ups &amp; reviews</span><span class="opt__meta">+$350 &amp; $59/mo</span></span></label>
+                <label class="opt opt--check"><input type="checkbox" name="addon" value="copy" data-once="350" data-mo="0" /><span class="opt__box"><span class="opt__name">Extra pages &amp; SEO</span><span class="opt__meta">+$350 one-time</span></span></label>
               </div>
             </fieldset>
           </form>
           <div class="estimate__result" aria-live="polite">
             <div class="estimate__readout">
-              <p class="estimate__line"><span class="estimate__label">One-time</span><span class="estimate__value" id="estOnce">$149 – $179</span></p>
-              <p class="estimate__line"><span class="estimate__label">Care plan</span><span class="estimate__value" id="estMonthly"><span id="estMonthlyVal">$99 – $119</span><span class="estimate__permo">/mo</span></span></p>
+              <p class="estimate__line"><span class="estimate__label">One-time</span><span class="estimate__value" id="estOnce">$490 – $590</span></p>
+              <p class="estimate__line"><span class="estimate__label">Care plan</span><span class="estimate__value" id="estMonthly"><span id="estMonthlyVal">$99 – $120</span><span class="estimate__permo">/mo</span></span></p>
             </div>
             <a href="#contact" class="btn btn--accent estimate__cta" id="estimateCta">Lock in this estimate</a>
           </div>
@@ -487,10 +729,10 @@
           </article>
           <article class="cmp cmp--best reveal" data-reveal>
             <span class="cmp__flag">Best value</span>
-            <h3 class="cmp__title">Main Street Web</h3>
+            <h3 class="cmp__title">Mortar Web</h3>
             <p class="cmp__sub">You're here</p>
             <ul class="cmp__list cmp__list--best">
-              <li><span class="cmp__k">Cost</span> From $149 + $99/mo, flat</li>
+              <li><span class="cmp__k">Cost</span> From $490 + $99/mo, flat</li>
               <li><span class="cmp__k">Launch</span> About a week</li>
               <li><span class="cmp__k">Looks</span> Custom, modern, yours</li>
               <li><span class="cmp__k">Leads</span> Built to convert + automation</li>
@@ -501,87 +743,33 @@
       </div>
     </section>
 
-    <!-- ============================ WORK ============================ -->
-    <section class="section work" id="work" aria-labelledby="work-title">
-      <div class="container">
-        <p class="kicker reveal" data-reveal>Our work</p>
-        <h2 class="section__title reveal" data-reveal id="work-title">Sites built to bring in business.</h2>
-        <p class="section__lede reveal" data-reveal>A look at the kind of sites we build for local businesses — fast, mobile-first, and designed to turn visitors into calls and bookings. Tap any project to explore it live.</p>
-
-        <div class="demo-grid">
-          <a class="demo-card reveal" data-reveal href="demos/contractor.html">
-            <span class="demo-card__shot demo-card__shot--contractor">
-              <span class="shot"><span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="media media--fill"><img class="ph-img" src="https://loremflickr.com/640/420/roofing,construction?lock=21" alt="Preview of the Ironclad Builders contractor website" loading="lazy" decoding="async" /></span></span>
-            </span>
-            <span class="demo-card__meta">
-              <span class="demo-card__tag">Contractor / Trades</span>
-              <span class="demo-card__name">Ironclad Builders <span class="demo-card__arrow" aria-hidden="true">→</span></span>
-              <span class="demo-card__desc">Bold, rugged, and built on trust &amp; reviews — with a quote form front and center.</span>
-            </span>
-          </a>
-          <a class="demo-card reveal" data-reveal href="demos/restaurant.html">
-            <span class="demo-card__shot demo-card__shot--restaurant">
-              <span class="shot"><span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="media media--fill"><img class="ph-img" src="https://loremflickr.com/640/420/cafe,latte?lock=24" alt="Preview of the Maple and Ember restaurant website" loading="lazy" decoding="async" /></span></span>
-            </span>
-            <span class="demo-card__meta">
-              <span class="demo-card__tag">Restaurant / Café</span>
-              <span class="demo-card__name">Maple &amp; Ember <span class="demo-card__arrow" aria-hidden="true">→</span></span>
-              <span class="demo-card__desc">Warm and appetizing — menu, hours, and reservations that make people hungry.</span>
-            </span>
-          </a>
-          <a class="demo-card reveal" data-reveal href="demos/salon.html">
-            <span class="demo-card__shot demo-card__shot--salon">
-              <span class="shot"><span class="shot__bar" aria-hidden="true"><i></i><i></i><i></i></span><span class="media media--fill"><img class="ph-img" src="https://loremflickr.com/640/420/salon,hair?lock=23" alt="Preview of the Halo Studio salon website" loading="lazy" decoding="async" /></span></span>
-            </span>
-            <span class="demo-card__meta">
-              <span class="demo-card__tag">Salon / Studio</span>
-              <span class="demo-card__name">Halo Studio <span class="demo-card__arrow" aria-hidden="true">→</span></span>
-              <span class="demo-card__desc">Sleek and modern, built around one thing: getting clients booked.</span>
-            </span>
-          </a>
-          <a class="demo-card demo-card--cta reveal" data-reveal href="#contact">
-            <span class="demo-card__shot demo-card__shot--cta" aria-hidden="true"><span class="cta-tile"><span class="cta-tile__plus">+</span><span class="cta-tile__text">Your business here</span></span></span>
-            <span class="demo-card__meta">
-              <span class="demo-card__tag">Your industry</span>
-              <span class="demo-card__name">Let's build yours <span class="demo-card__arrow" aria-hidden="true">→</span></span>
-              <span class="demo-card__desc">Gym, dentist, landscaper, café — if you serve local customers, we'll build you a site that works as hard as you do.</span>
-            </span>
-          </a>
-        </div>
-
-        <div class="trusted reveal" data-reveal>
-          <p class="trusted__label">Trusted by local businesses across Greater Milwaukee</p>
-          <ul class="trusted__logos" aria-label="Client logos">
-            <li class="trusted__logo">[LOGO]</li><li class="trusted__logo">[LOGO]</li><li class="trusted__logo">[LOGO]</li><li class="trusted__logo">[LOGO]</li><li class="trusted__logo">[LOGO]</li>
-          </ul>
-        </div>
-
-        <div class="reviews" id="reviews">
-          <div class="reviews__head reveal" data-reveal>
-            <p class="kicker">Reviews</p>
-            <h3 class="reviews__title">What local owners say.</h3>
-            <p class="reviews__rating"><span aria-hidden="true">★★★★★</span> <strong>5.0</strong> average from local clients</p>
-          </div>
-          <div class="testimonials">
-            <figure class="quote reveal" data-reveal><div class="quote__stars" aria-hidden="true">★★★★★</div><blockquote>"Had a sharp new website up in days, and the calls actually started coming in. Wish we'd done it sooner."</blockquote><figcaption>— [CLIENT NAME, BUSINESS]</figcaption></figure>
-            <figure class="quote reveal" data-reveal><div class="quote__stars" aria-hidden="true">★★★★★</div><blockquote>"The auto-reply alone paid for itself. No more leads going cold while we're out on a job."</blockquote><figcaption>— [CLIENT NAME, BUSINESS]</figcaption></figure>
-            <figure class="quote reveal" data-reveal><div class="quote__stars" aria-hidden="true">★★★★★</div><blockquote>"One point of contact, clear pricing, done fast. No agency runaround, no surprise invoices."</blockquote><figcaption>— [CLIENT NAME, BUSINESS]</figcaption></figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ============================ FAQ ============================ -->
     <section class="section faq" id="faq" aria-labelledby="faq-title">
       <div class="container container--narrow">
         <p class="kicker reveal" data-reveal>Questions</p>
         <h2 class="section__title reveal" data-reveal id="faq-title">Good questions, straight answers.</h2>
         <div class="faq__list">
-          <details class="faq__item reveal" data-reveal><summary class="faq__q">How much does a website cost?<span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__a"><p>Sites start at <strong>$149 one-time + $99/mo</strong> for the care plan, and a logo, business email &amp; Google setup are included. Most projects land between Starter and Growth. You'll get a clear, fixed price before any work starts — no surprises.</p></div></details>
+          <details class="faq__item reveal" data-reveal><summary class="faq__q">How much does a website cost?<span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__a"><p>Sites start at <strong>$490 one-time + $99/mo</strong> for the care plan. Most businesses choose <strong>Growth — $1,190 + $199/mo</strong> with smart lead automation included. A logo, business email &amp; Google setup come free with every build, and you'll get a clear, fixed price before any work starts — no surprises.</p></div></details>
           <details class="faq__item reveal" data-reveal><summary class="faq__q">How long until it's live?<span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__a"><p>Most single-page sites go live <strong>within a week</strong> — often in just a few days once we have your details. Bigger builds with automation take a little longer, and we'll give you the exact timeline up front.</p></div></details>
           <details class="faq__item reveal" data-reveal><summary class="faq__q">Do I own my website?<span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__a"><p>Yes. <strong>The site is yours.</strong> Your domain stays in your name, and if you ever leave the care plan, you keep your site files. No hostage situations — that's not how we work.</p></div></details>
           <details class="faq__item reveal" data-reveal><summary class="faq__q">What does ongoing support actually cover?<span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__a"><p>The monthly care plan covers <strong>hosting, security, uptime monitoring, updates, and monthly tweaks</strong> — change your hours, swap a photo, add a service, just ask. One dedicated team that knows your site, in plain English. Cancel anytime.</p></div></details>
+          <details class="faq__item reveal" data-reveal><summary class="faq__q">Is SEO included?<span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__a"><p>Every build ships with the <strong>local-SEO foundations</strong>: fast load times, mobile-first design, on-page basics, structured data, and Google Business Profile + Maps setup. Want to go after more search terms? The <strong>extra pages &amp; SEO add-on</strong> covers that.</p></div></details>
+          <details class="faq__item reveal" data-reveal><summary class="faq__q">What do the automation systems actually do?<span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__a"><p>It answers new inquiries <strong>in seconds — even after hours</strong> — captures the lead's details, books appointments, sends reminders, and requests reviews after the job. You stop losing customers to whoever replies first.</p></div></details>
           <details class="faq__item reveal" data-reveal><summary class="faq__q">Do you work with my type of business?<span class="faq__icon" aria-hidden="true"></span></summary><div class="faq__a"><p>Very likely yes. We focus on local service businesses — <strong>contractors, trades, restaurants, gyms, salons, dentists</strong>, and similar. If you serve customers in the Milwaukee area, let's talk. Not sure? Ask — the quote is free.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CTA BAND ===================== -->
+    <section class="section cta-band" aria-labelledby="cta-band-title">
+      <div class="container cta-band__inner">
+        <div class="reveal" data-reveal>
+          <h2 class="cta-band__title" id="cta-band-title">Stop losing jobs to a quiet website.</h2>
+          <p class="cta-band__sub">Free quote, fixed price, live in about a week. The hardest part is the first message.</p>
+        </div>
+        <div class="cta-band__actions reveal" data-reveal>
+          <a href="#contact" class="btn btn--accent btn--lg btn--arrow">Get my free quote</a>
+          <a href="tel:+14146878929" class="btn btn--outline-light btn--lg">Call 414-687-8929</a>
         </div>
       </div>
     </section>
@@ -606,7 +794,7 @@
             <span class="post-card__body"><span class="post-card__cat">Conversions</span><span class="post-card__title">7 Signs Your Website Is Losing You Customers</span><span class="post-card__ex">Seven quiet leaks costing you calls — and the fixes.</span><span class="post-card__meta">6 min read</span></span>
           </a>
         </div>
-        <p class="reveal" data-reveal style="margin-top:26px"><a class="btn btn--ghost" href="blog/index.html">Read the blog →</a></p>
+        <p class="bloglist__more reveal" data-reveal><a class="btn btn--ghost" href="blog/index.html">Read the blog →</a></p>
       </div>
     </section>
 
@@ -615,9 +803,9 @@
       <div class="container">
         <div class="founder__card reveal" data-reveal>
           <div class="founder__body">
-            <p class="kicker">A real person, not a call center</p>
+            <p class="kicker kicker--light">A real person, not a call center</p>
             <h2 class="founder__title" id="founder-title">Talk to the person who'll build it.</h2>
-            <p class="founder__text">Hi — I'm Abbas. I run Main Street Web here in Milwaukee, and I'm your single point of contact from first call to launch and beyond. No account managers, no runaround, no jargon — just clear advice and a website that brings you work.</p>
+            <p class="founder__text">Hi — I'm Abbas. I run Mortar Web here in Milwaukee, and I'm your single point of contact from first call to launch and beyond. No account managers, no runaround, no jargon — just clear advice and a website that brings you work.</p>
             <div class="founder__actions">
               <!-- REPLACE href with your Calendly/Cal.com URL when scheduling is set up.
                    Until then this scrolls to the quote form so the button never 404s. -->
@@ -628,7 +816,11 @@
           </div>
           <div class="founder__photo">
             <span class="media media--square">
-              <img class="ph-img" src="assets/founder.webp" alt="Abbas, founder of Main Street Web" width="923" height="2000" loading="lazy" decoding="async" />
+              <img class="ph-img" src="assets/founder.webp" alt="Abbas, founder of Mortar Web" width="923" height="2000" loading="lazy" decoding="async" />
+            </span>
+            <span class="founder__pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              Milwaukee, WI
             </span>
           </div>
         </div>
@@ -685,13 +877,14 @@
         <h2 class="section__title reveal" data-reveal id="contact-title">Get a free quote.</h2>
         <p class="section__lede reveal" data-reveal>Tell us a little about your business. We'll reply within one business day with honest advice and a fixed price — no pressure, no jargon.</p>
 
-        <!-- FORM DELIVERY — works on Netlify out of the box (data-netlify="true").
-             Prefer Formspree? Just set action="https://formspree.io/f/YOUR_ID"
-             (see README). Either way, if delivery ever fails the visitor gets a
-             one-tap, pre-filled email so a lead is never silently lost.
-             No secrets live in the front end. -->
-        <form class="lead-form reveal" data-reveal id="leadForm" name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="company_url" novalidate>
-          <input type="hidden" name="form-name" value="contact" />
+        <!-- FORM DELIVERY — FormSubmit (host-agnostic; works on Vercel & Netlify).
+             First-ever submission emails an activation link to hello@mortarweb.com —
+             click it once and delivery is live. Prefer Formspree? Set the action to
+             https://formspree.io/f/YOUR_ID and the JS adapts automatically. If
+             delivery ever fails, the visitor gets a one-tap, pre-filled email so a
+             lead is never silently lost. No secrets live in the front end. -->
+        <form class="lead-form reveal" data-reveal id="leadForm" name="contact" method="POST" action="https://formsubmit.co/hello@mortarweb.com" novalidate>
+          <input type="hidden" name="_subject" value="New quote request — mortarweb.com" />
           <div class="hp" aria-hidden="true">
             <label for="company_url">Leave this field empty</label>
             <input type="text" id="company_url" name="company_url" tabindex="-1" autocomplete="off" />
@@ -705,12 +898,9 @@
               <select id="need" name="need" required>
                 <option value="" disabled selected>Choose one…</option>
                 <option value="New website">A new website</option>
-                <option value="Website + automation">Website + AI automation</option>
-                <option value="AI automation only">AI automation only</option>
+                <option value="Website + automation">Website + smart automation</option>
                 <option value="Redesign existing site">Redesign my current site</option>
-                <option value="Logo / branding">Logo / branding</option>
                 <option value="Free website audit">Free website audit</option>
-                <option value="Care plan / maintenance">Care plan / maintenance</option>
                 <option value="Not sure yet">Not sure — need advice</option>
               </select>
               <p class="field__error" data-error-for="need"></p>
@@ -733,25 +923,25 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <a class="brand brand--footer" href="#top" aria-label="Main Street Web — home"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name">Main Street Web</span></a>
+        <a class="brand brand--footer" href="#top" aria-label="Mortar Web — home"><span class="brand__mark" aria-hidden="true"></span><span class="brand__name">Mortar Web</span></a>
         <p class="footer__tag">Less busywork. More booked work.</p>
-        <p class="footer__area">Serving Milwaukee, WI &amp; surrounding areas.</p>
+        <p class="footer__area">Web design &amp; automation studio in Milwaukee, WI.</p>
       </div>
       <nav class="footer__col" aria-label="Footer">
         <h2 class="footer__head">Explore</h2>
-        <a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#work">Our Work</a><a href="blog/index.html">Blog</a><a href="#faq">FAQ</a>
+        <a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#work">Our Work</a><a href="services/milwaukee-web-design.html">Milwaukee Web Design</a><a href="services/website-care-plan.html">Care &amp; Growth Plans</a><a href="blog/index.html">Blog</a><a href="#faq">FAQ</a>
       </nav>
       <div class="footer__col">
         <h2 class="footer__head">Contact</h2>
         <a href="mailto:hello@mortarweb.com">hello@mortarweb.com</a><a href="tel:+14146878929">414-687-8929</a><a href="#contact">Get a free quote</a>
       </div>
-      <div class="footer__col">
-        <h2 class="footer__head">Follow</h2>
-        <a href="#" aria-label="Instagram (placeholder)">Instagram</a><a href="#" aria-label="Facebook (placeholder)">Facebook</a><a href="#" aria-label="LinkedIn (placeholder)">LinkedIn</a>
+      <div class="footer__col" aria-label="Service area">
+        <h2 class="footer__head">Service area</h2>
+        <span class="footer__plain">Milwaukee</span><span class="footer__plain">Wauwatosa</span><span class="footer__plain">West Allis</span><span class="footer__plain">Brookfield</span><span class="footer__plain">Waukesha &amp; Mequon</span>
       </div>
     </div>
     <div class="container footer__bottom">
-      <p>&copy; <span id="year">2026</span> Main Street Web · Abbas. All rights reserved.</p>
+      <p>&copy; <span id="year">2026</span> Mortar Web · Abbas. All rights reserved.</p>
       <p class="footer__built">Crafted in Milwaukee · <a href="legal/privacy.html">Privacy</a> · <a href="legal/terms.html">Terms</a> · <a href="legal/accessibility.html">Accessibility</a></p>
     </div>
   </footer>
@@ -771,11 +961,11 @@
       <span class="chat__launch-txt">Ask us anything</span>
     </button>
 
-    <div class="chat__panel" id="chatPanel" role="dialog" aria-label="Main Street Web assistant" aria-modal="false" hidden>
+    <div class="chat__panel" id="chatPanel" role="dialog" aria-label="Mortar Web assistant" aria-modal="false" hidden>
       <div class="chat__head">
         <span class="chat__avatar" aria-hidden="true"></span>
         <div class="chat__who">
-          <strong>Main Street Web Assistant</strong>
+          <strong>Mortar Web Assistant</strong>
           <span class="chat__status">Replies instantly · real human if you need one</span>
         </div>
         <button class="chat__close" id="chatClose" aria-label="Close chat">

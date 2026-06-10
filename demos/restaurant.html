@@ -58,25 +58,24 @@
       radial-gradient(120% 90% at 80% -10%,rgba(202,162,74,.35),transparent 55%),
       radial-gradient(90% 80% at -10% 110%,rgba(47,93,58,.18),transparent 50%),
       var(--cream-2)}
-    .hero__in{display:grid;gap:30px;padding:clamp(48px,9vw,96px) 0;align-items:center}
+    .hero__in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:0;padding:clamp(48px,9vw,96px) 0}
     .hero__tag{display:inline-block;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-dk);font-size:.82rem;margin-bottom:16px}
     .hero h1{font-size:clamp(2.6rem,8vw,5.2rem)}
     .hero h1 em{font-style:italic;color:var(--terra)}
-    .hero p{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.28rem);max-width:46ch;margin:18px 0 28px}
-    .hero__cta{display:flex;flex-wrap:wrap;gap:14px}
-    .hero__plate{aspect-ratio:1;border-radius:24px;background:
+    .hero p{color:var(--muted);font-size:clamp(1.05rem,2.2vw,1.28rem);max-width:46ch;margin:18px auto 28px}
+    .hero__cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+    .hero__plate{width:clamp(150px,24vw,210px);aspect-ratio:1;margin-bottom:26px;border-radius:50%;background:
       conic-gradient(from 200deg,#e7b75a,#d2731f,#b5471f,#2f5d3a,#e7b75a);
       box-shadow:0 30px 60px -24px rgba(42,32,26,.5);position:relative;overflow:hidden}
     .hero__plate::after{content:"";position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 38% 32%,#fff7ea,#f3dcb6 60%,#e7c690);box-shadow:inset 0 0 40px rgba(140,80,20,.25)}
-    .hero__plate span{position:absolute;left:0;right:0;bottom:18px;text-align:center;font-family:var(--disp);font-style:italic;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);z-index:2}
+    .hero__plate span{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--disp);font-style:italic;font-size:.72rem;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.35);z-index:2}
 
-    /* photos — topical stock placeholders (swap the src for real photos).
-       Each sits over a warm gradient, so a slow/failed image still looks OK. */
-    .hero__plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
-    .hero__plate::after{content:none}
+    /* artwork — the designed plate + hand-drawn dish illustrations.
+       No external images, so nothing can load slow or look off-brand. */
+    .hero__plate svg{position:absolute;inset:22%;z-index:2;color:var(--forest)}
     .ph{position:relative;overflow:hidden;border-radius:16px;background:linear-gradient(135deg,var(--cream-2),#e7c690)}
-    .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
-    .ph:hover img{transform:scale(1.05)}
+    .ph svg{width:100%;height:100%;display:block;transition:transform .4s ease}
+    .ph:hover svg{transform:scale(1.05)}
     .foodshots{display:grid;gap:14px;grid-template-columns:1fr;margin-top:30px}
     .foodshots .ph{aspect-ratio:4/3;box-shadow:0 16px 36px -26px rgba(42,32,26,.5)}
 
@@ -87,7 +86,9 @@
 
     /* menu */
     .menu{background:var(--cream-2)}
-    .menu__grid{display:grid;gap:32px;grid-template-columns:1fr;margin-top:38px}
+    .menu-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(22px,4.5vw,44px);box-shadow:0 16px 36px -26px rgba(42,32,26,.5);position:relative;margin-top:38px}
+    .menu-card::before{content:"";position:absolute;inset:10px;border:1px dashed var(--line);border-radius:12px;pointer-events:none}
+    .menu__grid{display:grid;gap:32px;grid-template-columns:1fr}
     .menu__col h3{font-size:1.5rem;color:var(--forest);margin-bottom:6px}
     .menu__col .sub{color:var(--muted);font-size:.9rem;margin-bottom:18px}
     .dish{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
@@ -118,29 +119,39 @@
     .res__msg{margin-top:14px;padding:13px;border-radius:10px;background:rgba(202,162,74,.2);border:1px solid var(--gold);display:none}
     .res__msg.show{display:block}
 
-    footer{background:var(--ink);color:#cdbdaf;padding:46px 0 28px}
-    .foot{display:grid;gap:22px;grid-template-columns:1fr}
+    footer{background:var(--ink);color:#cdbdaf;padding:46px 0 28px;text-align:center}
+    .foot{display:grid;gap:20px;grid-template-columns:1fr;justify-items:center}
+    .foot .logo{justify-content:center}
     .foot a{color:#cdbdaf;text-decoration:none;display:block;margin:6px 0}
     .foot a:hover{color:var(--gold)}
     .foot h4{font-family:var(--disp);font-size:1.05rem;margin:0 0 10px;color:var(--cream)}
     .foot__legal{color:#a99a8c;font-size:.84rem;margin-top:28px;border-top:1px solid rgba(253,246,236,.12);padding-top:18px}
 
     @media(min-width:760px){
-      .hero__in{grid-template-columns:1.05fr .95fr}
       .menu__grid{grid-template-columns:1fr 1fr}
       .foodshots{grid-template-columns:repeat(3,1fr)}
       .visit__grid{grid-template-columns:1fr 1fr}
       .res__form .row{grid-template-columns:repeat(4,1fr)}
-      .foot{grid-template-columns:2fr 1fr 1fr}
     }
     @media(min-width:880px){
-      .nav__links{display:flex}
-      .nav__cta{display:inline-flex;margin-left:8px}
+      /* classic restaurant nav: links left, wordmark centered, CTA right */
+      .nav__in{display:grid;grid-template-columns:1fr auto 1fr;gap:18px}
+      .nav__links{display:flex;grid-column:1;grid-row:1;justify-self:start;margin-left:0}
+      .logo{grid-column:2;grid-row:1;justify-self:center}
+      .nav__cta{display:inline-flex;grid-column:3;grid-row:1;justify-self:end;margin-left:0}
       .burger{display:none}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 
-    /* reviews */
+    /* press-style pull quotes */
+    .press{text-align:center}
+    .press .ey,.press .h2{text-align:center}
+    .press .h2{margin-inline:auto}
+    .press__main{margin:30px auto 0;max-width:30ch}
+    .press__stars{color:var(--gold);letter-spacing:4px;margin-bottom:14px}
+    .press__main blockquote{margin:0;font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(1.5rem,3.8vw,2.5rem);line-height:1.25;color:var(--ink)}
+    .press__main figcaption{margin-top:16px;color:var(--muted);font-weight:700;font-size:.92rem}
+    .press__row{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 40px;margin-top:30px;color:var(--muted);font-size:.96rem}
     .revs{display:grid;gap:16px;grid-template-columns:1fr;margin-top:36px}
     .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 16px 36px -26px rgba(42,32,26,.5)}
     .rev .st{color:var(--gold);letter-spacing:2px;margin-bottom:8px}
@@ -155,6 +166,22 @@
     .m-cta__main{background:var(--terra);color:var(--cream);flex:1.4}
     @media(max-width:879px){body{padding-bottom:74px}}
     @media(min-width:880px){.m-cta{display:none}}
+
+    /* polish: reveal-on-scroll, hover states, floating plate, reviewer avatars */
+    .js-rv .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+    .js-rv .rv.in{opacity:1;transform:none}
+    .nav.scrolled{box-shadow:0 14px 30px -24px rgba(42,32,26,.55)}
+    .hero__plate{animation:plate-float 7s ease-in-out infinite}
+    @keyframes plate-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .dish{transition:background .15s ease;border-radius:8px;padding-inline:8px;margin-inline:-8px}
+    .dish:hover{background:rgba(181,71,31,.06)}
+    .card{transition:transform .2s ease,box-shadow .2s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 26px 50px -32px rgba(42,32,26,.6)}
+    .rev{transition:transform .2s ease}
+    .rev:hover{transform:translateY(-3px)}
+    .rev .by{display:flex;align-items:center;gap:10px}
+    .rev .av{width:34px;height:34px;border-radius:50%;background:var(--terra);color:var(--cream);display:grid;place-items:center;font-family:var(--disp);font-weight:600;font-size:.88rem;flex:none}
+    @media(prefers-reduced-motion:reduce){.hero__plate{animation:none}.js-rv .rv{opacity:1!important;transform:none!important}}
   </style>
 </head>
 <body>
@@ -183,16 +210,21 @@
   <main id="top">
     <section class="hero">
       <div class="wrap hero__in">
-        <div>
-          <span class="hero__tag">Wood-fired kitchen &amp; café · Milwaukee</span>
-          <h1>Slow food,<br /><em>warm</em> mornings.</h1>
-          <p>Seasonal plates from the wood fire, fresh-baked pastries at sunrise, and a table that always feels like it was saved just for you.</p>
-          <div class="hero__cta">
-            <a class="btn btn--terra" href="#reserve">Reserve a table</a>
-            <a class="btn btn--out" href="#menu">See the menu</a>
-          </div>
+        <div class="hero__plate" role="img" aria-label="A wood-fired seasonal plate">
+          <svg viewBox="0 0 100 100" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M50 78V40"/>
+            <path d="M50 58c-16 2-24-8-26-22 14-2 24 6 26 22z"/>
+            <path d="M50 48c14 2 22-6 24-19-12-2-22 5-24 19z"/>
+          </svg>
+          <span>Daily special</span>
         </div>
-        <div class="hero__plate"><img src="https://loremflickr.com/640/640/pasta?lock=8" alt="A wood-fired seasonal dish" decoding="async" /><span>Today's wood-fired special</span></div>
+        <span class="hero__tag">Wood-fired kitchen &amp; café · Milwaukee</span>
+        <h1>Slow food,<br /><em>warm</em> mornings.</h1>
+        <p>Seasonal plates from the wood fire, fresh-baked pastries at sunrise, and a table that always feels like it was saved just for you.</p>
+        <div class="hero__cta">
+          <a class="btn btn--terra" href="#reserve">Reserve a table</a>
+          <a class="btn btn--out" href="#menu">See the menu</a>
+        </div>
       </div>
     </section>
 
@@ -201,6 +233,7 @@
         <p class="ey">On the menu</p>
         <h2 class="h2">Made fresh, served generous.</h2>
         <p class="lede">A rotating, seasonal menu — here's a taste of what's on right now.</p>
+        <div class="menu-card">
         <div class="menu__grid">
           <div class="menu__col">
             <h3>Mornings</h3>
@@ -217,10 +250,54 @@
             <div class="dish"><div><div class="dish__name">Ember Burger</div><div class="dish__desc">Grass-fed beef, smoked onion, house sauce, fries.</div></div><div class="dish__price">$18</div></div>
           </div>
         </div>
+        </div>
         <div class="foodshots">
-          <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/pancakes?lock=11" alt="A stack of maple oat pancakes" /></figure>
-          <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/pizza?lock=12" alt="A wood-fired margherita pizza" /></figure>
-          <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/coffee?lock=13" alt="Coffee with fresh-baked pastries" /></figure>
+          <figure class="ph">
+            <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of maple oat pancakes" focusable="false">
+              <defs><linearGradient id="f-pan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6ead8"/><stop offset="1" stop-color="#ecd2a8"/></linearGradient></defs>
+              <rect width="600" height="450" fill="url(#f-pan)"/>
+              <g fill="none" stroke="#8f3414" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="300" cy="330" rx="170" ry="26"/>
+                <path d="M170 250c0 22 58 40 130 40s130-18 130-40M170 250v46M430 250v46"/>
+                <path d="M178 192c0 22 55 40 122 40s122-18 122-40M178 192v44M422 192v44"/>
+                <ellipse cx="300" cy="190" rx="122" ry="34"/>
+              </g>
+              <path d="M262 176c10 24 4 38-8 50M312 172c10 24 4 38-8 50M356 180c8 20 3 32-7 42" fill="none" stroke="#caa24a" stroke-width="7" stroke-linecap="round"/>
+              <text x="300" y="412" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="24" fill="#8f3414">Maple Oat Pancakes</text>
+            </svg>
+          </figure>
+          <figure class="ph">
+            <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a wood-fired margherita pizza" focusable="false">
+              <defs><linearGradient id="f-piz" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3dcb6"/><stop offset="1" stop-color="#e7c690"/></linearGradient></defs>
+              <rect width="600" height="450" fill="url(#f-piz)"/>
+              <circle cx="300" cy="225" r="150" fill="none" stroke="#8f3414" stroke-width="8"/>
+              <circle cx="300" cy="225" r="118" fill="none" stroke="#b5471f" stroke-width="6"/>
+              <g fill="none" stroke="#8f3414" stroke-width="5" stroke-linecap="round">
+                <path d="M300 107v236M194 172l212 106M194 278l212-106"/>
+              </g>
+              <g fill="none" stroke="#2f5d3a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M258 180c8-14 26-14 30 0-14 6-22 6-30 0zM342 252c8-14 26-14 30 0-14 6-22 6-30 0zM262 282c8-14 26-14 30 0-14 6-22 6-30 0z"/>
+              </g>
+              <text x="300" y="412" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="24" fill="#8f3414">Wood-Fired Margherita</text>
+            </svg>
+          </figure>
+          <figure class="ph">
+            <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of coffee and a fresh pastry" focusable="false">
+              <defs><linearGradient id="f-cof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6ead8"/><stop offset="1" stop-color="#e9cda0"/></linearGradient></defs>
+              <rect width="600" height="450" fill="url(#f-cof)"/>
+              <g fill="none" stroke="#8f3414" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M170 180h180v90a60 60 0 0 1-60 60h-60a60 60 0 0 1-60-60z"/>
+                <path d="M350 196h28a34 34 0 0 1 0 68h-28"/>
+                <ellipse cx="260" cy="368" rx="120" ry="14"/>
+              </g>
+              <path d="M225 150v-26M260 150v-32M295 150v-26" fill="none" stroke="#caa24a" stroke-width="7" stroke-linecap="round"/>
+              <g fill="none" stroke="#8f3414" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M420 330c24-44 64-66 96-58-2 34-30 66-58 74-16 5-30-2-38-16z"/>
+                <path d="M438 318c18-20 40-32 62-36" stroke-width="4"/>
+              </g>
+              <text x="300" y="430" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="24" fill="#8f3414">Mornings, fresh-baked</text>
+            </svg>
+          </figure>
         </div>
       </div>
     </section>
@@ -247,14 +324,15 @@
       </div>
     </section>
 
-    <section class="wrap" aria-label="Reviews">
+    <section class="wrap press" aria-label="Reviews">
       <p class="ey">Guests love us</p>
       <h2 class="h2">Five stars, table after table.</h2>
-      <div class="revs">
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Best brunch in the neighborhood — and they remembered our names the second time."</p><figcaption class="by">— Jenna M.</figcaption></figure>
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"The wood-fired pizza is unreal. We're here every Friday now."</p><figcaption class="by">— Devon R.</figcaption></figure>
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Cozy, warm, and the coffee is the best on this side of town."</p><figcaption class="by">— Aisha K.</figcaption></figure>
-      </div>
+      <figure class="press__main">
+        <div class="press__stars" aria-hidden="true">★★★★★</div>
+        <blockquote>“Best brunch in the neighborhood — and they remembered our names the second time.”</blockquote>
+        <figcaption>Jenna M. · regular since 2024</figcaption>
+      </figure>
+      <p class="press__row"><span>“The wood-fired pizza is unreal.” — Devon R.</span><span>“The best coffee on this side of town.” — Aisha K.</span></p>
     </section>
 
     <section id="reserve" class="res">
@@ -290,7 +368,7 @@
       <div><h4>Contact</h4><a href="tel:+14146878929">414-687-8929</a><a href="mailto:hello@mortarweb.com">hello@mortarweb.com</a></div>
     </div>
     <div class="wrap foot__legal">
-      <p>&copy; <span id="yr"></span> Maple &amp; Ember · Wood-fired kitchen &amp; café, Milwaukee WI · Site by <a href="../index.html#contact" style="color:var(--gold)">Main Street Web</a></p>
+      <p>&copy; <span id="yr"></span> Maple &amp; Ember · Wood-fired kitchen &amp; café, Milwaukee WI · Site by <a href="../index.html#contact" style="color:var(--gold)">Mortar Web</a></p>
     </div>
   </footer>
 
@@ -304,16 +382,19 @@
     b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
     m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
     document.getElementById('yr').textContent=new Date().getFullYear();
-    // if a stock placeholder fails to load, hide it so the themed background shows
-    Array.prototype.forEach.call(document.querySelectorAll('.hero__plate img, .ph img'),function(img){
-      img.addEventListener('error',function(){img.style.display='none';});
-    });
+    var nv=document.querySelector('.nav');
+    addEventListener('scroll',function(){nv.classList.toggle('scrolled',scrollY>8)},{passive:true});
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){
+      document.documentElement.classList.add('js-rv');
+      var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px'});
+      Array.prototype.forEach.call(document.querySelectorAll('.dish,.press__main,.press__row,.card,.ph,.ey,.h2,.lede'),function(el){el.classList.add('rv');io.observe(el)});
+    }
     var f=document.getElementById('resForm'),out=document.getElementById('resMsg');
     f.addEventListener('submit',function(e){
       e.preventDefault();
       var name=(f.elements['name'].value||'').trim();
       if(!name){out.textContent='Please add a name for the reservation.';out.classList.add('show');return;}
-      out.textContent='Thanks '+name.replace(/[<>]/g,'')+'! Your table request is in — we’ll text you a confirmation shortly. (Portfolio demo by Main Street Web.)';
+      out.textContent='Thanks '+name.replace(/[<>]/g,'')+'! Your table request is in — we’ll text you a confirmation shortly. (Portfolio demo by Mortar Web.)';
       out.classList.add('show');
     });
   </script>

@@ -1,5 +1,5 @@
 /* =================================================================
-   MAIN STREET WEB — site behavior
+   MORTAR WEB — site behavior
    -----------------------------------------------------------------
    Everything here is progressive enhancement: with JS disabled the
    page still reads, the form still posts, and the FAQ still opens.
@@ -93,11 +93,28 @@
   var revealEls = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
   if (!prefersReduced && "IntersectionObserver" in window && revealEls.length) {
     document.documentElement.classList.add("js-anim");
+
+    // Small stagger between siblings that reveal together (capped at 6 steps).
+    var staggerParents = [], staggerCounts = [];
+    revealEls.forEach(function (el) {
+      var p = el.parentElement || document.body;
+      var i = staggerParents.indexOf(p);
+      if (i === -1) { staggerParents.push(p); staggerCounts.push(0); i = staggerParents.length - 1; }
+      el.style.setProperty("--rd", Math.min(staggerCounts[i]++, 5) * 70 + "ms");
+    });
+
     var revealObs = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-in");
-          obs.unobserve(entry.target);
+          var el = entry.target;
+          el.classList.add("is-in");
+          obs.unobserve(el);
+          // Once the entrance finishes, drop the reveal styling so each
+          // component's own hover transitions take over cleanly.
+          setTimeout(function () {
+            el.classList.remove("reveal", "is-in");
+            el.style.removeProperty("--rd");
+          }, 1100);
         }
       });
     }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
@@ -128,9 +145,9 @@
   var estimateCta = document.getElementById("estimateCta");
 
   var BASE = {
-    starter: { once: 149, mo: 99,  label: "Single-page" },
-    growth:  { once: 349, mo: 149, label: "Multi-section" },
-    pro:     { once: 699, mo: 249, label: "Full site" }
+    launch: { once: 490,  mo: 99,  label: "Single-page" },
+    growth: { once: 1190, mo: 199, label: "Multi-section" },
+    engine: { once: 2490, mo: 299, label: "Full site" }
   };
 
   function money(n) { return "$" + n.toLocaleString("en-US"); }
@@ -138,8 +155,8 @@
   function computeEstimate() {
     if (!estForm) return null;
     var typeInput = estForm.querySelector('input[name="siteType"]:checked');
-    var type = typeInput ? typeInput.value : "starter";
-    var base = BASE[type] || BASE.starter;
+    var type = typeInput ? typeInput.value : "launch";
+    var base = BASE[type] || BASE.launch;
 
     var once = base.once;
     var mo = base.mo;
@@ -330,7 +347,7 @@
       business: clean(el("business").value, 100),
       need: el("need").value,
       message: clean(el("message").value, 1200),
-      _subject: "New quote request from the Main Street Web site"
+      _subject: "New quote request from the Mortar Web site"
     };
 
     // --- Pre-filled email fallback: a lead is NEVER silently lost. ---
@@ -363,10 +380,11 @@
     // instead, set the form's action to your Formspree URL.
     var action = form.getAttribute("action") || "";
     var toFormspree = action.indexOf("formspree.io") !== -1 && !/YOUR_FORM_ID|YOUR_ID/.test(action);
+    var toFormSubmit = action.indexOf("formsubmit.co") !== -1;
     var toNetlify = form.getAttribute("data-netlify") === "true";
 
     // No backend wired up at all → go straight to the email fallback.
-    if (!toFormspree && !toNetlify) {
+    if (!toFormspree && !toFormSubmit && !toNetlify) {
       setSending(false);
       showStatus("error", "Email is the fastest way to reach us right now — tap below and your details are already filled in.");
       showFallback();
@@ -377,8 +395,15 @@
     showStatus("success", "Sending…");
 
     var request;
-    if (toFormspree) {
-      request = fetch(action, {
+    if (toFormspree || toFormSubmit) {
+      var url = action;
+      if (toFormSubmit && action.indexOf("/ajax/") === -1) {
+        // FormSubmit's JSON endpoint lives under /ajax/<email>
+        url = action.replace("formsubmit.co/", "formsubmit.co/ajax/");
+        payload._template = "table";
+        payload._captcha = "false";
+      }
+      request = fetch(url, {
         method: "POST",
         headers: { "Accept": "application/json", "Content-Type": "application/json" },
         body: JSON.stringify(payload)
@@ -402,7 +427,16 @@
 
     request
       .then(function (res) {
-        if (!res.ok) throw new Error("Bad response " + res.status);
+        // FormSubmit can answer 200 with success:"false" (e.g. before the
+        // one-time activation click) — treat that as a failure too.
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          if (!res.ok || (toFormSubmit && data && String(data.success) === "false")) {
+            throw new Error("Bad response " + res.status);
+          }
+          return data;
+        });
+      })
+      .then(function () {
         setSending(false);
         form.reset();
         if (typeof renderEstimate === "function") renderEstimate();
@@ -470,17 +504,17 @@
 (function () {
   "use strict";
   var TYPES = {
-    contractor: { tag: "Licensed & insured · Milwaukee", btn: "Get a free quote", img: "roofing,construction" },
-    restaurant: { tag: "Fresh · Local favorite", btn: "Reserve a table", img: "cafe,interior" },
-    salon:      { tag: "Book your chair in seconds", btn: "Book now", img: "hairsalon,interior" },
-    gym:        { tag: "Train with the best in town", btn: "Start free trial", img: "gym,fitness" },
-    dentist:    { tag: "Gentle, modern dental care", btn: "Book a visit", img: "dental,office" },
-    cafe:       { tag: "Coffee, done right", btn: "See the menu", img: "coffeeshop,latte" }
+    contractor: { tag: "Licensed & insured · Milwaukee", btn: "Get a free quote" },
+    restaurant: { tag: "Wood-fired · Local favorite", btn: "Reserve a table" },
+    salon:      { tag: "Book your chair in seconds", btn: "Book now" },
+    gym:        { tag: "Train with the best in town", btn: "Start free trial" },
+    dentist:    { tag: "Gentle, modern dental care", btn: "Book a visit" },
+    cafe:       { tag: "Coffee, done right", btn: "See the menu" }
   };
   var nameEl = document.getElementById("bizName");
   if (!nameEl) return;
   var urlEl = document.getElementById("bzUrl");
-  var imgEl = document.getElementById("bzImg");
+  var screenEl = document.getElementById("bzScreen");
   var tagEl = document.getElementById("bzTag");
   var titleEl = document.getElementById("bzTitle");
   var btnEl = document.getElementById("bzBtn");
@@ -498,16 +532,13 @@
     if (urlEl) urlEl.textContent = slug(name);
   }
   function updateType(t) {
-    current = t;
-    var d = TYPES[t] || TYPES.contractor;
+    current = TYPES[t] ? t : "contractor";
+    var d = TYPES[current];
     if (tagEl) tagEl.textContent = d.tag;
     if (btnEl) btnEl.textContent = d.btn;
-    if (imgEl) {
-      var media = imgEl.closest(".media");
-      imgEl.classList.remove("is-loaded", "is-failed");
-      if (media) media.classList.remove("is-loaded", "is-failed");
-      imgEl.src = "https://loremflickr.com/800/520/" + d.img + "?lock=3" + Math.floor(Math.random() * 9);
-    }
+    // Re-theme the vector preview (palette + industry icon via CSS) —
+    // instant, on-brand, and no image request at all.
+    if (screenEl) screenEl.setAttribute("data-industry", current);
   }
   nameEl.addEventListener("input", updateText);
   Array.prototype.forEach.call(chips, function (chip) {
@@ -623,7 +654,7 @@
   // ----- Knowledge base (your "fed" info). Edit freely. -----
   var KB = [
     { k: ["price","cost","much","pricing","expensive","cheap","afford","rate","fee","budget","$"],
-      a: "Our pricing is simple and flat: Starter is $149 one-time + $99/mo, Growth is $349 + $149/mo, and Pro is $699 + $249/mo. Every build includes a free logo, business email and Google setup — and you always own your site and can cancel anytime.",
+      a: "Our pricing is flat and published: Launch is $490 one-time + $99/mo care, Growth is $1,190 + $199/mo with smart lead automation included, and Engine is $2,490 + $299/mo with the full automation suite. Every build includes a free logo, business email and Google setup — and you always own your site and can cancel anytime.",
       c: [["See full pricing", {nav: "#pricing"}], ["Build an estimate", {nav: "#estimate"}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["time","long","fast","week","quick","turnaround","launch","when","soon","days","timeline"],
       a: "Most single-page sites go live within about a week — often just a few days once we have your details. Bigger builds with automation take a little longer, and we give you an exact timeline up front.",
@@ -632,7 +663,7 @@
       a: "Every build includes a custom logo & brand kit, a professional email (you@yourbusiness.com), Google Business + Maps setup, copywriting, domain + secure hosting, photos, click-to-call & smart forms, and ongoing edits. Most agencies charge extra for all of that.",
       c: [["What's included", {nav: "#included"}], ["Pricing", {q: "pricing"}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["automation","automate","ai","auto-reply","autoreply","bot","booking","follow up","followup","lead","missed call","reply"],
-      a: "Our AI automation replies to new inquiries in seconds, captures the lead, books appointments and follows up automatically — even after hours. It's the difference between catching a customer and losing them to whoever answered first.",
+      a: "Our smart lead automation replies to new inquiries in seconds, captures the details, books appointments and follows up automatically — even after hours. It's the difference between catching a customer and losing them to whoever answered first.",
       c: [["Get a free quote", {nav: "#contact"}], ["What's included?", {q: "included"}]] },
     { k: ["own","ownership","keep","mine","cancel","contract","locked","leave"],
       a: "You own everything — your site, domain and content. No long contracts; cancel the care plan anytime and keep your files. No hostage situations.",
@@ -653,8 +684,8 @@
       a: "Call or text us at 414-687-8929 — a real human, usually same day. Prefer email? hello@mortarweb.com.",
       c: [["Call 414-687-8929", {href: TEL}], ["Book a 15-min call", {href: CAL}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["service","services","do you","offer","build","make me","help me","website","site"],
-      a: "We do three things for local businesses: build fast, modern websites; set up AI automation so you never miss a lead; and keep it all running with a care plan (hosting, updates, monitoring).",
-      c: [["AI automation", {q: "automation"}], ["Pricing", {q: "pricing"}], ["Get a free quote", {nav: "#contact"}]] },
+      a: "We do three things for local businesses: build fast, modern websites; set up smart lead automation so you never miss an inquiry; and keep it all running with a care plan (hosting, updates, monitoring).",
+      c: [["Lead automation", {q: "automation"}], ["Pricing", {q: "pricing"}], ["Get a free quote", {nav: "#contact"}]] },
     { k: ["quote","start","started","hire","sign up","ready","work with","buy","purchase","get one","sign me"],
       a: "Love it. The fastest way is a free quote — tell us a bit about your business and we'll reply within one business day with honest advice and a fixed price.",
       c: [["Open the quote form", {nav: "#contact"}], ["Try the live preview", {nav: "#try"}], ["Call/text us", {href: TEL}]] },
@@ -670,7 +701,7 @@
     c: [["Get a free quote", {nav: "#contact"}], ["Call/text us", {href: TEL}], ["See pricing", {nav: "#pricing"}]]
   };
   var GREETING = {
-    a: "Hi! 👋 I'm the Main Street Web assistant. Ask me about pricing, timelines or what's included — or I can get you a free quote. What can I help with?",
+    a: "Hi! 👋 I'm the Mortar Web assistant. Ask me about pricing, timelines or what's included — or I can get you a free quote. What can I help with?",
     c: [["Pricing", {q: "pricing"}], ["How fast?", {q: "timeline"}], ["What's included?", {q: "included"}], ["Get a free quote", {nav: "#contact"}]]
   };
 
