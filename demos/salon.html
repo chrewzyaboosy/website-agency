@@ -143,6 +143,22 @@
     .m-cta__main{background:var(--rose);color:var(--char);flex:1.4}
     @media(max-width:879px){body{padding-bottom:74px}}
     @media(min-width:880px){.m-cta{display:none}}
+
+    /* polish: reveal-on-scroll, hover states, floating arch, reviewer avatars */
+    .js-rv .rv{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+    .js-rv .rv.in{opacity:1;transform:none}
+    .nav.scrolled{box-shadow:0 14px 30px -24px rgba(38,36,42,.4)}
+    .hero__art{animation:halo-float 8s ease-in-out infinite}
+    @keyframes halo-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .svc__row{transition:background .15s ease;border-radius:10px;padding-inline:10px;margin-inline:-10px}
+    .svc__row:hover{background:rgba(201,139,128,.08)}
+    .stylist__photo{transition:transform .25s ease,box-shadow .25s ease}
+    .stylist:hover .stylist__photo{transform:translateY(-5px);box-shadow:0 22px 40px -26px rgba(38,36,42,.5)}
+    .rev{transition:transform .2s ease}
+    .rev:hover{transform:translateY(-3px)}
+    .rev .by{display:flex;align-items:center;gap:10px}
+    .rev .av{width:34px;height:34px;border-radius:50%;background:var(--rose);color:var(--char);display:grid;place-items:center;font-weight:600;font-size:.88rem;flex:none}
+    @media(prefers-reduced-motion:reduce){.hero__art{animation:none}.js-rv .rv{opacity:1!important;transform:none!important}}
   </style>
 </head>
 <body>
@@ -213,9 +229,9 @@
       <p class="ey">Loved by clients</p>
       <h2 class="h2">Booked, beautiful, <b>and back again.</b></h2>
       <div class="revs">
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Best balayage I've ever had — and booking online took ten seconds."</p><figcaption class="by">— Hannah T.</figcaption></figure>
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"They actually listened to what I wanted. I won't go anywhere else now."</p><figcaption class="by">— Mia C.</figcaption></figure>
-        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Calm, modern, and my color has never lasted this long."</p><figcaption class="by">— Olivia P.</figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Best balayage I've ever had — and booking online took ten seconds."</p><figcaption class="by"><span class="av" aria-hidden="true">HT</span><span>Hannah T. · Balayage</span></figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"They actually listened to what I wanted. I won't go anywhere else now."</p><figcaption class="by"><span class="av" aria-hidden="true">MC</span><span>Mia C. · Cut &amp; style</span></figcaption></figure>
+        <figure class="rev"><div class="st" aria-hidden="true">★★★★★</div><p>"Calm, modern, and my color has never lasted this long."</p><figcaption class="by"><span class="av" aria-hidden="true">OP</span><span>Olivia P. · Full color</span></figcaption></figure>
       </div>
     </section>
 
@@ -266,6 +282,13 @@
     b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
     m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
     document.getElementById('yr').textContent=new Date().getFullYear();
+    var nv=document.querySelector('.nav');
+    addEventListener('scroll',function(){nv.classList.toggle('scrolled',scrollY>8)},{passive:true});
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window){
+      document.documentElement.classList.add('js-rv');
+      var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{rootMargin:'0px 0px -8% 0px'});
+      Array.prototype.forEach.call(document.querySelectorAll('.svc__row,.rev,.stylist,.ey,.h2,.lede'),function(el){el.classList.add('rv');io.observe(el)});
+    }
     var f=document.getElementById('bookForm'),out=document.getElementById('bookMsg');
     f.addEventListener('submit',function(e){
       e.preventDefault();
