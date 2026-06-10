@@ -66,15 +66,15 @@
     .hero__stars{margin-top:26px;color:var(--amber);font-size:1.1rem;letter-spacing:2px}
     .hero__stars b{color:var(--paper);font-family:var(--body);font-size:.92rem;letter-spacing:0;margin-left:8px;font-weight:600}
 
-    /* photos — topical stock placeholders (swap the src for real photos).
-       Each sits over a themed background, so a slow/failed image still looks OK. */
+    /* artwork — hand-drawn inline SVG, no external images. The hero gets a
+       faint blueprint house; gallery tiles are stylized project illustrations. */
     .hero{isolation:isolate}
-    .hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-    .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(17,22,27,.72),rgba(17,22,27,.90))}
+    .hero__art{position:absolute;right:-4%;top:50%;transform:translateY(-50%);width:min(46vw,540px);z-index:-1;color:var(--amber);opacity:.17;pointer-events:none;display:none}
+    @media(min-width:760px){.hero__art{display:block}}
     .gallery__grid{display:grid;gap:14px;grid-template-columns:1fr;margin-top:36px}
     .ph{position:relative;overflow:hidden;border-radius:8px;background:linear-gradient(135deg,#1a222b,#2c3845)}
-    .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
-    .ph:hover img{transform:scale(1.04)}
+    .ph svg{width:100%;height:100%;display:block;transition:transform .4s ease}
+    .ph:hover svg{transform:scale(1.04)}
     .gallery .ph{aspect-ratio:4/3;border:1px solid var(--line)}
     .gallery__cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;font-family:var(--disp);text-transform:uppercase;letter-spacing:.04em;font-size:.82rem;color:#fff;background:linear-gradient(0deg,rgba(10,13,17,.85),transparent)}
 
@@ -180,7 +180,16 @@
 
   <main id="top">
     <section class="hero">
-      <img class="hero__bg" src="https://loremflickr.com/1280/720/roof?lock=8" alt="" decoding="async" />
+      <svg class="hero__art" viewBox="0 0 600 460" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 240 300 70l240 170"/>
+        <path d="M110 212v206h380V212"/>
+        <path d="M260 418v-120h80v120"/>
+        <path d="M150 260h70v70h-70zM380 260h70v70h-70z"/>
+        <path d="M385 95V58h44v68"/>
+        <path d="M30 240h60M510 240h60" stroke-dasharray="4 10"/>
+        <path d="M60 440h480" stroke-dasharray="4 10"/>
+        <circle cx="300" cy="70" r="6" fill="currentColor" stroke="none"/>
+      </svg>
       <div class="wrap">
         <span class="hero__tag">★ Licensed &amp; Insured · Milwaukee, WI</span>
         <h1>Built tough.<br />Done <span>right.</span></h1>
@@ -216,9 +225,57 @@
       <p class="ey">Recent work</p>
       <h2 class="h2">See the craftsmanship.</h2>
       <div class="gallery__grid">
-        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/roofing?lock=11" alt="A recently completed roof replacement" /><figcaption class="gallery__cap">Roof replacement · Wauwatosa</figcaption></figure>
-        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/renovation?lock=12" alt="A finished kitchen remodel" /><figcaption class="gallery__cap">Kitchen remodel · Bay View</figcaption></figure>
-        <figure class="ph"><img loading="lazy" decoding="async" src="https://loremflickr.com/600/450/concrete?lock=13" alt="A newly poured concrete driveway" /><figcaption class="gallery__cap">Concrete driveway · West Allis</figcaption></figure>
+        <figure class="ph">
+          <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a completed roof replacement" focusable="false">
+            <defs><linearGradient id="g-roof" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a222b"/><stop offset="1" stop-color="#33414f"/></linearGradient></defs>
+            <rect width="600" height="450" fill="url(#g-roof)"/>
+            <g fill="none" stroke="#e9eef4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M110 250 300 110l190 140"/>
+              <path d="M150 232v140h300V232"/>
+            </g>
+            <g fill="none" stroke="#f4b13d" stroke-width="5" stroke-linecap="round">
+              <path d="M158 215 300 110l142 105"/>
+              <path d="M196 187 300 110l104 77M240 155l60-45 60 45"/>
+            </g>
+            <g fill="none" stroke="#e9eef4" stroke-width="5" stroke-linecap="round"><path d="M400 150v-50h36v76"/></g>
+            <circle cx="510" cy="84" r="26" fill="none" stroke="#f4b13d" stroke-width="5"/>
+          </svg>
+          <figcaption class="gallery__cap">Roof replacement · Wauwatosa</figcaption>
+        </figure>
+        <figure class="ph">
+          <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a finished kitchen remodel" focusable="false">
+            <defs><linearGradient id="g-kit" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d2630"/><stop offset="1" stop-color="#2e3c4a"/></linearGradient></defs>
+            <rect width="600" height="450" fill="url(#g-kit)"/>
+            <g fill="none" stroke="#e9eef4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M90 270h420M90 270v110h420V270"/>
+              <path d="M230 270v110M370 270v110"/>
+              <path d="M120 320h60M260 320h80M400 320h60"/>
+              <rect x="120" y="120" width="130" height="90" rx="6"/>
+              <rect x="350" y="120" width="130" height="90" rx="6"/>
+            </g>
+            <g fill="none" stroke="#f4b13d" stroke-width="5" stroke-linecap="round">
+              <path d="M300 90v60M300 150c-22 0-30 18-30 30M300 150c22 0 30 18 30 30"/>
+              <circle cx="300" cy="86" r="6"/>
+            </g>
+          </svg>
+          <figcaption class="gallery__cap">Kitchen remodel · Bay View</figcaption>
+        </figure>
+        <figure class="ph">
+          <svg viewBox="0 0 600 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a new concrete driveway" focusable="false">
+            <defs><linearGradient id="g-drv" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a222b"/><stop offset="1" stop-color="#303d4b"/></linearGradient></defs>
+            <rect width="600" height="450" fill="url(#g-drv)"/>
+            <g fill="none" stroke="#e9eef4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M250 130h180v100H250z"/>
+              <path d="M268 150h144M268 170h144M268 190h144M268 210h144" stroke-width="4" opacity=".7"/>
+              <path d="M230 110 340 50l110 60"/>
+            </g>
+            <g fill="none" stroke="#f4b13d" stroke-width="5" stroke-linecap="round">
+              <path d="M180 420c40-80 60-130 80-190M460 420c-30-80-45-130-60-190"/>
+              <path d="M225 330h190M245 280h160" stroke-dasharray="2 16" stroke-width="6"/>
+            </g>
+          </svg>
+          <figcaption class="gallery__cap">Concrete driveway · West Allis</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -297,10 +354,6 @@
     b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
     m.addEventListener('click',function(e){if(e.target.closest('a'))m.classList.remove('open')});
     document.getElementById('yr').textContent=new Date().getFullYear();
-    // if a stock placeholder fails to load, hide it so the themed background shows
-    Array.prototype.forEach.call(document.querySelectorAll('img.hero__bg, .ph img'),function(img){
-      img.addEventListener('error',function(){img.style.display='none';});
-    });
     // demo form (no backend — friendly message)
     var f=document.getElementById('quoteForm'),out=document.getElementById('qmsgOut');
     f.addEventListener('submit',function(e){

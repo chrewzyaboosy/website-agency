@@ -1,6 +1,6 @@
 # Mortar Web — agency marketing site
 
-A fast, framework-free marketing site for a web + AI-automation studio
+A fast, framework-free marketing site for a web design + automation studio
 (**mortarweb.com**), plus three polished demo sites. **No build step, no
 dependencies** — open `index.html` in a browser, or deploy the folder to
 Netlify/Vercel/GitHub Pages as static files. The main page loads **zero
@@ -93,9 +93,9 @@ submissions show up under **Site → Forms** with **zero configuration**.
   each add-on from `data-once`/`data-mo` on its checkbox.
 - **Reviews:** the three testimonials use generic role attributions — swap in
   real client names/businesses as reviews come in (search `Swap these in`).
-- **Demo pages** still use topical stock placeholders from LoremFlickr (free,
-  no key) — swap for real project screenshots when you have them. The demo CSP
-  in `_headers` / `vercel.json` allows that host for `/demos/` only.
+- **Demo pages** use hand-drawn CSS/SVG artwork (no stock photos) — drop in
+  real project photos whenever you have them. Their only external dependency
+  is Google Fonts, allowed by the `/demos/` CSP in `_headers` / `vercel.json`.
 
 ## 3. SEO — what's wired in
 

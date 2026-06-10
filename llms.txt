@@ -1,9 +1,9 @@
 # Mortar Web
 
-> Mortar Web is a web design and AI-automation studio in Milwaukee, Wisconsin, building fast, modern websites for local small businesses — contractors, trades, restaurants, gyms, salons, dentists and cafés. Every build includes a custom logo, professional business email, and Google Business Profile + Maps setup. Most sites launch in about a week. Clients always own their site and domain, with no long contracts.
+> Mortar Web is a web design and automation studio in Milwaukee, Wisconsin, building fast, modern websites for local small businesses — contractors, trades, restaurants, gyms, salons, dentists and cafés. Every build includes a custom logo, professional business email, and Google Business Profile + Maps setup. Most sites launch in about a week. Clients always own their site and domain, with no long contracts.
 
 Key facts:
-- Services: website design & build, AI automation (instant lead auto-reply, online booking, follow-ups, review requests), monthly care plan (hosting, security, updates, edits), logo & branding, local SEO & Google Business setup.
+- Services: website design & build, smart lead automation (instant inquiry replies, online booking, follow-ups, review requests), monthly care plan (hosting, security, updates, edits), logo & branding, local SEO & Google Business setup.
 - Pricing (flat, published): Starter $149 one-time + $99/mo care · Growth $349 + $149/mo · Pro $699 + $249/mo. Free fixed-price quote before any work starts.
 - Typical launch: about 7 days for a single-page site.
 - Service area: Milwaukee, Wauwatosa, West Allis, Brookfield, Waukesha, Mequon and surrounding Wisconsin communities.

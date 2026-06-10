@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Mortar Web — websites and AI automation for Milwaukee small businesses">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Mortar Web — websites and smart automation for Milwaukee small businesses">
   <defs>
     <radialGradient id="og-glow" cx="0.88" cy="0.05" r="0.9">
       <stop offset="0" stop-color="#e0511f" stop-opacity="0.32"/>
@@ -21,7 +21,7 @@
   </g>
 
   <!-- headline -->
-  <text x="80" y="300" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#faf7f1" letter-spacing="-2">Websites &amp; AI automation</text>
+  <text x="80" y="300" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#faf7f1" letter-spacing="-2">Websites &amp; smart automation</text>
   <text x="80" y="392" font-family="'Space Grotesk', Arial, sans-serif" font-size="78" font-weight="700" fill="#faf7f1" letter-spacing="-2">for <tspan fill="#f0673c">local business.</tspan></text>
 
   <!-- subhead -->

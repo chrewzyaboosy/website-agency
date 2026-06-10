@@ -1,7 +1,7 @@
 {
   "name": "Mortar Web",
   "short_name": "Mortar Web",
-  "description": "Fast, modern websites and AI automation for local business.",
+  "description": "Fast, modern websites and smart lead automation for local business.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
