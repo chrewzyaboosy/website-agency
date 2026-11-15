@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Inkling dev server: zero dependencies, static files only, bound to 127.0.0.1.
+// Inkling dev server: static files + optional Deep-mode API (/api/rewrite), bound to 127.0.0.1.
 //
 //   npm start               -> http://127.0.0.1:4173 (or the next free port)
 //   PORT=8080 npm start     -> http://127.0.0.1:8080 (or the next free port)
@@ -120,7 +120,107 @@ async function resolveFile(urlPath) {
   return { status: 200, file: real, size: stat.size, mtime: stat.mtime };
 }
 
+/* ------------------------------------------------------------------ */
+/* Deep mode API: POST /api/rewrite -> Claude rewrite (server-side key) */
+/* ------------------------------------------------------------------ */
+// The key never reaches the browser. Set ANTHROPIC_API_KEY (or use an
+// `ant auth login` profile). Without credentials the UI falls back to the
+// local engine only.
+const MODEL = process.env.INKLING_MODEL || 'claude-opus-5-5';
+const MAX_BODY = 256 * 1024;
+const MAX_REWRITE_CHARS = 60000;
+const RATE_LIMIT = { windowMs: 60_000, max: Number(process.env.INKLING_RATE_LIMIT) || 20 };
+const hits = new Map(); // ip -> [timestamps]
+let anthropicClient = null;
+let rewriteLib = null;
+
+const hasCredentials = () => Boolean(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN || process.env.ANTHROPIC_PROFILE);
+
+async function getClient() {
+  if (anthropicClient) return anthropicClient;
+  const { default: Anthropic } = await import('@anthropic-ai/sdk');
+  anthropicClient = new Anthropic({ maxRetries: 2, timeout: 120_000 });
+  return anthropicClient;
+}
+
+function sendJson(res, status, obj) {
+  send(res, status, JSON.stringify(obj), { 'Content-Type': 'application/json; charset=utf-8' });
+}
+
+function rateLimited(ip) {
+  const now = Date.now();
+  const list = (hits.get(ip) || []).filter((t) => now - t < RATE_LIMIT.windowMs);
+  list.push(now);
+  hits.set(ip, list);
+  if (hits.size > 5000) hits.clear(); // bound memory
+  return list.length > RATE_LIMIT.max;
+}
+
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    let size = 0;
+    const chunks = [];
+    req.on('data', (c) => {
+      size += c.length;
+      if (size > MAX_BODY) { reject(Object.assign(new Error('too large'), { status: 413 })); req.destroy(); return; }
+      chunks.push(c);
+    });
+    req.on('end', () => resolve(Buffer.concat(chunks).toString('utf8')));
+    req.on('error', reject);
+  });
+}
+
+async function handleApi(req, res, pathname) {
+  if (pathname === '/api/status' && (req.method === 'GET' || req.method === 'HEAD')) {
+    sendJson(res, 200, { ai: hasCredentials(), model: hasCredentials() ? MODEL : null });
+    return;
+  }
+  if (pathname !== '/api/rewrite') { sendJson(res, 404, { error: 'not_found' }); return; }
+  if (req.method !== 'POST') { send(res, 405, 'Method Not Allowed\n', { Allow: 'POST' }); return; }
+
+  // Same-origin only (blocks other websites from spending your API credits).
+  const origin = req.headers.origin;
+  if (origin && origin !== `http://${req.headers.host}`) { sendJson(res, 403, { error: 'forbidden_origin' }); return; }
+  if (!String(req.headers['content-type'] || '').startsWith('application/json')) { sendJson(res, 415, { error: 'json_required' }); return; }
+  if (!hasCredentials()) { sendJson(res, 503, { error: 'ai_not_configured' }); return; }
+  if (rateLimited(req.socket.remoteAddress || 'unknown')) { sendJson(res, 429, { error: 'rate_limited' }); return; }
+
+  let body;
+  try { body = JSON.parse(await readBody(req)); } catch (e) { sendJson(res, e.status || 400, { error: 'bad_request' }); return; }
+  const text = typeof body?.text === 'string' ? body.text : '';
+  const tone = typeof body?.tone === 'string' ? body.tone : 'natural';
+  if (!text.trim()) { sendJson(res, 400, { error: 'empty' }); return; }
+  if (text.length > MAX_REWRITE_CHARS) { sendJson(res, 413, { error: 'too_long' }); return; }
+
+  rewriteLib ||= await import('./engine/rewrite.js');
+  const client = await getClient();
+  try {
+    const stream = client.beta.messages.stream({
+      model: MODEL,
+      max_tokens: 32000,
+      betas: ['server-side-fallback-2026-07-01'],
+      fallbacks: 'default',
+      output_config: { effort: 'medium' },
+      system: [{ type: 'text', text: rewriteLib.REWRITE_SYSTEM, cache_control: { type: 'ephemeral' } }],
+      messages: [{ role: 'user', content: rewriteLib.buildUserMessage(text, { tone }) }],
+    });
+    const msg = await stream.finalMessage();
+    if (msg.stop_reason === 'refusal') { sendJson(res, 422, { error: 'refused' }); return; }
+    const out = rewriteLib.cleanRewrite(msg.content.filter((b) => b.type === 'text').map((b) => b.text).join(''));
+    if (!out) { sendJson(res, 502, { error: 'empty_completion' }); return; }
+    sendJson(res, 200, { text: out, truncated: msg.stop_reason === 'max_tokens', model: msg.model });
+  } catch (err) {
+    const status = err?.status;
+    console.error('rewrite failed:', status || '', err?.message || err);
+    if (status === 401 || status === 403) sendJson(res, 503, { error: 'ai_auth_failed' });
+    else if (status === 429) sendJson(res, 429, { error: 'rate_limited' });
+    else sendJson(res, 502, { error: 'upstream_error' });
+  }
+}
+
 async function handle(req, res) {
+  const apiPath = (req.url || '').split('?')[0];
+  if (apiPath.startsWith('/api/')) { await handleApi(req, res, apiPath); return; }
   if (req.method !== 'GET' && req.method !== 'HEAD') {
     send(res, 405, 'Method Not Allowed\n', { Allow: 'GET, HEAD' });
     return;

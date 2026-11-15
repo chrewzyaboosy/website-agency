@@ -11,5 +11,10 @@
     "eval": "node tests/eval/run_eval.mjs",
     "e2e": "node tests/e2e.mjs"
   },
-  "engines": { "node": ">=18" }
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0"
+  }
 }

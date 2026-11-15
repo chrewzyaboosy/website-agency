@@ -2,3 +2,4 @@
 export { humanize, VERSION } from './humanize.js';
 export { detect } from './detect.js';
 export { diffWords } from './diff.js';
+export * as rewrite from './rewrite.js';

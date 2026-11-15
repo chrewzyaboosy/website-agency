@@ -3,7 +3,13 @@
 // Security notes:
 //  - User-derived text is only ever written with textContent / text nodes.
 //    No innerHTML, outerHTML, insertAdjacentHTML or eval anywhere.
-//  - No network calls: the engine is local code (worker or main thread).
+//  - Fast mode makes no network calls: the engine is local code (worker or main thread).
+//  - Deep mode sends the text to Claude for a structural rewrite, either through the
+//    claude.ai artifact runtime (viewer's own account) or this site's /api/rewrite
+//    endpoint (server-side key, never exposed to the browser), then runs the local
+//    engine over the result.
+
+import * as rw from '../engine/rewrite.js';
 
 /* global __INKLING_INLINE__ */
 // Set to true by build.mjs for the single-file build (no worker available there).
@@ -19,6 +25,8 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 const TONES = ['natural', 'casual', 'professional', 'marketing', 'academic'];
 const STRENGTHS = ['light', 'balanced', 'aggressive'];
 const SPELLINGS = ['us', 'uk'];
+// Engine strength used on top of an AI rewrite (tuned against real detectors).
+const DEEP_POST_STRENGTH = { light: 'light', balanced: 'light', aggressive: 'balanced' };
 
 /* ------------------------------------------------------------------ */
 /* Sample texts: deliberately full of typical AI-writing tells.        */
@@ -408,6 +416,77 @@ function setRadio(name, value) {
   if (node) node.checked = true;
 }
 
+/* ------------------------------------------------------------------ */
+/* Deep mode: AI provider                                              */
+/* ------------------------------------------------------------------ */
+// kind: 'claude' (artifact runtime) | 'server' (/api/rewrite) | null (unavailable)
+const ai = { kind: null, sample: null, ready: null };
+
+ai.ready = (async () => {
+  try {
+    if (window.claude && typeof window.claude.use === 'function') {
+      const sample = await window.claude.use('sample');
+      if (sample) { ai.kind = 'claude'; ai.sample = sample; return ai.kind; }
+    }
+  } catch { /* fall through */ }
+  if (/^https?:$/.test(location.protocol)) {
+    try {
+      const r = await fetch('api/status', { cache: 'no-store', headers: { Accept: 'application/json' } });
+      if (r.ok && (await r.json()).ai === true) { ai.kind = 'server'; return ai.kind; }
+    } catch { /* static hosting: no API */ }
+  }
+  return null;
+})();
+
+function currentMode() {
+  return radioValue('mode') === 'fast' || !ai.kind ? 'fast' : 'deep';
+}
+
+function syncModeUi() {
+  const deep = document.getElementById('mode-deep');
+  const label = document.querySelector('label[for="mode-deep"]');
+  if (!deep) return;
+  deep.disabled = !ai.kind;
+  if (!ai.kind) {
+    setRadio('mode', 'fast');
+    if (label) label.title = 'Deep mode needs AI access: open Inkling inside Claude, or run the server with ANTHROPIC_API_KEY set.';
+  }
+}
+
+const AI_ERRORS = {
+  not_granted: 'Deep mode needs permission to use Claude. Switched to Fast mode.',
+  sampling_disabled: 'Claude is not available on this account. Switched to Fast mode.',
+  ai_not_configured: 'Deep mode is not set up on this server (missing ANTHROPIC_API_KEY). Switched to Fast mode.',
+  ai_auth_failed: 'The server\'s Anthropic API key was rejected. Switched to Fast mode.',
+  rate_limited: 'Too many AI rewrites in a short time. Wait a minute and try again.',
+  refused: 'Claude declined to rewrite this text.',
+  too_long: 'That text is too long for one Deep rewrite. Split it up.',
+  prompt_too_large: 'That text is too long for one Deep rewrite. Split it up.',
+};
+const AI_FATAL = new Set(['not_granted', 'sampling_disabled', 'ai_not_configured', 'ai_auth_failed', 'not_declared', 'capability_disabled', 'capability_removed']);
+
+async function aiRewrite(text, tone) {
+  if (ai.kind === 'claude') {
+    try {
+      const { text: out } = await ai.sample(rw.buildSinglePrompt(text, { tone }), { modelTier: 'default', cache: false });
+      return rw.cleanRewrite(out);
+    } catch (e) {
+      throw Object.assign(new Error(e && e.message ? e.message : 'AI rewrite failed'), { code: (e && e.code) || 'upstream_error' });
+    }
+  }
+  const r = await fetch('api/rewrite', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ text, tone }),
+  });
+  let j = null;
+  try { j = await r.json(); } catch { j = null; }
+  if (!r.ok || !j || typeof j.text !== 'string') {
+    throw Object.assign(new Error('AI rewrite failed'), { code: (j && j.error) || 'upstream_error' });
+  }
+  return rw.cleanRewrite(j.text);
+}
+
 function currentOpts() {
   const tone = TONES.includes(dom.tone.value) ? dom.tone.value : 'natural';
   const strength = STRENGTHS.includes(radioValue('strength')) ? radioValue('strength') : 'balanced';
@@ -418,7 +497,7 @@ function currentOpts() {
 function saveSettings() {
   const { tone, strength, spelling } = currentOpts();
   storageSet(SETTINGS_KEY, JSON.stringify({
-    tone, strength, spelling,
+    tone, strength, spelling, mode: radioValue('mode') || 'deep',
     showDiff: dom.toggleDiff.checked,
     highlightOutput: dom.toggleHlOut.checked,
   }));
@@ -431,6 +510,7 @@ function loadSettings() {
   if (TONES.includes(s.tone)) dom.tone.value = s.tone;
   if (STRENGTHS.includes(s.strength)) setRadio('strength', s.strength);
   if (SPELLINGS.includes(s.spelling)) setRadio('spelling', s.spelling);
+  if (s.mode === 'fast' || s.mode === 'deep') setRadio('mode', s.mode);
   dom.toggleDiff.checked = s.showDiff === true;
   dom.toggleHlOut.checked = s.highlightOutput === true;
 }
@@ -899,11 +979,31 @@ async function humanize({ fromVariant = false } = {}) {
   }
 
   const opts = currentOpts();
+  const mode = currentMode();
   setBusy(true);
-  announce('Humanizing your text…');
+  announce(mode === 'deep' ? 'Rewriting with AI. This can take up to a minute…' : 'Humanizing your text…');
+  if (mode === 'deep') dom.humanizeLabel.textContent = 'AI rewriting…';
   const started = performance.now();
   try {
-    const res = await engine.call('humanize', { text, opts });
+    let engineInput = text;
+    let engineOpts = opts;
+    if (mode === 'deep') {
+      try {
+        engineInput = await aiRewrite(text, opts.tone);
+      } catch (e) {
+        const code = e && e.code;
+        if (AI_FATAL.has(code)) { ai.kind = null; syncModeUi(); }
+        throw friendlyError(AI_ERRORS[code] || 'The AI rewrite failed. Try again, or switch to Fast mode.');
+      }
+      const check = rw.validateRewrite(text, engineInput);
+      if (check.missing.length) {
+        toast(`Double-check these details in the output: ${check.missing.slice(0, 4).join(', ')}`, { type: 'info', timeout: 7000 });
+      }
+      // Light engine pass on top of the AI rewrite: strips leftover tells without re-stiffening it.
+      engineOpts = { ...opts, strength: DEEP_POST_STRENGTH[opts.strength] || 'light' };
+    }
+    const res = await engine.call('humanize', { text: engineInput, opts: engineOpts });
+    if (mode === 'deep' && res && res.stats) res.stats.inputWords = countWords(text);
     if (!res || typeof res.text !== 'string') throw friendlyError('The engine returned an unexpected result. Please try again.');
     const elapsed = performance.now() - started;
     if (elapsed < MIN_BUSY_MS) await sleep(MIN_BUSY_MS - elapsed);
@@ -998,8 +1098,23 @@ async function onCopy() {
   }
 }
 
-function onDownload() {
+async function onDownload() {
   if (!state.output) return;
+  const d0 = new Date();
+  const name = `inkling-${d0.getFullYear()}-${String(d0.getMonth() + 1).padStart(2, '0')}-${String(d0.getDate()).padStart(2, '0')}-v${state.variant || 1}.txt`;
+  if (window.claude && typeof window.claude.use === 'function') {
+    try {
+      const downloads = await window.claude.use('downloads');
+      if (downloads) {
+        await downloads.save({ filename: name, data: state.output });
+        return;
+      }
+    } catch (e) {
+      if (e && e.code === 'cancelled') return;
+      toast('Download is not available here. Use Copy instead.', { type: 'error' });
+      return;
+    }
+  }
   try {
     const blob = new Blob([state.output], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
@@ -1096,7 +1211,7 @@ function init() {
     else if (state.busy) state.rerun = true;
   };
   dom.tone.addEventListener('change', onSettingChange);
-  document.querySelectorAll('input[name="strength"], input[name="spelling"]').forEach((r) => r.addEventListener('change', onSettingChange));
+  document.querySelectorAll('input[name="strength"], input[name="spelling"], input[name="mode"]').forEach((r) => r.addEventListener('change', onSettingChange));
 
   dom.toggleDiff.addEventListener('change', () => { saveSettings(); renderOutput(); });
   dom.toggleHlOut.addEventListener('change', () => { saveSettings(); renderOutput(); });
@@ -1154,6 +1269,9 @@ function init() {
   renderScores();
   setBusy(false);
   if (dom.input.value.trim()) scheduleInputDetect(true);
+
+  syncModeUi();
+  ai.ready.then(() => { syncModeUi(); if (ai.kind) { const saved = (() => { try { return JSON.parse(storageGet(SETTINGS_KEY) || 'null'); } catch { return null; } })(); setRadio('mode', saved && saved.mode === 'fast' ? 'fast' : 'deep'); } });
 
   engine.ready.then((mode) => {
     if (mode === 'failed') {

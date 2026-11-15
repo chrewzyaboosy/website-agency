@@ -161,6 +161,10 @@ async function main() {
 
   fs.mkdirSync(DIST, { recursive: true });
   fs.writeFileSync(OUT, html, 'utf8');
+  // claude.ai artifact variant: the viewer sandboxes the page and injects its own
+  // runtime (window.claude, used for Deep mode), so drop our hash-only CSP meta there.
+  const artifactHtml = html.replace(/<meta http-equiv="Content-Security-Policy" content="[^"]*">\s*/, '');
+  fs.writeFileSync(path.join(DIST, 'inkling-artifact.html'), artifactHtml, 'utf8');
 
   const bytes = Buffer.byteLength(html, 'utf8');
   const kb = (n) => `${(n / 1024).toFixed(1)} KB`;
