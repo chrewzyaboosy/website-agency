@@ -30,6 +30,7 @@ Flags for `run_eval.mjs`:
 | `--no-marketing` | Skip the marketing-tone variant |
 | `--local-only` | Skip the Python detectors |
 | `--python PATH` | Use this Python instead of the venv |
+| `--reuse-scores` | Re-render the report from the last `scores.json` (only works if the texts haven't changed) |
 
 Outputs go to `tests/eval/out/` (gitignored): `texts.json`, `scores.json`, `report.md`, `report.json`. `report.json` has per-item flags, lost entities and numbers.
 
@@ -56,8 +57,8 @@ Detectors whose rule is fitted on the corpus are judged on leave-one-out numbers
 
 | Detector | Model | Status |
 | --- | --- | --- |
-| `gptzero-style` | GPT-2-medium perplexity + burstiness, logistic rule (`calibration.json`) | kept |
-| `binoculars` | Binoculars (Hans et al. 2024), observer SmolLM2-360M, performer SmolLM2-360M-Instruct | kept |
+| `gptzero-style` | GPT-2-medium perplexity + burstiness, logistic rule (`calibration.json`); currently means "AI if perplexity < ~15.5" | kept |
+| `binoculars` | Binoculars (Hans et al. 2024), observer SmolLM2-360M, performer SmolLM2-360M-Instruct; fitted cut is B < 0.906, close to the paper's Falcon cut of 0.9015 | kept |
 | `desklib` | desklib/ai-text-detector-v1.01 (DeBERTa-v3-large, top of RAID at release) | kept |
 | `fakespot` | fakespot-ai/roberta-base-ai-text-detection-v1 (Mozilla/Fakespot, 2025) | kept |
 | `chatgpt-roberta` | Hello-SimpleAI/chatgpt-detector-roberta | dropped: misses most raw AI marketing copy |
@@ -90,3 +91,5 @@ Notes:
   - Amazon press releases (1996-2015)
 
   Rebuild it with `python3 tests/eval/fetch_human_corpus.py`, which is deterministic.
+
+Versions used for the committed numbers: torch 2.15.0+cpu, transformers 5.23.0, Python 3.13, run on 4 CPU threads. A full `npm run eval` (197 texts, 4 detectors) takes about 13 minutes. Uncontended speed per text: gptzero-style 0.9 s, binoculars 1.7 s, desklib 1.2-1.5 s, fakespot 0.2 s.

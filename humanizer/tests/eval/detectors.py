@@ -659,6 +659,9 @@ def run(items, names):
     meta = {"created": time.strftime("%Y-%m-%dT%H:%M:%S"), "threads": None, "detectors": {}}
     scores = {it["id"]: {} for it in items}
     texts = [it["text"] if isinstance(it.get("text"), str) else "" for it in items]
+    # Texts with no words get ai_prob=None (classifiers return arbitrary numbers for ""), and
+    # very short texts are scored but marked: no detector is reliable under ~30 words.
+    live = [i for i, t in enumerate(texts) if re.search(r"\w", t)]
     for name in names:
         det = REGISTRY[name]()
         info = det.describe()
@@ -666,7 +669,9 @@ def run(items, names):
             t0 = time.time()
             det.load()
             t1 = time.time()
-            res = det.score(texts)
+            res = [(None, {"empty": True})] * len(texts)
+            for i, r in zip(live, det.score([texts[i] for i in live]) if live else []):
+                res[i] = r
             t2 = time.time()
         except Exception as e:  # keep going: one broken model must not sink the run
             log(f"[{name}] FAILED: {e!r}")
@@ -676,14 +681,15 @@ def run(items, names):
         info.update(load_s=round(t1 - t0, 2), score_s=round(t2 - t1, 2), n=len(texts),
                     ms_per_text=round(1000 * (t2 - t1) / max(1, len(texts)), 1))
         thr = getattr(det, "threshold", 0.5)
-        for it, (p, extra) in zip(items, res):
+        for it, t, (p, extra) in zip(items, texts, res):
             ok = isinstance(p, float) and not math.isnan(p)
+            if ok and len(t.split()) < 30:
+                extra = dict(extra, short=True)
             scores[it["id"]][name] = {"ai_prob": round(p, 4) if ok else None,
                                       "flagged": bool(ok and p >= thr), "extra": extra}
         meta["detectors"][name] = info
         log(f"[{name}] load {t1 - t0:.1f}s, score {t2 - t1:.1f}s ({info['ms_per_text']} ms/text)")
-        # free memory between big models (LM models are shared, keep them)
-        del det
+        del det  # free memory between big models
     meta["threads"] = torch().get_num_threads()
     meta["torch"] = torch().__version__
     return {"meta": meta, "scores": scores}

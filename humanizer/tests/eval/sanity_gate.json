@@ -1,0 +1,127 @@
+{
+  "gate": 0.7,
+  "corpus": {
+    "ai": 32,
+    "human": 37
+  },
+  "created": "2026-11-15",
+  "table": {
+    "gptzero-style": {
+      "ai_flagged": 0.8125,
+      "human_passed": 0.8649,
+      "mean_ai_prob_ai": 0.7299,
+      "mean_ai_prob_human": 0.2336,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 3.95,
+      "score_s": 57.79,
+      "s_per_text": 0.838,
+      "loo_ai_flagged": 0.8125,
+      "loo_human_passed": 0.8649,
+      "note": "rule fitted on this corpus; in-sample numbers shown, LOO-CV numbers in loo_*",
+      "pass": true
+    },
+    "binoculars": {
+      "ai_flagged": 0.875,
+      "human_passed": 0.9189,
+      "mean_ai_prob_ai": 0.8467,
+      "mean_ai_prob_human": 0.1326,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 2.04,
+      "score_s": 115.42,
+      "s_per_text": 1.673,
+      "loo_ai_flagged": 0.875,
+      "loo_human_passed": 0.9189,
+      "note": "rule fitted on this corpus; in-sample numbers shown, LOO-CV numbers in loo_*",
+      "pass": true
+    },
+    "binoculars-mini": {
+      "ai_flagged": 0.6875,
+      "human_passed": 0.8108,
+      "mean_ai_prob_ai": 0.5946,
+      "mean_ai_prob_human": 0.3506,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 0.77,
+      "score_s": 74.78,
+      "s_per_text": 1.084,
+      "loo_ai_flagged": 0.625,
+      "loo_human_passed": 0.8108,
+      "note": "rule fitted on this corpus; in-sample numbers shown, LOO-CV numbers in loo_*",
+      "pass": false
+    },
+    "chatgpt-roberta": {
+      "ai_flagged": 0.1875,
+      "human_passed": 0.8919,
+      "mean_ai_prob_ai": 0.2402,
+      "mean_ai_prob_human": 0.1129,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 0.97,
+      "score_s": 19.35,
+      "s_per_text": 0.28,
+      "pass": false
+    },
+    "openai-roberta": {
+      "ai_flagged": 0.0938,
+      "human_passed": 0.9459,
+      "mean_ai_prob_ai": 0.0944,
+      "mean_ai_prob_human": 0.0588,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 0.76,
+      "score_s": 15.39,
+      "s_per_text": 0.223,
+      "pass": false
+    },
+    "desklib": {
+      "ai_flagged": 1.0,
+      "human_passed": 0.8378,
+      "mean_ai_prob_ai": 0.9999,
+      "mean_ai_prob_human": 0.2003,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 23.92,
+      "score_s": 100.11,
+      "s_per_text": 1.451,
+      "pass": true
+    },
+    "fakespot": {
+      "ai_flagged": 0.8438,
+      "human_passed": 0.8649,
+      "mean_ai_prob_ai": 0.799,
+      "mean_ai_prob_human": 0.1737,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 1.05,
+      "score_s": 18.67,
+      "s_per_text": 0.271,
+      "pass": true
+    },
+    "superannotate": {
+      "ai_flagged": 1.0,
+      "human_passed": 0.6486,
+      "mean_ai_prob_ai": 0.7255,
+      "mean_ai_prob_human": 0.2705,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 10.66,
+      "score_s": 48.97,
+      "s_per_text": 0.71,
+      "pass": false
+    },
+    "mage": {
+      "ai_flagged": 1.0,
+      "human_passed": 0.6757,
+      "mean_ai_prob_ai": 0.9094,
+      "mean_ai_prob_human": 0.3097,
+      "n_ai": 32,
+      "n_human": 37,
+      "load_s": 1.21,
+      "score_s": 47.69,
+      "s_per_text": 0.691,
+      "pass": false
+    }
+  }
+}

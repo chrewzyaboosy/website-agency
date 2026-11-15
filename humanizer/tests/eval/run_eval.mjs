@@ -10,6 +10,7 @@
 //   npm run eval
 //   node tests/eval/run_eval.mjs [--limit N] [--only a,b] [--all] [--strengths light,balanced]
 //                                [--seed N] [--no-marketing] [--local-only] [--python PATH]
+//                                [--reuse-scores]   (re-render from out/scores.json if texts are identical)
 //
 // Outputs: tests/eval/out/texts.json, scores.json, report.json, report.md
 
@@ -28,7 +29,7 @@ const ALL_STRENGTHS = ['light', 'balanced', 'aggressive'];
 // ------------------------------------------------------------------ args
 function parseArgs(argv) {
   const a = { limit: 0, only: '', all: false, strengths: ALL_STRENGTHS, seed: 42, marketing: true,
-    localOnly: false, python: process.env.INKLING_EVAL_PYTHON || DEFAULT_PY };
+    localOnly: false, reuse: false, python: process.env.INKLING_EVAL_PYTHON || DEFAULT_PY };
   for (let i = 0; i < argv.length; i++) {
     const k = argv[i];
     const next = () => {
@@ -42,6 +43,7 @@ function parseArgs(argv) {
     else if (k === '--seed') a.seed = parseInt(next(), 10);
     else if (k === '--no-marketing') a.marketing = false;
     else if (k === '--local-only') a.localOnly = true;
+    else if (k === '--reuse-scores') a.reuse = true;
     else if (k === '--python') a.python = next();
     else if (k === '-h' || k === '--help') {
       console.log(readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').slice(1, 14).join('\n'));
@@ -214,6 +216,15 @@ async function main() {
   }
 
   const textsPath = join(OUT, 'texts.json');
+  let reuseOk = false;
+  if (args.reuse) {
+    try {
+      const prev = JSON.parse(readFileSync(textsPath, 'utf8'));
+      const prevMap = new Map(prev.map((t) => [t.id, t.text]));
+      reuseOk = existsSync(join(OUT, 'scores.json')) && prev.length === texts.length && texts.every((t) => prevMap.get(t.id) === t.text);
+    } catch { reuseOk = false; }
+    if (!reuseOk) throw new Error('--reuse-scores: texts differ from the previous run (or no previous run); rerun without it');
+  }
   writeFileSync(textsPath, JSON.stringify(texts.map(({ id, group, text }) => ({ id, group, text })), null, 1));
   console.log(`wrote ${texts.length} texts (${groups.join(', ')}) -> ${textsPath}`);
   if (errors.length) console.warn(`! ${errors.length} errors, e.g. ${JSON.stringify(errors[0])}`);
@@ -222,7 +233,12 @@ async function main() {
   let scores = {};
   let detMeta = {};
   const scoresPath = join(OUT, 'scores.json');
-  if (!args.localOnly) {
+  if (reuseOk) {
+    const j = JSON.parse(readFileSync(scoresPath, 'utf8'));
+    scores = j.scores || {};
+    detMeta = (j.meta && j.meta.detectors) || {};
+    console.log(`reusing ${scoresPath}`);
+  } else if (!args.localOnly) {
     if (!existsSync(args.python)) {
       console.warn(`! python venv not found at ${args.python}; run tests/eval/setup.sh. Skipping real detectors.`);
     } else {
@@ -285,18 +301,23 @@ async function main() {
     }
   }
 
-  // ---- worst offenders: humanized texts still flagged by the most detectors
-  const worst = Object.values(items)
-    .filter((x) => x.group.startsWith('inkling-') && x.flags)
-    .sort((a, b) => b.flags.length - a.flags.length)
-    .slice(0, 8)
+  // ---- worst offenders: texts in the product-default group (balanced) still flagged by the most
+  // detectors, plus a per-kind breakdown so engine work can target the weakest formats.
+  const focus = groups.includes('inkling-balanced') ? 'inkling-balanced' : groups.find((g) => g.startsWith('inkling-'));
+  const focusItems = Object.values(items).filter((x) => x.group === focus && x.flags);
+  const worst = [...focusItems]
+    .sort((a, b) => b.flags.length - a.flags.length || a.id.localeCompare(b.id))
+    .slice(0, 10)
     .map((x) => ({ id: x.id, flags: x.flags }));
+  const byKind = {};
+  for (const x of focusItems) (byKind[x.kind] ||= []).push(x.flags.length);
+  summary.by_kind = { group: focus, kinds: Object.fromEntries(Object.entries(byKind).map(([k, v]) => [k, { n: v.length, mean_flags: mean(v) }])) };
 
   let sanity = null;
   try { sanity = JSON.parse(readFileSync(join(HERE, 'sanity_gate.json'), 'utf8')); } catch { /* optional */ }
 
   // ---- print + write
-  const md = renderMarkdown({ args, groups, detectors, detMeta, summary, worst, sanity, errors, engine, nAi: ai.length, nHuman: human.length });
+  const md = renderMarkdown({ args, groups, detectors, detMeta, summary, worst, focus, sanity, errors, engine, nAi: ai.length, nHuman: human.length });
   console.log('\n' + md);
   writeFileSync(join(OUT, 'report.md'), md);
   writeFileSync(join(OUT, 'report.json'), JSON.stringify({
@@ -311,7 +332,7 @@ function table(header, rows) {
   return [line(header), line(header.map(() => '---')), ...rows.map(line)].join('\n');
 }
 
-function renderMarkdown({ args, groups, detectors, detMeta, summary, worst, sanity, errors, engine, nAi, nHuman }) {
+function renderMarkdown({ args, groups, detectors, detMeta, summary, worst, focus, sanity, errors, engine, nAi, nHuman }) {
   const out = [];
   out.push(`# Inkling detector evaluation`);
   out.push('');
@@ -363,9 +384,13 @@ function renderMarkdown({ args, groups, detectors, detMeta, summary, worst, sani
     out.push('');
   }
   if (worst.length && detectors.length) {
-    out.push(`## Hardest samples (humanized, still flagged by the most detectors)`);
+    out.push(`## Hardest samples in ${focus} (still flagged by the most detectors)`);
     out.push('');
     for (const w of worst) out.push(`- \`${w.id}\`: ${w.flags.length}/${detectors.length} (${w.flags.join(', ') || 'none'})`);
+    out.push('');
+    const kinds = Object.entries(summary.by_kind.kinds).sort((a, b) => b[1].mean_flags - a[1].mean_flags);
+    out.push(table(['kind', 'n', `mean # detectors flagging (${focus})`],
+      kinds.map(([k, v]) => [k, String(v.n), v.mean_flags.toFixed(2)])));
     out.push('');
   }
   if (detectors.length) {
@@ -397,6 +422,6 @@ function renderMarkdown({ args, groups, detectors, detMeta, summary, worst, sani
 }
 
 main().catch((e) => {
-  console.error(e && e.stack || e);
+  console.error(process.env.INKLING_DEBUG ? (e && e.stack) || e : `run_eval: ${(e && e.message) || e}`);
   process.exit(1);
 });

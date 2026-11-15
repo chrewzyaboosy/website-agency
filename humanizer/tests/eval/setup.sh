@@ -24,7 +24,7 @@ fi
 
 if ! "$PY" -c "import transformers, sentencepiece, google.protobuf, safetensors, numpy, huggingface_hub" >/dev/null 2>&1; then
   echo "[setup] installing transformers + tokenizer deps"
-  "$PY" -m pip install -q "transformers>=4.45" sentencepiece protobuf safetensors numpy huggingface_hub
+  "$PY" -m pip install -q "transformers>=4.56" sentencepiece protobuf safetensors numpy huggingface_hub
 fi
 
 "$PY" -c "import torch, transformers; print('[setup] torch', torch.__version__, '| transformers', transformers.__version__)"
