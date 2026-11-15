@@ -1,0 +1,494 @@
+[
+  {
+    "id": "human-yelp-review-01",
+    "kind": "yelp-review",
+    "text": "Very nice home and grounds. I could not exactly say I am a fan of the owner or how he earned his money but I did appreciate how original the house and belongings are and how beautiful the grounds and buildings are. Can you say Johnstown flood? How about the Homestead strike? Celebrating the extreme wealth of few on the backs of a billion who worked 16 hour days for nothing isn't exactly something I really love to do but I can appreciate beautiful art and architecture of which there is plenty to see here. We toured Clayton (the home), art museum, conservatory and the car and carriage museum. The conservatory didn't have a lot of impressive specimens and was far from full but is a great building. Be sure to earmark about 4 hours for the whole experience including, perhaps, a pricey but tasty snack at the cafe (make a reservation). We had a really nice time and I do recommend a visit if you are here so you can not only see some great furnishings but so that you may learn some of the history of the economy here. After all, we shouldn't turn our backs on the reality of our collective history lest we make the same mistakes again. I am glad they are doing such a fine job preserving this place for generations to come.",
+    "source": {
+      "dataset": "Yelp/yelp_review_full",
+      "config": "yelp_review_full",
+      "split": "train",
+      "row": 1001,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=Yelp/yelp_review_full&config=yelp_review_full&split=train&offset=1001&length=1"
+    },
+    "words": 229
+  },
+  {
+    "id": "human-yelp-review-02",
+    "kind": "yelp-review",
+    "text": "Used to be so good...but the food and service has deteriorated in the last few years.\n\nCarpaccio....one of my favorite items on their menu is now served without toast points. You must request them...then they only bring a few. Last time it was served on a very hot plate...by the time we got the toast, some if the carpaccio was cooked. Horrible.\n\nI have enjoyed the venison dish in the past...it was always tender and succlent. Last visit, it was so rare and chewey I could not enjoy it. I asked the waitress about it, and she replied, \\\"They've always cooked it rare\\\".\n\nThe crab cakes: I know that most German menus probably don't include crab cakes! But, most nice restaurants do, so it is pretty standard fare. Their crab cakes are very crabby, but also include either tuemeric or curry, which is entirely unexpected, and does not add to the dish.\n\nTheir famous salad: The Waldhorn salad, baby greens towering over delicious cucumber salad, orzo salad, carrot salad and delicious german potato salad. This dish is just amazing! For us, it is the only reason to return to Waldhorn's!\n\nBring your own water, service is spotty most times....and I've observed that we aren't always the only ones with empty glasses!\n\nWe've liked Waldhorn for over 10 years....but this weekend was probably our last visit.",
+    "source": {
+      "dataset": "Yelp/yelp_review_full",
+      "config": "yelp_review_full",
+      "split": "train",
+      "row": 5000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=Yelp/yelp_review_full&config=yelp_review_full&split=train&offset=5000&length=1"
+    },
+    "words": 225
+  },
+  {
+    "id": "human-yelp-review-03",
+    "kind": "yelp-review",
+    "text": "I'm writing to update a pretty negative review I wrote a few months ago because I had three really poor experiences in a row at the Chandler location. Within 48 hours (I also emailed the review to their direct customer service email), I was contacted by multiple top managers in the company. What was even more amazing was that they didn't try to say \\\"Oh, we don't have any idea why that happened to you\\\" or \\\"that must have been a fluke.\\\" Instead, they acknowledged that they were already working through issues at that location, apologized repeatedly, thanked me for my feedback, and sent me gift cards with the promise that when I next returned I would have a different experience. And I have! I have been back twice since giving up on them and there is a marked difference - huge improvement in management and staff attitude/customer service, better food quality control, and just an overall happier vibe. I am back to thinking of Z as my \\\"go to\\\" place for brunch, happy hour, date night and business meetings alike.",
+    "source": {
+      "dataset": "Yelp/yelp_review_full",
+      "config": "yelp_review_full",
+      "split": "train",
+      "row": 40005,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=Yelp/yelp_review_full&config=yelp_review_full&split=train&offset=40005&length=1"
+    },
+    "words": 181
+  },
+  {
+    "id": "human-yelp-review-04",
+    "kind": "yelp-review",
+    "text": "With an excellent beer selection and a very convenient location, I really wanted to like this place. The service, however, more than cancelled out the excellent food and great drink selection. We came at happy hour with a group of friends. We expected the service to be fairly slow at first given that we arrived with a fairly large party, but as the night went on and people cleared out, it never really improved. Even when there were only 4 of us left and the rest of the restaurant was basically empty, it was still taking forever to place an order.\n\nAfter not seeing our waiter for over 20 minutes, we just decided to go to the bar and order a drink. Of course, our waiter finally shows up when we get back and gets kind of snippy when he sees that we went an ordered on our own and accused us of taking up his table. We would have preferred to order from him if he hadn't been standing around in the back chatting with friends. The bartenders were also a bit condescending.\n\nDespite the service, the food was still quite good. We had the Belgian onion soup and split an order of the steamed mussels. Both were excellent. If the wait staff were up to par, we would be glad to frequent this place more often.",
+    "source": {
+      "dataset": "Yelp/yelp_review_full",
+      "config": "yelp_review_full",
+      "split": "train",
+      "row": 150004,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=Yelp/yelp_review_full&config=yelp_review_full&split=train&offset=150004&length=1"
+    },
+    "words": 228
+  },
+  {
+    "id": "human-yelp-review-05",
+    "kind": "yelp-review",
+    "text": "This place is a joke. We walked in with a party of eight on a Sunday afternoon and were told they were on a buffet and had a limited menu. Fine. Then we were told by the hostess that she couldn't seat a party that big and we should go see the other hostess. Umm you go see the other hostess! We should have walked out at this point.\n\nThe waiter seemed uninterested in life and the buffet was sub-par, fruit next to shrimp? On what planet. Yuck. We ordered off the limited menu, cheese curds were breaded mozzarella and disappointing to say the least. Why even ask us how we want our \\\"grass-fed\\\" burgers cooked? They are 1/4 inch frozen hockey pucks which will always come out well done. I could have gotten a better burger off the grill at Burger King.\n\nStay away from this place. To the manager: Based on the other Yelp reviews, invest in a good staff and maybe you won't have to hand out millions of drink tokens to right the wrongs...",
+    "source": {
+      "dataset": "Yelp/yelp_review_full",
+      "config": "yelp_review_full",
+      "split": "train",
+      "row": 400000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=Yelp/yelp_review_full&config=yelp_review_full&split=train&offset=400000&length=1"
+    },
+    "words": 178
+  },
+  {
+    "id": "human-amazon-review-01",
+    "kind": "amazon-review",
+    "text": "Stagnent!. I love the RoF series. I love the politics, intrigue, planing, and military actions. But this book is borderline horrible! The Ram Rebellion was fun for the first 20 to 30 pages, but then it just got old. Simply felt like bad filler in a worse dinner. How many pages about a dance instructor trying to figure out how to get a dance company up and running? It became a Seinfeld show. A book about 'nothing'. I have read maybe 1000 sci-fi/fantasy books. I can count on one hand how many I have just given up on or skipped through. This is one of them. This is the equivalent of a modern day reality show about little to nothing. Some may like that, some may love that. Good for you. I feel ripped off in time and money.I wont buy any more written by VD.",
+    "source": {
+      "dataset": "fancyzhx/amazon_polarity",
+      "config": "amazon_polarity",
+      "split": "train",
+      "row": 20000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=fancyzhx/amazon_polarity&config=amazon_polarity&split=train&offset=20000&length=1"
+    },
+    "words": 146
+  },
+  {
+    "id": "human-amazon-review-02",
+    "kind": "amazon-review",
+    "text": "AVOID. I recently got this movie for 99 cents on Ebay. The dvd is a import from Asia and its basically a bootleg. The dvd picture quailty is poor and the region code for the dvd is zero. Region zero means bootleg, trust me ive been researching this product for the past week. I got in a heated debate over the dvd with a seller and he left me negative feedback for trying to help him. Also, if you read the warning label on the bottom of the dvd you will see a ton of spelling errors. It'd quite funny if I was fighting with the seller who sold me this product. Avoid this product and pick up yourself a real copy of the dvd, if you can actully find one.",
+    "source": {
+      "dataset": "fancyzhx/amazon_polarity",
+      "config": "amazon_polarity",
+      "split": "train",
+      "row": 120003,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=fancyzhx/amazon_polarity&config=amazon_polarity&split=train&offset=120003&length=1"
+    },
+    "words": 131
+  },
+  {
+    "id": "human-amazon-review-03",
+    "kind": "amazon-review",
+    "text": "Smells Like An 89 Year Old Man. I was looking forward to buying and using this product. I have only used three colognes my whole life. Chikara (INCREDIBLE COLOGNE but TO PRICEY and SMALL BOTTLE), Mambo By Liz Claibourne (DECENT COLOGNE but NOTHING SPECIAL has a GOOD PRICE though), and this one(WENT STRAIGHT TO THE TRASH AFTER SECOND USE). When I first opened it I immediately thought it smelt horrible like a cheap cologne you can find in a thrift shop or flea market! Then I thought I would get some other opinions. Maybe I was wrong? Asked some girls I know and Not one person liked it and all said the same thing... It smells like an old man.",
+    "source": {
+      "dataset": "fancyzhx/amazon_polarity",
+      "config": "amazon_polarity",
+      "split": "train",
+      "row": 700002,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=fancyzhx/amazon_polarity&config=amazon_polarity&split=train&offset=700002&length=1"
+    },
+    "words": 120
+  },
+  {
+    "id": "human-amazon-review-04",
+    "kind": "amazon-review",
+    "text": "Flat portrait of Sylvia Plath. I was really looking forward to seeing a movie about the life and death of the famous Sylvia Plath, but I found this movie to be ultimately unsatisfying. I guess one major problem I have with it is that it does not show her life in New York City which ultimately became the basis for THE BELL JAR, her most compelling work. Although I liked the reading of her poems throughout the movie, the focus on her life with Ted Hughes I didn't like. Ted Hughes was the last influence in her life; she had many major influences before she met him.",
+    "source": {
+      "dataset": "fancyzhx/amazon_polarity",
+      "config": "amazon_polarity",
+      "split": "train",
+      "row": 1900000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=fancyzhx/amazon_polarity&config=amazon_polarity&split=train&offset=1900000&length=1"
+    },
+    "words": 107
+  },
+  {
+    "id": "human-movie-review-01",
+    "kind": "movie-review",
+    "text": "This is a bad movie. Not one of the funny bad ones either. This is a lousy bad one. It was actually painful to watch. The direction was awful,with lots of jumping around and the green and yellow hues used throughout the movie makes the characters look sickly. Keira Knightly was not convincing as a tough chick at all,and I cannot believe Lucy Liu and Mickey Rourke signed on for this criminal waste of celluloid. The script was terrible and the acting was like fingernails across a chalkboard. If you haven't seen it,don't. You are not missing anything and will only waste two hours of your life watching this drivel .I have seen bad movies before and even enjoyed them due to their faults. This one is just a waste of time.",
+    "source": {
+      "dataset": "stanfordnlp/imdb",
+      "config": "plain_text",
+      "split": "train",
+      "row": 3000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=stanfordnlp/imdb&config=plain_text&split=train&offset=3000&length=1"
+    },
+    "words": 132
+  },
+  {
+    "id": "human-movie-review-02",
+    "kind": "movie-review",
+    "text": "......this film is pretty awful, the only thing stopping me from giving it a rating of 1 was the fact that I unfortunately have seen worse.\n\nThe jungle music, juttering demons, and fluorescent UV style blood/teeth/eyes give it that \"awful\" look, and the script is dire.....this film is more like a test to see how long you can last before giving up on it. It's also predictable but not in a good way. Nothing this film does is in a good way. I watched it 10 minutes ago and thought I would rant a bit so there you are. (oh and the acting doesn't let the film down, it's also terrible)",
+    "source": {
+      "dataset": "stanfordnlp/imdb",
+      "config": "plain_text",
+      "split": "train",
+      "row": 11000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=stanfordnlp/imdb&config=plain_text&split=train&offset=11000&length=1"
+    },
+    "words": 111
+  },
+  {
+    "id": "human-movie-review-03",
+    "kind": "movie-review",
+    "text": "If you r in mood for fun...and want to just relax and enjoy...bade Miyan Chote Miyan is one of the movies to watch. Amitabh started off pretty good...but it is Govinda who steals the show from his hands... awesome timing for and good dialog delivery.....its inspired from Bad boys... but it has Indian Masala to it... people think it might be confusing and stupid...but the fact that David Dhavan is directing and Govinda is acting... should not raise any questions....other recommended movies in the same genre(David Dhavan/Govinda combo)...are Shola Aur Shabnam, Aankhen, Raja Babu, Saajan Chale Sasural, Deewana Mastana, Collie no. 1, Jodi no. 1, Hero no.1, Haseena Manjayegi, Ek Aur Ek Gyarah.",
+    "source": {
+      "dataset": "stanfordnlp/imdb",
+      "config": "plain_text",
+      "split": "train",
+      "row": 19000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=stanfordnlp/imdb&config=plain_text&split=train&offset=19000&length=1"
+    },
+    "words": 113
+  },
+  {
+    "id": "human-news-01",
+    "kind": "news",
+    "text": "Camryn Jakeb Wilson was bathed in TV lights the day he was born, celebrated on the local news as Summit County's 2008 New Year's baby after his arrival at 12:33 a.m. January 1. Camryn Jakeb Wilson was the first baby born this year in Summit County, Ohio, arriving at 12:33 a.m. January 1. Just 12 weeks later, he was bathed in warm water minutes after he quietly died in his mother's arms, the victim of shaken baby syndrome. Camryn's 9-year-old sister, Tabatha, asked why he needed a bath now. \"We have to get him ready to go to Jesus,\" a nurse softly replied. Tabatha took up a sponge to help. Camryn's father, Craig R. Wilson, 28, of Cuyahoga Falls, is scheduled for a pretrial hearing on murder and other charges August 20. Police say he confessed to shaking and squeezing the infant after arguing with his wife, Crystal Wilson. But he has pleaded not guilty to all the charges and faces trial in September. \"There are no excuses for this to happen to any baby,\" said Crystal Wilson, 26. \"This is murder. He had no reason to die. He died because he cried.\" An innocent infant's violent death has destroyed a family. Watch the family celebrate Camryn's birth ». \"It really is a tragedy,\" said Craig Wilson's defense attorney, Jonathan T. Sinn. \"I mean, not only did Crystal and Craig lose a son, but Crystal lost a husband, and Craig's parents lost a son and a grandson. ... One day this was a happy, perfect family, and the next day it's been devastated.\" The National Center on Shaken Baby Syndrome estimates that as many as 1,400 babies annually are injured or killed by shaking. According to the center, 70 percent to 79 percent of people convicted of killing or hurting babies are men. The average age of perpetrators is 24, and 82 percent are either the parent of the victim or the live-in boyfriend of the mother. Watch CNN's Dr. Sanjay Gupta explain shaken baby syndrome ». Craig Wilson and Crystal Twiddy, both recovering alcoholics, met about four years ago in a softball league popular with Alcoholics Anonymous members. The couple beamed in engagement photos shot in a garden setting before they were married in September. It was the first marriage for both. See photos of the family ». Craig, the machinist son of the Cuyahoga Falls High School wrestling coach and a former Mat Cats wrestler himself, became a father figure to Tabatha, Crystal's daughter from a previous relationship.",
+    "source": {
+      "dataset": "abisee/cnn_dailymail",
+      "config": "3.0.0",
+      "split": "train",
+      "row": 2000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=abisee/cnn_dailymail&config=3.0.0&split=train&offset=2000&length=1"
+    },
+    "words": 420
+  },
+  {
+    "id": "human-news-02",
+    "kind": "news",
+    "text": "The remains of an Air Force major missing since the Vietnam War have been identified after years of searches, the Department of Defense said. Air Force Maj. Curtis Daniel Miller of Palacios, Texas, was one of 14 men whose plane was shot down on March 29, 1972. Miller and his crew were flying over southern Laos when a missile struck their plane, the Defense Department said Tuesday. After the shoot-down, rescue teams had to call off the search after two days because of heavy fighting near the crash site in Savannakhet province. In 1986, U.S. and Laotian search teams found the remains of nine of the men who were on the plane. In 2005 and 2006, search teams found more remains. DNA tests have confirmed that they belong to Miller and the other missing crew members. Miller will be buried with full military honors at the Dallas-Ft. Worth National Cemetery on March 29.",
+    "source": {
+      "dataset": "abisee/cnn_dailymail",
+      "config": "3.0.0",
+      "split": "train",
+      "row": 9000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=abisee/cnn_dailymail&config=3.0.0&split=train&offset=9000&length=1"
+    },
+    "words": 153
+  },
+  {
+    "id": "human-news-03",
+    "kind": "news",
+    "text": "Tsang Tsz-Kwan may look like an average student in Hong Kong with her standard-issue blue shift dress with a Chinese collar and sensible black shoes. But her ordinary appearance and shy manner mask a steely determination to triumph over tremendous odds. She recently scored within the top 5% for nearly all her subjects in the city's college entrance examination -- despite being blind and severely hearing-impaired from a young age. She also lacks sensitivity in her fingertips, which denies her the ability to feel the raised dots of Braille characters. Rather than admit defeat, the 20 year old found an alternative way to read Braille -- with her lips. \"In Primary 1 (the equivalent of Grade 1 in the United States), I noticed that she was always leaning forward,\" said Mee-Lin Chiu, a teacher at the Ebenezer School & Home for the Visually Impaired -- the only special needs school in Hong Kong dedicated to the blind. \"She told me it was because she could read more clearly with her lips than her hands.\" Tsang herself admitted: \"I know it's not a common approach and it sounds rather strange. Even I myself don't know how it came about,\" she added, calling it \"miraculous.\" In actual fact, the lips, tongue, and fingertips are particularly adept at spatial discrimination â€” they can perceive two points that are only 1-3 millimeters apart, according to the classic anatomy text, Field's Anatomy, Palpation and Surface Markings. In comparison, the legs or back of the hands can only detect two points with a separation of more than 50-100 millimeters. While Tsang may not be the very first person to resort to lip-reading Braille, she appears to be a rare case. \"This is the first I have heard of someone being successful using the lips,\" said Diane Wormsely, a professor at North Carolina Central University who specializes in education for the visually impaired. Chiu also said that Tsang was the only student at Ebenezer to have used their lips -- and is the sole case she is aware of in Hong Kong. Lip-reading Braille is not without its challenges, however. \"Nobody could accept it in the beginning,\" Tsang said. \"Even now, many people find it odd ... It's caused some embarrassment when I read in public places and in front of people that I don't have a close relationship with.\" It also poses practical problems, as Braille books are typically large and heavy.",
+    "source": {
+      "dataset": "abisee/cnn_dailymail",
+      "config": "3.0.0",
+      "split": "train",
+      "row": 40000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=abisee/cnn_dailymail&config=3.0.0&split=train&offset=40000&length=1"
+    },
+    "words": 406
+  },
+  {
+    "id": "human-news-04",
+    "kind": "news",
+    "text": "A 14-year-old Hartlepool pupil is officially the youngest football hooligan in Britain after he was slapped with a three-year banning order by magistrates. The schoolboy, who cannot be named for legal reasons, was grounded at Hartlepool Magistrates' Court after justices heard about a catalogue of disorder at matches. He is now barred from every single football stadium in England and Wales. The ban also means he must surrender his passport every time the England national team play abroad. Punishment: A teenage boy has been banned from every football ground in the UK following a series of incidents of football hooliganism. File picture. The Hartlepool United fan, who was part of a gang of young football hooligans 'intent on causing trouble and abuse at matches', was caught:. Detective Constable Jamie Smith, from Cleveland Police's Football Intelligence Unit, said: 'This means that this boy from Hartlepool is currently the youngest subject of a banning order in the UK. 'We applied for this ban as a preventative measure because we wanted to remove a 14-year-old that is keen on contributing to violence and disorder connected with football. 'Over the years Hartlepool has caused us very little problems because the majority of supporters go to enjoy themselves. 'It's unfortunate that we became aware, and are aware, of a small minority that go to games for confrontation rather than football.' Dale Jennings (left) celebrates a goal at Hartlepool's Victoria Park. The 14-year-old will not be able to attend a match for three years. The court heard how the teenager was caught misbehaving five times at separate fixtures in a 13-month period. He was spotted by police goading away supporters during one game at Victoria Park, and was then nabbed 'seeking disorder' after a planned confrontation with a gang of rival fans in Hartlepool town centre. Travel ban: The boy has to hand police his passport whenever England play abroad. The same yob was then caught at two more home games, once inside the stadium again goading visiting supporters and at another fixture when he was actively involved in trouble. He was also involved in trouble at a Pools away game where he taunted fans and shoppers as he made his way to the game. The town youngster appeared at court with his parents and apologised to the bench for his actions, saying: 'I'm sorry I won't do it again.' His father then added: 'He was caught up and easily led in a group of other youths when he used to go to football matches.",
+    "source": {
+      "dataset": "abisee/cnn_dailymail",
+      "config": "3.0.0",
+      "split": "train",
+      "row": 120000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=abisee/cnn_dailymail&config=3.0.0&split=train&offset=120000&length=1"
+    },
+    "words": 419
+  },
+  {
+    "id": "human-news-05",
+    "kind": "news",
+    "text": "Inside the Maracana on Sunday July 13, a decade of planning and preparation was finally realised when Philipp Lahm lifted Germany’s fourth World Cup. They were a tournament team, built to last the distance in Brazil under the astute guidance of their coach Joachim Low. On Tuesday, in Roy Hodgson’s first major interview since England exited the World Cup with one point, he suggested we are on the same upward trajectory. Here comes the killer quote, delivered by Hodgson at our national stadium, from Tuesday's interview on Sky Sports News HQ: ‘I don’t believe in the nonsense spoken about the identity of certain countries and how they play,’ claimed England’s head coach. ‘I don’t see a vast amount different between how we try and the way Germany try to play.' VIDEO Scroll down to watch Germany celebrate World Cup victory with on-stage stunt. Deluded: England boss Roy Hodgson believes there isn't much difference between the Three Lions & Germany. Spot the difference: Germany players lifted the World Cup after a storming summer in Brazil. Early exit: England failed to win a match and were sent packing after the group stage in Brazil. To put that into context, during a friendly in England’s backyard last November, Toni Kroos had 125 touches of the ball and set up Per Mertesacker’s winning goal. Wayne Rooney, cast in the same role as Kroos that night, had just 42. Until Hodgson, or someone else in his position for that matter, accepts that Germany are currently operating at an elite level we have no chance of catching them, let alone overtaking them. ‘Now there is a major difference between the 11 players in the German shirt and the 11 players in the England shirt,’ added Hodgson. ‘But if we are talking about how they attack and build up their attacks. Or how they keep possession and seek for openings when they have got the ball, I don’ t see a vast amount of difference in philosophy or style. And the same defensively. Random things that happen in the game make all the difference. I could give you six or seven examples from the World Cup that made winners into losers.’ England were losers, beaten by Italy in their opening group game in Manaus and swatted aside by the brilliance of Luis Suarez when they played Uruguay in Sao Paulo. Hard to take: Hodgson watched his England team lose to Uruguay - after going down to Italy.",
+    "source": {
+      "dataset": "abisee/cnn_dailymail",
+      "config": "3.0.0",
+      "split": "train",
+      "row": 250000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=abisee/cnn_dailymail&config=3.0.0&split=train&offset=250000&length=1"
+    },
+    "words": 410
+  },
+  {
+    "id": "human-reddit-01",
+    "kind": "reddit",
+    "text": "MY cousin has had a rough time. He went out oh high school and started to work in a plant that did recycling cell phone batteries. Recession hit and the position he had had for over 10 years was downsized.\n\nThe guy had been married for a few years, has two children and a wife. On the up side she works and gets paid well.\n\nOnto the point, He had a family to provide for, so he did not apply for EI, he got a job at KFC. The sad part is a lot of people made fun of him for it. Work is work and a dollar is a dollar. You could see it killed him to tell people where he worked as it was 1/3 the hourly rate. He took as many shifts as they would let him.\n\nMoral of the story is everyone needs to work, a job may not be your ideal one but sometimes you need to do what you can to live.\n\nTL:DR - Take a job as long as it will help you cover your costs and not hurt others. There is no such thing as work that is below someone.",
+    "source": {
+      "dataset": "webis/tldr-17",
+      "config": "default",
+      "split": "train",
+      "row": 501,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=webis/tldr-17&config=default&split=train&offset=501&length=1"
+    },
+    "words": 198
+  },
+  {
+    "id": "human-reddit-02",
+    "kind": "reddit",
+    "text": "A friend of mine was having the very same issues. We noticed that some instances (maps) would consistently lag and disconnect him, while others would work fine at the same time. Once he got into one of those laggy instances, even a game restart would keep it laggy. He could go back to say a lunaris that was laggy and be disconnected again after some serious lag spikes, then create a new one and this one would work fine.\n\nSo we naturally thought it was a problem on GGG side.\n\nafter much research and help from the forum, we learned that there were several instance servers (this is quite obvious) at different IPs, and the route assigned by his ISP would sometimes pass through a different router at the peering location between his ISP and his ISP's backbone provider. So when an instance was created on some specific server of GGG, he got the route going through the faulty ISP equipment, and there was nothing to do, that instance was forever laggy/disconnecting.\n\nAs you can imagine, this is pretty annoying when you put that well rolled lvl 78 map in and it turns out to be a \"corrupted\" one.\n\nSo he tried multiple times to contact his ISP (SFR france) customer service. But yeah, you get the usual \"did you try rebooting your computer\". They simply will not understand or pass the error report up the chain. To this day the problem is still not resolved (that's since the beginning of the current leagues).\n\nBut all is not lost, we found a solution ! We usually are on the european gateway, so we decided to switch to the US gateway. There we have more disconnections, but at least once he disconnects, he can reconnect and the instance is not 'corrupted'. looks like the ISP equipment to the US gateway is not faulty !\n\nOnce we pinpointed the peering problem with trace and everything, we tried to get GGG to contact the ISP, just like sometimes blizzard does. But GGG is a small company, they obviously don't have the man power to do this.\n\nTLDR : probably not GGG's fault, they could do more about this kind of stuff, but they're a small company",
+    "source": {
+      "dataset": "webis/tldr-17",
+      "config": "default",
+      "split": "train",
+      "row": 4000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=webis/tldr-17&config=default&split=train&offset=4000&length=1"
+    },
+    "words": 373
+  },
+  {
+    "id": "human-reddit-03",
+    "kind": "reddit",
+    "text": "I remember the thread you are talking about but can't seem to find it. However you might find this site helpful in the meantime:\n\nYou can filter records after certain dates. (I usually choose the most recent patch release as a benchmark) You won't get things like most picked or banned, but you will get records for highest gpm, last hits, kills, deaths, assists and so on. I've been using this just to give me an idea of the highest values achieved since the patch and tweaking my numbers as I watch matches.\n\nI hope it helps, cheers.\n\ntl;dr datdota.com is a pretty good resource for some of the stats you're looking for.",
+    "source": {
+      "dataset": "webis/tldr-17",
+      "config": "default",
+      "split": "train",
+      "row": 15000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=webis/tldr-17&config=default&split=train&offset=15000&length=1"
+    },
+    "words": 113
+  },
+  {
+    "id": "human-reddit-04",
+    "kind": "reddit",
+    "text": "Yeah, I would definitely agree the right sub is /r/changemyview. However, I already came so might as well put in my two cents worth.\n\nWell, I am probably an outlier on the reading spectrum. Most times, I hear people say that they'll read novels, but textbooks put them to sleep. I can't stand reading fiction or reading for enjoyment, but would much rather read to be informed.\n\nI view reading as a tool to delve into research and knowledge bases that are unknown to me. Reading is one of the easiest and best ways of learning new things. I can read about the fundamental laws of physics and the reasoning behind them, how to fix my car, or how to program a computer.\n\nAs one with a somewhat utilitarian lifestyle, I find myself averse to reading fiction and other stories that will not improve the way I live. If I want to learn about love or something very metaphysical, maybe I'll turn to novels but maybe I'll turn to philosophy. As one who sees reading as a tool, I have a hard time viewing it from any other vantage point, that's all.\n\nI also don't understand practicing vocabulary unless it directly affects my performance in communication. For example, one of the only times I actually practiced vocabulary was when I was reading a lot of primary scientific articles. Many of the scientists used words specific to the academic community that were considered common knowledge, so I needed to know these to really understand their works. That being said, if I know the word \"restates,\" I don't necessarily need to know the word \"recapitulates.\" They essentially mean the same thing, albeit there is a time and a place for both, but if you know one I see no reason to put forth the effort of learning this word for any reason than trying to impress others with your large vocabulary.\n\n**tl;dr** (for the true non-readers) I only read to learn or better myself. I see no reason to read for fun, because it's not.",
+    "source": {
+      "dataset": "webis/tldr-17",
+      "config": "default",
+      "split": "train",
+      "row": 90000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=webis/tldr-17&config=default&split=train&offset=90000&length=1"
+    },
+    "words": 343
+  },
+  {
+    "id": "human-reddit-05",
+    "kind": "reddit",
+    "text": "Platform: XB1\n\nPlay Style: Pretty new to 2k but I like to run pick and rolls and shoot threes. Like defensive rebounding.\n\nCurrent Squad (need lots of help here):\nRuby Jeff Teague, gold '78 David Thompson, Gold Detlef Schrempf, Gold Lamarcus Aldridge, Gold '01 Dikembe Mutombo\n\nBench: Gold Kyle Lowry, Emerald Harrison Barnes, Gold Rudy Gay, Gold '73 Spencer Haywood, Gold Brook Lopez, Gold John Wall, Gold Serge Ibaka, Gold Zach Randolph\n\nCoach is Erik Spoelstra. Dont know much about coaches but he seemed alright. I have Doc Rivers and Rick Carlisle if I should switch to one of them.\n\nI am really in need of a good backup SG I love Thompson but my only backup SG is Lamb and I'd prefer a good gold. Let me know some other options I can try for players as well as a good way to acquire those players. I am fine to spend about $50 to improve the team.\nTLDR: Need to know which coach to use and I need a good backup SG. Also want to make sure that I am starting the right players.",
+    "source": {
+      "dataset": "webis/tldr-17",
+      "config": "default",
+      "split": "train",
+      "row": 400004,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=webis/tldr-17&config=default&split=train&offset=400004&length=1"
+    },
+    "words": 185
+  },
+  {
+    "id": "human-blog-01",
+    "kind": "blog",
+    "text": "Freedom of Speech? I chanced upon this Blog, as how web surfing usually goes, by clicking link to link to link. It's a page about this lady in the States, who got fired for what she wrote on her Blog. What's the state of freedom of speech now? Internet laws are still in their infancy stage - can she sue them for firing her? (Joy? Any comments?) It makes me wonder, could I get into trouble for what I'm posting right now? If that's the case, my Blog'll never be able to fully express what I think or feel 'coz *gulp* Big Brother's watching...it's Self-Censorship at work... This sucks doesn't it? Anyways, I read what she wrote about her boss and co-workers. It seemed innocent enough, a standard rage-against-the-machine rant. IMHO, some people are just wayyyyyyyy too sensitive. I mean c'mon, it's not like the whole world gets along right? We all need room to express our pent-up pissed-offness... The sad thing is, I think the machine won. dooce.com has been abandoned, although you can still read the archives . And this all happened in the good ol' US of A, where the the 1st Amendment clearly states 'Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble, and to petition the Government for a redress of grievances.' The First Amendment to the U.S. Constitution Of course, this means that the government can't interfere. But it seems like nosy co-workers can. hmmm.... Oh wells. No big deal right? Singaporeans have always practiced self-censorship right? But at what price? Drop me a flooble yah?",
+    "source": {
+      "dataset": "tasksource/blog_authorship_corpus",
+      "config": "default",
+      "split": "train",
+      "row": 300,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=tasksource/blog_authorship_corpus&config=default&split=train&offset=300&length=1",
+      "date": "05,June,2002"
+    },
+    "words": 288
+  },
+  {
+    "id": "human-blog-02",
+    "kind": "blog",
+    "text": "Tori Amos Scarlet's Walk (Epic) Tori Amos is one of America's most polarizing artists, with each album predictably regarded as a love-it-or-hate-it proposition sure to thrill every fan and aggravate every hater. But she's made good and bad records just like anyone else: For proof, listen to her sublime From The Choirgirl Hotel and her horrid covers album Strange Little Girls back to back. Amos' well-documented idiosyncrasies tend to be reflected in teeth-gnashingly twee flights of fancy just as often as they produce bracing catharsis, making her catalog both rewarding and punishing when taken as a whole. Come to think of it, that just about sums up Scarlet's Walk, her epic follow-up to Strange Little Girls. A characteristically oblique concept album about finding the soul of America in its open roads, the disc marks a vast leap beyond its more gimmicky predecessor. From the pretty ballad 'Your Cloud' to the irresistibly poppy single 'A Sorta Fairytale,' Scarlet's Walk moves through some remarkable terrain. But amid all the elegantly sweeping, minor-key arrangements are the usual aggravating moments, most notably at the end of songs like 'Mrs. Jesus' (yeech) and 'Wednesday,' which each close with a breathless solo a cappella vocal for dramatic effect. The result tends to highlight lines that don't serve her well: Try not to groan when Amos stops the music on 'Wednesday' long enough to wheeze, 'Lost in a place called America.' But on Scarlet's Walk, her audacity is just as often admirable, and the album represents a considerable step up for fans and foes alike. Stephen Thompson not from that album but one of my favorite tori songs She's Your Cocaine She's got you shaving your legs you can suck anything but you know you wanna be me put on your makeup boy you're your favourite stranger and we all like to watch So shimmy once and do it again bring your sister if you can't handle it she says you control it then she says you don't control it then she says you're controlling the way she makes you crawl She's your Cocaine your Exodus laughing and she knows what you are so shimmy once and do it again Bring your sister Bring your sister if you can't handle it If you want me to Boy I could lie to you you don't need one of these to let me inside of you and is it true that devils end up like you do something safe for the picture frame and is it true that devils end up like you so tied up you don't know how she came She's your Cocaine She's got you shaving your legs she got you liking mine back got me takin it in getting mine back lasting mine evil I'm taking my easel and I'm writing good checks you sign Prince of Darkness try squire of dimness please don't help me with this",
+    "source": {
+      "dataset": "tasksource/blog_authorship_corpus",
+      "config": "default",
+      "split": "train",
+      "row": 2027,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=tasksource/blog_authorship_corpus&config=default&split=train&offset=2027&length=1",
+      "date": "05,August,2004"
+    },
+    "words": 483
+  },
+  {
+    "id": "human-blog-03",
+    "kind": "blog",
+    "text": "I learnt a very important lesson today, always listen to what your optometrist says. I went to the city today to go see my optometrist and he told me he had to dilute my eyes so he could see the back of them. I was like 'Sure no problemo, do what you want'. He said that the drops would make everything glary (is that even a word?) and i would probably need to wear sunglasses on the way back home. Anyway, everything looked normal afterwards and i said i didn't need sunglasses because everything was fine (and i didn't know what glary meant). He said i should wear some sort of eye protection and i refused. The moment i stepped out of the building, sunlight reflected off every shiny object in the vicinity somehow magnified itself and forced itself into my eyes. So this is what glary meant. Everywhere i turned light and glare and man was it annoying, especially going over the bridge where the sunlight reflected off the harbour. So if there is one thing you learn out of this blog, it's that listen to people who know there profession really well, or you'll probably regret it. (N.B. It's nice to see that our blog is sufficiently alive though i reckon we could comment a lot more)",
+    "source": {
+      "dataset": "tasksource/blog_authorship_corpus",
+      "config": "default",
+      "split": "train",
+      "row": 9000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=tasksource/blog_authorship_corpus&config=default&split=train&offset=9000&length=1",
+      "date": "15,July,2004"
+    },
+    "words": 219
+  },
+  {
+    "id": "human-blog-04",
+    "kind": "blog",
+    "text": "I've had a terrific day. It's been wonderfully productive. The football team was checked in with little incident, I cleaned my apartment, read, wrote, watched the Olympics, and now I just finished watching The Hours . Gymnasts are amazing!! I have a new found respect for male gymnists. All that they can do and all the strength it takes and all the flexibility it requires...well, it's just incredible to watch. I can't believe that they can twist and twirl like that on the pummel horse and hold themselves perfectly still on the uneven bars. It's amazing to watch! The Hours ...what a movie!! This is about the third time I've seen it all the way through. I just love it. If you haven't seen it, rent it :) Even the third time the movie still touches me in a way that is unspeakable. I'm listening to The Flaming Lips... Quote of the evening...“Each has his past shut in him like leaves of a book known to him by his heart, and his friends can only read the title.” Virginia Woolf",
+    "source": {
+      "dataset": "tasksource/blog_authorship_corpus",
+      "config": "default",
+      "split": "train",
+      "row": 60000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=tasksource/blog_authorship_corpus&config=default&split=train&offset=60000&length=1",
+      "date": "14,August,2004"
+    },
+    "words": 180
+  },
+  {
+    "id": "human-blog-05",
+    "kind": "blog",
+    "text": "photo by Peri Well it came with a tag that said African lily, but if you look for African lily on the net it is supposed to be blue. ??? Not sure what this is, but it is pretty. Hot here, currently 97 degrees. I worked in the yard today: trimming overgrown vines & raking pods that our trees are dropping. The birds love to hang upside down in the trees and eat the seeds that are in the pods. I think the trees are willow acacias. I trimmed some of the branches, as I'm sure the neighbor doesn't like the pods the way the birds do. After being overheated for too long I took a nice swim.",
+    "source": {
+      "dataset": "tasksource/blog_authorship_corpus",
+      "config": "default",
+      "split": "train",
+      "row": 200001,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=tasksource/blog_authorship_corpus&config=default&split=train&offset=200001&length=1",
+      "date": "28,May,2004"
+    },
+    "words": 118
+  },
+  {
+    "id": "human-encyclopedia-01",
+    "kind": "encyclopedia",
+    "text": "Northern Tablelands is an electoral district of the Legislative Assembly in the Australian state of New South Wales. It is currently held by Adam Marshall representing the National Party, following a by-election triggered by the resignation of independent member Richard Torbay. The electorate currently includes Uralla Shire, Armidale Regional Council, Glen Innes Severn, Inverell Shire, Gwydir Shire and Moree Plains Shire. History\nNorthern Tablelands was originally created in 1920, with the introduction of proportional representation, replacing Armidale, Gough and Tenterfield, and elected three members. It was held by the same three members throughout its first incarnation: inaugural Country Party leader Michael Bruxner, state Minister for Education David Drummond, and Labor MP Alfred McClelland, grandfather of former federal Attorney-General Robert McClelland. In 1927, it was divided into the single-member electorates of Armidale and Tenterfield. It was recreated in 1981, partly replacing Armidale and Tenterfield. On its recreation in 1981, the seat was a notional seat. However, Labor's Bill McCarthy, who had won Armidale in the \"Wranslide\" of 1978, won the merged seat in the second \"Wranslide.\" McCarthy held the seat for Labor against aggressive National Country/National opposition even as this already conservative area became even more so. He was only the second Labor member to represent much of the area in the single-member era, and most of the seat was served by the safe federal National seat of New England. McCarthy had developed serious health problems by the 1984 state election, but was persuaded to recontest to maintain Labor control of the seat. He resigned in 1987 when it was apparent he could not continue, and died soon afterward. Labor endorsed McCarthy's widow, Thelma, at the subsequent by-election, but she was narrowly defeated by National candidate Ray Chappell after a heavily-publicised campaign. The seat's conservative nature reasserted itself, and Chappell was re-elected with little difficulty three times. However, in the 1999 election, Chappell faced a challenge from the popular ex-mayor of Armidale, Richard Torbay, standing as an independent. In a shock result, Torbay won the seat with a comfortable margin—the latest case of NSW country areas rejecting the Nationals in favour of local independents. Torbay was comfortably reelected in 2003, 2007, and 2011, each time taking well over 60 percent of the two-party vote and easily winning enough primary votes to retain the seat outright. He served as Speaker of the New South Wales Legislative Assembly from 2007 to 2011, during what proved to be the final term of Labor's 16-year run in government.",
+    "source": {
+      "dataset": "wikimedia/wikipedia",
+      "config": "20231101.en",
+      "split": "train",
+      "row": 3000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=wikimedia/wikipedia&config=20231101.en&split=train&offset=3000&length=1"
+    },
+    "words": 413
+  },
+  {
+    "id": "human-encyclopedia-02",
+    "kind": "encyclopedia",
+    "text": "The Peirce–Nichols House is a historic house museum located at 80 Federal Street in Salem, Massachusetts. Designed early in the career of noted Salem builder Samuel McIntire (1757–1811), and modified later by him, the building gives a unique view into the methods and styles of McIntire. It was designated a National Historic Landmark in 1973 for its significance as an early masterwork of one of the country's first recognized master builders. It is now owned by the Peabody Essex Museum. History\nJerathmiel Peirce (1747–1827), began his career as a leather dresser. In about 1778, he formed a partnership with Aaron Waite, and purchased a two-gun schooner, the Greyhound, to serve as a privateer against British merchant vessels in the Revolutionary War. The partnership prospered, and over the next half a century, purchased/built at least 10 vessels, sending them to ports around the world. In 2000, the National Park Service had a full-scale replica of one of the Waite & Peirce ships built, the Friendship of Salem, which is the centerpiece of Salem Maritime National Historic Site. Waite and Peirce were also major investors in the newly incorporated Beverly Bank, and were members of Salem's merchant aristocracy. Salem was a major center of trade in the early 1800s, and as a result of this, was the home of America's first millionaire, and on a per-capita basis, was the richest city in America. Peirce went from humble beginnings to owning one of the finest homes in Salem. In 1779, Peirce purchased a large lot in Salem, and in about 1782, he engaged Samuel McIntire to design and build his home there. The property he owned went all the way to the banks of the North River, where his ships tied up and he had a counting house. The house is known to have been completed by 1784, when city tax records show Peirce being assessed for a completed house. Peirce later suffered financial misfortune and was forced to sell the house. It was purchased by friends, who willed it to the children of George and Sally (Peirce) Nichols. The house remained in the Nichols family until 1917, when it was sold to the Essex Institute, predecessor to the Peabody Essex Museum. It was opened to the public in the late 1930s after the last of the Nichols owners died. McIntire patterned the design of the house fairly closely on patterns found in the Builder's Treasury of Batty Langley, published in 1740. As a result, the house has late Georgian styling.",
+    "source": {
+      "dataset": "wikimedia/wikipedia",
+      "config": "20231101.en",
+      "split": "train",
+      "row": 60001,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=wikimedia/wikipedia&config=20231101.en&split=train&offset=60001&length=1"
+    },
+    "words": 418
+  },
+  {
+    "id": "human-encyclopedia-03",
+    "kind": "encyclopedia",
+    "text": "Zirzamin () is an Iranian television series that was broadcast from September 24 to October 25, 2006. Specifically for the month of Ramadan, when it was one of the most popular series in Iran. It was shown on Channel 3 in Iran, and Jame Jam 1 for Iranians living abroad.\n\nPlot\nThe plot is about a group of forgers (Assadi, Faraj, and Kalani) who sell a land with a fake document to a businessman for 6 billion tomans. Assadi escapes with the money and buries it in the basement of a shabby house. Faraj and Kalani are arrested for having an alcoholic drink. One year later, Faraj tries to find the money, he locates Assadi, who has had an accident and is now paralysed. Assadi tells Faraj where the money is. So, Faraj dresses himself as a poor person and rents a room there.\n\nThis sparks the story, with Faraj looking for the money. However, one of the neighbours dislikes him because he wanted one of his friends to rent the room. This makes him hate Faraj and become suspicious about him. Faraj looks for the money, but can't find it, because there are four basement rooms and Assadi does not remember which one it is.\n\nCrew\nDirector: Alireza Arkhami\nProducer: Behrouz Mofid\nScriptwriter: Ali Reza Bazrafshan\n\nReferences\n\nExternal links\nhttp://tv3.irib.ir/ -Website about the show\n\nIranian television series\n2000s Iranian television series\n2006 Iranian television series debuts\n2006 Iranian television series endings\nIslamic Republic of Iran Broadcasting original programming",
+    "source": {
+      "dataset": "wikimedia/wikipedia",
+      "config": "20231101.en",
+      "split": "train",
+      "row": 400001,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=wikimedia/wikipedia&config=20231101.en&split=train&offset=400001&length=1"
+    },
+    "words": 249
+  },
+  {
+    "id": "human-encyclopedia-04",
+    "kind": "encyclopedia",
+    "text": "Itas/Gadau is a Local Government Area of Bauchi State, Nigeria. Its headquarters are in the town of Itas Itesiwaju. The town of Gadau is in the east of the area at .\n\nIt has an area of 1,398 km and a population of 229,996 at the 2006 census.\n\nThe predominant ethnic group in the area are the Hausa and Fulani in common with the other divisions of the state.\n\nThe postal code of the area is 751.\n\nThe main campus of Bauchi State University is located in Gadau.\n\nClimate\nIn Itas, the dry season is oppressively hot and partially cloudy, while the wet season is oppressively hot and predominantly cloudy. The average annual temperature ranges from 56 to 104 degrees Fahrenheit, rarely falling below 50 or rising over 108.\n\nReferences\n\nLocal Government Areas in Bauchi State",
+    "source": {
+      "dataset": "wikimedia/wikipedia",
+      "config": "20231101.en",
+      "split": "train",
+      "row": 2000000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=wikimedia/wikipedia&config=20231101.en&split=train&offset=2000000&length=1"
+    },
+    "words": 136
+  },
+  {
+    "id": "human-press-release-01",
+    "kind": "press-release",
+    "text": "SEATTLE--(BUSINESS WIRE)--July 18, 1996--Amazon.com Books (www.amazon.com), the leading Internet-based bookstore, is breaking new ground for commerce on the Web with a program announced today called Amazon.com Associates. Through this program, any Web site, whether it attracts only a few visitors or hundreds of thousands of hits, can enhance its content and earn revenue by recommending books. More than 300 Web sites are currently enrolled as Amazon.com Associates, with dozens signing up daily. With the Amazon.com Associates program, Web sites select books of interest to their visitors and link directly to the Amazon.com 1.1 million title catalogue. Amazon.com handles online ordering, credit card charging, customer service and shipping the books directly to customers. Amazon.com, already recognized as one of the leading electronic retailers, offers Associate customers the same discounted prices and service that has earned its reputation among Web users. Associate Web sites earn a referral fee for their book recommendations. \"Literally thousands of Web sites offer great information and services designed for their visitors, whether it be cooking, astronomy or infinite other topics of interest. With the Amazon.com Associates program, these sites can now add book recommendations,\" said Jeff Bezos, president and CEO of Amazon.com Books. \"By providing a referral fee for these recommendations, Amazon.com has developed an electronic business model that takes advantage of what the Web has to offer.\" Starchefs, a Web site featuring America's highest acclaimed chefs and cookbook authors was one of the first Amazon.com Associates. \"We at Starchefs think our viewers should have the best the world of cookbooks has to offer. We already feature them on our site. And now, through our association with Amazon.com, we have made it possible for our audience to acquire them in the easiest possible way -- without ever having to leave their homes or offices. Information and convenience! It's a great partnership,\" said Fern W. Berman, partner Starchefs.com (www.starchefs.com). As many specialized sites look for ways to build their Web-based businesses, the Associates referral fee approach wins praise. \"At Inquiry.com's Ask the VB Pro site (www.inquiry.com/techtips/thev bpro), we offer the latest information on software products and technologies. Participating in `Amazon.com Associates' allows us to sell the latest books on Visual Basic directly from our site,\" said Eric Smith, Webmaster of Inquiry.com. \"Not only do we get to provide this wonderful new service to our visitors, we get a referral fee in the process. Now that makes good business sense.\"",
+    "source": {
+      "dataset": "greenpau/amz-press-release",
+      "config": "default",
+      "split": "train",
+      "row": 0,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=greenpau/amz-press-release&config=default&split=train&offset=0&length=1",
+      "year": "1996"
+    },
+    "words": 401
+  },
+  {
+    "id": "human-press-release-02",
+    "kind": "press-release",
+    "text": "SEATTLE--July 31, 2000--Leading online retailer Amazon.com (www.amazon.com) today launched its new Election 2000 Store within the Amazon.com bookstore, which features a wide range of election year merchandise to inform and entertain voters of all parties.\nIn addition to its leading online selection of political products, Amazon.com's Election 2000 Store features the Bush/Gore index, a weekly updated graph comparing the past four weeks' sales of books related to Democrat Al Gore and Republican George W. Bush. As the Election 2000 Store launches, Bush-related books have a strong lead, with 79 percent of all sales compared to only 21 percent for Gore-related books. Amazon.com's book editors selected the top five books about each nominee for the index, including biographies and political analysis.\nBesides leading political books, the store, at www.amazon.com/election2000, includes a recommended reading list from political pundit James Carville; audiobooks featuring well-known political speeches and memoirs; DVDs and videos, including both documentaries and politically oriented motion pictures; toys and games featuring presidential candidates and political themes; and Purchase Circles information showcasing what's being read on Capitol Hill.\n\"As the nation marks the start of the Republican National Convention today and looks toward the Democratic National Convention, Amazon.com can help people of all political stripes find, discover and buy anything they want about the 2000 election in one easy-to-use online location,\" said Lyn Blake, general manager of Amazon.com Books.\nBooks in the George W. Bush index include:\n-- A Charge to Keep by George W. Bush, Karen Hughes\n-- Shrub: The Short but Happy Political Life of George W. Bush by\nMolly Ivins, Lou Dubose\n-- First Son: George W. Bush and the Bush Family Dynasty by Bill\nMinutaglio\n-- W: Revenge of the Bush Dynasty by Elizabeth Mitchell\n-- Fortunate Son: George W. Bush and the Making of an American\nPresident by J.H. Hatfield, et al.\nThe Al Gore index comprises the following:\n-- Gore: A Political Life by Bob Zelnick\n-- Inventing Al Gore: A Biography by Bill Turque\n-- The Prince of Tennessee: The Rise of Al Gore by David\nMaraniss, Ellen Nakashima\n-- The World According to Al Gore: An A-to-Z Compilation of His\nOpinions, Positions, and Public Statements by Joseph Kaufman\n-- Prince Albert: The Life and Lies of Al Gore by David N.\nBossie, Floyd G. Brown",
+    "source": {
+      "dataset": "greenpau/amz-press-release",
+      "config": "default",
+      "split": "train",
+      "row": 200,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=greenpau/amz-press-release&config=default&split=train&offset=200&length=1",
+      "year": "2000"
+    },
+    "words": 381
+  },
+  {
+    "id": "human-press-release-03",
+    "kind": "press-release",
+    "text": "SEATTLE--(BUSINESS WIRE)--Jan. 21, 2005--\n\nDevelopers Can Now Build Web Sites and Applications Using All Six\nAmazon-Branded Sites Worldwide\n\nA new offering released today by Amazon Web Services (AWS) gives software developers first-ever access to data and technology from Amazon's Web sites for Canada (Amazon.ca) and France (Amazon.fr). Available at no charge, E-Commerce Service (ECS) now lets developers innovate and generate revenue from Web sites and applications that serve customers and sellers on all six Amazon-branded sites worldwide (Amazon.ca, Amazon.com, Amazon.co.jp, Amazon.co.uk, Amazon.de, Amazon.fr). All the documentation, code samples, and sample applications developers need to begin using ECS for Amazon.ca and Amazon.fr or any other Amazon-branded site is available at www.amazon.com/webservices. Amazon.ca and Amazon.fr accept the currencies of their countries, offer free shipping on orders over $39 CDN and 20 EUR respectively, offer shipping from locations that provide faster delivery times, use the countries' languages, and feature English and French-language media products. The release of ECS for Amazon.ca and Amazon.fr means that developers can innovate and make money by building applications specifically for these sites or broader applications that integrate all Amazon-branded sites worldwide. For example, developers can:\n-- Earn a referral fee as an Amazon Associate when users of their\nsites make purchases on any Amazon site\n\n-- More effectively price their products for sale on any Amazon\nMarketplace\n\n-- Build and sell applications that help other Associates or\nMarketplace sellers take advantage of AWS\n\n\"The chance to open up Inside Messenger (www.insidemessenger.com) to all of Amazon's sites and customers around the world is a big opportunity for my business,\" said independent software developer Riaan van Schoor who participated in the ECS beta for Canada and France. \"Anyone can now use Inside Messenger to shop any Amazon site with the major instant messaging networks, and I receive a referral fee when they make their purchase with Amazon.\" ECS 4.0 was released last October for Amazon.com, Amazon.co.jp, Amazon.de, and Amazon.co.uk. With today's release of ECS for Amazon.ca and Amazon.fr, the following features are now available for all six Amazon-branded sites:\n-- Detailed attributes and pricing on tens of millions of\nproducts in all categories. -- Overwhelming majority of images from Amazon's massive image\ncollection. -- Customer reviews for each product. -- Advanced search functionality, which allows users to search by\nnumerous attributes, including brand, price, and category. -- Amazon.com Shopping Cart functionality, which allows shoppers\non developers' sites or other applications to add multiple\nitems to their carts before proceeding to Amazon.com for final\ncheckout processing.",
+    "source": {
+      "dataset": "greenpau/amz-press-release",
+      "config": "default",
+      "split": "train",
+      "row": 601,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=greenpau/amz-press-release&config=default&split=train&offset=601&length=1",
+      "year": "2005"
+    },
+    "words": 415
+  },
+  {
+    "id": "human-press-release-04",
+    "kind": "press-release",
+    "text": "Easy-to-Use Web Site Guides Customers Through the Purchase Process; Rebate-Free Shopping and FREE Two-Day Shipping on All Phones\nSEATTLE--(BUSINESS WIRE)--Jul. 9, 2009-- Amazon.com, Inc. (NASDAQ:AMZN) today announced the beta launch of AmazonWireless (amazonwireless.com), a new Web site offering cell phones and service plans, easy shopping without rebate hassles and FREE Two-Day Shipping on a broad selection of phones from AT&T and Verizon Wireless. In addition to expanding selection and adding carriers during the beta test phase, Amazon will be testing different features and gathering input from customers to ensure the best possible customer experience. \"We've taken our eight years' experience selling cell phones to create a new site that makes a potentially confusing transaction much easier for customers,\" said Paul Ryder, vice president of Consumer Electronics for Amazon.com. \"The step-by-step purchase process on AmazonWireless makes it easy for customers who already have a plan to upgrade their phones. If you want to establish new cell phone service, we've made it simple to find the right phone, service plan and options for your needs. We've also eliminated the technical jargon and frustrating rebate paperwork that customers often face when buying a phone.\" AmazonWireless currently offers more than 120 phones, including a great selection of smart phones and the latest models for shoppers on a budget. Customers can shop for phones by carrier, phone feature, price, color and brand. The site's shopping cart guides customers through each stage of the purchase process, where customers will find familiar Amazon features like bestseller lists, detailed product descriptions and customer reviews. AmazonWireless is owned and operated by Amazon.com. Customers shop securely with their Amazon.com accounts and benefit from Amazon's world-class service and security. All phones purchased on AmazonWireless are eligible for FREE Two-Day Shipping. About Amazon.com\nAmazon.com, Inc. (NASDAQ:AMZN), a Fortune 500 company based in Seattle, opened on the World Wide Web in July 1995 and today offers Earth's Biggest Selection. Amazon.com, Inc. seeks to be Earth's most customer-centric company, where customers can find and discover anything they might want to buy online, and endeavors to offer its customers the lowest possible prices. Amazon.com and other sellers offer millions of unique new, refurbished and used items in categories such as Books; Movies, Music & Games; Digital Downloads; Electronics & Computers; Home & Garden; Toys, Kids & Baby; Grocery; Apparel; Shoes & Jewelry; Health & Beauty; Sports & Outdoors; and Tools, Auto & Industrial.",
+    "source": {
+      "dataset": "greenpau/amz-press-release",
+      "config": "default",
+      "split": "train",
+      "row": 1000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=greenpau/amz-press-release&config=default&split=train&offset=1000&length=1",
+      "year": "2009"
+    },
+    "words": 398
+  },
+  {
+    "id": "human-press-release-05",
+    "kind": "press-release",
+    "text": "Kindle Touch 3G is the most full-featured e-reader availableKindle Touch 3G is the top of the line e-reader with free 3G wireless - no monthly fees or annual contracts, never pay for or hunt for a Wi-Fi hotspot\nSEATTLE, Apr 20, 2012 (BUSINESS WIRE) --(NASDAQ:AMZN)--Amazon.com today announced it started shipping Kindle Touch 3G to customers in over 175 countries and territories around the world, seven days earlier than the previously announced April 27 availability date. Kindle Touch 3G is the top of the line e-reader offering the same new design and features as Kindle Touch, plus the unparalleled added convenience of free 3G wireless. To learn more about Kindle Touch 3G, visit www.amazon.com/kindletouch3Gintl.\n\"Orders from customers worldwide for our new line of electronic ink Kindles have exceeded our expectations,\" said Dave Limp, vice president, Amazon Kindle. \"Kindle Touch 3G is the most full-featured e-reader available with a beautiful, latest-generation electronic ink display, fast page turns and long, two month battery life. We know that customers are eager to get their hands on our newest Kindle which is why we're delighted to be able to ship several days earlier than we planned.\"\nKindle Touch 3G orders are fulfilled in the order they were received. Customers can purchase Kindle Touch 3G at www.amazon.com/kindletouch3Gintl and from select retailers worldwide. In addition, Kindle Touch and Kindle Touch 3G started shipping today from Amazon.co.uk, Amazon.de, Amazon.fr, Amazon.es and Amazon.it.\nKindle Touch 3G is for readers who want the top of the line e-reader. With an easy-to-use touch screen, Kindle Touch 3G makes it easier than ever to turn pages, search, shop for content, and take notes - still with all the benefits of the most advanced electronic ink display which reads like real paper, even in bright sunlight, with no glare. Kindle Touch 3G is small and light, eliminates battery anxiety with an extra-long two month battery life and holds up to 3,000 books, plus offers the unparalleled added convenience of free 3G. Kindle's free 3G connection means you never have to hunt for or pay for a Wi-Fi hotspot. Amazon pays for the 3G connection so there are no monthly fees or annual contracts.\nFor high-resolution images of Kindle Touch 3G, visit www.amazon.com/pr/kindle.",
+    "source": {
+      "dataset": "greenpau/amz-press-release",
+      "config": "default",
+      "split": "train",
+      "row": 1500,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=greenpau/amz-press-release&config=default&split=train&offset=1500&length=1",
+      "year": "2012"
+    },
+    "words": 369
+  },
+  {
+    "id": "human-press-release-06",
+    "kind": "press-release",
+    "text": "New 300 ppi display—unsurpassed resolution with twice the pixels for laser-quality text and images\nAll-new typography and layout features help you read faster with less eyestrain—new Bookerly font is crafted from the ground up for digital reading\nSEATTLE--(BUSINESS WIRE)--Jun. 17, 2015-- (NASDAQ: AMZN)—Amazon today introduced the all-new Kindle Paperwhite, updating its most popular and best-selling Kindle with the highest resolution Paperwhite display, the exclusive Kindle font Bookerly, and a new typesetting engine for more beautiful pages. Meet the new Kindle Paperwhite at www.amazon.com/paperwhite. This Smart News Release features multimedia. View the full release here: http://www.businesswire.com/news/home/20150617005738/en/\n\nThe all-new Kindle Paperwhite (Photo: Business Wire)\n\n\"We love inventing for readers,\" said Jeff Bezos, Amazon.com Founder and CEO. \"The new Kindle Paperwhite obsesses over the details that matter most to readers—we've added our highest-resolution display so the words are crisp and clear on the page, a new font that is crafted exclusively for reading Kindle books, and a new typesetting engine that makes pages beautiful. Together, these details help you read faster and with less eyestrain, so you can lose yourself in the author's world.\" New, Highest Resolution Paperwhite Display—300 Pixels per Inch for Laser-Quality Text\nThe new Kindle Paperwhite adds our highest resolution Paperwhite display, delivering the same 300 pixels per inch that readers love about the top-of-the-line Kindle Voyage. With unsurpassed resolution and 2x the pixels as the previous generation Kindle Paperwhite, the display delivers laser-quality text, making it easy to read comfortably at any font size, including at smaller fonts so you can fit more words on each page. Even with the new higher resolution display, Kindle Paperwhite delivers battery life that is measured in weeks rather than hours. New Bookerly Font and Typography Features—Read Faster With Less Eyestrain\nKindle Paperwhite now offers Bookerly, an exclusive font designed from the ground up for reading on digital screens. Warm and contemporary, Bookerly is inspired by the artistry of the best fonts in modern print books, but is hand-crafted for great readability at any size. It introduces a lighter, more graceful look and outperforms other digital reading fonts to help customers read faster with less eyestrain. See Bookerly: www.amazon.com/bookerly. The new Kindle Paperwhite also offers an all-new typesetting engine that lays out words just as the author intended:\n\nHyphenation and improved spacing—Kindle Paperwhite adds hyphenation to break words at the right place, creates paragraphs with consistent lines, and adjusts the space between words.",
+    "source": {
+      "dataset": "greenpau/amz-press-release",
+      "config": "default",
+      "split": "train",
+      "row": 2000,
+      "api": "https://datasets-server.huggingface.co/rows?dataset=greenpau/amz-press-release&config=default&split=train&offset=2000&length=1",
+      "year": "2015"
+    },
+    "words": 400
+  }
+]

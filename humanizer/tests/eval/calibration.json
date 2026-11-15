@@ -1,0 +1,94 @@
+{
+  "_doc": "Logistic rules fitted on tests/corpus (label 1 = raw AI, 0 = human). Features are standardized with mean/std; ai_prob = sigmoid(sum(w*z) + b). loo = leave-one-out gate rates. Regenerate with: python tests/eval/detectors.py --calibrate",
+  "fit_on": {
+    "ai": 32,
+    "human": 37
+  },
+  "created": "2026-11-15",
+  "gptzero-style": {
+    "mean": [
+      2.83044970469618,
+      0.7575597188049581
+    ],
+    "std": [
+      0.4988283930281706,
+      0.4049600461426939
+    ],
+    "w": [
+      -2.478318038926057,
+      0.0
+    ],
+    "b": -0.44939988550057863,
+    "burstiness_weight_pinned": true,
+    "features": [
+      "log(ppl_gpt2_medium)",
+      "burstiness=std/mean(prose sentence ppl)"
+    ],
+    "in_sample": {
+      "ai_flagged": 0.8125,
+      "human_passed": 0.8649
+    },
+    "loo": {
+      "ai_flagged": 0.8125,
+      "human_passed": 0.8649
+    },
+    "median_ai": [
+      2.4168074027861177,
+      0.4487313386940956
+    ],
+    "median_human": [
+      3.095669192474589,
+      0.9066218092274038
+    ]
+  },
+  "binoculars": {
+    "mean": [
+      0.8968107662560854
+    ],
+    "std": [
+      0.105875711171028
+    ],
+    "w": [
+      -4.198275719317449
+    ],
+    "b": 0.37436638034468095,
+    "features": [
+      "binoculars_score (HuggingFaceTB/SmolLM2-360M / HuggingFaceTB/SmolLM2-360M-Instruct)"
+    ],
+    "in_sample": {
+      "ai_flagged": 0.875,
+      "human_passed": 0.9189
+    },
+    "loo": {
+      "ai_flagged": 0.875,
+      "human_passed": 0.9189
+    },
+    "median_ai": 0.7915668487649409,
+    "median_human": 0.9725973527649956
+  },
+  "binoculars-mini": {
+    "mean": [
+      0.7600450992406028
+    ],
+    "std": [
+      0.05761180893200659
+    ],
+    "w": [
+      -1.2064335034408464
+    ],
+    "b": -0.1846174597077909,
+    "features": [
+      "binoculars_score (openai-community/gpt2 / openai-community/gpt2-medium)"
+    ],
+    "in_sample": {
+      "ai_flagged": 0.6875,
+      "human_passed": 0.8108
+    },
+    "loo": {
+      "ai_flagged": 0.625,
+      "human_passed": 0.8108
+    },
+    "median_ai": 0.716558583831039,
+    "median_human": 0.786772561202452
+  }
+}

@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Inkling · AI humanizer for marketers</title>
+  <meta name="description" content="Inkling rewrites ChatGPT, Claude and Gemini drafts into natural, human-sounding copy built to read as human to AI detectors. 100% local: your text never leaves your browser.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fbf8f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#13131c" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Inkling">
+  <meta property="og:title" content="Inkling · Make AI drafts sound human">
+  <meta property="og:description" content="Turn AI-written marketing copy into natural writing that keeps your facts and your voice. Runs entirely in your browser.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Inkling · Make AI drafts sound human">
+  <meta name="twitter:description" content="Turn AI-written marketing copy into natural writing that keeps your facts and your voice. Runs entirely in your browser.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/app.css">
+  <script src="assets/theme-init.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#tool">Skip to the humanizer</a>
+
+  <!-- Icon sprite (decorative; referenced with <use>) -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.5C9 6.6 5.5 10.3 5.5 14a6.5 6.5 0 0 0 13 0c0-3.7-3.5-7.4-6.5-11.5z" fill="currentColor"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><path d="M7 10V7a5 5 0 0 1 10 0v3M5.5 10h13v10.5h-13z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z" fill="currentColor"/><path d="M19 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" fill="currentColor"/></symbol>
+    <symbol id="i-dice" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="12" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 5.5v-.5a2 2 0 0 0-2-2h-8a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-paste" viewBox="0 0 24 24"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 4.5h6v3H9z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4.5 4.5V21H6z M14 3v4.5h4.5M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M6 12h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4.5L16 4.5l3.5 3.5L8.5 19z M13.5 7l3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mega" viewBox="0 0 24 24"><path d="M4 10v4h3l7 4.5v-13L7 10z M17.5 9a4 4 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5h16v10H10l-4.5 3.5v-3.5H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3-8.7 8.7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="8" cy="8" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 15l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24"><path d="M3 12h2l2-6 3 12 3-9 2 5 2-2h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-fingerprint" viewBox="0 0 24 24"><path d="M7 19c1.5-2 2-4.5 2-7a3 3 0 0 1 6 0c0 3-.5 5.5-1.5 8M5 15.5c.6-1.2 1-2.3 1-3.5a6 6 0 0 1 10.5-4M18 11c.3 2.7 0 5.5-1 8M12 12c0 3-1 6-2.5 8.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-dice2" viewBox="0 0 24 24"><path d="M4 7l8-4 8 4v10l-8 4-8-4z M4 7l8 4 8-4M12 11v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <header class="site-header" id="top">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="Inkling home">
+        <span class="brand-mark" aria-hidden="true"><svg><use href="#i-drop"/></svg></span>
+        <span class="brand-word">Inkling</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <a href="#tool">Humanizer</a>
+        <a href="#how">How it works</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Switch to dark theme" title="Toggle theme">
+          <svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a class="btn btn-primary btn-sm header-cta" href="#tool">Try it free</a>
+        <button type="button" class="icon-btn menu-btn" id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">For marketers, content teams &amp; agencies</p>
+        <h1 id="hero-title">Your AI drafts, rewritten to sound <em class="ink-underline">human</em>.</h1>
+        <p class="hero-sub">Paste copy from ChatGPT, Claude or Gemini. Inkling reworks the rhythm, wording and tells that detectors like GPTZero and ZeroGPT look for, and keeps your facts, numbers and brand voice intact.</p>
+        <ul class="hero-badges" aria-label="Highlights">
+          <li class="badge badge-privacy"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>100% local — your text never leaves your browser</li>
+          <li class="badge">No sign-up</li>
+          <li class="badge">Works offline</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ THE TOOL ============ -->
+    <section class="tool-section" id="tool" aria-labelledby="tool-title" tabindex="-1">
+      <div class="wrap">
+        <h2 id="tool-title" class="visually-hidden">Humanizer</h2>
+        <noscript><p class="noscript">The humanizer runs entirely in your browser, so it needs JavaScript. Please enable JavaScript and reload the page.</p></noscript>
+        <div class="tool card" data-testid="tool">
+          <div class="tool-controls" role="group" aria-label="Rewrite settings">
+            <div class="control">
+              <label class="control-label" for="tone">Tone</label>
+              <div class="select-wrap">
+                <select id="tone" name="tone" data-testid="tone">
+                  <option value="natural">Natural</option>
+                  <option value="casual">Casual</option>
+                  <option value="professional">Professional</option>
+                  <option value="marketing">Marketing</option>
+                  <option value="academic">Academic</option>
+                </select>
+              </div>
+            </div>
+
+            <fieldset class="control segmented" data-testid="strength">
+              <legend class="control-label">Strength</legend>
+              <div class="seg-options">
+                <input type="radio" name="strength" id="strength-light" value="light"><label for="strength-light">Light</label>
+                <input type="radio" name="strength" id="strength-balanced" value="balanced" checked><label for="strength-balanced">Balanced</label>
+                <input type="radio" name="strength" id="strength-aggressive" value="aggressive"><label for="strength-aggressive">Aggressive</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="control segmented" data-testid="spelling">
+              <legend class="control-label">Spelling</legend>
+              <div class="seg-options">
+                <input type="radio" name="spelling" id="spelling-us" value="us" checked><label for="spelling-us"><abbr title="American English">US</abbr></label>
+                <input type="radio" name="spelling" id="spelling-uk" value="uk"><label for="spelling-uk"><abbr title="British English">UK</abbr></label>
+              </div>
+            </fieldset>
+
+            <div class="control control-go">
+              <button type="button" class="btn btn-primary btn-lg" id="humanize" data-testid="humanize" aria-describedby="humanize-hint">
+                <svg class="icon btn-icon" aria-hidden="true"><use href="#i-spark"/></svg>
+                <span class="btn-label">Humanize</span>
+                <span class="spinner" aria-hidden="true"></span>
+              </button>
+              <span class="kbd-hint" id="humanize-hint"><kbd data-mod>Ctrl</kbd> + <kbd>Enter</kbd></span>
+            </div>
+          </div>
+
+          <div class="panes">
+            <!-- INPUT -->
+            <div class="pane pane-input" data-testid="input-pane">
+              <div class="pane-head">
+                <h3 class="pane-title"><label for="input">AI-written text</label></h3>
+                <div class="pane-actions">
+                  <button type="button" class="btn btn-ghost btn-sm" id="paste" data-testid="paste"><svg class="icon" aria-hidden="true"><use href="#i-paste"/></svg><span>Paste</span></button>
+                  <button type="button" class="btn btn-ghost btn-sm" id="sample" data-testid="sample"><svg class="icon" aria-hidden="true"><use href="#i-doc"/></svg><span>Sample</span></button>
+                  <button type="button" class="btn btn-ghost btn-sm" id="clear" data-testid="clear"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg><span>Clear</span></button>
+                </div>
+              </div>
+              <div class="pane-body">
+                <textarea id="input" data-testid="input" spellcheck="true" maxlength="200000" aria-describedby="in-count limit-msg" placeholder="Paste a blog post, email, ad or product description written by ChatGPT, Claude, Gemini or any other AI tool…"></textarea>
+                <div class="rendered rendered-input" id="input-view" data-testid="input-view" hidden tabindex="0" role="region" aria-label="AI text with AI-sounding sentences highlighted. Press Enter to edit."></div>
+              </div>
+              <div class="pane-foot">
+                <p class="counter" id="in-count" data-testid="in-count" aria-live="off">0 words · 0 characters</p>
+                <label class="switch">
+                  <input type="checkbox" role="switch" id="toggle-hl-in" data-testid="toggle-hl-in">
+                  <span class="switch-track" aria-hidden="true"></span>
+                  <span>Highlight AI sentences</span>
+                </label>
+              </div>
+              <p class="limit-msg" id="limit-msg" data-testid="limit-msg" hidden></p>
+            </div>
+
+            <!-- OUTPUT -->
+            <div class="pane pane-output" data-testid="output-pane">
+              <div class="pane-head">
+                <h3 class="pane-title" id="output-label">Humanized text <span class="variant-tag" id="variant-tag" hidden></span></h3>
+                <div class="pane-actions">
+                  <button type="button" class="btn btn-ghost btn-sm" id="variant" data-testid="variant" disabled title="Generate a different rewrite of the same text"><svg class="icon" aria-hidden="true"><use href="#i-dice"/></svg><span>New variant</span></button>
+                  <button type="button" class="btn btn-ghost btn-sm" id="copy" data-testid="copy" disabled><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+                  <button type="button" class="btn btn-ghost btn-sm" id="download" data-testid="download" disabled><svg class="icon" aria-hidden="true"><use href="#i-download"/></svg><span>.txt</span><span class="visually-hidden"> download</span></button>
+                </div>
+              </div>
+              <div class="pane-body">
+                <div class="rendered output" id="output" data-testid="output" tabindex="0" role="region" aria-labelledby="output-label" aria-busy="false"></div>
+                <div class="output-empty" id="output-empty">
+                  <svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg>
+                  <p>Your humanized copy appears here.</p>
+                  <p class="muted">Try the <strong>Sample</strong> button if you just want to see it work.</p>
+                </div>
+                <div class="output-loading" id="output-loading" hidden aria-hidden="true">
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+              <div class="pane-foot">
+                <p class="counter" id="out-count" data-testid="out-count">0 words · 0 characters</p>
+                <div class="switches">
+                  <label class="switch">
+                    <input type="checkbox" role="switch" id="toggle-diff" data-testid="toggle-diff">
+                    <span class="switch-track" aria-hidden="true"></span>
+                    <span>Show changes</span>
+                  </label>
+                  <label class="switch">
+                    <input type="checkbox" role="switch" id="toggle-hl-out" data-testid="toggle-hl-out">
+                    <span class="switch-track" aria-hidden="true"></span>
+                    <span>Highlight AI sentences</span>
+                  </label>
+                </div>
+              </div>
+              <p class="stale-msg" id="stale-msg" hidden>Your input changed since this rewrite. Press <strong>Humanize</strong> to refresh it.</p>
+            </div>
+          </div>
+
+          <div class="legend" id="legend" hidden>
+            <span class="legend-item"><span class="swatch swatch-ai-high" aria-hidden="true"></span>Sounds like AI</span>
+            <span class="legend-item"><span class="swatch swatch-ai-mid" aria-hidden="true"></span>Somewhat AI-like</span>
+            <span class="legend-item legend-diff"><span class="swatch swatch-add" aria-hidden="true"></span>Added</span>
+            <span class="legend-item legend-diff"><span class="swatch swatch-del" aria-hidden="true"></span>Removed</span>
+          </div>
+
+          <p class="run-stats" id="run-stats" data-testid="run-stats" hidden></p>
+
+          <!-- AI SCORE PANEL -->
+          <section class="score-panel" aria-labelledby="score-title" data-testid="score-panel">
+            <div class="score-head">
+              <h3 id="score-title">AI score <span class="muted">(local estimate)</span></h3>
+              <p class="score-note">Measured in your browser with the same kinds of signals detectors use. Third-party tools can score differently, so spot-check anything high-stakes.</p>
+            </div>
+            <div class="gauges">
+              <figure class="gauge" id="score-in" data-testid="score-in" data-state="empty">
+                <svg class="gauge-svg" viewBox="0 0 120 70" aria-hidden="true">
+                  <path class="gauge-track" d="M10 62a50 50 0 0 1 100 0" pathLength="100"/>
+                  <path class="gauge-fill" d="M10 62a50 50 0 0 1 100 0" pathLength="100"/>
+                </svg>
+                <div class="gauge-readout">
+                  <span class="gauge-value">–</span>
+                  <span class="gauge-label">Paste text to score</span>
+                </div>
+                <figcaption>Before <span class="muted">· your input</span></figcaption>
+              </figure>
+              <div class="gauge-arrow" aria-hidden="true">→</div>
+              <figure class="gauge" id="score-out" data-testid="score-out" data-state="empty">
+                <svg class="gauge-svg" viewBox="0 0 120 70" aria-hidden="true">
+                  <path class="gauge-track" d="M10 62a50 50 0 0 1 100 0" pathLength="100"/>
+                  <path class="gauge-fill" d="M10 62a50 50 0 0 1 100 0" pathLength="100"/>
+                </svg>
+                <div class="gauge-readout">
+                  <span class="gauge-value">–</span>
+                  <span class="gauge-label">Humanize to score</span>
+                </div>
+                <figcaption>After <span class="muted">· Inkling output</span></figcaption>
+              </figure>
+            </div>
+            <details class="signals" id="signals-details">
+              <summary>What the score is made of</summary>
+              <div class="signals-legend" aria-hidden="true">
+                <span>Signal</span><span>Before</span><span>After</span>
+              </div>
+              <ul class="signal-list" id="signals" data-testid="signals"></ul>
+              <p class="muted signals-empty" id="signals-empty">Add some text to see each signal.</p>
+            </details>
+          </section>
+        </div>
+
+        <p class="sr-only-live visually-hidden" id="status" role="status" aria-live="polite" aria-atomic="true" data-testid="status"></p>
+      </div>
+    </section>
+
+    <!-- ============ WORKS WITH ============ -->
+    <section class="works-with" aria-label="Works with">
+      <div class="wrap">
+        <p>Works with text from <span>ChatGPT</span> <span>Claude</span> <span>Gemini</span> <span>Copilot</span> <span>Jasper</span> <span>Llama</span> and any other AI writer.</p>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-title">Detectors don't read meaning. They read patterns.</h2>
+          <p class="lead">AI detectors look at <em>how</em> something is written: how predictable each word is, how evenly the sentences flow, and which stock phrases show up. Inkling changes exactly those patterns and leaves your message alone.</p>
+        </div>
+
+        <div class="how-grid">
+          <article class="how-card">
+            <div class="how-icon" aria-hidden="true"><svg class="icon"><use href="#i-search"/></svg></div>
+            <h3>1. Perplexity: less predictable wording</h3>
+            <p>Language models pick the most likely next word, again and again. That makes their writing smooth but very easy to predict, which is the first thing detectors measure. Inkling swaps in word choices and sentence openers that a person would plausibly use but a model rarely picks.</p>
+            <div class="example" role="group" aria-label="Example rewrite">
+              <p><span class="ex-tag ex-ai">AI</span> <span class="ex-text">Our platform helps businesses streamline their workflows and enhance productivity.</span></p>
+              <p><span class="ex-tag ex-human">Inkling</span> <span class="ex-text">Our platform cuts the busywork, so your team gets more done.</span></p>
+            </div>
+          </article>
+
+          <article class="how-card">
+            <div class="how-icon" aria-hidden="true"><svg class="icon"><use href="#i-wave"/></svg></div>
+            <h3>2. Burstiness: a human rhythm</h3>
+            <p>People write in bursts. A long, winding sentence, then a short one. Like this. AI text tends to keep every sentence about the same length and shape. Inkling splits, merges and reshapes sentences so the rhythm varies the way real writing does.</p>
+            <div class="bursts" role="group" aria-label="Sentence lengths compared">
+              <div class="burst-row">
+                <span class="burst-name">AI draft</span>
+                <span class="bars bars-ai" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              </div>
+              <div class="burst-row">
+                <span class="burst-name">Inkling</span>
+                <span class="bars bars-human" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+              </div>
+              <p class="visually-hidden">The AI draft has seven sentences of nearly identical length. The Inkling version varies from very short to long.</p>
+            </div>
+          </article>
+
+          <article class="how-card">
+            <div class="how-icon" aria-hidden="true"><svg class="icon"><use href="#i-fingerprint"/></svg></div>
+            <h3>3. Fingerprints: the tells, removed</h3>
+            <p>"Delve into." "A rich tapestry." "In today's fast-paced world." "It's important to note." Openers like <em>Moreover</em> and <em>Furthermore</em>, piles of em dashes, and everything in neat groups of three. Inkling finds these tells and rewrites them, then adds the small things people do: contractions, asides and the odd rhetorical question.</p>
+            <ul class="chips" aria-label="Examples of phrases Inkling rewrites">
+              <li><s>delve into</s></li>
+              <li><s>tapestry</s></li>
+              <li><s>Moreover,</s></li>
+              <li><s>not only… but also</s></li>
+              <li><s>seamless</s></li>
+              <li><s>game-changer</s></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="callout">
+          <div class="callout-icon" aria-hidden="true"><svg class="icon"><use href="#i-lock"/></svg></div>
+          <div>
+            <h3>What stays exactly the same</h3>
+            <p>Numbers, prices, dates, names, URLs, email addresses, hashtags and your paragraph breaks are locked before rewriting starts. The engine runs as plain code inside this page: no AI model, no server, no upload.</p>
+            <p class="muted">An honest note: the AI score above is Inkling's own local estimate. Detectors such as GPTZero, ZeroGPT and Originality.ai use their own private models and change often. Inkling is built to score as human on them, but nobody can guarantee a specific result, so check the detector you care about and re-roll a variant if needed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ USE CASES ============ -->
+    <section class="section section-tint" id="use-cases" aria-labelledby="uses-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Use cases</p>
+          <h2 id="uses-title">Made for the copy marketers ship every day</h2>
+        </div>
+        <ul class="use-grid">
+          <li class="use-card">
+            <svg class="icon use-icon" aria-hidden="true"><use href="#i-pen"/></svg>
+            <h3>Blog posts &amp; articles</h3>
+            <p>Turn a first draft into something that reads like your best writer had a go at it. Try <strong>Natural</strong> or <strong>Professional</strong>.</p>
+          </li>
+          <li class="use-card">
+            <svg class="icon use-icon" aria-hidden="true"><use href="#i-mail"/></svg>
+            <h3>Email campaigns</h3>
+            <p>Newsletters and nurture sequences that sound like a person, not a template. Pick <strong>Casual</strong> for a friendly voice.</p>
+          </li>
+          <li class="use-card">
+            <svg class="icon use-icon" aria-hidden="true"><use href="#i-mega"/></svg>
+            <h3>Ad copy</h3>
+            <p>Punchier headlines and descriptions that skip the AI clichés readers now scroll past. <strong>Marketing</strong> tone works well here.</p>
+          </li>
+          <li class="use-card">
+            <svg class="icon use-icon" aria-hidden="true"><use href="#i-chat"/></svg>
+            <h3>Social posts</h3>
+            <p>LinkedIn posts and captions with real rhythm. Hashtags, handles and links come through untouched.</p>
+          </li>
+          <li class="use-card">
+            <svg class="icon use-icon" aria-hidden="true"><use href="#i-tag"/></svg>
+            <h3>Product descriptions</h3>
+            <p>Hundreds of SKUs that don't all sound alike. Prices, sizes and specs stay exactly as written.</p>
+          </li>
+          <li class="use-card">
+            <svg class="icon use-icon" aria-hidden="true"><use href="#i-search"/></svg>
+            <h3>SEO content</h3>
+            <p>Keep your keywords and headings in place while making the body read naturally for people and quality reviewers.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ COMPARISON ============ -->
+    <section class="section" id="compare" aria-labelledby="compare-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Why not just ask ChatGPT?</p>
+          <h2 id="compare-title">Rewriting AI with more AI still sounds like AI</h2>
+          <p class="lead">Asking a chatbot to "make this sound human" gives you another round of smooth, evenly paced, highly predictable text: the exact pattern detectors were trained on. Inkling takes a different route.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="compare">
+            <caption class="visually-hidden">Inkling compared with rewriting in ChatGPT</caption>
+            <thead>
+              <tr><th scope="col"><span class="visually-hidden">Feature</span></th><th scope="col">Rewriting with ChatGPT</th><th scope="col" class="col-ink">Inkling</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">What detectors see</th><td>Fresh LLM text with the same low perplexity. Often still flagged.</td><td class="col-ink">Varied rhythm, less predictable wording, AI tells removed.</td></tr>
+              <tr><th scope="row">Your facts &amp; numbers</th><td>Can drift, get "improved" or be made up.</td><td class="col-ink">Numbers, names, links and formatting are locked.</td></tr>
+              <tr><th scope="row">Privacy</th><td>Your draft is sent to someone else's servers.</td><td class="col-ink">Never leaves your browser.</td></tr>
+              <tr><th scope="row">Speed</th><td>Prompt, wait, re-prompt, fix.</td><td class="col-ink">A fraction of a second for most posts.</td></tr>
+              <tr><th scope="row">Repeatable results</th><td>Different every time.</td><td class="col-ink">Same text and variant give the same output. Re-roll for a new one.</td></tr>
+              <tr><th scope="row">Works offline</th><td><span class="no">No</span></td><td class="col-ink"><span class="yes">Yes</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section class="section section-tint" id="pricing" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="eyebrow">Pricing</p>
+          <h2 id="pricing-title">Simple plans. Free while in early access.</h2>
+          <p class="lead">Every feature on this page is unlocked during early access. Paid plans will add higher limits and team features.</p>
+        </div>
+        <!-- PLACEHOLDER PRICING: all prices and limits below are placeholders, not final. Update before launch. -->
+        <div class="price-grid">
+          <article class="price-card">
+            <h3>Free</h3>
+            <p class="price"><span class="amount">$0</span><span class="per">/ forever</span></p>
+            <p class="price-desc">For trying Inkling on everyday copy.</p>
+            <ul class="ticks">
+              <li>1,500 words per rewrite</li>
+              <li>All 5 tones</li>
+              <li>Local AI score</li>
+              <li>Runs 100% in your browser</li>
+            </ul>
+            <a class="btn btn-outline" href="#tool">Start rewriting</a>
+          </article>
+          <article class="price-card price-featured">
+            <p class="ribbon">Most popular</p>
+            <h3>Pro</h3>
+            <!-- PLACEHOLDER PRICE -->
+            <p class="price"><span class="amount">$12</span><span class="per">/ month</span></p>
+            <p class="price-desc">For freelancers and marketers shipping copy daily.</p>
+            <ul class="ticks">
+              <li>15,000 words per rewrite</li>
+              <li>Unlimited variants</li>
+              <li>Aggressive strength &amp; UK spelling</li>
+              <li>Saved voice presets <span class="muted">(soon)</span></li>
+            </ul>
+            <a class="btn btn-primary" href="#contact">Join the Pro waitlist</a>
+          </article>
+          <article class="price-card">
+            <h3>Team</h3>
+            <!-- PLACEHOLDER PRICE -->
+            <p class="price"><span class="amount">$39</span><span class="per">/ month</span></p>
+            <p class="price-desc">For agencies and content teams.</p>
+            <ul class="ticks">
+              <li>Everything in Pro</li>
+              <li>5 seats included</li>
+              <li>Shared brand style rules <span class="muted">(soon)</span></li>
+              <li>Priority support</li>
+            </ul>
+            <a class="btn btn-outline" href="#contact">Talk to us</a>
+          </article>
+        </div>
+        <p class="fine-print">Prices shown are placeholders during early access.</p>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap wrap-narrow">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">Questions marketers ask us</h2>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Will Inkling pass GPTZero, ZeroGPT and other detectors?</summary>
+            <div class="faq-body"><p>It's built for exactly that. Inkling targets the signals those tools measure (predictability, sentence rhythm and stock AI phrasing), and most drafts score as human after a <strong>Balanced</strong> or <strong>Aggressive</strong> pass. That said, detectors are private, imperfect and updated often, so no tool can honestly promise a result on every text. If a detector still flags something, hit <strong>New variant</strong> or step up the strength.</p></div>
+          </details>
+          <details>
+            <summary>Is my text uploaded or stored anywhere?</summary>
+            <div class="faq-body"><p>No. The rewriting engine is ordinary code that runs inside this web page. Your text is never sent to a server, and Inkling only remembers your settings (tone, strength, spelling), never your text.</p></div>
+          </details>
+          <details>
+            <summary>Will it change my facts, numbers or links?</summary>
+            <div class="faq-body"><p>It's designed not to. Numbers, prices, dates, names, URLs, emails, hashtags and paragraph breaks are protected before rewriting. Like any editing tool, though, it can occasionally shift nuance, so give the result a quick read before you publish.</p></div>
+          </details>
+          <details>
+            <summary>What's the difference between Light, Balanced and Aggressive?</summary>
+            <div class="faq-body"><p><strong>Light</strong> fixes the obvious AI tells and adds contractions, keeping your wording close to the original. <strong>Balanced</strong> also reworks rhythm and phrasing and suits most marketing copy. <strong>Aggressive</strong> restructures more sentences for the strongest effect on detectors, with a bit more distance from the original wording.</p></div>
+          </details>
+          <details>
+            <summary>Which tone should I choose?</summary>
+            <div class="faq-body"><p><strong>Natural</strong> is a safe default. <strong>Casual</strong> suits social posts and friendly emails, <strong>Professional</strong> suits B2B and reports, <strong>Marketing</strong> adds punch for ads and landing pages, and <strong>Academic</strong> keeps a measured, formal register.</p></div>
+          </details>
+          <details>
+            <summary>Why is Inkling's AI score different from my detector's?</summary>
+            <div class="faq-body"><p>Inkling's score is a transparent local estimate built from a handful of well-known signals, so you can see <em>why</em> a text looks machine-written. Commercial detectors use their own trained models. Treat our score as a guide, and check with the detector your client or platform actually uses.</p></div>
+          </details>
+          <details>
+            <summary>Does it work in other languages?</summary>
+            <div class="faq-body"><p>Inkling is tuned for English (US and UK spelling) today. Other languages may pass through with only light changes.</p></div>
+          </details>
+          <details>
+            <summary>Does it work offline?</summary>
+            <div class="faq-body"><p>Yes. Once the page has loaded, everything runs locally. There's also a single-file version you can save and open straight from your computer.</p></div>
+          </details>
+          <details>
+            <summary>Is it OK to use Inkling?</summary>
+            <div class="faq-body"><p>Inkling is for polishing marketing copy that you have the right to publish. Don't use it to break academic integrity rules, an employer's or client's AI policy, or a platform's disclosure requirements. You're responsible for checking facts and claims in anything you publish.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta-band" aria-labelledby="cta-title">
+      <div class="wrap cta-inner">
+        <h2 id="cta-title">Ship copy that sounds like your team wrote it.</h2>
+        <a class="btn btn-light btn-lg" href="#tool">Humanize your first draft</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#top" aria-label="Inkling, back to top">
+          <span class="brand-mark" aria-hidden="true"><svg><use href="#i-drop"/></svg></span>
+          <span class="brand-word">Inkling</span>
+        </a>
+        <p class="muted">The private AI humanizer for marketers.</p>
+      </div>
+      <div>
+        <h2 class="footer-h">Responsible use</h2>
+        <p>Use Inkling on content you own or are allowed to edit. Don't use it to violate academic integrity rules, employer or client policies, or platform disclosure rules. Always fact-check before publishing.</p>
+      </div>
+      <div>
+        <h2 class="footer-h">Privacy</h2>
+        <p>Your text is processed entirely in your browser and never uploaded. We store only your display and rewrite settings, on your device.</p>
+      </div>
+      <div>
+        <h2 class="footer-h">Contact</h2>
+        <!-- PLACEHOLDER CONTACT: replace with the real address before launch. -->
+        <p><a href="mailto:hello@inkling.example">hello@inkling.example</a></p>
+        <p class="muted">Placeholder address during early access.</p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© 2026 Inkling. All rights reserved.</p>
+      <p class="muted" id="engine-version">Engine loading…</p>
+    </div>
+  </footer>
+
+  <div class="toasts" id="toasts" aria-live="polite" aria-atomic="false" data-testid="toasts"></div>
+
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>
