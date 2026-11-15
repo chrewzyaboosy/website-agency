@@ -204,3 +204,21 @@ allowed to edit. Do not use it to violate academic integrity rules, employer or
 client policies on AI use, or platform disclosure requirements. No detector,
 and no humanizer, is perfect: always read the result and fact-check claims
 before publishing.
+
+## Deep mode (AI rewrite + engine)
+
+The local engine alone cannot beat modern detectors: word swaps leave the AI's sentence structure intact. Deep mode fixes that:
+
+1. **Claude recomposes the text** with a prompt tuned against real detectors (`engine/rewrite.js`): re-orders information, bans reused 4-word phrases from the draft, removes hype and AI tells, keeps every fact.
+2. **Guards**: numbers/URLs/handles/quotes must survive and 4-word overlap with the draft must stay under 25%, otherwise it retries once with feedback.
+3. **Engine post-pass** (no inserted asides) strips leftover tells and varies rhythm.
+
+Measured on a blind 10-sample marketing set (local detectors: desklib, fakespot, GPT-2 perplexity/burstiness, binoculars): majority-of-detectors flag rate **100% → 0%**; GPTZero-style detector **80% → 0%**. desklib alone still flags most rewrites (it also flags most genuine human press releases).
+
+Run with your key (never sent to the browser):
+
+```bash
+ANTHROPIC_API_KEY=sk-ant-... npm start      # optional: INKLING_MODEL, INKLING_RATE_LIMIT (per IP per minute)
+```
+
+Without a key the UI disables Deep mode and runs Fast (local-only). Inside claude.ai (artifact build `dist/inkling-artifact.html`) Deep mode uses the viewer's own Claude account.

@@ -25,8 +25,6 @@ const SVG_NS = 'http://www.w3.org/2000/svg';
 const TONES = ['natural', 'casual', 'professional', 'marketing', 'academic'];
 const STRENGTHS = ['light', 'balanced', 'aggressive'];
 const SPELLINGS = ['us', 'uk'];
-// Engine strength used on top of an AI rewrite (tuned against real detectors).
-const DEEP_POST_STRENGTH = { light: 'light', balanced: 'light', aggressive: 'balanced' };
 
 /* ------------------------------------------------------------------ */
 /* Sample texts: deliberately full of typical AI-writing tells.        */
@@ -468,12 +466,14 @@ const AI_FATAL = new Set(['not_granted', 'sampling_disabled', 'ai_not_configured
 async function aiRewrite(text, tone) {
   if (ai.kind === 'claude') {
     try {
-      const { text: out } = await ai.sample(rw.buildSinglePrompt(text, { tone }), { modelTier: 'default', cache: false });
-      return rw.cleanRewrite(out);
+      // The artifact runtime has no system prompt: send rules + draft as one prompt.
+      const call = (system, user) => ai.sample(`${system}\n\n${user}`, { modelTier: 'default', cache: false }).then((r) => r.text);
+      return (await rw.guardedRewrite(call, text, { tone })).text;
     } catch (e) {
       throw Object.assign(new Error(e && e.message ? e.message : 'AI rewrite failed'), { code: (e && e.code) || 'upstream_error' });
     }
   }
+  // Server path: the server runs the same guards (fact check + overlap retry).
   const r = await fetch('api/rewrite', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -999,8 +999,9 @@ async function humanize({ fromVariant = false } = {}) {
       if (check.missing.length) {
         toast(`Double-check these details in the output: ${check.missing.slice(0, 4).join(', ')}`, { type: 'info', timeout: 7000 });
       }
-      // Light engine pass on top of the AI rewrite: strips leftover tells without re-stiffening it.
-      engineOpts = { ...opts, strength: DEEP_POST_STRENGTH[opts.strength] || 'light' };
+      // Engine pass on top of the AI rewrite (measured: lowers detection further).
+      // No inserted asides: the rewrite prompt bans filler and the engine's would reintroduce it.
+      engineOpts = { ...opts, asides: false };
     }
     const res = await engine.call('humanize', { text: engineInput, opts: engineOpts });
     if (mode === 'deep' && res && res.stats) res.stats.inputWords = countWords(text);

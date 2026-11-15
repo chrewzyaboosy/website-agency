@@ -194,23 +194,29 @@ async function handleApi(req, res, pathname) {
 
   rewriteLib ||= await import('./engine/rewrite.js');
   const client = await getClient();
-  try {
+  const call = async (system, user) => {
     const stream = client.beta.messages.stream({
       model: MODEL,
       max_tokens: 32000,
       betas: ['server-side-fallback-2026-07-01'],
       fallbacks: 'default',
       output_config: { effort: 'medium' },
-      system: [{ type: 'text', text: rewriteLib.REWRITE_SYSTEM, cache_control: { type: 'ephemeral' } }],
-      messages: [{ role: 'user', content: rewriteLib.buildUserMessage(text, { tone }) }],
+      system: [{ type: 'text', text: system, cache_control: { type: 'ephemeral' } }],
+      messages: [{ role: 'user', content: user }],
     });
     const msg = await stream.finalMessage();
-    if (msg.stop_reason === 'refusal') { sendJson(res, 422, { error: 'refused' }); return; }
-    const out = rewriteLib.cleanRewrite(msg.content.filter((b) => b.type === 'text').map((b) => b.text).join(''));
-    if (!out) { sendJson(res, 502, { error: 'empty_completion' }); return; }
-    sendJson(res, 200, { text: out, truncated: msg.stop_reason === 'max_tokens', model: msg.model });
+    if (msg.stop_reason === 'refusal') throw Object.assign(new Error('refused'), { code: 'refused' });
+    if (msg.stop_reason === 'max_tokens') throw Object.assign(new Error('truncated'), { code: 'too_long' });
+    return msg.content.filter((b) => b.type === 'text').map((b) => b.text).join('');
+  };
+  try {
+    const result = await rewriteLib.guardedRewrite(call, text, { tone });
+    if (!result.text) { sendJson(res, 502, { error: 'empty_completion' }); return; }
+    sendJson(res, 200, { text: result.text, missing: result.missing, overlap: Math.round(result.overlap * 100) / 100 });
   } catch (err) {
     const status = err?.status;
+    if (err?.code === 'refused') { sendJson(res, 422, { error: 'refused' }); return; }
+    if (err?.code === 'too_long') { sendJson(res, 413, { error: 'too_long' }); return; }
     console.error('rewrite failed:', status || '', err?.message || err);
     if (status === 401 || status === 403) sendJson(res, 503, { error: 'ai_auth_failed' });
     else if (status === 429) sendJson(res, 429, { error: 'rate_limited' });

@@ -1249,7 +1249,8 @@ export function humanize(text, opts = {}) {
       k.kind === 'prose' || k.kind === 'light' ? protect(k.content, store, { maskCaps: !(k.kind === 'light' && k.titleLike) }) : null
     );
     const totalWords = countWords(src);
-    ctx.asideBudget = ctx.cfg.wordsPerAside > 0 && totalWords >= 40 ? Math.max(ctx.t.aside >= 0.5 ? 1 : 0, Math.round((totalWords / ctx.cfg.wordsPerAside) * ctx.t.aside)) : 0;
+    // opts.asides === false: no inserted asides (used after the Deep-mode AI rewrite, whose prompt bans filler).
+    ctx.asideBudget = o.asides !== false && ctx.cfg.wordsPerAside > 0 && totalWords >= 40 ? Math.max(ctx.t.aside >= 0.5 ? 1 : 0, Math.round((totalWords / ctx.cfg.wordsPerAside) * ctx.t.aside)) : 0;
     const out = [];
     let prevFirst = '';
     for (let i = 0; i < lines.length; i++) {
