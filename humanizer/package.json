@@ -1,0 +1,15 @@
+{
+  "name": "inkling-humanizer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Inkling - local, private AI-text humanizer (runs fully in the browser).",
+  "scripts": {
+    "start": "node serve.mjs",
+    "test": "node --test tests/",
+    "build": "node build.mjs",
+    "eval": "node tests/eval/run_eval.mjs",
+    "e2e": "node tests/e2e.mjs"
+  },
+  "engines": { "node": ">=18" }
+}
